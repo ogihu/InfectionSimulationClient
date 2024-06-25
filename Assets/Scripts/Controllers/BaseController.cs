@@ -163,10 +163,4 @@ public class BaseController : MonoBehaviour
     {
 
     }
-
-    public void Sync()
-    {
-        Vector3 _destPos = Pos;
-        transform.position = _destPos;
-    }
 }

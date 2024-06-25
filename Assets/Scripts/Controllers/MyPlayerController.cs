@@ -1,9 +1,17 @@
 ﻿using Google.Protobuf.Protocol;
+using System.Collections;
 using UnityEngine;
 
 public class MyPlayerController : PlayerController
 {
-	protected override void UpdateController()
+	[SerializeField] private float _syncTimer = 1.0f;
+
+    private void Start()
+    {
+		StartCoroutine(UpdatePosSync());
+    }
+
+    protected override void UpdateController()
 	{
 		GetKeyInput();
 		base.UpdateController();
@@ -26,6 +34,15 @@ public class MyPlayerController : PlayerController
 		syncPacket.PosInfo = PosInfo;
 		Managers.Network.Send(syncPacket);
 	}
+
+	IEnumerator UpdatePosSync()
+    {
+        while (true)
+        {
+			SendSync();
+			yield return new WaitForSeconds(_syncTimer);
+		}
+    }
 
 	private void CheckUpdatedFlag()
 	{

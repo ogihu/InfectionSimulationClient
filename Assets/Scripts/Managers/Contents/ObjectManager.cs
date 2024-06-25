@@ -27,7 +27,7 @@ public class ObjectManager
 		{
 			if (myPlayer)
 			{
-				GameObject go = Managers.Resource.Instantiate($"Creatures/MyPlayer");
+				GameObject go = Managers.Resource.Instantiate($"Creatures/MyPlayer/FemaleDoctor");
 				_objects.Add(info.ObjectId, go);
 				_players.Add(go);
 				go.name = $"{info.Name}";
@@ -35,12 +35,13 @@ public class ObjectManager
 				MyPlayer = go.GetComponent<MyPlayerController>();
 				MyPlayer.Id = info.ObjectId;
 				MyPlayer.Name = info.Name;
+				MyPlayer.MoveInfo = info.MoveInfo;
 				MyPlayer.PosInfo = info.PosInfo;
 				MyPlayer.Sync();
 			}
 			else
 			{
-				GameObject go = Managers.Resource.Instantiate($"Creatures/Player");
+				GameObject go = Managers.Resource.Instantiate($"Creatures/Player/FemaleDoctor");
 				_objects.Add(info.ObjectId, go);
 				_players.Add(go);
 				go.name = $"{info.Name}";
@@ -48,6 +49,7 @@ public class ObjectManager
 				PlayerController pc = go.GetComponent<PlayerController>();
 				pc.Id = info.ObjectId;
 				pc.Name = info.Name;
+				pc.MoveInfo = info.MoveInfo;
 				pc.PosInfo = info.PosInfo;
 				pc.Sync();
 			}

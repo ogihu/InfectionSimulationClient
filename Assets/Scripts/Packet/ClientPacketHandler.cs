@@ -39,7 +39,7 @@ class PacketHandler
         if (bc == null)
             return;
 
-        bc.PosInfo = movePacket.PosInfo;
+        bc.MoveInfo = movePacket.MoveInfo;
     }
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)
@@ -56,5 +56,10 @@ class PacketHandler
     {
         S_EnterGame enterGamePacket = packet as S_EnterGame;
         Managers.Object.Add(enterGamePacket.Player, myPlayer: true);
+    }
+
+    internal static void S_SyncHandler(PacketSession arg1, IMessage arg2)
+    {
+        throw new NotImplementedException();
     }
 }

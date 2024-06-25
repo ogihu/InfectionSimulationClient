@@ -9,37 +9,84 @@ public class BaseController : MonoBehaviour
 
     public string Name { get; set; }
 
-    #region PositionInfo PosInfo
+    #region MoveInfo MoveInfo
 
-    PositionInfo _positionInfo = new PositionInfo();
-    public PositionInfo PosInfo
+    MoveInfo _moveInfo = new MoveInfo();
+    public MoveInfo MoveInfo
     {
-        get { return _positionInfo; }
+        get { return _moveInfo; }
         set
         {
-            if (_positionInfo.Equals(value))
+            if (_moveInfo.Equals(value))
                 return;
 
             State = value.State;
-            Pos = new Vector3(value.PosX, value.PosY, value.PosZ);
+            Dir = new Vector2(value.DirX, value.DirY);
+            InputBit = value.InputBit;
         }
     }
 
     //캐릭터 상태
     public CreatureState State
     {
-        get { return PosInfo.State; }
+        get { return MoveInfo.State; }
         set
         {
-            if (PosInfo.State == value)
+            if (MoveInfo.State == value)
                 return;
 
-            PosInfo.State = value;
+            MoveInfo.State = value;
             _updated = true;
         }
     }
 
-    //캐릭터 위치
+    public Vector2 Dir
+    {
+        get { return new Vector2(MoveInfo.DirX, MoveInfo.DirY); }
+        set
+        {
+            if (MoveInfo.DirX == value.x && MoveInfo.DirY == value.y)
+                return;
+
+            MoveInfo.DirX = value.x;
+            MoveInfo.DirY = value.y;
+            _updated = true;
+        }
+    }
+
+    /// <summary>
+    /// W - 0, A - 1, S - 2, D - 3
+    /// </summary>
+    public int InputBit
+    {
+        get { return MoveInfo.InputBit; }
+        set
+        {
+            if (MoveInfo.InputBit == value)
+                return;
+
+            MoveInfo.InputBit = value;
+            _updated = true;
+        }
+    }
+
+    #endregion
+
+    #region PosInfo PosInfo
+
+    PosInfo _posInfo = new PosInfo();
+    public PosInfo PosInfo
+    {
+        get { return _posInfo; }
+        set
+        {
+            if (_posInfo.Equals(value))
+                return;
+
+            Pos = new Vector3(value.PosX, value.PosY, value.PosZ);
+        }
+    }
+
     public Vector3 Pos
     {
         get { return new Vector3(PosInfo.PosX, PosInfo.PosY, PosInfo.PosZ); }
@@ -55,10 +102,10 @@ public class BaseController : MonoBehaviour
         }
     }
 
-    protected bool _updated = false;
-
     #endregion
 
+    protected bool _syncUpdated = false;
+    protected bool _updated = false;
     [SerializeField] private float _speed = 1.5f;
     protected Vector3 _destPos = Vector3.zero;
 
@@ -71,39 +118,50 @@ public class BaseController : MonoBehaviour
 
     protected virtual void UpdateController()
     {
-        switch (State)
-        {
-            case CreatureState.Idle:
-                UpdateIdle();
-                break;
-            case CreatureState.Moving:
-                UpdateMoving();
-                break;
-        }
+        UpdateMove();
     }
 
-    protected virtual void UpdateIdle() 
+    protected virtual void UpdateMove()
     {
-        if(transform.position != Pos)
-            State = CreatureState.Moving;
-    }
-
-    protected virtual void MoveToNextPos() { }
-
-    protected virtual void UpdateMoving()
-    {
-        _destPos = Pos;
-
-        if ((_destPos - transform.position).magnitude > _speed * Time.deltaTime)
+        if(InputBit == 0)
         {
-            transform.position += (_destPos - transform.position).normalized * _speed * Time.deltaTime;
-            State = CreatureState.Moving;
-        }
-        else
-        {
-            transform.position = _destPos;
             State = CreatureState.Idle;
+            return;
         }
+
+        Vector3 moveDir = Vector3.zero;
+
+        if(Managers.Input.GetKeyInput(KeyCode.W, InputBit))
+        {
+            moveDir += Vector3.forward;
+        }
+        if (Managers.Input.GetKeyInput(KeyCode.A, InputBit))
+        {
+            moveDir += Vector3.left;
+        }
+        if (Managers.Input.GetKeyInput(KeyCode.S, InputBit))
+        {
+            moveDir += Vector3.back;
+        }
+        if (Managers.Input.GetKeyInput(KeyCode.D, InputBit))
+        {
+            moveDir += Vector3.right;
+        }
+
+        if (moveDir == Vector3.zero)
+        {
+            State = CreatureState.Idle;
+            return;
+        }
+
+        State = CreatureState.Run;
+        moveDir = moveDir.normalized;
+        transform.position = transform.position + (moveDir * _speed * Time.deltaTime);
+    }
+
+    protected virtual void UpdateAnimation()
+    {
+
     }
 
     public void Sync()

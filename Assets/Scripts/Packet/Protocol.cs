@@ -37,7 +37,7 @@ namespace Google.Protobuf.Protocol {
             "CG9iamVjdElkGAEgASgFEgwKBG5hbWUYAiABKAkSJAoIbW92ZUluZm8YAyAB",
             "KAsyEi5Qcm90b2NvbC5Nb3ZlSW5mbxIiCgdwb3NJbmZvGAQgASgLMhEuUHJv",
             "dG9jb2wuUG9zSW5mbyJgCghNb3ZlSW5mbxImCgVzdGF0ZRgBIAEoDjIXLlBy",
-            "b3RvY29sLkNyZWF0dXJlU3RhdGUSDAoEZGlyWBgCIAEoAhIMCgRkaXJZGAMg",
+            "b3RvY29sLkNyZWF0dXJlU3RhdGUSDAoEZGlyWBgCIAEoAhIMCgRkaXJaGAMg",
             "ASgCEhAKCGlucHV0Qml0GAQgASgFIjMKB1Bvc0luZm8SDAoEcG9zWBgBIAEo",
             "AhIMCgRwb3NZGAIgASgCEgwKBHBvc1oYAyABKAIqdwoFTXNnSWQSEAoMU19F",
             "TlRFUl9HQU1FEAASEAoMU19MRUFWRV9HQU1FEAESCwoHU19TUEFXThACEg0K",
@@ -58,7 +58,7 @@ namespace Google.Protobuf.Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.C_Sync), global::Google.Protobuf.Protocol.C_Sync.Parser, new[]{ "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.S_Sync), global::Google.Protobuf.Protocol.S_Sync.Parser, new[]{ "ObjectId", "PosInfo" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.ObjectInfo), global::Google.Protobuf.Protocol.ObjectInfo.Parser, new[]{ "ObjectId", "Name", "MoveInfo", "PosInfo" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.MoveInfo), global::Google.Protobuf.Protocol.MoveInfo.Parser, new[]{ "State", "DirX", "DirY", "InputBit" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.MoveInfo), global::Google.Protobuf.Protocol.MoveInfo.Parser, new[]{ "State", "DirX", "DirZ", "InputBit" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Google.Protobuf.Protocol.PosInfo), global::Google.Protobuf.Protocol.PosInfo.Parser, new[]{ "PosX", "PosY", "PosZ" }, null, null, null, null)
           }));
     }
@@ -1418,7 +1418,7 @@ namespace Google.Protobuf.Protocol {
     public MoveInfo(MoveInfo other) : this() {
       state_ = other.state_;
       dirX_ = other.dirX_;
-      dirY_ = other.dirY_;
+      dirZ_ = other.dirZ_;
       inputBit_ = other.inputBit_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -1450,14 +1450,14 @@ namespace Google.Protobuf.Protocol {
       }
     }
 
-    /// <summary>Field number for the "dirY" field.</summary>
-    public const int DirYFieldNumber = 3;
-    private float dirY_;
+    /// <summary>Field number for the "dirZ" field.</summary>
+    public const int DirZFieldNumber = 3;
+    private float dirZ_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float DirY {
-      get { return dirY_; }
+    public float DirZ {
+      get { return dirZ_; }
       set {
-        dirY_ = value;
+        dirZ_ = value;
       }
     }
 
@@ -1487,7 +1487,7 @@ namespace Google.Protobuf.Protocol {
       }
       if (State != other.State) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DirX, other.DirX)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DirY, other.DirY)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(DirZ, other.DirZ)) return false;
       if (InputBit != other.InputBit) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -1497,7 +1497,7 @@ namespace Google.Protobuf.Protocol {
       int hash = 1;
       if (State != global::Google.Protobuf.Protocol.CreatureState.Idle) hash ^= State.GetHashCode();
       if (DirX != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DirX);
-      if (DirY != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DirY);
+      if (DirZ != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(DirZ);
       if (InputBit != 0) hash ^= InputBit.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -1520,9 +1520,9 @@ namespace Google.Protobuf.Protocol {
         output.WriteRawTag(21);
         output.WriteFloat(DirX);
       }
-      if (DirY != 0F) {
+      if (DirZ != 0F) {
         output.WriteRawTag(29);
-        output.WriteFloat(DirY);
+        output.WriteFloat(DirZ);
       }
       if (InputBit != 0) {
         output.WriteRawTag(32);
@@ -1542,7 +1542,7 @@ namespace Google.Protobuf.Protocol {
       if (DirX != 0F) {
         size += 1 + 4;
       }
-      if (DirY != 0F) {
+      if (DirZ != 0F) {
         size += 1 + 4;
       }
       if (InputBit != 0) {
@@ -1565,8 +1565,8 @@ namespace Google.Protobuf.Protocol {
       if (other.DirX != 0F) {
         DirX = other.DirX;
       }
-      if (other.DirY != 0F) {
-        DirY = other.DirY;
+      if (other.DirZ != 0F) {
+        DirZ = other.DirZ;
       }
       if (other.InputBit != 0) {
         InputBit = other.InputBit;
@@ -1591,7 +1591,7 @@ namespace Google.Protobuf.Protocol {
             break;
           }
           case 29: {
-            DirY = input.ReadFloat();
+            DirZ = input.ReadFloat();
             break;
           }
           case 32: {

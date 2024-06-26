@@ -1,5 +1,8 @@
 ﻿using Google.Protobuf.Protocol;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BaseController : MonoBehaviour
 {
@@ -21,7 +24,7 @@ public class BaseController : MonoBehaviour
                 return;
 
             State = value.State;
-            Dir = new Vector2(value.DirX, value.DirY);
+            Dir = new Vector3(value.DirX, 0, value.DirZ);
             InputBit = value.InputBit;
         }
     }
@@ -40,16 +43,16 @@ public class BaseController : MonoBehaviour
         }
     }
 
-    public Vector2 Dir
+    public Vector3 Dir
     {
-        get { return new Vector2(MoveInfo.DirX, MoveInfo.DirY); }
+        get { return new Vector3(MoveInfo.DirX, 0, MoveInfo.DirZ); }
         set
         {
-            if (MoveInfo.DirX == value.x && MoveInfo.DirY == value.y)
+            if (MoveInfo.DirX == value.x && MoveInfo.DirZ == value.z)
                 return;
 
             MoveInfo.DirX = value.x;
-            MoveInfo.DirY = value.y;
+            MoveInfo.DirZ = value.z;
             _updated = true;
         }
     }
@@ -98,18 +101,28 @@ public class BaseController : MonoBehaviour
             PosInfo.PosX = value.x;
             PosInfo.PosY = value.y;
             PosInfo.PosZ = value.z;
-            _updated = true;
+            _syncUpdated = true;
         }
     }
 
     #endregion
 
+    protected Animator _animator;
     protected bool _syncUpdated = false;
     protected bool _updated = false;
     [SerializeField] private float _speed = 1.5f;
     protected Vector3 _destPos = Vector3.zero;
+    [Tooltip("MyPlayer는 적용되지 않음")]
+    [SerializeField] private float _rotationSpeed;
+    Coroutine _coSync;
+
 
     #endregion
+
+    protected virtual void Start()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -119,6 +132,8 @@ public class BaseController : MonoBehaviour
     protected virtual void UpdateController()
     {
         UpdateMove();
+        UpdateRotation();
+        UpdateAnimation();
     }
 
     protected virtual void UpdateMove()
@@ -154,13 +169,69 @@ public class BaseController : MonoBehaviour
             return;
         }
 
+        _coSync = null;
         State = CreatureState.Run;
         moveDir = moveDir.normalized;
-        transform.position = transform.position + (moveDir * _speed * Time.deltaTime);
+        transform.Translate(moveDir * _speed * Time.deltaTime);
     }
+
+    protected virtual void UpdateRotation()
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(Dir);
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
+    }
+
 
     protected virtual void UpdateAnimation()
     {
-
+        switch (State)
+        {
+            case CreatureState.Idle:
+                _animator.Play("idle");
+                break;
+            case CreatureState.Run:
+                _animator.Play("run");
+                break;
+            default:
+                Debug.LogError($"There is no animation clip about {State}");
+                break;
+        }
     }
+<<<<<<< Updated upstream
+=======
+
+    public void UpdateSync()
+    {
+        float distance = (Pos - transform.position).magnitude;
+
+        if (distance > 2.0f)
+            ImmediateSync();
+        else
+        {
+            _coSync = StartCoroutine(CoSync());
+        }
+    }
+
+    public void ImmediateSync()
+    {
+        if(transform.position != Pos)
+            transform.position = Pos;
+    }
+    
+    IEnumerator CoSync()
+    {
+        yield return new WaitUntil(() => State == CreatureState.Idle);
+
+        Vector3 dir = (Pos - transform.position).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(dir);
+        transform.LookAt(dir);
+
+        while (true)
+        {
+            transform.Translate(dir * _speed * Time.deltaTime);
+            yield return null;
+        }
+    }
+>>>>>>> Stashed changes
 }

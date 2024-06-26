@@ -4,47 +4,61 @@ using UnityEngine;
 
 public class MyPlayerController : PlayerController
 {
-	[SerializeField] private float _syncTimer = 1.0f;
+	[SerializeField] private float _syncTimer = 0.5f;
+	[SerializeField] float _camRotationSpeed;
+	CameraArm _cameraArm;
+	float mouseX = 0f;
+	Coroutine _coSendPacket;
 
-    private void Start()
+    protected override void Start()
     {
-		StartCoroutine(UpdatePosSync());
+		base.Start();
+		_cameraArm = GetComponentInChildren<CameraArm>();
+		_coSendPacket = StartCoroutine(CoSyncUpdate());
     }
 
     protected override void UpdateController()
 	{
+		UpdateRotation();
 		GetKeyInput();
 		base.UpdateController();
 	}
 
-	void GetKeyInput()
-	{
-		InputBit = Managers.Input.SetKeyInput(KeyCode.W, InputBit, () => { SendSync(); });
-		InputBit = Managers.Input.SetKeyInput(KeyCode.A, InputBit, () => { SendSync(); });
-		InputBit = Managers.Input.SetKeyInput(KeyCode.S, InputBit, () => { SendSync(); });
-		InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit, () => { SendSync(); });
-
-		CheckUpdatedFlag();
-	}
-
-	private void SendSync()
+    protected override void UpdateMove()
     {
+        base.UpdateMove();
 		Pos = transform.position;
-		C_Sync syncPacket = new C_Sync();
-		syncPacket.PosInfo = PosInfo;
-		Managers.Network.Send(syncPacket);
-	}
-
-	IEnumerator UpdatePosSync()
-    {
-        while (true)
-        {
-			SendSync();
-			yield return new WaitForSeconds(_syncTimer);
-		}
     }
 
-	private void CheckUpdatedFlag()
+    protected override void UpdateRotation()
+    {
+        _cameraArm.CameraRotation(_camRotationSpeed);
+        mouseX += Input.GetAxis("Mouse X") * _camRotationSpeed;
+		this.transform.localEulerAngles = new Vector3(0, mouseX, 0);
+		Debug.Log($"카메라 방향 {Camera.main.transform.forward}");
+		Dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
+	}
+
+	void GetKeyInput()
+	{
+		InputBit = Managers.Input.SetKeyInput(KeyCode.W, InputBit, () => { CheckUpdatedFlag(); });
+		InputBit = Managers.Input.SetKeyInput(KeyCode.A, InputBit, () => { CheckUpdatedFlag(); });
+		InputBit = Managers.Input.SetKeyInput(KeyCode.S, InputBit, () => { CheckUpdatedFlag(); });
+		InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit, () => { CheckUpdatedFlag(); });
+	}
+
+	private void SendSyncPacket()
+    {
+        if (_syncUpdated)
+        {
+			C_Sync syncPacket = new C_Sync();
+			syncPacket.PosInfo = PosInfo;
+			Managers.Network.Send(syncPacket);
+			_syncUpdated = false;
+		}
+	}
+
+	private void SendMovePacket()
 	{
 		if (_updated)
 		{
@@ -54,4 +68,19 @@ public class MyPlayerController : PlayerController
 			_updated = false;
 		}
 	}
+
+	private void CheckUpdatedFlag()
+	{
+		SendSyncPacket();
+		SendMovePacket();
+	}
+	
+	IEnumerator CoSyncUpdate()
+    {
+        while (true)
+        {
+			CheckUpdatedFlag();
+			yield return new WaitForSeconds(_syncTimer);
+        }
+    }
 }

@@ -11,13 +11,13 @@ class PacketHandler
 {
     public static void S_LeaveGameHandler(PacketSession session, IMessage packet)
     {
-        S_LeaveGame leaveGameHandler = packet as S_LeaveGame;
+        S_LeaveGame leaveGameHandler = (S_LeaveGame)packet;
         Managers.Object.Clear();
     }
 
     public static void S_SpawnHandler(PacketSession session, IMessage packet)
     {
-        S_Spawn spawnPacket = packet as S_Spawn;
+        S_Spawn spawnPacket = (S_Spawn)packet;
         foreach (ObjectInfo obj in spawnPacket.Objects)
         {
             Managers.Object.Add(obj, myPlayer: false);
@@ -44,7 +44,7 @@ class PacketHandler
 
     public static void S_DespawnHandler(PacketSession session, IMessage packet)
     {
-        S_Despawn despawnPacket = packet as S_Despawn;
+        S_Despawn despawnPacket = (S_Despawn)packet;
 
         foreach (int id in despawnPacket.ObjectIds)
         {
@@ -58,8 +58,22 @@ class PacketHandler
         Managers.Object.Add(enterGamePacket.Player, myPlayer: true);
     }
 
-    internal static void S_SyncHandler(PacketSession arg1, IMessage arg2)
+    public static void S_SyncHandler(PacketSession session, IMessage packet)
     {
-        throw new NotImplementedException();
+        S_Sync syncPacket = (S_Sync)packet;
+
+        GameObject go = Managers.Object.FindById(syncPacket.ObjectId);
+        if (go == null)
+            return;
+
+        if (Managers.Object.MyPlayer.Id == syncPacket.ObjectId)
+            return;
+
+        BaseController bc = go.GetComponent<BaseController>();
+        if (bc == null)
+            return;
+
+        bc.PosInfo = syncPacket.PosInfo;
+        bc.UpdateSync();
     }
 }

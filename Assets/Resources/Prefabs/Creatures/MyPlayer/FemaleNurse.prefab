@@ -680,6 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5335163404050847049}
+  - component: {fileID: 3491825417564293761}
   m_Layer: 0
   m_Name: CameraArm
   m_TagString: Untagged
@@ -703,6 +704,20 @@ Transform:
   - {fileID: 2569136623055259141}
   m_Father: {fileID: 944507844931544382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3491825417564293761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6493903886041665190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dd2f2f8561035c4194ed44fdfb8fd0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minCameraVertical: -50
+  maxCameraVertical: 50
 --- !u!1 &6675153613743685121
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,6 +951,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1.5
+  _rotationSpeed: 8
+  _syncTimer: 0.5
+  _camRotationSpeed: 6
 --- !u!1 &7400255771002420427
 GameObject:
   m_ObjectHideFlags: 0

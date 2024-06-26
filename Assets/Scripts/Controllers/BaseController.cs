@@ -198,8 +198,6 @@ public class BaseController : MonoBehaviour
                 break;
         }
     }
-<<<<<<< Updated upstream
-=======
 
     public void UpdateSync()
     {
@@ -233,5 +231,4 @@ public class BaseController : MonoBehaviour
             yield return null;
         }
     }
->>>>>>> Stashed changes
 }

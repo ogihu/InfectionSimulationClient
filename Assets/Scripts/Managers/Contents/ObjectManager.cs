@@ -27,28 +27,28 @@ public class ObjectManager
 		{
 			if (myPlayer)
 			{
-				GameObject go = Managers.Resource.Instantiate($"Creatures/MyPlayer/FemaleDoctor");
+				GameObject go = Managers.Resource.Instantiate($"Creatures/MyPlayer/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
 				_players.Add(go);
-				go.name = $"{info.Name}";
+				go.name = $"{info.UserInfo.Name}";
 
 				MyPlayer = go.GetComponent<MyPlayerController>();
-				MyPlayer.Id = info.ObjectId;
-				MyPlayer.Name = info.Name;
+				MyPlayer.ObjectId = info.ObjectId;
+				MyPlayer.UserInfo = info.UserInfo;
 				MyPlayer.MoveInfo = info.MoveInfo;
 				MyPlayer.PosInfo = info.PosInfo;
 				MyPlayer.ImmediateSync();
 			}
 			else
 			{
-				GameObject go = Managers.Resource.Instantiate($"Creatures/Player/FemaleDoctor");
+				GameObject go = Managers.Resource.Instantiate($"Creatures/Player/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
 				_players.Add(go);
-				go.name = $"{info.Name}";
+				go.name = $"{info.UserInfo.Name}";
 
 				PlayerController pc = go.GetComponent<PlayerController>();
-				pc.Id = info.ObjectId;
-				pc.Name = info.Name;
+				pc.ObjectId = info.ObjectId;
+				pc.UserInfo = info.UserInfo;
 				pc.MoveInfo = info.MoveInfo;
 				pc.PosInfo = info.PosInfo;
 				pc.ImmediateSync();

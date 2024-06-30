@@ -8,9 +8,62 @@ public class BaseController : MonoBehaviour
 {
     #region Fields
 
-    public int Id { get; set; }
+    public int ObjectId { get; set; }
 
-    public string Name { get; set; }
+    #region UserInfo UserInfo
+
+    UserInfo _userInfo = new UserInfo();
+    public UserInfo UserInfo
+    {
+        get { return _userInfo; }
+        set
+        {
+            if (_userInfo.Equals(value))
+                return;
+
+            Name = value.Name;
+            Id = value.Id;
+            Position = value.Position;
+        }
+    }
+
+    public string Name
+    {
+        get { return UserInfo.Name; }
+        set
+        {
+            if (UserInfo.Name.Equals(value))
+                return;
+
+            UserInfo.Name = value;
+        }
+    }
+
+    public string Id
+    {
+        get { return UserInfo.Id; }
+        set
+        {
+            if (UserInfo.Id.Equals(value))
+                return;
+
+            UserInfo.Id = value;
+        }
+    }
+
+    public string Position
+    {
+        get { return UserInfo.Position; }
+        set
+        {
+            if (UserInfo.Position.Equals(value))
+                return;
+
+            UserInfo.Position = value;
+        }
+    }
+
+    #endregion
 
     #region MoveInfo MoveInfo
 
@@ -169,7 +222,6 @@ public class BaseController : MonoBehaviour
             return;
         }
 
-        _coSync = null;
         State = CreatureState.Run;
         moveDir = moveDir.normalized;
         transform.Translate(moveDir * _speed * Time.deltaTime);
@@ -207,7 +259,7 @@ public class BaseController : MonoBehaviour
             ImmediateSync();
         else
         {
-            _coSync = StartCoroutine(CoSync());
+
         }
     }
 
@@ -215,20 +267,5 @@ public class BaseController : MonoBehaviour
     {
         if(transform.position != Pos)
             transform.position = Pos;
-    }
-    
-    IEnumerator CoSync()
-    {
-        yield return new WaitUntil(() => State == CreatureState.Idle);
-
-        Vector3 dir = (Pos - transform.position).normalized;
-        Quaternion targetRotation = Quaternion.LookRotation(dir);
-        transform.LookAt(dir);
-
-        while (true)
-        {
-            transform.Translate(dir * _speed * Time.deltaTime);
-            yield return null;
-        }
     }
 }

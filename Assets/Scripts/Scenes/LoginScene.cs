@@ -9,6 +9,12 @@ public class LoginScene : BaseScene
         SceneType = Define.Scene.Login;
 
         Application.runInBackground = true;
+
+        GameObject go = GameObject.Find("LoginUI");
+        if(go == null)
+        {
+            Managers.UI.CreateUI("LoginUI");
+        }
     }
 
     public override void Clear()

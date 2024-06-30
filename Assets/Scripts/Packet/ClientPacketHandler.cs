@@ -20,7 +20,7 @@ class PacketHandler
         S_Spawn spawnPacket = (S_Spawn)packet;
         foreach (ObjectInfo obj in spawnPacket.Objects)
         {
-            Managers.Object.Add(obj, myPlayer: false);
+            Managers.Scene.AddWaitEvent(() => { Managers.Object.Add(obj, myPlayer: false); });
         }
     }
 
@@ -32,7 +32,7 @@ class PacketHandler
         if (go == null)
             return;
 
-        if (Managers.Object.MyPlayer.Id == movePacket.ObjectId)
+        if (Managers.Object.MyPlayer.ObjectId == movePacket.ObjectId)
             return;
 
         BaseController bc = go.GetComponent<BaseController>();
@@ -55,7 +55,8 @@ class PacketHandler
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
         S_EnterGame enterGamePacket = packet as S_EnterGame;
-        Managers.Object.Add(enterGamePacket.Player, myPlayer: true);
+        Managers.Scene.LoadSceneWait(Define.Scene.Game);
+        Managers.Scene.AddWaitEvent(() => { Managers.Object.Add(enterGamePacket.Player, myPlayer: true); });
     }
 
     public static void S_SyncHandler(PacketSession session, IMessage packet)
@@ -66,7 +67,7 @@ class PacketHandler
         if (go == null)
             return;
 
-        if (Managers.Object.MyPlayer.Id == syncPacket.ObjectId)
+        if (Managers.Object.MyPlayer.ObjectId == syncPacket.ObjectId)
             return;
 
         BaseController bc = go.GetComponent<BaseController>();

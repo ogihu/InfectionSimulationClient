@@ -104,4 +104,14 @@ public class ResourceManager
 
         Object.Destroy(go, delay);
     }
+
+    public GameObject FindObject(string name)
+    {
+        GameObject go = GameObject.Find(name);
+        
+        if (go == null)
+            Debug.LogError($"There is no object with name : {name}");
+
+        return go;
+    }
 }

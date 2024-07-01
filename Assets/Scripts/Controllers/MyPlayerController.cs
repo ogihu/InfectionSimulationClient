@@ -11,8 +11,8 @@ public class MyPlayerController : PlayerController
 	CameraArm _cameraArm;
 	float mouseX = 0f;
 	Coroutine _coSendPacket;
-	GameObject _interactionObject;
-	Material[] _interactionMaterials;
+	[SerializeField] GameObject _interactionObject;
+	[SerializeField] Material[] _interactionMaterials;
 	Material _outline;
 	int _layerMask;
 

@@ -1,12 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIManager
 {
+    public enum CanvasType
+    {
+        Overlay,
+        World
+    }
+
     public Dictionary<string, Stack<GameObject>> UICache { get; set; } = new Dictionary<string, Stack<GameObject>>();
-    Canvas canvas;
+    Canvas overlayCanvas;
+    Canvas worldCanvas;
 
     /// <summary>
     /// Resources/Prefabs/UI 폴더 산하에 있는 UI를 생성
@@ -15,15 +23,29 @@ public class UIManager
     /// </summary>
     /// <param name="name"></param>
     /// <returns>GameObject</returns>
-    public GameObject CreateUI(string name, Action action = null)
+    public GameObject CreateUI(string name, CanvasType canvasType = CanvasType.Overlay)
     {
         if (name == null)
             Debug.LogError("Can't find null key, check the key input");
 
         GameObject go;
+        Canvas canvas;
 
-        if (canvas == null)
-            canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        if(canvasType == CanvasType.Overlay)
+        {
+            if (overlayCanvas == null)
+                overlayCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            canvas = overlayCanvas;
+        }
+        else
+        {
+            if (worldCanvas == null)
+                worldCanvas = GameObject.Find("WorldCanvas").GetComponent<Canvas>();
+            canvas = worldCanvas;
+
+            if (worldCanvas.worldCamera == null)
+                worldCanvas.worldCamera = Camera.main;
+        }
 
         if (UICache.ContainsKey(name))
         {
@@ -39,9 +61,6 @@ public class UIManager
 
             go.SetActive(true);
 
-            if(action != null)
-                action.Invoke();
-
             return go;
         }
 
@@ -49,9 +68,21 @@ public class UIManager
         UICache.Add(name, new Stack<GameObject>());
         go.SetActive(true);
 
-        if (action != null)
-            action.Invoke();
+        return go;
+    }
 
+    public GameObject CreatePopup(string notice)
+    {
+        GameObject popup = CreateUI("PopupNotice");
+        popup.GetComponentInChildren<TMP_Text>().text = notice;
+        Managers.Instance.StartCoroutine(DestroyAfter(popup, 3.0f));
+        return popup;
+    }
+
+    public GameObject CreateChatUI(Transform targetObject, string chat)
+    {
+        GameObject go = CreateUI("Chat", CanvasType.World);
+        go.GetComponent<PanelChatUI>().Init(targetObject, chat);
         return go;
     }
 

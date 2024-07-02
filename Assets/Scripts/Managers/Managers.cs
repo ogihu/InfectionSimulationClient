@@ -1,17 +1,20 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Managers : MonoBehaviour
 {
     static Managers _instance;
-    static Managers Instance { get { Init(); return _instance; } }
+    public static Managers Instance { get { Init(); return _instance; } }
 
     #region Contents
     ObjectManager _obj = new ObjectManager();
     NetworkManager _network = new NetworkManager();
+    ScenarioManager _scenario = new ScenarioManager();
 
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
+    public static ScenarioManager Scenario { get { return Instance._scenario; } }
     #endregion
 
     #region Core

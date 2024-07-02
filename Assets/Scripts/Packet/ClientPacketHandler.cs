@@ -54,9 +54,23 @@ class PacketHandler
 
     public static void S_EnterGameHandler(PacketSession session, IMessage packet)
     {
-        S_EnterGame enterGamePacket = packet as S_EnterGame;
+        S_EnterGame enterGamePacket = (S_EnterGame)packet;
         Managers.Scene.LoadSceneWait(Define.Scene.Game);
         Managers.Scene.AddWaitEvent(() => { Managers.Object.Add(enterGamePacket.Player, myPlayer: true); });
+    }
+
+    public static void S_StartScenarioHandler(PacketSession session, IMessage packet)
+    {
+        S_StartScenario scenarioPacket = (S_StartScenario)packet;
+
+        Managers.Scenario.StartScenario(scenarioPacket.ScenarioName);
+    }
+
+    public static void S_NextProgressHandler(PacketSession session, IMessage packet)
+    {
+        S_NextProgress progressPacket = (S_NextProgress)packet;
+
+        Managers.Scenario.NextProgress(progressPacket.Progress);
     }
 
     public static void S_SyncHandler(PacketSession session, IMessage packet)

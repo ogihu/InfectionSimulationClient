@@ -89,10 +89,12 @@
     <Compile Include="Assets\Supercyan\Scripts\DemoAssets\DemoControls.cs" />
     <Compile Include="Assets\Scripts\Packet\PacketQueue.cs" />
     <Compile Include="Assets\Supercyan\Scripts\ItemAssets\AnimatorOverridesApplier.cs" />
+    <Compile Include="Assets\Scripts\ScenarioTest.cs" />
     <Compile Include="Assets\Scripts\Packet\ClientPacketManager.cs" />
     <Compile Include="Assets\Scripts\Speech\SpeechRecognitor.cs" />
     <Compile Include="Assets\Scripts\ServerCore\Connector.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\ResourceManager.cs" />
+    <Compile Include="Assets\Scripts\UI\GameUI\PanelChatUI.cs" />
     <Compile Include="Assets\Supercyan\Scripts\Items\AccessoryItemLogic.cs" />
     <Compile Include="Assets\Scripts\Scenes\BaseScene.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\SceneManagerEx.cs" />

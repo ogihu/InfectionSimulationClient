@@ -52,17 +52,15 @@ public class SpeechRecognitor : MonoBehaviour
         if (res == null)
             return;
 
-        var time = sw.ElapsedMilliseconds;
-        var rate = recordedAudio.Length / (time * 0.001f);
-        string duringTime = $"Time: {time} ms\nRate: {rate:F1}x";
+        //var time = sw.ElapsedMilliseconds;
+        //var rate = recordedAudio.Length / (time * 0.001f);
+        //string duringTime = $"Time: {time} ms\nRate: {rate:F1}x";
 
         var text = res.Result;
-        if (printLanguage)
-            text += $"\nLanguage: {res.Language}\n{duringTime}";
+        //if (printLanguage)
+        //    text += $"\nLanguage: {res.Language}\n{duringTime}";
 
-        GameObject go = Managers.UI.CreateUI("MySpeech");
-        go.GetComponentInChildren<TMP_Text>().text = text;
-        StartCoroutine(Managers.UI.DestroyAfter(go, 3.0f));
+        Managers.Scenario.SpeechText = text;
     }
 
     private void OnNewSegment(WhisperSegment segment)

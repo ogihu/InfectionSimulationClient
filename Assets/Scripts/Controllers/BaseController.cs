@@ -229,6 +229,9 @@ public class BaseController : MonoBehaviour
 
     protected virtual void UpdateRotation()
     {
+        if (Dir == Vector3.zero)
+            return;
+
         Quaternion targetRotation = Quaternion.LookRotation(Dir);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);

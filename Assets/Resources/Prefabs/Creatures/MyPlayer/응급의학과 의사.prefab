@@ -964,7 +964,7 @@ GameObject:
   - component: {fileID: 102550599583405138}
   - component: {fileID: 5671482839511283440}
   - component: {fileID: 230056566955007221}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: "\uC751\uAE09\uC758\uD559\uACFC \uC758\uC0AC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1155,6 +1155,8 @@ MonoBehaviour:
   _syncTimer: 0.5
   _camRotationSpeed: 6
   raycastDistance: 2
+  _interactionObject: {fileID: 0}
+  _interactionMaterials: []
 --- !u!1 &7907601241239883552
 GameObject:
   m_ObjectHideFlags: 0

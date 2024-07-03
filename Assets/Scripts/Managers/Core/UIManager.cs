@@ -86,6 +86,19 @@ public class UIManager
         return go;
     }
 
+    public void ClearChat()
+    {
+        Stack<GameObject> chatUIs = new Stack<GameObject>();
+
+        if (UICache.TryGetValue("Chat", out chatUIs))
+        {
+            foreach(var chat in chatUIs)
+            {
+                Managers.Resource.Destroy(chat);
+            }
+        }
+    }
+
     public IEnumerator DestroyAfter(GameObject go, float time)
     {
         yield return new WaitForSeconds(time);

@@ -4,30 +4,33 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Whisper;
+using static Define;
 
 public class ScenarioManager
 {
     int CompleteCount { get; set; }
 
+    public string ScenarioName { get; set; }
     public int Progress { get; set; }
     public GameObject Patient { get; set; }
     public GameObject SpeechRecognitor { get; set; }
-
-    public string SpeechText { get; set; }
-    public string[] Keywords { get; set; }  //키워드는 데이터매니저 같은거 따로 둬서 관리하면 좋을 듯
-    = { "관찰구역", "이감염", "환자", "엠폭스", "확진자", "접촉자", "전화", "감염관리팀", "사실여부", "확인" };
+    public string SpeechText { get; set; }  //STT 결과 저장
 
     /// <summary>
     /// 이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
     /// </summary>
     public bool _checkComplete;
 
-    public void Init()
+    ScenarioInfo CurrentScenarioInfo { get; set; }
+
+    public void Init(string scenarioName)
     {
+        ScenarioName = scenarioName;
         Progress = 0;
         CompleteCount = 0;
         _checkComplete = false;
         SpeechText = null;
+        CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
         Patient = Managers.Resource.Instantiate("Creatures/NPC/MalePatient");
     }
 
@@ -36,7 +39,8 @@ public class ScenarioManager
         Progress = progress;
         CompleteCount = 0;
         _checkComplete = false;
-        SpeechText = default(string);
+        SpeechText = null;
+        CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
     }
 
     public void SendScenarioInfo(string scenarioName)
@@ -55,7 +59,7 @@ public class ScenarioManager
     {
         Managers.UI.CreatePopup($"{scenarioName} 시나리오를 시작합니다.");
         yield return new WaitForSeconds(3.0f);
-        Init();
+        Init(scenarioName);
 
         switch (scenarioName)
         {
@@ -64,6 +68,7 @@ public class ScenarioManager
                 Patient.transform.rotation = Quaternion.Euler(0, -90, 0);
                 Managers.UI.CreatePopup($"사랑합니다. 지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다. 모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
                 yield return new WaitForSeconds(3.0f);
+
                 Managers.UI.CreateChatUI(Patient.transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요. 저도 곧 보건소로부터 연락올거라고 합니다.");
                 if(Managers.Object.MyPlayer.Position == "응급센터 간호사1")
                 {
@@ -74,8 +79,28 @@ public class ScenarioManager
 
                 yield return new WaitUntil(() => Progress == 1);
 
-                Managers.UI.CreatePopup($"첫 번째 시나리오를 완료했습니다.");
+                Managers.UI.ClearChat();
+                Managers.UI.CreateChatUI(Patient.transform, "이관리 980421 입니다. 같이 살고있어요.");
+                if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
+                {
+                    Managers.Instance.StartCoroutine(CoCheckSpeech());
+                    yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                SendComplete();
 
+                yield return new WaitUntil(() => Progress == 2);
+
+                Managers.UI.ClearChat();
+                if (Managers.Object.MyPlayer.Position == "응급의학과 의사")
+                {
+                    Managers.Instance.StartCoroutine(CoCheckSpeech());
+                    yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                SendComplete();
+
+                yield return new WaitUntil(() => Progress == 3);
+
+                Managers.UI.CreatePopup("'#1 엠폭스 의심환자 발생 - 관찰구역에서 의심환자 대기' 시나리오를 완료했습니다.");
                 break;
         }
     }
@@ -92,7 +117,7 @@ public class ScenarioManager
 
     IEnumerator CoCheckSpeech()
     {
-        ChangeKeyword(Keywords);
+        ChangeKeyword(CurrentScenarioInfo.Keywords);
         bool complete = false;
 
         while (!complete)
@@ -104,7 +129,7 @@ public class ScenarioManager
         CompleteCount++;
     }
 
-    void ChangeKeyword(string[] keywords)
+    void ChangeKeyword(List<string> keywords)
     {
         if (SpeechRecognitor == null)
             SpeechRecognitor = GameObject.Find("SpeechRecognitor");
@@ -123,13 +148,13 @@ public class ScenarioManager
 
         int count = 0;
 
-        foreach(var keyword in Keywords)
+        foreach(var keyword in CurrentScenarioInfo.Keywords)
         {
             if (SpeechText.Contains(keyword))
                 count++;
         }
 
-        float ratio = (float)count / (float)Keywords.Length;
+        float ratio = (float)count / (float)CurrentScenarioInfo.Keywords.Count;
 
         GameObject go = Managers.UI.CreateUI("MySpeech");
         go.GetComponentInChildren<TMP_Text>().text = $"{SpeechText}\n정확도 {ratio * 100}%";

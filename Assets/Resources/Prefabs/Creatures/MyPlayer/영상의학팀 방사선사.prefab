@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 4794752864177690775}
   - component: {fileID: 5522305314765175911}
   - component: {fileID: 1325706728858351463}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: "\uC601\uC0C1\uC758\uD559\uD300 \uBC29\uC0AC\uC120\uC0AC"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,6 +570,8 @@ MonoBehaviour:
   _syncTimer: 0.5
   _camRotationSpeed: 6
   raycastDistance: 2
+  _interactionObject: {fileID: 0}
+  _interactionMaterials: []
 --- !u!1 &2675613126860539180
 GameObject:
   m_ObjectHideFlags: 0

@@ -76,6 +76,7 @@
     <Compile Include="Assets\Supercyan\Scripts\AimingAssets\CharacterWeaponAnimator.cs" />
     <Compile Include="Assets\Supercyan\Scripts\AimingAssets\CharacterMovement.cs" />
     <Compile Include="Assets\Supercyan\Scripts\DemoAssets\CharacterDemoSettings.cs" />
+    <Compile Include="Assets\Scripts\Interaction\Map.cs" />
     <Compile Include="Assets\Supercyan\Scripts\ItemAssets\AnimationSetBool.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\Poolable.cs" />
     <Compile Include="Assets\Supercyan\Scripts\CharacterMaker\Hand.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="Assets\Scripts\UI\GameUI\PanelChatUI.cs" />
     <Compile Include="Assets\Supercyan\Scripts\Items\AccessoryItemLogic.cs" />
     <Compile Include="Assets\Scripts\Scenes\BaseScene.cs" />
+    <Compile Include="Assets\Scripts\Managers\Contents\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\SceneManagerEx.cs" />
     <Compile Include="Assets\Scripts\Utils\Define.cs" />
     <Compile Include="Assets\Supercyan\Scripts\DemoAssets\CameraLogic.cs" />
@@ -509,6 +511,10 @@
     </Reference>
     <Reference Include="Google.Protobuf">
       <HintPath>Assets\Libs\Google.Protobuf.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.2.1\Runtime\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Android.Types">

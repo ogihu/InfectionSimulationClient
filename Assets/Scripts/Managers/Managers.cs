@@ -11,10 +11,12 @@ public class Managers : MonoBehaviour
     ObjectManager _obj = new ObjectManager();
     NetworkManager _network = new NetworkManager();
     ScenarioManager _scenario = new ScenarioManager();
+    DataManager _data = new DataManager();
 
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
     public static ScenarioManager Scenario { get { return Instance._scenario; } }
+    public static DataManager Data { get { return Instance._data; } }
     #endregion
 
     #region Core
@@ -56,6 +58,7 @@ public class Managers : MonoBehaviour
             _instance = go.GetComponent<Managers>();
 
             _instance._pool.Init();
+            _instance._data.Init();
 
             try
             {

@@ -41,6 +41,7 @@ public class ScenarioManager
         _checkComplete = false;
         SpeechText = null;
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
+        Managers.UI.ClearChat();
     }
 
     public void SendScenarioInfo(string scenarioName)
@@ -70,7 +71,7 @@ public class ScenarioManager
                 yield return new WaitForSeconds(3.0f);
 
                 Managers.UI.CreateChatUI(Patient.transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요. 저도 곧 보건소로부터 연락올거라고 합니다.");
-                if(Managers.Object.MyPlayer.Position == "응급센터 간호사1")
+                if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
                 {
                     Managers.Instance.StartCoroutine(CoCheckSpeech());
                     yield return new WaitUntil(() => CompleteCount >= 1);
@@ -79,7 +80,6 @@ public class ScenarioManager
 
                 yield return new WaitUntil(() => Progress == 1);
 
-                Managers.UI.ClearChat();
                 Managers.UI.CreateChatUI(Patient.transform, "이관리 980421 입니다. 같이 살고있어요.");
                 if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
                 {
@@ -115,6 +115,8 @@ public class ScenarioManager
         }
     }
 
+    #region Speech Check
+    
     IEnumerator CoCheckSpeech()
     {
         ChangeKeyword(CurrentScenarioInfo.Keywords);
@@ -166,4 +168,6 @@ public class ScenarioManager
         else
             return false;
     }
+
+    #endregion
 }

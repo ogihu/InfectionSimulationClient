@@ -13,6 +13,7 @@ public class UIManager
     }
 
     public Dictionary<string, Stack<GameObject>> UICache { get; set; } = new Dictionary<string, Stack<GameObject>>();
+    public List<GameObject> ActiveChat { get; set; } = new List<GameObject>();
     Canvas overlayCanvas;
     Canvas worldCanvas;
 
@@ -83,20 +84,8 @@ public class UIManager
     {
         GameObject go = CreateUI("Chat", CanvasType.World);
         go.GetComponent<PanelChatUI>().Init(targetObject, chat);
+        ActiveChat.Add(go);
         return go;
-    }
-
-    public void ClearChat()
-    {
-        Stack<GameObject> chatUIs = new Stack<GameObject>();
-
-        if (UICache.TryGetValue("Chat", out chatUIs))
-        {
-            foreach(var chat in chatUIs)
-            {
-                Managers.Resource.Destroy(chat);
-            }
-        }
     }
 
     public IEnumerator DestroyAfter(GameObject go, float time)
@@ -115,6 +104,15 @@ public class UIManager
         }
         else
             UnityEngine.Object.Destroy(go);
+    }
+
+    public void ClearChat()
+    {
+        foreach(var chat in ActiveChat)
+        {
+            DestroyUI(chat);
+        }
+        ActiveChat.Clear();
     }
 
     public void Clear()

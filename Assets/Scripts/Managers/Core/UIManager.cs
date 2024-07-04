@@ -18,11 +18,10 @@ public class UIManager
     Canvas worldCanvas;
 
     /// <summary>
-    /// Resources/Prefabs/UI 폴더 산하에 있는 UI를 생성
-    /// 해당 UI의 name을 매개변수로 넘겨주면 됨
-    /// 생성된 UI를 반환해주기 때문에 GameObject로 받아 해당 UI에 필요한 작업 수행 가능
+    /// Resources/Prefabs/UI 폴더 산하에 있는 UI를 생성 및 리턴
     /// </summary>
-    /// <param name="name"></param>
+    /// <param name="name">생성하려는 UI 오브젝트의 이름</param>
+    /// <param name="canvasType">UI를 생성하려는 Canvas의 타입</param>
     /// <returns>GameObject</returns>
     public GameObject CreateUI(string name, CanvasType canvasType = CanvasType.Overlay)
     {
@@ -72,6 +71,11 @@ public class UIManager
         return go;
     }
 
+    /// <summary>
+    /// 화면 상단에 팝업 안내를 띄움
+    /// </summary>
+    /// <param name="notice">팝업에 표시하고 싶은 내용 입력</param>
+    /// <returns>GameObject</returns>
     public GameObject CreatePopup(string notice)
     {
         GameObject popup = CreateUI("PopupNotice");
@@ -80,6 +84,12 @@ public class UIManager
         return popup;
     }
 
+    /// <summary>
+    /// 오브젝트 상단에 말풍선을 띄움
+    /// </summary>
+    /// <param name="targetObject">말풍선을 띄우고 싶은 오브젝트</param>
+    /// <param name="chat">말풍선에 표현하고 싶은 텍스트</param>
+    /// <returns>GameObject</returns>
     public GameObject CreateChatUI(Transform targetObject, string chat)
     {
         GameObject go = CreateUI("Chat", CanvasType.World);

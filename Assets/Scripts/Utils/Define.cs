@@ -23,6 +23,13 @@ public class Define
         "진단검사의학팀"
     };
 
+    public enum Sound
+    {
+        Bgm,
+        Effect,
+        MaxCount
+    }
+
     public class ScenarioInfo
     {
         public int Progress { get; set; }

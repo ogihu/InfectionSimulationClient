@@ -84,6 +84,7 @@
     <Compile Include="Assets\ImportedAssets\Layer Lab\GUI Pro-CasualGame\Extensions\UIParticle\UIParticleSystem.cs" />
     <Compile Include="Assets\Scripts\Packet\Protocol.cs" />
     <Compile Include="Assets\ImportedAssets\Supercyan\Scripts\AimingAssets\CharacterMovementAnimator.cs" />
+    <Compile Include="Assets\Scripts\Managers\Core\SettingManager.cs" />
     <Compile Include="Assets\ImportedAssets\Supercyan\Scripts\CharacterMaker\Hand.cs" />
     <Compile Include="Assets\ImportedAssets\Supercyan\Scripts\AimingAssets\Strafer.cs" />
     <Compile Include="Assets\ImportedAssets\Supercyan\Scripts\AimingAssets\CharacterWeaponAnimator.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Assets\Scripts\Managers\Contents\ScenarioManager.cs" />
     <Compile Include="Assets\Scripts\Controllers\MyPlayerController.cs" />
     <Compile Include="Assets\ImportedAssets\Supercyan\Scripts\CharacterMaker\IInitializable.cs" />
+    <Compile Include="Assets\Scripts\Managers\Core\SoundManager.cs" />
     <Compile Include="Assets\ImportedAssets\Supercyan\Scripts\DemoAssets\CharacterDemoSettings.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\ButtonPhoneFuncCancel.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\ButtonPhoneFinishCall.cs" />

@@ -26,6 +26,8 @@ public class Managers : MonoBehaviour
     UIManager _ui = new UIManager();
     InputManager _input = new InputManager();
     DataManager _data = new DataManager();
+    SoundManager _sound = new SoundManager();
+    SettingManager _setting = new SettingManager();
 
     public static PoolManager Pool { get { return Instance._pool; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
@@ -33,6 +35,8 @@ public class Managers : MonoBehaviour
     public static UIManager UI { get { return Instance._ui; } }
     public static InputManager Input { get { return Instance._input; } }
     public static DataManager Data { get { return Instance._data; } }
+    public static SoundManager Sound { get { return Instance._sound; } }
+    public static SettingManager Setting { get { return Instance._setting; } }
     #endregion
 
     void Start()

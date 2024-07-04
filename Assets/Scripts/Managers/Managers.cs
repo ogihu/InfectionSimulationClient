@@ -11,12 +11,12 @@ public class Managers : MonoBehaviour
     ObjectManager _obj = new ObjectManager();
     NetworkManager _network = new NetworkManager();
     ScenarioManager _scenario = new ScenarioManager();
-    DataManager _data = new DataManager();
+    PhoneManager _phone = new PhoneManager();
 
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
     public static ScenarioManager Scenario { get { return Instance._scenario; } }
-    public static DataManager Data { get { return Instance._data; } }
+    public static PhoneManager Phone { get { return Instance._phone; } }
     #endregion
 
     #region Core
@@ -25,12 +25,14 @@ public class Managers : MonoBehaviour
     SceneManagerEx _scene = new SceneManagerEx();
     UIManager _ui = new UIManager();
     InputManager _input = new InputManager();
+    DataManager _data = new DataManager();
 
     public static PoolManager Pool { get { return Instance._pool; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     public static UIManager UI { get { return Instance._ui; } }
     public static InputManager Input { get { return Instance._input; } }
+    public static DataManager Data { get { return Instance._data; } }
     #endregion
 
     void Start()

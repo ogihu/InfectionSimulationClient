@@ -124,8 +124,8 @@ public class ScenarioManager
 
         while (!complete)
         {
+            yield return new WaitUntil(() => SpeechText != null);
             complete = CheckSpeech();
-            yield return new WaitForSeconds(1.0f);
         }
 
         CompleteCount++;
@@ -159,14 +159,17 @@ public class ScenarioManager
         float ratio = (float)count / (float)CurrentScenarioInfo.Keywords.Count;
 
         GameObject go = Managers.UI.CreateUI("MySpeech");
-        go.GetComponentInChildren<TMP_Text>().text = $"{SpeechText}\n정확도 {ratio * 100}%";
+        go.GetComponentInChildren<TMP_Text>().text = $"{SpeechText}\n\n정확도 {ratio * 100}%";
         Managers.Instance.StartCoroutine(Managers.UI.DestroyAfter(go, 3.0f));
         SpeechText = null;
 
         if (ratio > 0.7f)
             return true;
         else
+        {
+            go.GetComponentInChildren<TMP_Text>().text += "\n정확도가 낮습니다. 시나리오를 다시 시도해주세요.";
             return false;
+        }
     }
 
     #endregion

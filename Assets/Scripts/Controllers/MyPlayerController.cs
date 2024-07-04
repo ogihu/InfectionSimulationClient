@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class MyPlayerController : PlayerController
 {
@@ -15,6 +16,7 @@ public class MyPlayerController : PlayerController
 	[SerializeField] Material[] _interactionMaterials;
 	Material _outline;
 	int _layerMask;
+	public PlayerState _playerState = PlayerState.None;
 
 	protected override void Start()
 	{
@@ -47,6 +49,9 @@ public class MyPlayerController : PlayerController
 
 	protected override void UpdateRotation()
 	{
+		if (_playerState != PlayerState.None)
+			return;
+
 		_cameraArm.CameraRotation(_camRotationSpeed);
 		mouseX += Input.GetAxis("Mouse X") * _camRotationSpeed;
 		this.transform.localEulerAngles = new Vector3(0, mouseX, 0);
@@ -59,6 +64,22 @@ public class MyPlayerController : PlayerController
 		InputBit = Managers.Input.SetKeyInput(KeyCode.A, InputBit, () => { CheckUpdatedFlag(); });
 		InputBit = Managers.Input.SetKeyInput(KeyCode.S, InputBit, () => { CheckUpdatedFlag(); });
 		InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit, () => { CheckUpdatedFlag(); });
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+			if (_playerState == PlayerState.None)
+				Managers.Phone.OpenPhone();
+			else if(_playerState == PlayerState.UsingPhone)
+				Managers.Phone.ClosePhone();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+			if (_playerState == PlayerState.None)
+				Managers.UI.CreateUI("Setting");
+			else if (_playerState == PlayerState.UsingSetting)
+				Managers.UI.DestroyUI(GameObject.Find("Setting"));
+		}
 	}
 
 	void UpdateRay()
@@ -73,7 +94,7 @@ public class MyPlayerController : PlayerController
 
 			_interactionObject = hitInfo.transform.gameObject;
 			_interactionMaterials = _interactionObject.GetComponent<Renderer>().materials;
-			_interactionMaterials = AddMaterial(_interactionMaterials, _outline);
+			_interactionMaterials = Util.AddMaterial(_interactionMaterials, _outline);
 			_interactionObject.GetComponent<Renderer>().materials = _interactionMaterials;
 
 			Debug.Log("Raycast hit: " + hitInfo.transform.name);
@@ -82,28 +103,13 @@ public class MyPlayerController : PlayerController
         {
 			if (_interactionObject != null)
 			{
-				_interactionMaterials = RemoveMaterial(_interactionMaterials, _outline);
+				_interactionMaterials = Util.RemoveMaterial(_interactionMaterials, _outline);
 				_interactionObject.GetComponent<Renderer>().materials = _interactionMaterials;
 				_interactionObject = null;
 			}
 		}
 
 		Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.red);
-	}
-
-	Material[] AddMaterial(Material[] materials, Material materialToAdd)
-	{
-		Material[] newMaterials = new Material[materials.Length + 1];
-		materials.CopyTo(newMaterials, 0);
-		newMaterials[newMaterials.Length - 1] = materialToAdd;
-		return newMaterials;
-	}
-
-	Material[] RemoveMaterial(Material[] materials, Material materialToRemove)
-	{
-		List<Material> materialList = new List<Material>(materials);
-		materialList.Remove(materialToRemove);
-		return materialList.ToArray();
 	}
 
 	private void SendSyncPacket()

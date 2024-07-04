@@ -7,6 +7,22 @@ using UnityEngine;
 
 public class Define
 {
+    public static readonly string[] PhoneAddress =
+    {
+        "응급센터",
+        "응급의학과",
+        "감염관리팀",
+        "영상의학팀",
+        "감염병대응센터",
+        "감염재난대책본부",
+        "안전이송실",
+        "보안팀",
+        "미화팀",
+        "보건소",
+        "원무팀",
+        "진단검사의학팀"
+    };
+
     public class ScenarioInfo
     {
         public int Progress { get; set; }
@@ -21,5 +37,12 @@ public class Define
         Game,
         Lobby,
         Login
+    }
+
+    public enum PlayerState
+    {
+        None,
+        UsingPhone,
+        UsingSetting
     }
 }

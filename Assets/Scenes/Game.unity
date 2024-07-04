@@ -897,7 +897,7 @@ PrefabInstance:
     - target: {fileID: 6958629545437009749, guid: 41c303d7782b7d04d97d6418a967bd2a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1074,6 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbb11ee3d2a64ad4ba82ec151f85e520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  microphoneRecord: {fileID: 0}
   streamSegments: 1
   printLanguage: 1
 --- !u!114 &1740579895

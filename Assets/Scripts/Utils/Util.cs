@@ -50,4 +50,38 @@ public class Util
 
         return null;
     }
+
+    public static GameObject FindChildByName(GameObject go, string name)
+    {
+        if (go == null)
+            return null;
+
+        for(int i = 0; i < go.transform.childCount; i++)
+        {
+            if(go.transform.GetChild(i).name == name)
+                return go.transform.GetChild(i).gameObject;
+
+            GameObject goChild = FindChildByName(go.transform.GetChild(i).gameObject, name);
+            if (goChild != null)
+                return goChild;
+        }
+
+        return null;
+    }
+
+    public static Material[] AddMaterial(Material[] materials, Material materialToAdd)
+    {
+        Material[] newMaterials = new Material[materials.Length + 1];
+        materials.CopyTo(newMaterials, 0);
+        newMaterials[newMaterials.Length - 1] = materialToAdd;
+        return newMaterials;
+    }
+
+    public static Material[] RemoveMaterial(Material[] materials, Material materialToRemove)
+    {
+        List<Material> materialList = new List<Material>(materials);
+        materialList.Remove(materialToRemove);
+        return materialList.ToArray();
+    }
+
 }

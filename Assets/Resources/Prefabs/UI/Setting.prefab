@@ -101,7 +101,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' VoiceInput - T'
+  m_text: "T(\uB204\uB974\uACE0 \uC720\uC9C0\uD558\uAE30) - \uB9D0\uD558\uAE30(STT)\nY
+    - \uC2DC\uB098\uB9AC\uC624 \uC2DC\uC791\nP - \uD734\uB300\uC804\uD654 \uC0AC\uC6A9\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd59458109437564c91aac430ff3d1c5, type: 2}
   m_sharedMaterial: {fileID: 1428249762168364677, guid: fd59458109437564c91aac430ff3d1c5,
@@ -626,6 +627,7 @@ GameObject:
   - component: {fileID: 1214310839707916178}
   - component: {fileID: 3994893049498391251}
   - component: {fileID: 5428925372142758627}
+  - component: {fileID: 7489751300621205759}
   m_Layer: 5
   m_Name: Setting
   m_TagString: Untagged
@@ -693,6 +695,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7489751300621205759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679263046458906900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 524d0a9af623dc44f8fb837560d436bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3179546555009302383
 GameObject:
   m_ObjectHideFlags: 0

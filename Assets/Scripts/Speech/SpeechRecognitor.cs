@@ -11,7 +11,7 @@ using TMPro;
 public class SpeechRecognitor : MonoBehaviour
 {
     WhisperManager whisper;
-    MicRecord microphoneRecord;
+    public MicRecord microphoneRecord;
 
     public bool streamSegments = true;
     public bool printLanguage = true;

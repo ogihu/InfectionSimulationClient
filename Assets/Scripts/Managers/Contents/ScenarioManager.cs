@@ -14,7 +14,10 @@ public class ScenarioManager
     public int Progress { get; set; }
     public GameObject Patient { get; set; }
     public GameObject SpeechRecognitor { get; set; }
+
+    public string MyAction { get; set; }
     public string SpeechText { get; set; }  //STT 결과 저장
+    public List<string> Targets { get; set; } = new List<string>();
 
     /// <summary>
     /// 이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
@@ -115,7 +118,7 @@ public class ScenarioManager
         }
     }
 
-    #region Speech Check
+    #region Scenario Check Funcs
     
     IEnumerator CoCheckSpeech()
     {
@@ -170,6 +173,25 @@ public class ScenarioManager
             go.GetComponentInChildren<TMP_Text>().text += "\n정확도가 낮습니다. 시나리오를 다시 시도해주세요.";
             return false;
         }
+    }
+
+    IEnumerator CoCheckCall()
+    {
+        ChangeKeyword(CurrentScenarioInfo.Keywords);
+        bool complete = false;
+
+        while (!complete)
+        {
+            yield return new WaitUntil(() => (SpeechText != null && Managers.Phone.Device._selectedFunc != null && Managers.Phone.Device._choosedAddress.Count > 0));
+            complete = CheckCall();
+        }
+
+        CompleteCount++;
+    }
+
+    bool CheckCall()
+    {
+        return true;
     }
 
     #endregion

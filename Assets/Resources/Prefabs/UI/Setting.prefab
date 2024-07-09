@@ -70,8 +70,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -100}
-  m_SizeDelta: {x: 500, y: 200}
+  m_AnchoredPosition: {x: 375, y: -280}
+  m_SizeDelta: {x: 700, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2992964549538124536
 CanvasRenderer:
@@ -101,8 +101,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T(\uB204\uB974\uACE0 \uC720\uC9C0\uD558\uAE30) - \uB9D0\uD558\uAE30(STT)\nY
-    - \uC2DC\uB098\uB9AC\uC624 \uC2DC\uC791\nP - \uD734\uB300\uC804\uD654 \uC0AC\uC6A9\n"
+  m_text: "T(Hold) - \uB9D0\uD558\uAE30(STT)\nY - \uC2DC\uB098\uB9AC\uC624 \uC2DC\uC791\nP{Toggle)
+    - \uD734\uB300\uC804\uD654 \uC0AC\uC6A9\nHome - \uC2DC\uB098\uB9AC\uC624 \uAC15\uC81C
+    \uC9C4\uD589"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fd59458109437564c91aac430ff3d1c5, type: 2}
   m_sharedMaterial: {fileID: 1428249762168364677, guid: fd59458109437564c91aac430ff3d1c5,

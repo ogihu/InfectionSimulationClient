@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.Protocol;
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ObjectManager
@@ -38,6 +39,7 @@ public class ObjectManager
 				MyPlayer.MoveInfo = info.MoveInfo;
 				MyPlayer.PosInfo = info.PosInfo;
 				MyPlayer.ImmediateSync();
+				Managers.Scenario.UpdateScenarioAssist("시나리오 시작을 기다리는 중 입니다...", MyPlayer.UserInfo.Position);
 			}
 			else
 			{

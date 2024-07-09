@@ -14,6 +14,7 @@ public class UIManager
 
     public Dictionary<string, Stack<GameObject>> UICache { get; set; } = new Dictionary<string, Stack<GameObject>>();
     public List<GameObject> ActiveChat { get; set; } = new List<GameObject>();
+    public Stack<GameObject> PopupStack { get; set; } = new Stack<GameObject>();
     Canvas overlayCanvas;
     Canvas worldCanvas;
 
@@ -47,24 +48,33 @@ public class UIManager
                 worldCanvas.worldCamera = Camera.main;
         }
 
+        go = CreateUI(name, canvas.transform);
+
+        return go;
+    }
+
+    public GameObject CreateUI(string name, Transform parent)
+    {
+        GameObject go;
+
         if (UICache.ContainsKey(name))
         {
             Stack<GameObject> stack = UICache[name];
-            
-            if(stack.Count > 0)
+
+            if (stack.Count > 0)
             {
                 go = stack.Pop();
-                go.transform.parent = canvas.transform;
+                go.transform.parent = parent;
             }
             else
-                go = Managers.Resource.Instantiate($"UI/{name}", canvas.transform);
+                go = Managers.Resource.Instantiate($"UI/{name}", parent);
 
             go.SetActive(true);
 
             return go;
         }
 
-        go = Managers.Resource.Instantiate($"UI/{name}", canvas.transform);
+        go = Managers.Resource.Instantiate($"UI/{name}", parent);
         UICache.Add(name, new Stack<GameObject>());
         go.SetActive(true);
 
@@ -114,6 +124,16 @@ public class UIManager
         }
         else
             UnityEngine.Object.Destroy(go);
+    }
+
+    public bool ExitPopup()
+    {
+        if (PopupStack.Count == 0)
+            return false;
+
+        GameObject go = PopupStack.Pop();
+        DestroyUI(go);
+        return true;
     }
 
     public void ClearChat()

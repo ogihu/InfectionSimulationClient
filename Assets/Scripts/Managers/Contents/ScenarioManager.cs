@@ -8,22 +8,56 @@ using static Define;
 
 public class ScenarioManager
 {
-    int CompleteCount { get; set; }
+    public int CompleteCount { get; set; }
 
     public string ScenarioName { get; set; }
     public int Progress { get; set; }
     public GameObject Patient { get; set; }
-    public GameObject SpeechRecognitor { get; set; }
+    public string Equipment { get; set; }
+
+    GameObject _speechRecognitor;
+    public GameObject SpeechRecognitor
+    {
+        get
+        {
+            if (_speechRecognitor == null)
+                _speechRecognitor = GameObject.Find("SpeechRecognitor");
+
+            if (_speechRecognitor == null)
+                _speechRecognitor = Managers.Resource.Instantiate("System/SpeechRecognitor");
+
+            return _speechRecognitor;
+        }
+    }
+
+    GameObject _scenarioAssist;
+    public GameObject ScenarioAssist
+    {
+        get
+        {
+            if (_scenarioAssist == null)
+                _scenarioAssist = GameObject.Find("ScenarioAssist");
+
+            if (_scenarioAssist == null)
+                _scenarioAssist = Managers.UI.CreateUI("ScenarioAssist");
+
+            return _scenarioAssist;
+        }
+    }
+
+    #region 시나리오 수행 결과 저장 버퍼
 
     public string MyAction { get; set; }
     public string SpeechText { get; set; }  //STT 결과 저장
     public List<string> Targets { get; set; } = new List<string>();
-    public string Equipment { get; set; }
+
+    #endregion
 
     /// <summary>
     /// 이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
     /// </summary>
-    public bool _checkComplete;
+    private bool _checkComplete;
+    public Coroutine _routine;
 
     ScenarioInfo CurrentScenarioInfo { get; set; }
 
@@ -35,7 +69,7 @@ public class ScenarioManager
         _checkComplete = false;
         SpeechText = null;
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
-        Patient = Managers.Resource.Instantiate("Creatures/NPC/MalePatient");
+        Patient = Managers.Resource.Instantiate("Creatures/NPC/환자");
     }
 
     public void NextProgress(int progress)
@@ -46,6 +80,7 @@ public class ScenarioManager
         Reset();
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
         Managers.UI.ClearChat();
+        _routine = null;
     }
 
     void Reset()
@@ -85,70 +120,107 @@ public class ScenarioManager
                 yield return new WaitForSeconds(3.0f);
 
                 Managers.UI.CreateChatUI(Patient.transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요. 저도 곧 보건소로부터 연락올거라고 합니다.");
-                if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
+                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
                 {
+                    UpdateScenarioAssist("시나리오를 진행하세요.");
                     Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                else
+                {
+                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 1);
 
                 Managers.UI.CreateChatUI(Patient.transform, "이관리 980421 입니다. 같이 살고있어요.");
-                if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
+                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
                 {
-                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    UpdateScenarioAssist("시나리오를 진행하세요.");
+                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                else
+                {
+                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 2);
 
-                if (Managers.Object.MyPlayer.Position == "응급의학과 의사")
+                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
                 {
-                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    UpdateScenarioAssist("시나리오를 진행하세요.");
+                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                else
+                {
+                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 3);
 
-                if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
+                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
                 {
-                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    UpdateScenarioAssist("시나리오를 진행하세요.");
+                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                else
+                {
+                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 4);
 
-                if (Managers.Object.MyPlayer.Position == "감염관리팀 간호사")
+                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
                 {
-                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    UpdateScenarioAssist("시나리오를 진행하세요.");
+                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                else
+                {
+                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 5);
 
-                if (Managers.Object.MyPlayer.Position == "감염관리팀 간호사")
+                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
                 {
-                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    UpdateScenarioAssist("시나리오를 진행하세요.");
+                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                else
+                {
+                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 6);
 
-                if (Managers.Object.MyPlayer.Position == "감염관리팀 간호사")
+                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
                 {
-                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    UpdateScenarioAssist("시나리오를 진행하세요.");
+                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                else
+                {
+                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
                 }
                 SendComplete();
 
                 break;
         }
+
+        Managers.UI.CreatePopup($"{scenarioName} 시나리오를 완료하셨습니다.");
     }
 
     void SendComplete()
@@ -192,9 +264,6 @@ public class ScenarioManager
 
     void ChangeKeyword(List<string> keywords)
     {
-        if (SpeechRecognitor == null)
-            SpeechRecognitor = GameObject.Find("SpeechRecognitor");
-
         SpeechRecognitor.GetComponent<WhisperManager>().initialPrompt = "";
         foreach (var keyword in keywords)
         {
@@ -277,4 +346,12 @@ public class ScenarioManager
     }
 
     #endregion
+
+    public void UpdateScenarioAssist(string state, string position = null)
+    {
+        if (position != null)
+            ScenarioAssist.transform.GetChild(0).GetComponent<TMP_Text>().text = position;
+
+        ScenarioAssist.transform.GetChild(1).GetComponent<TMP_Text>().text = state;
+    }
 }

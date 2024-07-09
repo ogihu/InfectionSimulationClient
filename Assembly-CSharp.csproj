@@ -66,13 +66,15 @@
     <Compile Include="Assets\Scripts\Managers\Core\DataManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\PoolManager.cs" />
     <Compile Include="Assets\Scripts\Utils\Extension.cs" />
+    <Compile Include="Assets\Scripts\Interaction\Phone\SmartPhone.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\DropdownSelectMic.cs" />
+    <Compile Include="Assets\Scripts\Interaction\Phone\Message.cs" />
     <Compile Include="Assets\Scripts\Interaction\Map.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\Poolable.cs" />
-    <Compile Include="Assets\Scripts\Interaction\SmartPhone.cs" />
     <Compile Include="Assets\Scripts\Packet\Protocol.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\SettingManager.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\UI\CommonUI\Popup.cs" />
     <Compile Include="Assets\Scripts\UI\LoginUI\ButtonLoginUI.cs" />
     <Compile Include="Assets\Scripts\ServerCore\RecvBuffer.cs" />
     <Compile Include="Assets\Scripts\Packet\PacketQueue.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Assets\Scripts\UI\GameUI\PanelChatUI.cs" />
     <Compile Include="Assets\Scripts\Scenes\BaseScene.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\SceneManagerEx.cs" />
+    <Compile Include="Assets\Scripts\UI\GameUI\ButtonMessage.cs" />
     <Compile Include="Assets\Scripts\Utils\Define.cs" />
     <Compile Include="Assets\Scripts\Controllers\CreatureController.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\SettingUI.cs" />

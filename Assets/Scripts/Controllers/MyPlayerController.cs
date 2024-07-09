@@ -75,11 +75,19 @@ public class MyPlayerController : PlayerController
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-			if (_playerState == PlayerState.None)
-				Managers.UI.CreateUI("Setting");
-			else if (_playerState == PlayerState.UsingSetting)
-				Managers.UI.DestroyUI(GameObject.Find("Setting"));
+            if (!Managers.UI.ExitPopup())
+            {
+				if (_playerState == PlayerState.None)
+					Managers.UI.CreateUI("Setting");
+				else if (_playerState == PlayerState.UsingSetting)
+					Managers.UI.DestroyUI(GameObject.Find("Setting"));
+			}
 		}
+
+        if (Input.GetKeyDown(KeyCode.Home))
+        {
+			Managers.Scenario.CompleteCount++;
+        }
 	}
 
 	void UpdateRay()

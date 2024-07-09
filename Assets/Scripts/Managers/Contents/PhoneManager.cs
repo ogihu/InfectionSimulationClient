@@ -25,4 +25,9 @@ public class PhoneManager
     {
         Managers.UI.DestroyUI(Device.gameObject);
     }
+
+    public void SendMessage(string content)
+    {
+
+    }
 }

@@ -19,8 +19,6 @@ public class SmartPhone : MonoBehaviour
     #endregion
 
     bool _initialized = false;
-    public string _selectedFunc;
-    public List<string> _choosedAddress = new List<string>();
 
     void OnEnable()
     {
@@ -67,7 +65,7 @@ public class SmartPhone : MonoBehaviour
 
     public void FuncSelect(string funcName)
     {
-        _selectedFunc = funcName;
+        Managers.Scenario.MyAction = funcName;
         _functions.SetActive(false);
         _targets.SetActive(true);
         _calling.SetActive(false);
@@ -80,9 +78,10 @@ public class SmartPhone : MonoBehaviour
 
     public void FuncConfirm()
     {
-        _targetToggle.ForEach((x) => { if (x.isOn == true) { _choosedAddress.Add(x.gameObject.name); } });
+        Managers.Scenario.Targets.Clear();
+        _targetToggle.ForEach((x) => { if (x.isOn == true) { Managers.Scenario.Targets.Add(x.gameObject.name); } });
 
-        switch (_selectedFunc)
+        switch (Managers.Scenario.MyAction)
         {
             case "Call":
                 _speechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StartRecord();
@@ -100,40 +99,5 @@ public class SmartPhone : MonoBehaviour
     {
         _speechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StopRecord();
         Managers.Phone.ClosePhone();
-    }
-
-    /// <summary>
-    /// 올바른 기능을 사용했으면 true, 아니면 false 리턴
-    /// </summary>
-    /// <param name="function"></param>
-    /// <returns></returns>
-    public bool CheckFunction(string function)
-    {
-        if (_selectedFunc == null)
-            return false;
-
-        if (_selectedFunc == function)
-            return true;
-
-        return false;
-    }
-
-    /// <summary>
-    /// 연락처를 올바르게 선택했으면 true, 아니면 false 리턴
-    /// </summary>
-    /// <param name="targetArray"></param>
-    /// <returns></returns>
-    public bool CheckTargets(string[] targetArray)
-    {
-        if(_choosedAddress.Count != targetArray.Length)
-            return false;
-
-        foreach (string target in targetArray)
-        {
-            if (!_choosedAddress.Contains(target))
-                return false;
-        }
-
-        return true;
     }
 }

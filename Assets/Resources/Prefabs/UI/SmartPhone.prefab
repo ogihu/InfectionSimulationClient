@@ -50,8 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42e24c117005d42b94ba948aa5a784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _selectedFunc: 
-  _choosedAddress: []
 --- !u!1 &362757087181495034
 GameObject:
   m_ObjectHideFlags: 0
@@ -570,7 +568,7 @@ GameObject:
   - component: {fileID: 7742519364859340421}
   - component: {fileID: 8875705627708542653}
   m_Layer: 5
-  m_Name: KakaoTalk
+  m_Name: Messenger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

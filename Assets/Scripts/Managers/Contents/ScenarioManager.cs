@@ -18,6 +18,7 @@ public class ScenarioManager
     public string MyAction { get; set; }
     public string SpeechText { get; set; }  //STT 결과 저장
     public List<string> Targets { get; set; } = new List<string>();
+    public string Equipment { get; set; }
 
     /// <summary>
     /// 이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
@@ -42,9 +43,19 @@ public class ScenarioManager
         Progress = progress;
         CompleteCount = 0;
         _checkComplete = false;
-        SpeechText = null;
+        Reset();
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
         Managers.UI.ClearChat();
+    }
+
+    void Reset()
+    {
+        if(SpeechText != null || MyAction != null || Targets.Count > 0)
+        {
+            SpeechText = null;
+            MyAction = null;
+            Targets.Clear();
+        }
     }
 
     public void SendScenarioInfo(string scenarioName)
@@ -76,7 +87,7 @@ public class ScenarioManager
                 Managers.UI.CreateChatUI(Patient.transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요. 저도 곧 보건소로부터 연락올거라고 합니다.");
                 if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
                 {
-                    Managers.Instance.StartCoroutine(CoCheckSpeech());
+                    Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
                 }
                 SendComplete();
@@ -86,24 +97,56 @@ public class ScenarioManager
                 Managers.UI.CreateChatUI(Patient.transform, "이관리 980421 입니다. 같이 살고있어요.");
                 if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
                 {
-                    Managers.Instance.StartCoroutine(CoCheckSpeech());
+                    Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 2);
 
-                Managers.UI.ClearChat();
                 if (Managers.Object.MyPlayer.Position == "응급의학과 의사")
                 {
-                    Managers.Instance.StartCoroutine(CoCheckSpeech());
+                    Managers.Instance.StartCoroutine(CoCheckAction());
                     yield return new WaitUntil(() => CompleteCount >= 1);
                 }
                 SendComplete();
 
                 yield return new WaitUntil(() => Progress == 3);
 
-                Managers.UI.CreatePopup("'#1 엠폭스 의심환자 발생 - 관찰구역에서 의심환자 대기' 시나리오를 완료했습니다.");
+                if (Managers.Object.MyPlayer.Position == "응급센터 간호사1")
+                {
+                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                SendComplete();
+
+                yield return new WaitUntil(() => Progress == 4);
+
+                if (Managers.Object.MyPlayer.Position == "감염관리팀 간호사")
+                {
+                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                SendComplete();
+
+                yield return new WaitUntil(() => Progress == 5);
+
+                if (Managers.Object.MyPlayer.Position == "감염관리팀 간호사")
+                {
+                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                SendComplete();
+
+                yield return new WaitUntil(() => Progress == 6);
+
+                if (Managers.Object.MyPlayer.Position == "감염관리팀 간호사")
+                {
+                    Managers.Instance.StartCoroutine(CoCheckAction());
+                    yield return new WaitUntil(() => CompleteCount >= 1);
+                }
+                SendComplete();
+
                 break;
         }
     }
@@ -119,19 +162,32 @@ public class ScenarioManager
     }
 
     #region Scenario Check Funcs
-    
-    IEnumerator CoCheckSpeech()
+
+    IEnumerator CoCheckAction()
     {
         ChangeKeyword(CurrentScenarioInfo.Keywords);
         bool complete = false;
 
         while (!complete)
         {
-            yield return new WaitUntil(() => SpeechText != null);
-            complete = CheckSpeech();
+            yield return new WaitUntil(() => CheckCondition());
+            complete = CheckAction();
+            Reset();
         }
 
         CompleteCount++;
+    }
+
+    bool CheckCondition()
+    {
+        if (MyAction == null)
+            return false;
+
+        if (CurrentScenarioInfo.Keywords.Count > 0)
+            if (SpeechText == null)
+                return false;
+
+        return true;
     }
 
     void ChangeKeyword(List<string> keywords)
@@ -140,20 +196,51 @@ public class ScenarioManager
             SpeechRecognitor = GameObject.Find("SpeechRecognitor");
 
         SpeechRecognitor.GetComponent<WhisperManager>().initialPrompt = "";
-        foreach(var keyword in keywords)
+        foreach (var keyword in keywords)
         {
             SpeechRecognitor.GetComponent<WhisperManager>().initialPrompt += $"{keyword} ";
         }
     }
 
+    bool CheckAction()
+    {
+        if (MyAction != CurrentScenarioInfo.Action)
+        {
+            Managers.UI.CreatePopup("올바른 행동을 수행하지 않았습니다.");
+            return false;
+        }
+
+        if (!CheckTarget())
+        {
+            Managers.UI.CreatePopup("대상이 올바르지 않습니다.");
+            return false;
+        }
+
+        if(Equipment != CurrentScenarioInfo.Equipment)
+        {
+            Managers.UI.CreatePopup("올바른 장비를 착용하지 않았습니다.");
+            return false;
+        }
+
+        if (!CheckSpeech())
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     bool CheckSpeech()
     {
         if (SpeechText == null)
+        {
+            Managers.UI.CreatePopup("녹음이 정상적으로 수행되지 않았습니다. 다시 시도 해주세요");
             return false;
+        }
 
         int count = 0;
 
-        foreach(var keyword in CurrentScenarioInfo.Keywords)
+        foreach (var keyword in CurrentScenarioInfo.Keywords)
         {
             if (SpeechText.Contains(keyword))
                 count++;
@@ -175,22 +262,17 @@ public class ScenarioManager
         }
     }
 
-    IEnumerator CoCheckCall()
+    bool CheckTarget()
     {
-        ChangeKeyword(CurrentScenarioInfo.Keywords);
-        bool complete = false;
+        if (Targets.Count != CurrentScenarioInfo.Targets.Count)
+            return false;
 
-        while (!complete)
+        foreach(var target in CurrentScenarioInfo.Targets)
         {
-            yield return new WaitUntil(() => (SpeechText != null && Managers.Phone.Device._selectedFunc != null && Managers.Phone.Device._choosedAddress.Count > 0));
-            complete = CheckCall();
+            if (!Targets.Contains(target))
+                return false;
         }
 
-        CompleteCount++;
-    }
-
-    bool CheckCall()
-    {
         return true;
     }
 

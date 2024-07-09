@@ -36,7 +36,10 @@ public class SpeechRecognitor : MonoBehaviour
     void OnRecordButtonPressed()
     {
         if (Input.GetKeyDown(KeyCode.T))
+        {
+            Managers.Scenario.MyAction = "Tell";
             microphoneRecord.StartRecord();
+        }
         else if(Input.GetKeyUp(KeyCode.T))
             microphoneRecord.StopRecord();
     }
@@ -59,7 +62,7 @@ public class SpeechRecognitor : MonoBehaviour
         var text = res.Result;
         //if (printLanguage)
         //    text += $"\nLanguage: {res.Language}\n{duringTime}";
-
+        Managers.UI.CreatePopup(text);
         Managers.Scenario.SpeechText = text;
     }
 

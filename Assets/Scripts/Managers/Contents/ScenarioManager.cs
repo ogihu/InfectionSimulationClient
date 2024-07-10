@@ -72,8 +72,21 @@ public class ScenarioManager
         Patient = Managers.Resource.Instantiate("Creatures/NPC/환자");
     }
 
+    void Reset()
+    {
+        if (SpeechText != null || MyAction != null || Targets.Count > 0)
+        {
+            SpeechText = null;
+            MyAction = null;
+            Targets.Clear();
+        }
+    }
+
     public void NextProgress(int progress)
     {
+        if(CurrentScenarioInfo.Action == "Call")
+            Managers.Phone.Device.SendMessage(CurrentScenarioInfo.Position, CurrentScenarioInfo.Speech, CurrentScenarioInfo.Targets);
+
         Progress = progress;
         CompleteCount = 0;
         _checkComplete = false;
@@ -81,16 +94,6 @@ public class ScenarioManager
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
         Managers.UI.ClearChat();
         _routine = null;
-    }
-
-    void Reset()
-    {
-        if(SpeechText != null || MyAction != null || Targets.Count > 0)
-        {
-            SpeechText = null;
-            MyAction = null;
-            Targets.Clear();
-        }
     }
 
     public void SendScenarioInfo(string scenarioName)
@@ -105,117 +108,47 @@ public class ScenarioManager
         Managers.Instance.StartCoroutine(CoScenario(scenarioName));
     }
 
+    IEnumerator CoScenarioStep(int progress)
+    {
+        if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
+        {
+            UpdateScenarioAssist("시나리오를 진행하세요.");
+            Managers.Instance.StartCoroutine(CoCheckAction());
+            yield return new WaitUntil(() => CompleteCount >= 1);
+        }
+        else
+        {
+            UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
+        }
+        SendComplete();
+
+        yield return new WaitUntil(() => Progress == progress);
+    }
+
     IEnumerator CoScenario(string scenarioName)
     {
         Managers.UI.CreatePopup($"{scenarioName} 시나리오를 시작합니다.");
         yield return new WaitForSeconds(3.0f);
+
+        Managers.UI.CreatePopup($"사랑합니다. 지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다. 모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
+        yield return new WaitForSeconds(3.0f);
+
         Init(scenarioName);
+        Patient.transform.position = new Vector3(11.5f, 0, 0);
+        Patient.transform.rotation = Quaternion.Euler(0, -90, 0);
 
         switch (scenarioName)
         {
             case "엠폭스":
-                Patient.transform.position = new Vector3(11.5f, 0, 0);
-                Patient.transform.rotation = Quaternion.Euler(0, -90, 0);
-                Managers.UI.CreatePopup($"사랑합니다. 지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다. 모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
-                yield return new WaitForSeconds(3.0f);
-
                 Managers.UI.CreateChatUI(Patient.transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요. 저도 곧 보건소로부터 연락올거라고 합니다.");
-                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
-                {
-                    UpdateScenarioAssist("시나리오를 진행하세요.");
-                    Managers.Instance.StartCoroutine(CoCheckAction());
-                    yield return new WaitUntil(() => CompleteCount >= 1);
-                }
-                else
-                {
-                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
-                }
-                SendComplete();
-
-                yield return new WaitUntil(() => Progress == 1);
-
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(1));
                 Managers.UI.CreateChatUI(Patient.transform, "이관리 980421 입니다. 같이 살고있어요.");
-                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
-                {
-                    UpdateScenarioAssist("시나리오를 진행하세요.");
-                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
-                    yield return new WaitUntil(() => CompleteCount >= 1);
-                }
-                else
-                {
-                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
-                }
-                SendComplete();
-
-                yield return new WaitUntil(() => Progress == 2);
-
-                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
-                {
-                    UpdateScenarioAssist("시나리오를 진행하세요.");
-                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
-                    yield return new WaitUntil(() => CompleteCount >= 1);
-                }
-                else
-                {
-                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
-                }
-                SendComplete();
-
-                yield return new WaitUntil(() => Progress == 3);
-
-                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
-                {
-                    UpdateScenarioAssist("시나리오를 진행하세요.");
-                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
-                    yield return new WaitUntil(() => CompleteCount >= 1);
-                }
-                else
-                {
-                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
-                }
-                SendComplete();
-
-                yield return new WaitUntil(() => Progress == 4);
-
-                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
-                {
-                    UpdateScenarioAssist("시나리오를 진행하세요.");
-                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
-                    yield return new WaitUntil(() => CompleteCount >= 1);
-                }
-                else
-                {
-                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
-                }
-                SendComplete();
-
-                yield return new WaitUntil(() => Progress == 5);
-
-                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
-                {
-                    UpdateScenarioAssist("시나리오를 진행하세요.");
-                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
-                    yield return new WaitUntil(() => CompleteCount >= 1);
-                }
-                else
-                {
-                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
-                }
-                SendComplete();
-
-                yield return new WaitUntil(() => Progress == 6);
-
-                if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
-                {
-                    UpdateScenarioAssist("시나리오를 진행하세요.");
-                    _routine = Managers.Instance.StartCoroutine(CoCheckAction());
-                    yield return new WaitUntil(() => CompleteCount >= 1);
-                }
-                else
-                {
-                    UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
-                }
-                SendComplete();
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(2));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(3));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(4));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(5));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(6));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(7));
 
                 break;
         }

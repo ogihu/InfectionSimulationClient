@@ -15,10 +15,9 @@ public class Define
         "영상의학팀",
         "감염병대응센터",
         "감염재난대책본부",
-        "안전이송실",
+        "이송팀",
         "보안팀",
         "미화팀",
-        "보건소",
         "원무팀",
         "진단검사의학팀"
     };
@@ -39,6 +38,7 @@ public class Define
         public string Action { get; set; }
         public string Keywords { get; set; }
         public string Targets { get; set; }
+        public string Speech { get; set; }
     }
 
     public class ScenarioInfo
@@ -50,6 +50,7 @@ public class Define
         public string Action { get; set; }
         public List<string> Keywords { get; set; } = new List<string>();
         public List<string> Targets { get; set; } = new List<string>();
+        public string Speech { get; set; }
     }
 
     public enum Scene

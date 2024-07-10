@@ -84,6 +84,7 @@
     <Compile Include="Assets\Scripts\Speech\SpeechRecognitor.cs" />
     <Compile Include="Assets\Scripts\ServerCore\Connector.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\ResourceManager.cs" />
+    <Compile Include="Assets\Scripts\UI\CommonUI\FloatingUI.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\PanelChatUI.cs" />
     <Compile Include="Assets\Scripts\Scenes\BaseScene.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\SceneManagerEx.cs" />

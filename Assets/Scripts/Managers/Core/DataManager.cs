@@ -28,6 +28,7 @@ public class DataManager
                 scenarioInfo.Position = scenarioList.Position;
                 scenarioInfo.Equipment = scenarioList.Equipment;
                 scenarioInfo.Action = scenarioList.Action;
+                scenarioInfo.Speech = scenarioList.Speech;
 
                 if (scenarioList.Keywords != null)
                 {

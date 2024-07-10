@@ -10,24 +10,30 @@ public class PhoneManager
         get
         {
             if (_device == null)
-                _device = GameObject.Find("SmartPhone").GetOrAddComponent<SmartPhone>();
+            {
+                GameObject device = GameObject.Find("SmartPhone");
+
+                if (device == null)
+                {
+                    _device = OpenPhone();
+                    ClosePhone();
+                }
+                else
+                    _device = device.GetOrAddComponent<SmartPhone>();
+            }
 
             return _device;
         }
     }
 
-    public void OpenPhone()
+    public SmartPhone OpenPhone()
     {
-        _device = Managers.UI.CreateUI("SmartPhone").GetOrAddComponent<SmartPhone>();
+        SmartPhone device = Managers.UI.CreateUI("SmartPhone").GetOrAddComponent<SmartPhone>();
+        return device;
     }
 
     public void ClosePhone()
     {
         Managers.UI.DestroyUI(Device.gameObject);
-    }
-
-    public void SendMessage(string content)
-    {
-
     }
 }

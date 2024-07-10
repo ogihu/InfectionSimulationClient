@@ -50,7 +50,7 @@ public class SmartPhone : MonoBehaviour
         GameObject content = Util.FindChildByName(_targets, "Content");
         for (int i = 0; i < Define.PhoneAddress.Length; i++)
         {
-            GameObject go = Managers.UI.CreateUI("UI/PhoneAddress", content.transform);
+            GameObject go = Managers.UI.CreateUI("PhoneAddress", content.transform);
             go.transform.GetChild(1).GetComponent<Text>().text = Define.PhoneAddress[i];
             go.name = Define.PhoneAddress[i];
             _targetToggle.Add(go.GetOrAddComponent<Toggle>());
@@ -81,6 +81,7 @@ public class SmartPhone : MonoBehaviour
                 _calling.SetActive(false);
                 break;
             case "MessageCheck":
+                UpdateMessageList();
                 _functions.SetActive(false);
                 _targets.SetActive(false);
                 _messages.SetActive(true);
@@ -131,5 +132,18 @@ public class SmartPhone : MonoBehaviour
     {
         _speechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StopRecord();
         Managers.Phone.ClosePhone();
+    }
+
+    public void SendMessage(string sender, string content, List<string> receivers)
+    {
+        string[] split = Managers.Object.MyPlayer.Position.Split(' ');
+
+        if (!receivers.Contains(split[0]))
+            return;
+
+        Message message = new Message();
+        message.Sender = sender;
+        message.Content = content;
+        Messages.Add(message);
     }
 }

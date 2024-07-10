@@ -82,19 +82,7 @@ public class ScenarioManager
         }
     }
 
-    public void NextProgress(int progress)
-    {
-        if(CurrentScenarioInfo.Action == "Call")
-            Managers.Phone.Device.SendMessage(CurrentScenarioInfo.Position, CurrentScenarioInfo.Speech, CurrentScenarioInfo.Targets);
-
-        Progress = progress;
-        CompleteCount = 0;
-        _checkComplete = false;
-        Reset();
-        CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
-        Managers.UI.ClearChat();
-        _routine = null;
-    }
+    #region 시나리오 패킷 관련 기능
 
     public void SendScenarioInfo(string scenarioName)
     {
@@ -102,6 +90,20 @@ public class ScenarioManager
         scenarioPacket.ScenarioName = scenarioName;
         Managers.Network.Send(scenarioPacket);
     }
+
+    void SendComplete()
+    {
+        if (_checkComplete == false)
+        {
+            C_Complete packet = new C_Complete();
+            Managers.Network.Send(packet);
+            _checkComplete = true;
+        }
+    }
+
+    #endregion
+
+    #region 시나리오 진행 기능
 
     public void StartScenario(string scenarioName)
     {
@@ -156,17 +158,56 @@ public class ScenarioManager
         Managers.UI.CreatePopup($"{scenarioName} 시나리오를 완료하셨습니다.");
     }
 
-    void SendComplete()
+    #endregion
+
+    #region 시나리오 진행 관련 기능
+
+    //현재 진행된 시나리오에 대하여 다른 플레이어들이 확인할 수 있도록 말풍선, 메시지 등의 상황을 업데이트 해주는 함수
+    void UpdateSituation()
     {
-        if(_checkComplete == false)
+        switch (CurrentScenarioInfo.Action)
         {
-            C_Complete packet = new C_Complete();
-            Managers.Network.Send(packet);
-            _checkComplete = true;
+            case "Call":
+                Managers.Phone.Device.SendMessage(CurrentScenarioInfo.Position, CurrentScenarioInfo.Speech, CurrentScenarioInfo.Targets);
+                break;
+            case "Tell":
+                BaseController player = Managers.Object.FindPosition(CurrentScenarioInfo.Position);
+
+                if (player == null)
+                    break;
+
+                Managers.UI.CreateChatUI(player.transform, CurrentScenarioInfo.Speech);
+                break;
         }
     }
 
-    #region Scenario Check Funcs
+    //서버로부터 다음 시나리오 진행도를 받으면, 시나리오 상황 업데이트 및 변수 초기화 등 실행
+    public void NextProgress(int progress)
+    {
+        Managers.UI.ClearChat();
+
+        UpdateSituation();
+
+        Progress = progress;
+        CompleteCount = 0;
+        _checkComplete = false;
+        Reset();
+        CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
+        _routine = null;
+    }
+
+    //화면 상단에 시나리오 진행 관련 힌트를 주는 UI 업데이트
+    public void UpdateScenarioAssist(string state, string position = null)
+    {
+        if (position != null)
+            ScenarioAssist.transform.GetChild(0).GetComponent<TMP_Text>().text = position;
+
+        ScenarioAssist.transform.GetChild(1).GetComponent<TMP_Text>().text = state;
+    }
+
+    #endregion
+
+    #region 시나리오 검증 관련 기능
 
     IEnumerator CoCheckAction()
     {
@@ -279,12 +320,4 @@ public class ScenarioManager
     }
 
     #endregion
-
-    public void UpdateScenarioAssist(string state, string position = null)
-    {
-        if (position != null)
-            ScenarioAssist.transform.GetChild(0).GetComponent<TMP_Text>().text = position;
-
-        ScenarioAssist.transform.GetChild(1).GetComponent<TMP_Text>().text = state;
-    }
 }

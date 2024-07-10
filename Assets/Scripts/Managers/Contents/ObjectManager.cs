@@ -11,8 +11,8 @@ public class ObjectManager
     Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
 	public Dictionary<int, GameObject> Objects { get { return _objects; } }
 
-	List<GameObject> _players = new List<GameObject>();
-	public List<GameObject> Players { get { return _players; } }
+	List<BaseController> _players = new List<BaseController>();
+	public List<BaseController> Players { get { return _players; } }
 
     public static GameObjectType GetObjectTypeById(int id)
 	{
@@ -30,7 +30,7 @@ public class ObjectManager
 			{
 				GameObject go = Managers.Resource.Instantiate($"Creatures/MyPlayer/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
-				_players.Add(go);
+				_players.Add(go.GetComponent<MyPlayerController>());
 				go.name = $"{info.UserInfo.Name}";
 
 				MyPlayer = go.GetComponent<MyPlayerController>();
@@ -45,7 +45,7 @@ public class ObjectManager
 			{
 				GameObject go = Managers.Resource.Instantiate($"Creatures/Player/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
-				_players.Add(go);
+				_players.Add(go.GetComponent<PlayerController>());
 				go.name = $"{info.UserInfo.Name}";
 
 				PlayerController pc = go.GetComponent<PlayerController>();
@@ -68,7 +68,7 @@ public class ObjectManager
 		Managers.Resource.Destroy(go);
 	}
 
-	public void RemovePlayer(GameObject player)
+	public void RemovePlayer(BaseController player)
     {
 		if(_players.Contains(player))
 			_players.Remove(player);
@@ -81,17 +81,6 @@ public class ObjectManager
 		return go;
 	}
 
-	public GameObject Find(Func<GameObject, bool> condition)
-	{
-		foreach (GameObject obj in _objects.Values)
-		{
-			if (condition.Invoke(obj))
-				return obj;
-		}
-
-		return null;
-	}
-
 	public void Clear()
 	{
 		foreach (GameObject obj in _objects.Values)
@@ -101,5 +90,16 @@ public class ObjectManager
 		_players.Clear();
 
         MyPlayer = null;
+    }
+
+	public BaseController FindPosition(string position)
+    {
+		foreach(var player in _players)
+        {
+			if(player.Position == position)
+				return player;
+        }
+
+		return null;
     }
 }

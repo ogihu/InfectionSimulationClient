@@ -6,11 +6,11 @@ public class Setting : MonoBehaviour
 {
     private void OnEnable()
     {
-        Managers.Object.MyPlayer._playerState = Define.PlayerState.UsingSetting;
+        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Setting;
     }
 
     private void OnDisable()
     {
-        Managers.Object.MyPlayer._playerState = Define.PlayerState.None;
+        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
     }
 }

@@ -16,7 +16,6 @@ public class MyPlayerController : PlayerController
 	[SerializeField] Material[] _interactionMaterials;
 	Material _outline;
 	int _layerMask;
-	public PlayerState _playerState = PlayerState.None;
 
 	protected override void Start()
 	{
@@ -49,7 +48,7 @@ public class MyPlayerController : PlayerController
 
 	protected override void UpdateRotation()
 	{
-		if (_playerState != PlayerState.None)
+		if (!(State == CreatureState.Idle || State == CreatureState.Run))
 			return;
 
 		_cameraArm.CameraRotation(_camRotationSpeed);
@@ -60,16 +59,19 @@ public class MyPlayerController : PlayerController
 
 	void GetKeyInput()
 	{
-		InputBit = Managers.Input.SetKeyInput(KeyCode.W, InputBit, () => { CheckUpdatedFlag(); });
-		InputBit = Managers.Input.SetKeyInput(KeyCode.A, InputBit, () => { CheckUpdatedFlag(); });
-		InputBit = Managers.Input.SetKeyInput(KeyCode.S, InputBit, () => { CheckUpdatedFlag(); });
-		InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit, () => { CheckUpdatedFlag(); });
+		if(State == CreatureState.Idle || State == CreatureState.Run)
+        {
+			InputBit = Managers.Input.SetKeyInput(KeyCode.W, InputBit, () => { CheckUpdatedFlag(); });
+			InputBit = Managers.Input.SetKeyInput(KeyCode.A, InputBit, () => { CheckUpdatedFlag(); });
+			InputBit = Managers.Input.SetKeyInput(KeyCode.S, InputBit, () => { CheckUpdatedFlag(); });
+			InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit, () => { CheckUpdatedFlag(); });
+		}
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-			if (_playerState == PlayerState.None)
+			if (State == CreatureState.Idle)
 				Managers.Phone.OpenPhone();
-			else if(_playerState == PlayerState.UsingPhone)
+			else if(State == CreatureState.UsingPhone)
 				Managers.Phone.ClosePhone();
         }
 
@@ -77,14 +79,32 @@ public class MyPlayerController : PlayerController
         {
             if (!Managers.UI.ExitPopup())
             {
-				if (_playerState == PlayerState.None)
+				if (State == CreatureState.Idle)
 					Managers.UI.CreateUI("Setting");
-				else if (_playerState == PlayerState.UsingSetting)
+				else if (State == CreatureState.Setting)
 					Managers.UI.DestroyUI(GameObject.Find("Setting"));
 			}
 		}
 
-        if (Input.GetKeyDown(KeyCode.Home))
+		if (Input.GetKeyDown(KeyCode.T))
+		{
+			if(State == CreatureState.Idle)
+            {
+				Managers.Scenario.MyAction = "Tell";
+				Managers.Scenario.SpeechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StartRecord();
+				State = CreatureState.Conversation;
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.T))
+        {
+			if (State == CreatureState.Conversation)
+			{
+				Managers.Scenario.SpeechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StopRecord();
+				State = CreatureState.Idle;
+			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.Home))
         {
 			Managers.Scenario.CompleteCount++;
         }

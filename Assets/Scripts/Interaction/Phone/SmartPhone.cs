@@ -30,13 +30,13 @@ public class SmartPhone : MonoBehaviour
             Init();
         }
         Reset();
-        Managers.Object.MyPlayer._playerState = Define.PlayerState.UsingPhone;
+        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.UsingPhone;
     }
 
     private void OnDisable()
     {
         Reset();
-        Managers.Object.MyPlayer._playerState = Define.PlayerState.None;
+        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
     }
 
     public void Init()

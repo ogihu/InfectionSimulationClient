@@ -166,7 +166,7 @@ public class BaseController : MonoBehaviour
     [SerializeField] private float _speed = 1.5f;
     protected Vector3 _destPos = Vector3.zero;
     [Tooltip("MyPlayer는 적용되지 않음")]
-    [SerializeField] private float _rotationSpeed;
+    [SerializeField] protected float _rotationSpeed = 8f;
     Coroutine _coSync;
 
     #endregion
@@ -190,7 +190,10 @@ public class BaseController : MonoBehaviour
 
     protected virtual void UpdateMove()
     {
-        if(InputBit == 0)
+        if (!(State == CreatureState.Idle || State == CreatureState.Run))
+            return;
+
+        if (InputBit == 0)
         {
             State = CreatureState.Idle;
             return;
@@ -241,10 +244,17 @@ public class BaseController : MonoBehaviour
         switch (State)
         {
             case CreatureState.Idle:
+            case CreatureState.Setting:
                 _animator.Play("idle");
                 break;
             case CreatureState.Run:
                 _animator.Play("run");
+                break;
+            case CreatureState.Conversation:
+                _animator.Play("conversation");
+                break;
+            case CreatureState.UsingPhone:
+                _animator.Play("using-phone");
                 break;
             default:
                 Debug.LogError($"There is no animation clip about {State}");
@@ -258,10 +268,6 @@ public class BaseController : MonoBehaviour
 
         if (distance > 2.0f)
             ImmediateSync();
-        else
-        {
-
-        }
     }
 
     public void ImmediateSync()

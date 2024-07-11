@@ -28,22 +28,6 @@ public class SpeechRecognitor : MonoBehaviour
         microphoneRecord.OnRecordStop += OnRecordStop;
     }
 
-    private void Update()
-    {
-        OnRecordButtonPressed();
-    }
-
-    void OnRecordButtonPressed()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Managers.Scenario.MyAction = "Tell";
-            microphoneRecord.StartRecord();
-        }
-        else if(Input.GetKeyUp(KeyCode.T))
-            microphoneRecord.StopRecord();
-    }
-
     private async void OnRecordStop(Whisper.Utils.Extension.AudioChunk recordedAudio)
     {
         _buffer = "";

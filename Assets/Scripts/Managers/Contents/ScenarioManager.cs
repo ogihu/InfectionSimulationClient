@@ -14,7 +14,7 @@ public class ScenarioManager
     public int Progress { get; set; }
     public string Equipment { get; set; }
 
-    Dictionary<string, GameObject> NPCs = new Dictionary<string, GameObject>();
+    Dictionary<string, NPCController> NPCs = new Dictionary<string, NPCController>();
 
     GameObject _speechRecognitor;
     public GameObject SpeechRecognitor
@@ -70,6 +70,13 @@ public class ScenarioManager
         _checkComplete = false;
         SpeechText = null;
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
+
+        AddNPC("환자", WaitingArea);
+        //AddNPC("보안요원1", WaitingArea);
+        //AddNPC("보안요원2", WaitingArea);
+        //AddNPC("이송요원", WaitingArea);
+        //AddNPC("미화1", WaitingArea);
+        //AddNPC("미화2", WaitingArea);
     }
 
     void Reset()
@@ -136,13 +143,15 @@ public class ScenarioManager
         yield return new WaitForSeconds(3.0f);
 
         Init(scenarioName);
-        NPCs["환자"].transform.position = new Vector3(11.5f, 0, 0);
+
+        NPCs["환자"].Teleport(ObservationArea);
         NPCs["환자"].transform.rotation = Quaternion.Euler(0, -90, 0);
 
         switch (scenarioName)
         {
             case "엠폭스":
                 Managers.UI.CreateChatUI(NPCs["환자"].transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요.\n저도 곧 보건소로부터 연락올거라고 합니다.");
+                NPCs["환자"].SetState(CreatureState.Conversation);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(1));
                 Managers.UI.CreateChatUI(NPCs["환자"].transform, "이관리 980421 입니다.\n같이 살고있어요.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(2));
@@ -179,6 +188,11 @@ public class ScenarioManager
                 Managers.UI.CreateChatUI(player.transform, CurrentScenarioInfo.Speech);
                 break;
         }
+
+        foreach(var npc in NPCs.Values)
+        {
+            npc.SetState(CreatureState.Idle);
+        }
     }
 
     //서버로부터 다음 시나리오 진행도를 받으면, 시나리오 상황 업데이트 및 변수 초기화 등 실행
@@ -207,7 +221,15 @@ public class ScenarioManager
 
     public GameObject AddNPC(string position, Vector3 spawnPoint)
     {
-        return null;
+        GameObject go = Managers.Resource.Instantiate($"Creatures/NPC/{position}");
+        
+        BaseController bc = go.GetComponent<BaseController>();
+        bc.Position = position;
+        bc.Pos = spawnPoint;
+        
+        NPCs.Add(position, go.GetComponent<NPCController>());
+
+        return go;
     }
 
     #endregion

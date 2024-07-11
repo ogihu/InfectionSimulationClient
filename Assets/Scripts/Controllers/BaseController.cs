@@ -10,61 +10,6 @@ public class BaseController : MonoBehaviour
 
     public int ObjectId { get; set; }
 
-    #region UserInfo UserInfo
-
-    UserInfo _userInfo = new UserInfo();
-    public UserInfo UserInfo
-    {
-        get { return _userInfo; }
-        set
-        {
-            if (_userInfo.Equals(value))
-                return;
-
-            Name = value.Name;
-            Id = value.Id;
-            Position = value.Position;
-        }
-    }
-
-    public string Name
-    {
-        get { return UserInfo.Name; }
-        set
-        {
-            if (UserInfo.Name.Equals(value))
-                return;
-
-            UserInfo.Name = value;
-        }
-    }
-
-    public string Id
-    {
-        get { return UserInfo.Id; }
-        set
-        {
-            if (UserInfo.Id.Equals(value))
-                return;
-
-            UserInfo.Id = value;
-        }
-    }
-
-    public string Position
-    {
-        get { return UserInfo.Position; }
-        set
-        {
-            if (UserInfo.Position.Equals(value))
-                return;
-
-            UserInfo.Position = value;
-        }
-    }
-
-    #endregion
-
     #region MoveInfo MoveInfo
 
     MoveInfo _moveInfo = new MoveInfo();
@@ -160,6 +105,61 @@ public class BaseController : MonoBehaviour
 
     #endregion
 
+    #region UserInfo UserInfo
+
+    UserInfo _userInfo = new UserInfo();
+    public UserInfo UserInfo
+    {
+        get { return _userInfo; }
+        set
+        {
+            if (_userInfo.Equals(value))
+                return;
+
+            Name = value.Name;
+            Id = value.Id;
+            Position = value.Position;
+        }
+    }
+
+    public string Name
+    {
+        get { return UserInfo.Name; }
+        set
+        {
+            if (UserInfo.Name.Equals(value))
+                return;
+
+            UserInfo.Name = value;
+        }
+    }
+
+    public string Id
+    {
+        get { return UserInfo.Id; }
+        set
+        {
+            if (UserInfo.Id.Equals(value))
+                return;
+
+            UserInfo.Id = value;
+        }
+    }
+
+    public string Position
+    {
+        get { return UserInfo.Position; }
+        set
+        {
+            if (UserInfo.Position.Equals(value))
+                return;
+
+            UserInfo.Position = value;
+        }
+    }
+
+    #endregion
+
     protected Animator _animator;
     protected bool _syncUpdated = false;
     protected bool _updated = false;
@@ -168,7 +168,6 @@ public class BaseController : MonoBehaviour
     [Tooltip("MyPlayer는 적용되지 않음")]
     [SerializeField] private float _rotationSpeed;
     Coroutine _coSync;
-
 
     #endregion
 
@@ -236,7 +235,6 @@ public class BaseController : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
     }
-
 
     protected virtual void UpdateAnimation()
     {

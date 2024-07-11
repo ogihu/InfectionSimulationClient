@@ -43,8 +43,8 @@ GameObject:
   - component: {fileID: 281331942872040706}
   - component: {fileID: 3392236592955038583}
   - component: {fileID: 3561030795696583139}
-  - component: {fileID: 5211076375629527159}
-  m_Layer: 0
+  - component: {fileID: 4536450075671622982}
+  m_Layer: 9
   m_Name: "\uD658\uC790"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ Animator:
   m_GameObject: {fileID: 625064963591610296}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f42af7d2aef2a0c44889171330a6e1a1, type: 3}
-  m_Controller: {fileID: 9100000, guid: a1489e5618e89594ab432e603b7c9b6a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 40c6951eee0e86842b62a2ff7e85837b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -169,7 +169,7 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.23007493, y: 0.009392783, z: 0.000000029802322}
     m_Extent: {x: 0.5100381, y: 0.18304709, z: 0.2945114}
   m_DirtyAABB: 0
---- !u!114 &5211076375629527159
+--- !u!114 &4536450075671622982
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 625064963591610296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7109a09ef381d4d4caf34987d2e692c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 62a7f2a6880a4534cbdc32a72c9f9f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1.5
@@ -320,7 +320,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2607554269629566725}
-  - component: {fileID: 2169843909446522766}
   m_Layer: 0
   m_Name: R_hand_grap_point
   m_TagString: Untagged
@@ -343,19 +342,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5476608388402701828}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2169843909446522766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800438606972594378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5130e8dcfa13eb342a0edc8d2ef497fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_side: 1
 --- !u!1 &2516747223454913074
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +961,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 217669654165701549}
-  - component: {fileID: 1315073038357296910}
   m_Layer: 0
   m_Name: L_hand_grap_point
   m_TagString: Untagged
@@ -998,19 +983,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3854639700487636700}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1315073038357296910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8780105245817185263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5130e8dcfa13eb342a0edc8d2ef497fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_side: 0
 --- !u!1 &8832999904997259810
 GameObject:
   m_ObjectHideFlags: 0

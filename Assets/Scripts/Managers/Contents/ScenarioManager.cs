@@ -12,8 +12,9 @@ public class ScenarioManager
 
     public string ScenarioName { get; set; }
     public int Progress { get; set; }
-    public GameObject Patient { get; set; }
     public string Equipment { get; set; }
+
+    Dictionary<string, GameObject> NPCs = new Dictionary<string, GameObject>();
 
     GameObject _speechRecognitor;
     public GameObject SpeechRecognitor
@@ -69,7 +70,6 @@ public class ScenarioManager
         _checkComplete = false;
         SpeechText = null;
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
-        Patient = Managers.Resource.Instantiate("Creatures/NPC/환자");
     }
 
     void Reset()
@@ -132,19 +132,19 @@ public class ScenarioManager
         Managers.UI.CreatePopup($"{scenarioName} 시나리오를 시작합니다.");
         yield return new WaitForSeconds(3.0f);
 
-        Managers.UI.CreatePopup($"사랑합니다. 지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다. 모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
+        Managers.UI.CreatePopup($"사랑합니다.\n지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다.\n모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
         yield return new WaitForSeconds(3.0f);
 
         Init(scenarioName);
-        Patient.transform.position = new Vector3(11.5f, 0, 0);
-        Patient.transform.rotation = Quaternion.Euler(0, -90, 0);
+        NPCs["환자"].transform.position = new Vector3(11.5f, 0, 0);
+        NPCs["환자"].transform.rotation = Quaternion.Euler(0, -90, 0);
 
         switch (scenarioName)
         {
             case "엠폭스":
-                Managers.UI.CreateChatUI(Patient.transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요. 저도 곧 보건소로부터 연락올거라고 합니다.");
+                Managers.UI.CreateChatUI(NPCs["환자"].transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요.\n저도 곧 보건소로부터 연락올거라고 합니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(1));
-                Managers.UI.CreateChatUI(Patient.transform, "이관리 980421 입니다. 같이 살고있어요.");
+                Managers.UI.CreateChatUI(NPCs["환자"].transform, "이관리 980421 입니다.\n같이 살고있어요.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(2));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(3));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(4));
@@ -171,7 +171,7 @@ public class ScenarioManager
                 Managers.Phone.Device.SendMessage(CurrentScenarioInfo.Position, CurrentScenarioInfo.Speech, CurrentScenarioInfo.Targets);
                 break;
             case "Tell":
-                BaseController player = Managers.Object.FindPosition(CurrentScenarioInfo.Position);
+                BaseController player = Managers.Object.FindPosition(CurrentScenarioInfo.Position).GetComponent<BaseController>();
 
                 if (player == null)
                     break;
@@ -203,6 +203,11 @@ public class ScenarioManager
             ScenarioAssist.transform.GetChild(0).GetComponent<TMP_Text>().text = position;
 
         ScenarioAssist.transform.GetChild(1).GetComponent<TMP_Text>().text = state;
+    }
+
+    public GameObject AddNPC(string position, Vector3 spawnPoint)
+    {
+        return null;
     }
 
     #endregion

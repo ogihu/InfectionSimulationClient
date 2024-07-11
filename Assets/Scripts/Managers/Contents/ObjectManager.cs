@@ -1,4 +1,4 @@
-Ôªøusing Google.Protobuf.Protocol;
+using Google.Protobuf.Protocol;
 using System;
 using System.Collections.Generic;
 using TMPro;
@@ -6,15 +6,11 @@ using UnityEngine;
 
 public class ObjectManager
 {
-    public MyPlayerController MyPlayer { get; set; }
+	public MyPlayerController MyPlayer { get; set; }
 
-    Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
-	public Dictionary<int, GameObject> Objects { get { return _objects; } }
+	Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
 
-	List<BaseController> _players = new List<BaseController>();
-	public List<BaseController> Players { get { return _players; } }
-
-    public static GameObjectType GetObjectTypeById(int id)
+	public static GameObjectType GetObjectTypeById(int id)
 	{
 		int type = (id >> 24) & 0x7F;
 		return (GameObjectType)type;
@@ -30,7 +26,6 @@ public class ObjectManager
 			{
 				GameObject go = Managers.Resource.Instantiate($"Creatures/MyPlayer/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
-				_players.Add(go.GetComponent<MyPlayerController>());
 				go.name = $"{info.UserInfo.Name}";
 
 				MyPlayer = go.GetComponent<MyPlayerController>();
@@ -39,13 +34,12 @@ public class ObjectManager
 				MyPlayer.MoveInfo = info.MoveInfo;
 				MyPlayer.PosInfo = info.PosInfo;
 				MyPlayer.ImmediateSync();
-				Managers.Scenario.UpdateScenarioAssist("ÏãúÎÇòÎ¶¨Ïò§ ÏãúÏûëÏùÑ Í∏∞Îã§Î¶¨Îäî Ï§ë ÏûÖÎãàÎã§...", MyPlayer.UserInfo.Position);
+				Managers.Scenario.UpdateScenarioAssist("Ω√≥™∏Æø¿ Ω√¿€¿ª ±‚¥Ÿ∏Æ¥¬ ¡ﬂ ¿‘¥œ¥Ÿ...", MyPlayer.UserInfo.Position);
 			}
 			else
 			{
 				GameObject go = Managers.Resource.Instantiate($"Creatures/Player/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
-				_players.Add(go.GetComponent<PlayerController>());
 				go.name = $"{info.UserInfo.Name}";
 
 				PlayerController pc = go.GetComponent<PlayerController>();
@@ -56,7 +50,7 @@ public class ObjectManager
 				pc.ImmediateSync();
 			}
 		}
-    }
+	}
 
 	public void Remove(int id)
 	{
@@ -67,12 +61,6 @@ public class ObjectManager
 		_objects.Remove(id);
 		Managers.Resource.Destroy(go);
 	}
-
-	public void RemovePlayer(BaseController player)
-    {
-		if(_players.Contains(player))
-			_players.Remove(player);
-    }
 
 	public GameObject FindById(int id)
 	{
@@ -87,19 +75,18 @@ public class ObjectManager
 			Managers.Resource.Destroy(obj);
 
 		_objects.Clear();
-		_players.Clear();
 
-        MyPlayer = null;
-    }
+		MyPlayer = null;
+	}
 
-	public BaseController FindPosition(string position)
-    {
-		foreach(var player in _players)
-        {
-			if(player.Position == position)
-				return player;
-        }
+	public GameObject FindPosition(string position)
+	{
+		foreach (var obj in _objects.Values)
+		{
+			if (obj.GetComponent<BaseController>().Position == position)
+				return obj;
+		}
 
 		return null;
-    }
+	}
 }

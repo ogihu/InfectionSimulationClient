@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class Define
 {
+    public static readonly Vector3 SpawnPoint = new Vector3(-4, 0, 18);
+
     public static readonly string[] PhoneAddress =
     {
         "응급센터",

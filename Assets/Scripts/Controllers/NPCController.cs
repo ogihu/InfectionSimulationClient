@@ -7,10 +7,19 @@ using UnityEngine.AI;
 public class NPCController : CreatureController
 {
     NavMeshAgent _agent;
+    Transform _target;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _agent.stoppingDistance = 2.0f;
+        _target = null;
+    }
+
+    protected override void UpdateController()
+    {
+        base.UpdateController();
+        UpdateAgent();
     }
 
     protected override void UpdateMove()
@@ -37,11 +46,39 @@ public class NPCController : CreatureController
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
     }
 
+    void UpdateAgent()
+    {
+        UpdateFollow();
+    }
+
+    public void UpdateFollow()
+    {
+        if (_target == null)
+            return;
+
+        _agent.SetDestination(_target.position);
+    }
+
     public void SetDestination(Vector3 point)
     {
         Pos = point;
         _agent.SetDestination(Pos);
         State = CreatureState.Idle;
+    }
+
+    public void SetFollow(Transform target = null)
+    {
+        _target = target;
+    }
+
+    IEnumerator CoCleanObject(Transform target)
+    {
+        if(target == null)
+            yield break;
+
+        SetDestination(target.position);
+        yield return new WaitUntil(() => (target.position - gameObject.transform.position).magnitude < 2f);
+        SetState(CreatureState.CleanTable);
     }
 
     public void SetState(CreatureState state)

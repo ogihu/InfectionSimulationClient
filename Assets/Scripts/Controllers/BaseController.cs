@@ -167,6 +167,7 @@ public class BaseController : MonoBehaviour
     protected Vector3 _destPos = Vector3.zero;
     [Tooltip("MyPlayer는 적용되지 않음")]
     [SerializeField] protected float _rotationSpeed = 8f;
+    protected GameObject _phone;
     Coroutine _coSync;
 
     #endregion
@@ -174,6 +175,9 @@ public class BaseController : MonoBehaviour
     protected virtual void Start()
     {
         _animator = GetComponent<Animator>();
+        GameObject leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point");
+        _phone = Managers.Resource.Instantiate("Objects/Phone", leftHand.transform);
+        _phone.SetActive(false);
     }
 
     private void Update()
@@ -256,10 +260,23 @@ public class BaseController : MonoBehaviour
             case CreatureState.UsingPhone:
                 _animator.Play("using-phone");
                 break;
+            case CreatureState.CleanTable:
+                _animator.Play("clean-table");
+                break;
             default:
                 Debug.LogError($"There is no animation clip about {State}");
                 break;
         }
+
+        ActiveObjectOnState(State);
+    }
+
+    void ActiveObjectOnState(CreatureState state)
+    {
+        if (state == CreatureState.UsingPhone)
+            _phone.SetActive(true);
+        else
+            _phone.SetActive(false);
     }
 
     public void UpdateSync()

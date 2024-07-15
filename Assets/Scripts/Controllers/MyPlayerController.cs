@@ -20,7 +20,8 @@ public class MyPlayerController : PlayerController
 	protected override void Start()
 	{
 		base.Start();
-		_cameraArm = GetComponentInChildren<CameraArm>();
+		GameObject cameraArm = Managers.Resource.Instantiate("Objects/CameraArm", this.gameObject.transform);
+		_cameraArm = cameraArm.GetComponent<CameraArm>();
 		_coSendPacket = StartCoroutine(CoSyncUpdate());
 		_outline = Resources.Load<Material>("Materials/Environments/DrawOutline");
 		_layerMask = 1 << LayerMask.NameToLayer("Interaction");
@@ -84,6 +85,14 @@ public class MyPlayerController : PlayerController
 				else if (State == CreatureState.Setting)
 					Managers.UI.DestroyUI(GameObject.Find("Setting"));
 			}
+		}
+
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			if (State == CreatureState.Idle)
+				State = CreatureState.CleanTable;
+			else if (State == CreatureState.CleanTable)
+				State = CreatureState.Idle;
 		}
 
 		if (Input.GetKeyDown(KeyCode.T))

@@ -50,10 +50,11 @@ namespace Google.Protobuf.Protocol {
             "QVdOEAMSCgoGQ19NT1ZFEAQSCgoGU19NT1ZFEAUSCgoGQ19TWU5DEAYSCgoG",
             "U19TWU5DEAcSCwoHQ19MT0dJThAIEhQKEENfU1RBUlRfU0NFTkFSSU8QCRIU",
             "ChBTX1NUQVJUX1NDRU5BUklPEAoSDgoKQ19DT01QTEVURRALEhMKD1NfTkVY",
-            "VF9QUk9HUkVTUxAMKlIKDUNyZWF0dXJlU3RhdGUSCAoESURMRRAAEgcKA1JV",
+            "VF9QUk9HUkVTUxAMKmMKDUNyZWF0dXJlU3RhdGUSCAoESURMRRAAEgcKA1JV",
             "ThABEhAKDENPTlZFUlNBVElPThACEg8KC1VTSU5HX1BIT05FEAMSCwoHU0VU",
-            "VElORxAEKiYKDkdhbWVPYmplY3RUeXBlEggKBE5PTkUQABIKCgZQTEFZRVIQ",
-            "AUIbqgIYR29vZ2xlLlByb3RvYnVmLlByb3RvY29sYgZwcm90bzM="));
+            "VElORxAEEg8KC0NMRUFOX1RBQkxFEAUqJgoOR2FtZU9iamVjdFR5cGUSCAoE",
+            "Tk9ORRAAEgoKBlBMQVlFUhABQhuqAhhHb29nbGUuUHJvdG9idWYuUHJvdG9j",
+            "b2xiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Google.Protobuf.Protocol.MsgId), typeof(global::Google.Protobuf.Protocol.CreatureState), typeof(global::Google.Protobuf.Protocol.GameObjectType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -102,6 +103,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("CONVERSATION")] Conversation = 2,
     [pbr::OriginalName("USING_PHONE")] UsingPhone = 3,
     [pbr::OriginalName("SETTING")] Setting = 4,
+    [pbr::OriginalName("CLEAN_TABLE")] CleanTable = 5,
   }
 
   public enum GameObjectType {

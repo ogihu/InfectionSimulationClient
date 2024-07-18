@@ -28,6 +28,7 @@ public class Managers : MonoBehaviour
     DataManager _data = new DataManager();
     SoundManager _sound = new SoundManager();
     SettingManager _setting = new SettingManager();
+    SpeechManager _speech = new SpeechManager();
 
     public static PoolManager Pool { get { return Instance._pool; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
@@ -37,6 +38,7 @@ public class Managers : MonoBehaviour
     public static DataManager Data { get { return Instance._data; } }
     public static SoundManager Sound { get { return Instance._sound; } }
     public static SettingManager Setting { get { return Instance._setting; } }
+    public static SpeechManager Speech { get { return Instance._speech; } }
     #endregion
 
     void Start()

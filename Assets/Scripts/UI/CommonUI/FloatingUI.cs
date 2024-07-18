@@ -7,9 +7,9 @@ public class FloatingUI : MonoBehaviour
 {
     Canvas _canvas;
     Transform _target;
-    float _height = 2.5f;
+    float _height = 3.5f;
 
-    public void Init(Transform target, string chat, float height = 2.5f)
+    public void Init(Transform target, string chat, float height = 3.5f)
     {
         _target = target;
         _height = height;
@@ -25,15 +25,19 @@ public class FloatingUI : MonoBehaviour
     void ChasingTarget()
     {
         if (_target == null)
+        {
             Debug.LogError("There is no target to chase, Check the target of this object");
+            return;
+        }
 
         if (GetComponent<RectTransform>().anchoredPosition3D == _target.position)
             return;
 
         GetComponent<RectTransform>().anchoredPosition3D = new Vector3(_target.position.x, _target.position.y + _height, _target.position.z);
         Vector3 dir = GetComponent<RectTransform>().anchoredPosition3D - Camera.main.transform.position;
-        dir = new Vector3(dir.x, Camera.main.transform.position.y, dir.z);
-        transform.rotation = Quaternion.LookRotation(dir);
+        dir = new Vector3(dir.x, 0, dir.z);
+        Quaternion rotation = Quaternion.LookRotation(dir);
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
 
         int distance = (int)(Camera.main.transform.position - transform.position).magnitude;
         if (distance == 0)

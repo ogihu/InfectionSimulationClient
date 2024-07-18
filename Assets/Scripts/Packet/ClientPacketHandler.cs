@@ -65,6 +65,29 @@ class PacketHandler
 
         Managers.Scenario.StartScenario(scenarioPacket.ScenarioName);
     }
+    
+    public static void S_TalkHandler(PacketSession session, IMessage packet)
+    {
+        S_Talk talkPacket = (S_Talk)packet;
+
+        GameObject go = Managers.Object.FindById(talkPacket.Id);
+        if (go == null)
+            return;
+
+        if (Managers.Object.MyPlayer.ObjectId == talkPacket.Id)
+            return;
+
+        BaseController bc = go.GetComponent<BaseController>();
+        if (bc == null)
+            return;
+
+        GameObject bubble = Managers.UI.CreateChatBubble(bc.transform, talkPacket.Message);
+
+        if (!talkPacket.IsTalking)
+        {
+            Managers.Instance.StartCoroutine(Managers.UI.InvisibleAfter(bubble, 5.0f));
+        }
+    }
 
     public static void S_NextProgressHandler(PacketSession session, IMessage packet)
     {

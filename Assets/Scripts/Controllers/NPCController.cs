@@ -8,6 +8,8 @@ public class NPCController : CreatureController
 {
     NavMeshAgent _agent;
     Transform _target;
+    Coroutine _order;
+    Queue<IEnumerator> _orderQueue = new Queue<IEnumerator>();
 
     private void Awake()
     {
@@ -16,16 +18,19 @@ public class NPCController : CreatureController
         _target = null;
     }
 
-    protected override void UpdateController()
-    {
-        base.UpdateController();
-        UpdateAgent();
-    }
-
     protected override void UpdateMove()
     {
         if (!(State == CreatureState.Idle || State == CreatureState.Run))
             return;
+
+        if(_orderQueue.Count > 0)
+        {
+            if (_order != null)
+                return;
+
+            _order = StartCoroutine(_orderQueue.Dequeue());
+            return;
+        }
 
         if (_agent.velocity == Vector3.zero)
         {
@@ -46,44 +51,61 @@ public class NPCController : CreatureController
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
     }
 
-    void UpdateAgent()
+    public void SetOrder(IEnumerator enumerator)
     {
-        UpdateFollow();
+        _orderQueue.Enqueue(enumerator);
     }
 
-    public void UpdateFollow()
-    {
-        if (_target == null)
-            return;
+    #region NPC 명령 수행 기능
 
-        _agent.SetDestination(_target.position);
+    public IEnumerator CoGoDestination(Vector3 point)
+    {
+        SetDestination(point);
+        yield return new WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance);
+        SetState(CreatureState.Idle);
+        StopOrder();
     }
 
-    public void SetDestination(Vector3 point)
+    public IEnumerator CoFollow(Transform target)
+    {
+        if (target == null)
+            yield break;
+
+        SetFollow(target);
+        while (true)
+        {
+            SetDestination(_target.position);
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    public void StopOrder()
+    {
+        StopCoroutine(_order);
+        _order = null;
+    }
+
+    void SetDestination(Vector3 point)
     {
         Pos = point;
         _agent.SetDestination(Pos);
-        State = CreatureState.Idle;
     }
 
-    public void SetFollow(Transform target = null)
+    void SetFollow(Transform target)
     {
         _target = target;
     }
 
-    IEnumerator CoCleanObject(Transform target)
-    {
-        if(target == null)
-            yield break;
+    #endregion
 
-        SetDestination(target.position);
-        yield return new WaitUntil(() => (target.position - gameObject.transform.position).magnitude < 2f);
-        SetState(CreatureState.CleanTable);
+    public void asdf()
+    {
+        NavMeshPath path = _agent.path;
     }
 
     public void SetState(CreatureState state)
     {
-        if(_agent.velocity != Vector3.zero)
+        if (_agent.velocity != Vector3.zero)
         {
             _agent.velocity = Vector3.zero;
             _agent.isStopped = true;
@@ -92,9 +114,9 @@ public class NPCController : CreatureController
         State = state;
     }
 
-    public void Teleport(Vector3 point)
+    public bool Teleport(Vector3 point)
     {
         Pos = point;
-        ImmediateSync();
+        return _agent.Warp(Pos);
     }
 }

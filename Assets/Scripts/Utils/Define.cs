@@ -8,8 +8,9 @@ using UnityEngine;
 public class Define
 {
     public static readonly Vector3 Entrance = new Vector3(-4, 0, 18);
-    public static readonly Vector3 WaitingArea = new Vector3(-33, 0, 18);
+    public static readonly Vector3 WaitingArea = new Vector3(-35, 0, 15);
     public static readonly Vector3 ObservationArea = new Vector3(11.5f, 0, 0);
+    public static readonly Vector3 IsolationArea = new Vector3(22, 0, -44);
 
     public static readonly string[] PhoneAddress =
     {

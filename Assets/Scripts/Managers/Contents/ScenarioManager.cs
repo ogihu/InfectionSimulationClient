@@ -16,18 +16,18 @@ public class ScenarioManager
 
     Dictionary<string, NPCController> NPCs = new Dictionary<string, NPCController>();
 
-    GameObject _speechRecognitor;
-    public GameObject SpeechRecognitor
+    GameObject _realtimeSTT;
+    public GameObject RealtimeSTT
     {
         get
         {
-            if (_speechRecognitor == null)
-                _speechRecognitor = GameObject.Find("SpeechRecognitor");
+            if (_realtimeSTT == null)
+                _realtimeSTT = GameObject.Find("RealtimeSTT");
 
-            if (_speechRecognitor == null)
-                _speechRecognitor = Managers.Resource.Instantiate("System/SpeechRecognitor");
+            if (_realtimeSTT == null)
+                _realtimeSTT = Managers.Resource.Instantiate("System/RealtimeSTT");
 
-            return _speechRecognitor;
+            return _realtimeSTT;
         }
     }
 
@@ -49,18 +49,16 @@ public class ScenarioManager
     #region 시나리오 수행 결과 저장 버퍼
 
     public string MyAction { get; set; }
-    public string SpeechText { get; set; }  //STT 결과 저장
+    public bool PassSpeech { get; set; }
     public List<string> Targets { get; set; } = new List<string>();
 
     #endregion
 
-    /// <summary>
-    /// 이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
-    /// </summary>
-    private bool _checkComplete;
+    private bool _checkComplete;    //이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
     public Coroutine _routine;
+    bool _doingScenario = false;
 
-    ScenarioInfo CurrentScenarioInfo { get; set; }
+    public ScenarioInfo CurrentScenarioInfo { get; set; }
 
     public void Init(string scenarioName)
     {
@@ -68,22 +66,22 @@ public class ScenarioManager
         Progress = 0;
         CompleteCount = 0;
         _checkComplete = false;
-        SpeechText = null;
+        PassSpeech = false;
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
 
         AddNPC("환자", WaitingArea);
+        AddNPC("이송요원", WaitingArea);
         //AddNPC("보안요원1", WaitingArea);
         //AddNPC("보안요원2", WaitingArea);
-        //AddNPC("이송요원", WaitingArea);
         //AddNPC("미화1", WaitingArea);
         //AddNPC("미화2", WaitingArea);
     }
 
     void Reset()
     {
-        if (SpeechText != null || MyAction != null || Targets.Count > 0)
+        if (PassSpeech == true || MyAction != null || Targets.Count > 0)
         {
-            SpeechText = null;
+            PassSpeech = false;
             MyAction = null;
             Targets.Clear();
         }
@@ -114,11 +112,16 @@ public class ScenarioManager
 
     public void StartScenario(string scenarioName)
     {
-        Managers.Instance.StartCoroutine(CoScenario(scenarioName));
+        if(_doingScenario == false)
+        {
+            _doingScenario = true;
+            Managers.Instance.StartCoroutine(CoScenario(scenarioName));
+        }
     }
 
     IEnumerator CoScenarioStep(int progress)
     {
+        Managers.Speech.SttManager.RegisterCommand(CurrentScenarioInfo.Speech, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
             UpdateScenarioAssist("시나리오를 진행하세요.");
@@ -136,10 +139,10 @@ public class ScenarioManager
 
     IEnumerator CoScenario(string scenarioName)
     {
-        Managers.UI.CreatePopup($"{scenarioName} 시나리오를 시작합니다.");
+        Managers.UI.CreateScenarioPopup($"{scenarioName} 시나리오를 시작합니다.");
         yield return new WaitForSeconds(3.0f);
 
-        Managers.UI.CreatePopup($"사랑합니다.\n지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다.\n모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
+        Managers.UI.CreateScenarioPopup($"사랑합니다.\n지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다.\n모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
         yield return new WaitForSeconds(3.0f);
 
         Init(scenarioName);
@@ -150,21 +153,38 @@ public class ScenarioManager
         switch (scenarioName)
         {
             case "엠폭스":
-                Managers.UI.CreateChatUI(NPCs["환자"].transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요.\n저도 곧 보건소로부터 연락올거라고 합니다.");
+                Managers.UI.CreateChatBubble(NPCs["환자"].transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요.\n저도 곧 보건소로부터 연락올거라고 합니다.");
                 NPCs["환자"].SetState(CreatureState.Conversation);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(1));
-                Managers.UI.CreateChatUI(NPCs["환자"].transform, "이관리 980421 입니다.\n같이 살고있어요.");
+                Managers.UI.CreateChatBubble(NPCs["환자"].transform, "이관리 980421 입니다.\n같이 살고있어요.");
+                NPCs["환자"].SetState(CreatureState.Conversation);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(2));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(3));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(4));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(5));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(6));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(7));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(8));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(9));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(10));
+
+                Managers.UI.CreateScenarioPopup("이송요원이 환자를 격리실로 이송 중입니다. 잠시만 기다려주세요.", UIManager.PopupType.ManualDestroy);
+                NPCs["이송요원"].Teleport(Entrance);
+                NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoGoDestination(ObservationArea));
+                yield return new WaitUntil(() => NPCs["이송요원"].Place == "관찰구역");
+                NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoGoDestination(IsolationArea));
+                NPCs["환자"].SetOrder(NPCs["환자"].CoFollow(NPCs["이송요원"].transform));
+                yield return new WaitUntil(() => NPCs["환자"].Place == "음압격리실");
+                NPCs["환자"].StopOrder();
+                Managers.UI.DestroyUI(Managers.UI.ScenarioPopup);
+
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(11));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(12));
 
                 break;
         }
 
-        Managers.UI.CreatePopup($"{scenarioName} 시나리오를 완료하셨습니다.");
+        Managers.UI.CreateScenarioPopup($"{scenarioName} 시나리오를 완료하셨습니다.");
     }
 
     #endregion
@@ -178,14 +198,6 @@ public class ScenarioManager
         {
             case "Call":
                 Managers.Phone.Device.SendMessage(CurrentScenarioInfo.Position, CurrentScenarioInfo.Speech, CurrentScenarioInfo.Targets);
-                break;
-            case "Tell":
-                BaseController player = Managers.Object.FindPosition(CurrentScenarioInfo.Position).GetComponent<BaseController>();
-
-                if (player == null)
-                    break;
-
-                Managers.UI.CreateChatUI(player.transform, CurrentScenarioInfo.Speech);
                 break;
         }
 
@@ -223,11 +235,11 @@ public class ScenarioManager
     {
         GameObject go = Managers.Resource.Instantiate($"Creatures/NPC/{position}");
         
-        BaseController bc = go.GetComponent<BaseController>();
-        bc.Position = position;
-        bc.Pos = spawnPoint;
+        NPCController nc = go.GetComponent<NPCController>();
+        nc.Position = position;
+        nc.Teleport(spawnPoint);
         
-        NPCs.Add(position, go.GetComponent<NPCController>());
+        NPCs.Add(nc.Position, nc);
 
         return go;
     }
@@ -256,8 +268,8 @@ public class ScenarioManager
         if (MyAction == null)
             return false;
 
-        if (CurrentScenarioInfo.Keywords.Count > 0)
-            if (SpeechText == null)
+        if (CurrentScenarioInfo.Action == "Tell" || CurrentScenarioInfo.Action == "Call")
+            if (PassSpeech == false)
                 return false;
 
         return true;
@@ -265,10 +277,10 @@ public class ScenarioManager
 
     void ChangeKeyword(List<string> keywords)
     {
-        SpeechRecognitor.GetComponent<WhisperManager>().initialPrompt = "";
+        RealtimeSTT.GetComponent<RealtimeSTTManager>().initialPrompt = "";
         foreach (var keyword in keywords)
         {
-            SpeechRecognitor.GetComponent<WhisperManager>().initialPrompt += $"{keyword} ";
+            RealtimeSTT.GetComponent<RealtimeSTTManager>().initialPrompt += $"{keyword} ";
         }
     }
 
@@ -276,60 +288,28 @@ public class ScenarioManager
     {
         if (MyAction != CurrentScenarioInfo.Action)
         {
-            Managers.UI.CreatePopup("올바른 행동을 수행하지 않았습니다.");
+            Managers.UI.CreateScenarioPopup("올바른 행동을 수행하지 않았습니다.");
             return false;
         }
 
         if (!CheckTarget())
         {
-            Managers.UI.CreatePopup("대상이 올바르지 않습니다.");
+            Managers.UI.CreateScenarioPopup("대상이 올바르지 않습니다.");
             return false;
         }
 
         if(Equipment != CurrentScenarioInfo.Equipment)
         {
-            Managers.UI.CreatePopup("올바른 장비를 착용하지 않았습니다.");
+            Managers.UI.CreateScenarioPopup("올바른 장비를 착용하지 않았습니다.");
             return false;
         }
 
-        if (!CheckSpeech())
+        if (!PassSpeech)
         {
             return false;
         }
 
         return true;
-    }
-
-    bool CheckSpeech()
-    {
-        if (SpeechText == null)
-        {
-            Managers.UI.CreatePopup("녹음이 정상적으로 수행되지 않았습니다. 다시 시도 해주세요");
-            return false;
-        }
-
-        int count = 0;
-
-        foreach (var keyword in CurrentScenarioInfo.Keywords)
-        {
-            if (SpeechText.Contains(keyword))
-                count++;
-        }
-
-        float ratio = (float)count / (float)CurrentScenarioInfo.Keywords.Count;
-
-        GameObject go = Managers.UI.CreateUI("MySpeech");
-        go.GetComponentInChildren<TMP_Text>().text = $"{SpeechText}\n\n정확도 {ratio * 100}%";
-        Managers.Instance.StartCoroutine(Managers.UI.DestroyAfter(go, 3.0f));
-        SpeechText = null;
-
-        if (ratio > 0.7f)
-            return true;
-        else
-        {
-            go.GetComponentInChildren<TMP_Text>().text += "\n정확도가 낮습니다. 시나리오를 다시 시도해주세요.";
-            return false;
-        }
     }
 
     bool CheckTarget()

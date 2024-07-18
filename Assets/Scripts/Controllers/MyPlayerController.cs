@@ -100,7 +100,7 @@ public class MyPlayerController : PlayerController
 			if(State == CreatureState.Idle)
             {
 				Managers.Scenario.MyAction = "Tell";
-				Managers.Scenario.SpeechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StartRecord();
+				Managers.Speech.StartSpeech();
 				State = CreatureState.Conversation;
 			}
 		}
@@ -108,7 +108,7 @@ public class MyPlayerController : PlayerController
         {
 			if (State == CreatureState.Conversation)
 			{
-				Managers.Scenario.SpeechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StopRecord();
+				Managers.Speech.StopSpeech();
 				State = CreatureState.Idle;
 			}
 		}

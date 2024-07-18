@@ -104,7 +104,7 @@ public class SmartPhone : MonoBehaviour
         switch (Managers.Scenario.MyAction)
         {
             case "Call":
-                _speechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StartRecord();
+                Managers.Speech.StartSpeech();
                 _functions.SetActive(false);
                 _targets.SetActive(false);
                 _calling.SetActive(true);
@@ -130,7 +130,7 @@ public class SmartPhone : MonoBehaviour
 
     public void FinishCall()
     {
-        _speechRecognitor.GetComponent<SpeechRecognitor>().microphoneRecord.StopRecord();
+        Managers.Speech.StopSpeech();
         Managers.Phone.ClosePhone();
     }
 

@@ -167,17 +167,26 @@ public class BaseController : MonoBehaviour
     protected Vector3 _destPos = Vector3.zero;
     [Tooltip("MyPlayer는 적용되지 않음")]
     [SerializeField] protected float _rotationSpeed = 8f;
+    public string Place { get; set; }
     protected GameObject _phone;
     Coroutine _coSync;
+    GameObject _positionDisplay;
 
     #endregion
 
     protected virtual void Start()
     {
+        Place = "스테이션";
         _animator = GetComponent<Animator>();
         GameObject leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point");
         _phone = Managers.Resource.Instantiate("Objects/Phone", leftHand.transform);
         _phone.SetActive(false);
+
+        if(Position != null)
+        {
+            _positionDisplay = Managers.UI.CreateUI("PositionDisplay", UIManager.CanvasType.World);
+            _positionDisplay.GetComponent<FloatingUI>().Init(transform, Position, 2.0f);
+        }
     }
 
     private void Update()
@@ -291,5 +300,13 @@ public class BaseController : MonoBehaviour
     {
         if(transform.position != Pos)
             transform.position = Pos;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Map"))
+            return;
+
+        Place = other.gameObject.name;
     }
 }

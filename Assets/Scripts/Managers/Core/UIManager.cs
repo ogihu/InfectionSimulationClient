@@ -12,9 +12,16 @@ public class UIManager
         World
     }
 
+    public enum PopupType
+    {
+        AutoDestroy,
+        ManualDestroy
+    }
+
     public Dictionary<string, Stack<GameObject>> UICache { get; set; } = new Dictionary<string, Stack<GameObject>>();
-    public List<GameObject> ActiveChat { get; set; } = new List<GameObject>();
     public Stack<GameObject> PopupStack { get; set; } = new Stack<GameObject>();
+    public GameObject ScenarioPopup { get; set; }
+    Dictionary<Transform, GameObject> BubbleCache { get; set; } = new Dictionary<Transform, GameObject>();
     Canvas overlayCanvas;
     Canvas worldCanvas;
 
@@ -86,11 +93,16 @@ public class UIManager
     /// </summary>
     /// <param name="notice">팝업에 표시하고 싶은 내용 입력</param>
     /// <returns>GameObject</returns>
-    public GameObject CreatePopup(string notice)
+    public GameObject CreateScenarioPopup(string notice, PopupType type = PopupType.AutoDestroy)
     {
         GameObject popup = CreateUI("PopupNotice");
         popup.GetComponentInChildren<TMP_Text>().text = notice;
-        Managers.Instance.StartCoroutine(DestroyAfter(popup, 3.0f));
+
+        if (type == PopupType.AutoDestroy)
+            Managers.Instance.StartCoroutine(DestroyAfter(popup, 3.0f));
+        else
+            ScenarioPopup = popup;
+
         return popup;
     }
 
@@ -100,11 +112,20 @@ public class UIManager
     /// <param name="targetObject">말풍선을 띄우고 싶은 오브젝트</param>
     /// <param name="chat">말풍선에 표현하고 싶은 텍스트</param>
     /// <returns>GameObject</returns>
-    public GameObject CreateChatUI(Transform targetObject, string chat)
+    public GameObject CreateChatBubble(Transform targetObject, string chat)
     {
-        GameObject go = CreateUI("Chat", CanvasType.World);
+        GameObject go;
+
+        if (BubbleCache.ContainsKey(targetObject))
+            go = BubbleCache[targetObject];
+        else
+        {
+            go = CreateUI("Chat", CanvasType.World);
+            BubbleCache.Add(targetObject, go);
+        }
+
         go.GetComponent<PanelChatUI>().Init(targetObject, chat);
-        ActiveChat.Add(go);
+
         return go;
     }
 
@@ -112,6 +133,12 @@ public class UIManager
     {
         yield return new WaitForSeconds(time);
         DestroyUI(go);
+    }
+
+    public IEnumerator InvisibleAfter(GameObject go, float time)
+    {
+        yield return new WaitForSeconds(time);
+        go.SetActive(false);
     }
 
     public void DestroyUI(GameObject go)
@@ -138,11 +165,11 @@ public class UIManager
 
     public void ClearChat()
     {
-        foreach(var chat in ActiveChat)
-        {
-            DestroyUI(chat);
-        }
-        ActiveChat.Clear();
+        //foreach(var chat in ActiveChat)
+        //{
+        //    DestroyUI(chat);
+        //}
+        //ActiveChat.Clear();
     }
 
     public void Clear()

@@ -11,8 +11,9 @@ public class NPCController : CreatureController
     Coroutine _order;
     Queue<IEnumerator> _orderQueue = new Queue<IEnumerator>();
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = 2.0f;
         _target = null;
@@ -97,11 +98,6 @@ public class NPCController : CreatureController
     }
 
     #endregion
-
-    public void asdf()
-    {
-        NavMeshPath path = _agent.path;
-    }
 
     public void SetState(CreatureState state)
     {

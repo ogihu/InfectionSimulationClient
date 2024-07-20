@@ -9,11 +9,15 @@ public class FloatingUI : MonoBehaviour
     Transform _target;
     float _height = 3.5f;
 
-    public void Init(Transform target, string chat, float height = 3.5f)
+    public void Init(Transform target, float height = 3.5f)
     {
         _target = target;
         _height = height;
         _canvas = GetComponent<Canvas>();
+    }
+
+    public void ChangeMessage(string chat)
+    {
         GetComponentInChildren<TMP_Text>().text = chat;
     }
 

@@ -13,18 +13,20 @@ public class MyPlayerController : PlayerController
 	float mouseX = 0f;
 	Coroutine _coSendPacket;
 	public GameObject _interactionObject;
-	[SerializeField] Material[] _interactionMaterials;
-	Material _outline;
 	int _layerMask;
 
-	protected override void Start()
+	protected override void Awake()
 	{
-		base.Start();
+		base.Awake();
 		GameObject cameraArm = Managers.Resource.Instantiate("Objects/CameraArm", this.gameObject.transform);
 		_cameraArm = cameraArm.GetComponent<CameraArm>();
 		_coSendPacket = StartCoroutine(CoSyncUpdate());
-		_outline = Resources.Load<Material>("Materials/Environments/DrawOutline");
 		_layerMask = 1 << LayerMask.NameToLayer("Interaction");
+	}
+
+    private void FixedUpdate()
+    {
+		UpdateRay();
 	}
 
 	protected override void UpdateController()
@@ -34,12 +36,7 @@ public class MyPlayerController : PlayerController
 		base.UpdateController();
 	}
 
-    private void FixedUpdate()
-    {
-		UpdateRay();
-	}
-
-    protected override void UpdateMove()
+	protected override void UpdateMove()
 	{
 		base.UpdateMove();
 
@@ -68,14 +65,43 @@ public class MyPlayerController : PlayerController
 			InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit, () => { CheckUpdatedFlag(); });
 		}
 
+		//아이템 얻기
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+			if (State == CreatureState.Idle)
+				GetItem();
+		}
+
+		//휴대폰 사용/종료
         if (Input.GetKeyDown(KeyCode.P))
         {
 			if (State == CreatureState.Idle)
 				Managers.Phone.OpenPhone();
 			else if(State == CreatureState.UsingPhone)
-				Managers.Phone.ClosePhone();
+            {
+                if (Managers.Phone.Device._isCalling)
+					Managers.Phone.Device.FinishCall();
+				else
+					Managers.Phone.ClosePhone();
+            }
         }
 
+		//인벤토리 열기/닫기
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+			if (State == CreatureState.Idle)
+            {
+				State = CreatureState.UsingInventory;
+				Managers.Inventory.OpenInventory();
+            }
+			else if (State == CreatureState.UsingInventory)
+			{
+				State = CreatureState.Idle;
+				Managers.Inventory.CloseInventory();
+			}
+		}
+
+		//팝업 닫기 or 설정 열기/닫기
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!Managers.UI.ExitPopup())
@@ -87,14 +113,24 @@ public class MyPlayerController : PlayerController
 			}
 		}
 
+		//청소
 		if (Input.GetKeyDown(KeyCode.C))
 		{
 			if (State == CreatureState.Idle)
-				State = CreatureState.CleanTable;
-			else if (State == CreatureState.CleanTable)
+			{
+				Managers.Scenario.MyAction = "Clean";
+				State = CreatureState.Clean;
+			}
+		}
+		else if (Input.GetKeyUp(KeyCode.C))
+		{
+			if (State == CreatureState.Clean)
+			{
 				State = CreatureState.Idle;
+			}
 		}
 
+		//대화하기
 		if (Input.GetKeyDown(KeyCode.T))
 		{
 			if(State == CreatureState.Idle)
@@ -113,6 +149,7 @@ public class MyPlayerController : PlayerController
 			}
 		}
 
+		//시나리오 스킵
 		if (Input.GetKeyDown(KeyCode.Home))
         {
 			Managers.Scenario.CompleteCount++;
@@ -121,6 +158,12 @@ public class MyPlayerController : PlayerController
 
 	void UpdateRay()
 	{
+		if(!(State == CreatureState.Idle || State == CreatureState.Run))
+        {
+			_interactionObject = null;
+			return;
+        }
+
 		Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 		RaycastHit hitInfo;
 
@@ -130,24 +173,41 @@ public class MyPlayerController : PlayerController
 				return;
 
 			_interactionObject = hitInfo.transform.gameObject;
-			_interactionMaterials = _interactionObject.GetComponent<Renderer>().materials;
-			_interactionMaterials = Util.AddMaterial(_interactionMaterials, _outline);
-			_interactionObject.GetComponent<Renderer>().materials = _interactionMaterials;
-
-			Debug.Log("Raycast hit: " + hitInfo.transform.name);
 		}
         else
         {
 			if (_interactionObject != null)
 			{
-				_interactionMaterials = Util.RemoveMaterial(_interactionMaterials, _outline);
-				_interactionObject.GetComponent<Renderer>().materials = _interactionMaterials;
 				_interactionObject = null;
 			}
 		}
 
 		Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.red);
 	}
+
+	void GetItem()
+    {
+		if (_interactionObject == null)
+			return;
+
+		InteractableObject obj = _interactionObject.GetComponent<InteractableObject>();
+
+		if (obj == null)
+        {
+			Debug.Log("This object don't have component : InteractableObject");
+			return;
+        }
+
+		obj.GetItem();
+		State = CreatureState.PickUp;
+		StartCoroutine(CoDelayIdle(0.95f));
+    }
+
+	IEnumerator CoDelayIdle(float time)
+    {
+		yield return new WaitForSeconds(time);
+		State = CreatureState.Idle;
+    }
 
 	private void SendSyncPacket()
 	{

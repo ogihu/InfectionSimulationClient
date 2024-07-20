@@ -81,12 +81,48 @@ class PacketHandler
         if (bc == null)
             return;
 
-        GameObject bubble = Managers.UI.CreateChatBubble(bc.transform, talkPacket.Message);
+        Managers.UI.ChangeChatBubble(bc.transform, talkPacket.Message);
 
         if (!talkPacket.IsTalking)
         {
-            Managers.Instance.StartCoroutine(Managers.UI.InvisibleAfter(bubble, 5.0f));
+            Managers.Instance.StartCoroutine(Managers.UI.BubbleInvisibleAfter(bc.transform, 5.0f));
         }
+    }
+
+    public static void S_UnEquipHandler(PacketSession session, IMessage packet)
+    {
+        S_UnEquip unEquipPacket = (S_UnEquip)packet;
+
+        GameObject go = Managers.Object.FindById(unEquipPacket.Id);
+        if (go == null)
+            return;
+
+        if (Managers.Object.MyPlayer.ObjectId == unEquipPacket.Id)
+            return;
+
+        BaseController bc = go.GetComponent<BaseController>();
+        if (bc == null)
+            return;
+
+        bc.RemoveEquipment(unEquipPacket.ItemName);
+    }
+
+    public static void S_EquipHandler(PacketSession session, IMessage packet)
+    {
+        S_Equip equipPacket = (S_Equip)packet;
+        
+        GameObject go = Managers.Object.FindById(equipPacket.Id);
+        if (go == null)
+            return;
+
+        if (Managers.Object.MyPlayer.ObjectId == equipPacket.Id)
+            return;
+
+        BaseController bc = go.GetComponent<BaseController>();
+        if (bc == null)
+            return;
+
+        Managers.Resource.Instantiate($"Equipments/{equipPacket.ItemName}").GetComponent<Equipment>().Equip(bc);
     }
 
     public static void S_NextProgressHandler(PacketSession session, IMessage packet)

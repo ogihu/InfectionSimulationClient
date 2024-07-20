@@ -112,21 +112,22 @@ public class UIManager
     /// <param name="targetObject">말풍선을 띄우고 싶은 오브젝트</param>
     /// <param name="chat">말풍선에 표현하고 싶은 텍스트</param>
     /// <returns>GameObject</returns>
-    public GameObject CreateChatBubble(Transform targetObject, string chat)
+    public GameObject CreateChatBubble(Transform targetObject)
     {
-        GameObject go;
-
-        if (BubbleCache.ContainsKey(targetObject))
-            go = BubbleCache[targetObject];
-        else
-        {
-            go = CreateUI("Chat", CanvasType.World);
-            BubbleCache.Add(targetObject, go);
-        }
-
-        go.GetComponent<PanelChatUI>().Init(targetObject, chat);
+        GameObject go = CreateUI("Chat", CanvasType.World);
+        BubbleCache.Add(targetObject, go);
+        go.GetComponent<PanelChatUI>().Init(targetObject);
+        go.SetActive(false);
 
         return go;
+    }
+
+    public void ChangeChatBubble(Transform host, string message)
+    {
+        if(!BubbleCache[host].activeSelf)
+            BubbleCache[host].SetActive(true);
+
+        BubbleCache[host].GetComponent<FloatingUI>().ChangeMessage(message);
     }
 
     public IEnumerator DestroyAfter(GameObject go, float time)
@@ -139,6 +140,17 @@ public class UIManager
     {
         yield return new WaitForSeconds(time);
         go.SetActive(false);
+    }
+
+    public IEnumerator BubbleInvisibleAfter(Transform host, float time)
+    {
+        yield return new WaitForSeconds(time);
+        InvisibleBubble(host);
+    }
+
+    public void InvisibleBubble(Transform host)
+    {
+        BubbleCache[host].SetActive(false);
     }
 
     public void DestroyUI(GameObject go)
@@ -161,15 +173,6 @@ public class UIManager
         GameObject go = PopupStack.Pop();
         DestroyUI(go);
         return true;
-    }
-
-    public void ClearChat()
-    {
-        //foreach(var chat in ActiveChat)
-        //{
-        //    DestroyUI(chat);
-        //}
-        //ActiveChat.Clear();
     }
 
     public void Clear()

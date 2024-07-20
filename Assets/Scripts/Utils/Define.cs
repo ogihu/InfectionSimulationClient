@@ -44,6 +44,7 @@ public class Define
         public string Keywords { get; set; }
         public string Targets { get; set; }
         public string Speech { get; set; }
+        public string Hint { get; set; }
     }
 
     public class ScenarioInfo
@@ -56,6 +57,7 @@ public class Define
         public List<string> Keywords { get; set; } = new List<string>();
         public List<string> Targets { get; set; } = new List<string>();
         public string Speech { get; set; }
+        public string Hint { get; set; }
     }
 
     public enum Scene

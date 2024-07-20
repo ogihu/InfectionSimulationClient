@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonUI : MonoBehaviour
 {
-    private void Start()
+    protected virtual void Awake()
     {
         GetComponent<Button>().onClick.AddListener(OnClicked);
     }

@@ -71,20 +71,17 @@ public class ScenarioManager
 
         AddNPC("환자", WaitingArea);
         AddNPC("이송요원", WaitingArea);
-        //AddNPC("보안요원1", WaitingArea);
-        //AddNPC("보안요원2", WaitingArea);
-        //AddNPC("미화1", WaitingArea);
-        //AddNPC("미화2", WaitingArea);
+        AddNPC("보안요원1", WaitingArea);
+        AddNPC("보안요원2", WaitingArea);
+        AddNPC("미화1", WaitingArea);
+        AddNPC("미화2", WaitingArea);
     }
 
     void Reset()
     {
-        if (PassSpeech == true || MyAction != null || Targets.Count > 0)
-        {
-            PassSpeech = false;
-            MyAction = null;
-            Targets.Clear();
-        }
+        PassSpeech = false;
+        MyAction = null;
+        Targets.Clear();
     }
 
     #region 시나리오 패킷 관련 기능
@@ -124,7 +121,7 @@ public class ScenarioManager
         Managers.Speech.SttManager.RegisterCommand(CurrentScenarioInfo.Speech, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
-            UpdateScenarioAssist("시나리오를 진행하세요.");
+            UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");
             Managers.Instance.StartCoroutine(CoCheckAction());
             yield return new WaitUntil(() => CompleteCount >= 1);
         }
@@ -147,16 +144,15 @@ public class ScenarioManager
 
         Init(scenarioName);
 
-        NPCs["환자"].Teleport(ObservationArea);
-        NPCs["환자"].transform.rotation = Quaternion.Euler(0, -90, 0);
-
         switch (scenarioName)
         {
             case "엠폭스":
-                Managers.UI.CreateChatBubble(NPCs["환자"].transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요.\n저도 곧 보건소로부터 연락올거라고 합니다.");
+                NPCs["환자"].Teleport(ObservationArea);
+                NPCs["환자"].transform.rotation = Quaternion.Euler(0, -90, 0);
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요.\n저도 곧 보건소로부터 연락올거라고 합니다.");
                 NPCs["환자"].SetState(CreatureState.Conversation);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(1));
-                Managers.UI.CreateChatBubble(NPCs["환자"].transform, "이관리 980421 입니다.\n같이 살고있어요.");
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이관리 980421 입니다.\n같이 살고있어요.");
                 NPCs["환자"].SetState(CreatureState.Conversation);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(2));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(3));
@@ -168,14 +164,16 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(9));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(10));
 
-                Managers.UI.CreateScenarioPopup("이송요원이 환자를 격리실로 이송 중입니다. 잠시만 기다려주세요.", UIManager.PopupType.ManualDestroy);
+                Managers.UI.CreateScenarioPopup("이송요원이 환자를 격리실로 이송 중입니다.\n잠시만 기다려주세요.", UIManager.PopupType.ManualDestroy);
                 NPCs["이송요원"].Teleport(Entrance);
-                NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoGoDestination(ObservationArea));
-                yield return new WaitUntil(() => NPCs["이송요원"].Place == "관찰구역");
+                NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoFollow(NPCs["환자"].transform));
+                yield return new WaitUntil(() => (NPCs["환자"].transform.position - NPCs["이송요원"].transform.position).magnitude <= 3.0f);
+                NPCs["이송요원"].StopOrder();
                 NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoGoDestination(IsolationArea));
                 NPCs["환자"].SetOrder(NPCs["환자"].CoFollow(NPCs["이송요원"].transform));
                 yield return new WaitUntil(() => NPCs["환자"].Place == "음압격리실");
                 NPCs["환자"].StopOrder();
+                NPCs["환자"].SetOrder(NPCs["환자"].CoGoDestination(IsolationArea));
                 Managers.UI.DestroyUI(Managers.UI.ScenarioPopup);
 
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(11));
@@ -210,8 +208,7 @@ public class ScenarioManager
     //서버로부터 다음 시나리오 진행도를 받으면, 시나리오 상황 업데이트 및 변수 초기화 등 실행
     public void NextProgress(int progress)
     {
-        Managers.UI.ClearChat();
-
+        ClearNPCBubble();
         UpdateSituation();
 
         Progress = progress;
@@ -231,7 +228,7 @@ public class ScenarioManager
         ScenarioAssist.transform.GetChild(1).GetComponent<TMP_Text>().text = state;
     }
 
-    public GameObject AddNPC(string position, Vector3 spawnPoint)
+    GameObject AddNPC(string position, Vector3 spawnPoint)
     {
         GameObject go = Managers.Resource.Instantiate($"Creatures/NPC/{position}");
         
@@ -242,6 +239,14 @@ public class ScenarioManager
         NPCs.Add(nc.Position, nc);
 
         return go;
+    }
+
+    void ClearNPCBubble()
+    {
+        foreach(var npc in NPCs.Values)
+        {
+            Managers.UI.InvisibleBubble(npc.transform);
+        }
     }
 
     #endregion
@@ -265,11 +270,18 @@ public class ScenarioManager
 
     bool CheckCondition()
     {
+        if (!CheckPlace())
+            return false;
+
         if (MyAction == null)
             return false;
 
         if (CurrentScenarioInfo.Action == "Tell" || CurrentScenarioInfo.Action == "Call")
             if (PassSpeech == false)
+                return false;
+
+        if (CurrentScenarioInfo.Targets.Count > 0)
+            if (Targets.Count == 0)
                 return false;
 
         return true;
@@ -289,23 +301,31 @@ public class ScenarioManager
         if (MyAction != CurrentScenarioInfo.Action)
         {
             Managers.UI.CreateScenarioPopup("올바른 행동을 수행하지 않았습니다.");
+            Reset();
             return false;
         }
 
         if (!CheckTarget())
         {
             Managers.UI.CreateScenarioPopup("대상이 올바르지 않습니다.");
+            Reset();
             return false;
         }
 
         if(Equipment != CurrentScenarioInfo.Equipment)
         {
-            Managers.UI.CreateScenarioPopup("올바른 장비를 착용하지 않았습니다.");
+            Managers.UI.CreateScenarioPopup("현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
+            Reset();
             return false;
         }
 
+        if (!(CurrentScenarioInfo.Action == "Tell" || CurrentScenarioInfo.Action == "Call"))
+            return true;
+
         if (!PassSpeech)
         {
+            Managers.UI.CreateScenarioPopup("상황에 맞지 않는 대화이거나 대화 장소가 잘못되었습니다.");
+            Reset();
             return false;
         }
 
@@ -324,6 +344,19 @@ public class ScenarioManager
         }
 
         return true;
+    }
+
+    public bool CheckPlace()
+    {
+        //시나리오 진행 장소가 정해지지 않은 경우 통과
+        if (string.IsNullOrEmpty(CurrentScenarioInfo.Place))
+            return true;
+
+        //시나리오 진행 장소가 정해져있는 경우, 현재 내가 해당 장소에 있는지 확인
+        if (CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
+            return true;
+        else
+            return false;
     }
 
     #endregion

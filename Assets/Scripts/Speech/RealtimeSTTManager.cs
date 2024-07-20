@@ -100,7 +100,14 @@ public class RealtimeSTTManager : MonoBehaviour
 
     public void ThenDo()
     {
-        Managers.Scenario.PassSpeech = true;
+        if(String.IsNullOrEmpty(Managers.Scenario.CurrentScenarioInfo.Place))
+            Managers.Scenario.PassSpeech = true;
+        else
+        {
+            if (Managers.Scenario.CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
+                Managers.Scenario.PassSpeech = true;
+        }
+
     }
 
     public void RegisterCommand(string command, bool player)

@@ -168,25 +168,30 @@ public class BaseController : MonoBehaviour
     [Tooltip("MyPlayer는 적용되지 않음")]
     [SerializeField] protected float _rotationSpeed = 8f;
     public string Place { get; set; }
-    protected GameObject _phone;
+    Transform _rightHand;
+    Transform _leftHand;
+    protected GameObject _usingItem;
     Coroutine _coSync;
     GameObject _positionDisplay;
+    List<GameObject> Equipments = new List<GameObject>();
 
     #endregion
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         Place = "스테이션";
         _animator = GetComponent<Animator>();
-        GameObject leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point");
-        _phone = Managers.Resource.Instantiate("Objects/Phone", leftHand.transform);
-        _phone.SetActive(false);
+        _leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point").transform;
+        _rightHand = Util.FindChildByName(this.gameObject, "R_hand_grap_point").transform;
 
-        if(Position != null)
+        if (Position != null)
         {
             _positionDisplay = Managers.UI.CreateUI("PositionDisplay", UIManager.CanvasType.World);
-            _positionDisplay.GetComponent<FloatingUI>().Init(transform, Position, 2.0f);
+            _positionDisplay.GetComponent<FloatingUI>().Init(transform, 2.0f);
+            _positionDisplay.GetComponent<FloatingUI>().ChangeMessage(Position);
         }
+
+        Managers.UI.CreateChatBubble(this.transform);
     }
 
     private void Update()
@@ -258,6 +263,7 @@ public class BaseController : MonoBehaviour
         {
             case CreatureState.Idle:
             case CreatureState.Setting:
+            case CreatureState.UsingInventory:
                 _animator.Play("idle");
                 break;
             case CreatureState.Run:
@@ -269,23 +275,60 @@ public class BaseController : MonoBehaviour
             case CreatureState.UsingPhone:
                 _animator.Play("using-phone");
                 break;
-            case CreatureState.CleanTable:
-                _animator.Play("clean-table");
+            case CreatureState.Clean:
+                _animator.Play("clean");
+                break;
+            case CreatureState.PickUp:
+                _animator.Play("pickup");
                 break;
             default:
                 Debug.LogError($"There is no animation clip about {State}");
                 break;
         }
 
-        ActiveObjectOnState(State);
+        ActiveObjectOnState();
     }
 
-    void ActiveObjectOnState(CreatureState state)
+    void ActiveObjectOnState()
     {
-        if (state == CreatureState.UsingPhone)
-            _phone.SetActive(true);
+        if(State == CreatureState.UsingPhone)
+        {
+            if(_usingItem == null)
+                _usingItem = Managers.Resource.Instantiate("Objects/Phone", _leftHand);
+        }
+        else if (State == CreatureState.Clean)
+        {
+            if (_usingItem == null)
+                _usingItem = Managers.Resource.Instantiate("Objects/Spray", _rightHand);
+        }
         else
-            _phone.SetActive(false);
+        {
+            if(_usingItem != null)
+                Managers.Resource.Destroy(_usingItem);
+        }
+    }
+
+    public void AddEquipment(GameObject equipment)
+    {
+        Equipments.Add(equipment);
+    }
+
+    public void RemoveEquipment(GameObject equipment)
+    {
+        Equipments.Remove(equipment);
+    }
+
+    public void RemoveEquipment(string itemName)
+    {
+        foreach(var equipment in Equipments)
+        {
+            if(equipment.name == itemName)
+            {
+                RemoveEquipment(equipment);
+                Managers.Resource.Destroy(equipment);
+                return;
+            }
+        }
     }
 
     public void UpdateSync()

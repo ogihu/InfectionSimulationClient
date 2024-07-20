@@ -40,8 +40,6 @@ public class SpeechManager
         }
     }
 
-    bool _isTalking = false;
-
     GameObject _mySpeech;
     public GameObject MySpeech
     {

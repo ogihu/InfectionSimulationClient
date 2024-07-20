@@ -22,6 +22,7 @@ public class SmartPhone : MonoBehaviour
 
     public List<Message> Messages { get; set; } = new List<Message>();
     bool _initialized = false;
+    public bool _isCalling = false;
 
     private void OnEnable()
     {
@@ -108,6 +109,7 @@ public class SmartPhone : MonoBehaviour
                 _functions.SetActive(false);
                 _targets.SetActive(false);
                 _calling.SetActive(true);
+                _isCalling = true;
                 break;
             case "KakaoTalk":
                 Managers.Phone.ClosePhone();
@@ -130,6 +132,7 @@ public class SmartPhone : MonoBehaviour
 
     public void FinishCall()
     {
+        _isCalling = false;
         Managers.Speech.StopSpeech();
         Managers.Phone.ClosePhone();
     }

@@ -6,6 +6,20 @@ using static Define;
 
 public class MyPlayerController : PlayerController
 {
+	public override CreatureState State
+    {
+        get
+        {
+			return base.State;
+        }
+        set
+        {
+			base.State = value;
+			UpdateCursor();
+			Debug.Log($"현재 상태 : {State}");
+        }
+    }
+
 	[SerializeField] private float _syncTimer = 0.5f;
 	[SerializeField] float _camRotationSpeed;
 	[SerializeField] float raycastDistance = 2f;
@@ -46,7 +60,7 @@ public class MyPlayerController : PlayerController
 
 	protected override void UpdateRotation()
 	{
-		if (!(State == CreatureState.Idle || State == CreatureState.Run))
+		if (!IsCanActive())
 			return;
 
 		_cameraArm.CameraRotation(_camRotationSpeed);
@@ -55,9 +69,28 @@ public class MyPlayerController : PlayerController
 		Dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 	}
 
+	void UpdateCursor()
+    {
+		Cursor.lockState = !(IsCanActive() || State == CreatureState.PickUp) ? CursorLockMode.None : CursorLockMode.Locked;
+		Cursor.visible = !(IsCanActive() || State == CreatureState.PickUp);
+		
+		if (Cursor.visible)
+			Debug.Log("커서 활성화");
+		else
+			Debug.Log("커서 비활성화");
+	}
+
+	bool IsCanActive()
+    {
+		if(State == CreatureState.Idle || State == CreatureState.Run)
+			return true;
+
+		return false;
+    }
+
 	void GetKeyInput()
 	{
-		if(State == CreatureState.Idle || State == CreatureState.Run)
+		if(IsCanActive())
         {
 			InputBit = Managers.Input.SetKeyInput(KeyCode.W, InputBit, () => { CheckUpdatedFlag(); });
 			InputBit = Managers.Input.SetKeyInput(KeyCode.A, InputBit, () => { CheckUpdatedFlag(); });
@@ -158,8 +191,11 @@ public class MyPlayerController : PlayerController
 
 	void UpdateRay()
 	{
-		if(!(State == CreatureState.Idle || State == CreatureState.Run))
+		if(!IsCanActive())
         {
+			if (_interactionObject != null)
+				_interactionObject.GetComponent<InteractableObject>().InActiveKeyUI();
+
 			_interactionObject = null;
 			return;
         }
@@ -171,13 +207,23 @@ public class MyPlayerController : PlayerController
 		{
 			if (hitInfo.transform.gameObject == _interactionObject)
 				return;
+			
+			if (_interactionObject != null)
+            {
+				if (hitInfo.transform.gameObject != _interactionObject)
+				{
+					_interactionObject.GetComponent<InteractableObject>().InActiveKeyUI();
+				}
+			}
 
 			_interactionObject = hitInfo.transform.gameObject;
+			_interactionObject.GetComponent<InteractableObject>().ActiveKeyUI();
 		}
         else
         {
 			if (_interactionObject != null)
 			{
+				_interactionObject.GetComponent<InteractableObject>().InActiveKeyUI();
 				_interactionObject = null;
 			}
 		}

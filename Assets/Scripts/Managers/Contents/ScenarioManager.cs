@@ -348,6 +348,12 @@ public class ScenarioManager
 
     public bool CheckPlace()
     {
+        if (CurrentScenarioInfo == null)
+            return true;
+
+        if (CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
+            return true;
+
         //시나리오 진행 장소가 정해지지 않은 경우 통과
         if (string.IsNullOrEmpty(CurrentScenarioInfo.Place))
             return true;

@@ -59,6 +59,8 @@ public class InventoryManager
 
         equipment.Equip(Managers.Object.MyPlayer);
         Inventory.UpdateItemList();
+        Managers.Scenario.MyAction = "Equip";
+        Managers.Scenario.Equipment = item.ItemData.Name;
         SelectedItem = null;
 }
 
@@ -73,6 +75,12 @@ public class InventoryManager
         if (item.Object == null || item.Equiped == false)
             return;
 
+        if (!Managers.Scenario.CheckPlace())
+        {
+            Debug.Log("올바른 장소에서 장비를 해제하세요.");
+            return;
+        }
+
         C_UnEquip unEquipPacket = new C_UnEquip();
         unEquipPacket.ItemName = item.ItemData.Name;
         Managers.Network.Send(unEquipPacket);
@@ -83,6 +91,8 @@ public class InventoryManager
         item.Equiped = false;
         Inventory.UpdateItemList();
         SelectedItem = null;
+        Managers.Scenario.MyAction = "UnEquip";
+        Managers.Scenario.Equipment = null;
     }
 
     public void DropItem(Item item)
@@ -90,6 +100,12 @@ public class InventoryManager
         if (item == null)
         {
             Debug.Log("There is no selected item");
+            return;
+        }
+
+        if (!Managers.Scenario.CheckPlace())
+        {
+            Debug.Log("올바른 장소에서 장비를 버리세요.");
             return;
         }
 

@@ -28,7 +28,7 @@ public class BaseController : MonoBehaviour
     }
 
     //캐릭터 상태
-    public CreatureState State
+    public virtual CreatureState State
     {
         get { return MoveInfo.State; }
         set
@@ -168,12 +168,14 @@ public class BaseController : MonoBehaviour
     [Tooltip("MyPlayer는 적용되지 않음")]
     [SerializeField] protected float _rotationSpeed = 8f;
     public string Place { get; set; }
-    Transform _rightHand;
-    Transform _leftHand;
     protected GameObject _usingItem;
     Coroutine _coSync;
     GameObject _positionDisplay;
-    List<GameObject> Equipments = new List<GameObject>();
+    public GameObject Equipment;
+
+    //도구 부착할 Transform
+    Transform _rightHand;
+    Transform _leftHand;
 
     #endregion
 
@@ -184,14 +186,17 @@ public class BaseController : MonoBehaviour
         _leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point").transform;
         _rightHand = Util.FindChildByName(this.gameObject, "R_hand_grap_point").transform;
 
+        Managers.UI.CreateChatBubble(this.transform);
+    }
+
+    protected virtual void Start()
+    {
         if (Position != null)
         {
             _positionDisplay = Managers.UI.CreateUI("PositionDisplay", UIManager.CanvasType.World);
             _positionDisplay.GetComponent<FloatingUI>().Init(transform, 2.0f);
             _positionDisplay.GetComponent<FloatingUI>().ChangeMessage(Position);
         }
-
-        Managers.UI.CreateChatBubble(this.transform);
     }
 
     private void Update()
@@ -213,7 +218,9 @@ public class BaseController : MonoBehaviour
 
         if (InputBit == 0)
         {
-            State = CreatureState.Idle;
+            if(State != CreatureState.Idle)
+                State = CreatureState.Idle;
+
             return;
         }
 
@@ -310,24 +317,21 @@ public class BaseController : MonoBehaviour
 
     public void AddEquipment(GameObject equipment)
     {
-        Equipments.Add(equipment);
+        Equipment = equipment;
     }
 
     public void RemoveEquipment(GameObject equipment)
     {
-        Equipments.Remove(equipment);
+        Equipment = null;
     }
 
     public void RemoveEquipment(string itemName)
     {
-        foreach(var equipment in Equipments)
+        if (Equipment.name == itemName)
         {
-            if(equipment.name == itemName)
-            {
-                RemoveEquipment(equipment);
-                Managers.Resource.Destroy(equipment);
-                return;
-            }
+            Managers.Resource.Destroy(Equipment);
+            RemoveEquipment(Equipment);
+            return;
         }
     }
 

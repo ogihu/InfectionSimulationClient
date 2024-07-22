@@ -54,6 +54,15 @@ public class Inventory : MonoBehaviour
 
     public void ChangeItemText(string name)
     {
+        switch (name)
+        {
+            case "Mask":
+                name = "마스크";
+                break;
+            case "ProtectiveGear":
+                name = "4종 보호구";
+                break;
+        }
         _itemName.text = name;
     }
 

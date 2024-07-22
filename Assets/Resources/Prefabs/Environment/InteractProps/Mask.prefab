@@ -119,7 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f431806d6e302546b567598ebd3755d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ObjectName: "\uB9C8\uC2A4\uD06C"
   _itemData:
-    _itemName: 
-    _icon: {fileID: 0}
-    _prefab: {fileID: 0}
+    Name: 
+    Icon: {fileID: 0}
+    Prefab: {fileID: 0}

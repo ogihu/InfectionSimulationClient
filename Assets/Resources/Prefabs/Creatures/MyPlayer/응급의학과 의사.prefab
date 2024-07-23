@@ -968,11 +968,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _rotationSpeed: 8
+  Equipment: {fileID: 0}
   _syncTimer: 0.3
   _camRotationSpeed: 6
   raycastDistance: 2
   _interactionObject: {fileID: 0}
-  _interactionMaterials: []
 --- !u!82 &2677265941901766202
 AudioSource:
   m_ObjectHideFlags: 0

@@ -349,8 +349,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7557820098519874409}
   m_Father: {fileID: 0}
@@ -520,11 +520,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _rotationSpeed: 8
+  Equipment: {fileID: 0}
   _syncTimer: 0.3
   _camRotationSpeed: 6
   raycastDistance: 2
   _interactionObject: {fileID: 0}
-  _interactionMaterials: []
 --- !u!82 &8571007817535702174
 AudioSource:
   m_ObjectHideFlags: 0

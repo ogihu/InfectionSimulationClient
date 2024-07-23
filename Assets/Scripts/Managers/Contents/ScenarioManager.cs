@@ -312,11 +312,14 @@ public class ScenarioManager
             return false;
         }
 
-        if(Equipment != CurrentScenarioInfo.Equipment)
+        if (!string.IsNullOrEmpty(CurrentScenarioInfo.Equipment))
         {
-            Managers.UI.CreateScenarioPopup("현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
-            Reset();
-            return false;
+            if (Equipment != CurrentScenarioInfo.Equipment)
+            {
+                Managers.UI.CreateScenarioPopup("현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
+                Reset();
+                return false;
+            }
         }
 
         if (!(CurrentScenarioInfo.Action == "Tell" || CurrentScenarioInfo.Action == "Call"))

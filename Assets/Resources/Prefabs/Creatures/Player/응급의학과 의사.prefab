@@ -968,6 +968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 2
   _rotationSpeed: 8
+  Equipment: {fileID: 0}
 --- !u!82 &-2340613495533517903
 AudioSource:
   m_ObjectHideFlags: 0

@@ -16,8 +16,8 @@ TagManager:
   - MyPlayer
   - NPC
   - Bubble
-  - ControlWall
-  - 
+  - ControlArea
+  - WarningArea
   - 
   - 
   - 

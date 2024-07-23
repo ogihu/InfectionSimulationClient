@@ -163,33 +163,35 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(8));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(9));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(10));
-
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(11));
+                //환자 음압격리실로 이송
                 {
-                    Managers.UI.CreateScenarioPopup("이송요원이 환자를 격리실로 이송할 때 까지 동선 통제가 있을 예정입니다.\n잠시만 기다려주세요.", UIManager.PopupType.ManualDestroy);
                     NPCs["보안요원1"].Teleport(Entrance);
                     NPCs["보안요원2"].Teleport(Entrance);
                     Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     NPCs["이송요원"].Teleport(Entrance);
                     NPCs["보안요원1"].SetOrder(NPCs["보안요원1"].CoGoDestination(EntranceControlPoint));
-                    yield return new WaitUntil(() => (!NPCs["보안요원1"].IsWorking()));
                     NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoFollow(NPCs["환자"].transform));
                     NPCs["보안요원2"].SetOrder(NPCs["보안요원2"].CoFollow(NPCs["이송요원"].transform));
+                    yield return new WaitUntil(() => (!NPCs["보안요원1"].IsWorking()));
                     yield return new WaitUntil(() => (NPCs["환자"].transform.position - NPCs["이송요원"].transform.position).magnitude <= 3.0f);
                     NPCs["이송요원"].StopOrder();
                     NPCs["보안요원2"].StopOrder();
                     NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoGoDestination(IsolationArea));
                     NPCs["보안요원2"].SetOrder(NPCs["보안요원2"].CoFollow(NPCs["이송요원"].transform));
+                    GameObject go = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
                     NPCs["환자"].SetOrder(NPCs["환자"].CoFollow(NPCs["보안요원2"].transform));
                     yield return new WaitUntil(() => NPCs["환자"].Place == "음압격리실");
+                    Managers.Resource.Destroy(go);
                     NPCs["환자"].StopOrder();
                     NPCs["환자"].SetOrder(NPCs["환자"].CoGoDestination(IsolationArea));
-                    Managers.UI.DestroyUI(Managers.UI.ScenarioPopup);
                 }
-
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(11));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(12));
-
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(13));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 break;
         }
 

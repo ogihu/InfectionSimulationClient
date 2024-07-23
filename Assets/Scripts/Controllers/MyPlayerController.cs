@@ -34,7 +34,7 @@ public class MyPlayerController : PlayerController
 	protected override void Awake()
 	{
 		base.Awake();
-		GameObject cameraArm = Managers.Resource.Instantiate("Objects/CameraArm", this.gameObject.transform);
+		GameObject cameraArm = Managers.Resource.Instantiate("System/CameraArm", this.gameObject.transform);
 		_cameraArm = cameraArm.GetComponent<CameraArm>();
 		_coSendPacket = StartCoroutine(CoSyncUpdate());
 		_layerMask = 1 << LayerMask.NameToLayer("Interaction");

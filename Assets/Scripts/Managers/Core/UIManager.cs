@@ -95,8 +95,19 @@ public class UIManager
     /// <returns>GameObject</returns>
     public GameObject CreateScenarioPopup(string notice, PopupType type = PopupType.AutoDestroy)
     {
-        GameObject popup = CreateUI("PopupNotice");
-        popup.GetComponentInChildren<TMP_Text>().text = notice;
+        GameObject popup;
+
+        if (ScenarioPopup == null)
+        {
+            popup = CreateUI("PopupNotice");
+            popup.GetComponentInChildren<TMP_Text>().text = notice;
+        }
+        else
+        {
+            popup = ScenarioPopup;
+            popup.SetActive(true);
+            popup.GetComponentInChildren<TMP_Text>().text = notice;
+        }
 
         if (type == PopupType.AutoDestroy)
             Managers.Instance.StartCoroutine(DestroyAfter(popup, 3.0f));

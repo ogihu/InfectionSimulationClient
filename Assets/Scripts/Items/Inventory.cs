@@ -45,7 +45,8 @@ public class Inventory : MonoBehaviour
 
         for (; i < _itemSlots.Count; i++)
         {
-            Managers.UI.DestroyUI(_itemSlots[i].gameObject);
+            //Managers.UI.DestroyUI(_itemSlots[i].gameObject);
+            Object.Destroy(_itemSlots[i].gameObject);
         }
 
         Debug.Log($"아이템 슬롯 업데이트 - 보유한 아이템 {Managers.Inventory.ItemList.Count}개, 슬롯 {_itemSlots.Count}개");

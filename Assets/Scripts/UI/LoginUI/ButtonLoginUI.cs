@@ -6,9 +6,23 @@ using Google.Protobuf.Protocol;
 
 public class ButtonLoginUI : ButtonUI
 {
+    bool _isPressed;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        _isPressed = false;
+    }
+
     protected override void OnClicked()
     {
         base.OnClicked();
+
+        if (_isPressed)
+            return;
+
+        _isPressed = true;
+
         GameObject go = Managers.Resource.FindObject("InputName");
         string name = go.GetComponent<TMP_InputField>().text;
 

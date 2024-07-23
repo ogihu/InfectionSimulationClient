@@ -1,7 +1,10 @@
 ﻿using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static Define;
 
 public class MyPlayerController : PlayerController
@@ -15,8 +18,7 @@ public class MyPlayerController : PlayerController
         set
         {
 			base.State = value;
-			UpdateCursor();
-			Debug.Log($"현재 상태 : {State}");
+            UpdateCursor();
         }
     }
 
@@ -38,17 +40,13 @@ public class MyPlayerController : PlayerController
 		_layerMask = 1 << LayerMask.NameToLayer("Interaction");
 	}
 
-    private void FixedUpdate()
-    {
-		UpdateRay();
-	}
-
 	protected override void UpdateController()
 	{
-		UpdateRotation();
-		GetKeyInput();
 		base.UpdateController();
-	}
+		GetKeyInput();
+        UpdateObjectRay();
+        UpdateWorldUIRay();
+    }
 
 	protected override void UpdateMove()
 	{
@@ -69,18 +67,13 @@ public class MyPlayerController : PlayerController
 		Dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
 	}
 
-	void UpdateCursor()
+    void UpdateCursor()
     {
-		Cursor.lockState = !(IsCanActive() || State == CreatureState.PickUp) ? CursorLockMode.None : CursorLockMode.Locked;
-		Cursor.visible = !(IsCanActive() || State == CreatureState.PickUp);
-		
-		if (Cursor.visible)
-			Debug.Log("커서 활성화");
-		else
-			Debug.Log("커서 비활성화");
-	}
+        Cursor.lockState = !(IsCanActive() || State == CreatureState.PickUp) ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = !(IsCanActive() || State == CreatureState.PickUp);
+    }
 
-	bool IsCanActive()
+    bool IsCanActive()
     {
 		if(State == CreatureState.Idle || State == CreatureState.Run)
 			return true;
@@ -142,12 +135,12 @@ public class MyPlayerController : PlayerController
 				if (State == CreatureState.Idle)
 					Managers.UI.CreateUI("Setting");
 				else if (State == CreatureState.Setting)
-					Managers.UI.DestroyUI(GameObject.Find("Setting"));
+					Managers.UI.DestroyUI(Util.FindChildByName(Managers.UI.overlayCanvas.gameObject, "Setting"));
 			}
 		}
 
 		//청소
-		if (Input.GetKeyDown(KeyCode.C))
+		if (Input.GetKeyDown(KeyCode.L))
 		{
 			if (State == CreatureState.Idle)
 			{
@@ -155,7 +148,7 @@ public class MyPlayerController : PlayerController
 				State = CreatureState.Clean;
 			}
 		}
-		else if (Input.GetKeyUp(KeyCode.C))
+		else if (Input.GetKeyUp(KeyCode.L))
 		{
 			if (State == CreatureState.Clean)
 			{
@@ -187,9 +180,24 @@ public class MyPlayerController : PlayerController
         {
 			Managers.Scenario.CompleteCount++;
         }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+			Managers.Bubble.PrevPage();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+			Managers.Bubble.NextPage();
+        }
+
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			Managers.Bubble.CloseBubble();
+		}
 	}
 
-	void UpdateRay()
+	void UpdateObjectRay()
 	{
 		if(!IsCanActive())
         {
@@ -228,7 +236,43 @@ public class MyPlayerController : PlayerController
 			}
 		}
 
-		Debug.DrawRay(ray.origin, ray.direction * raycastDistance, Color.red);
+		Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
+	}
+
+	void UpdateWorldUIRay()
+    {
+		if (!IsCanActive())
+			return;
+
+		if (Input.GetMouseButtonDown(0))
+		{
+			PointerEventData pointerData = new PointerEventData(EventSystem.current)
+			{
+				position = Input.mousePosition
+			};
+
+			List<RaycastResult> results = new List<RaycastResult>();
+			EventSystem.current.RaycastAll(pointerData, results);
+
+			if (results.Count > 0)
+			{
+				RaycastResult closestResult = results
+				.Where(result => result.gameObject.layer == LayerMask.NameToLayer("Bubble"))
+				.OrderBy(result => result.distance)
+				.FirstOrDefault();
+
+				if (closestResult.gameObject != null)
+				{
+					Button button = closestResult.gameObject.GetComponent<Button>();
+
+					if (button != null)
+					{
+						button.onClick.Invoke();
+						Managers.Bubble.ChangeButtonColor();
+					}
+				}
+			}
+		}
 	}
 
 	void GetItem()

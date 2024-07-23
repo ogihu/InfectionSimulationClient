@@ -22,8 +22,8 @@ public class UIManager
     public Stack<GameObject> PopupStack { get; set; } = new Stack<GameObject>();
     public GameObject ScenarioPopup { get; set; }
     Dictionary<Transform, GameObject> BubbleCache { get; set; } = new Dictionary<Transform, GameObject>();
-    Canvas overlayCanvas;
-    Canvas worldCanvas;
+    public Canvas overlayCanvas;
+    public Canvas worldCanvas;
 
     /// <summary>
     /// Resources/Prefabs/UI 폴더 산하에 있는 UI를 생성 및 리턴

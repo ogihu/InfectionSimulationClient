@@ -10,6 +10,9 @@ public class LoginScene : BaseScene
 
         Application.runInBackground = true;
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         GameObject go = GameObject.Find("LoginUI");
         if(go == null)
         {

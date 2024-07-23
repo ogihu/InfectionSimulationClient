@@ -82,11 +82,6 @@ class PacketHandler
             return;
 
         Managers.UI.ChangeChatBubble(bc.transform, talkPacket.Message);
-
-        if (!talkPacket.IsTalking)
-        {
-            Managers.Instance.StartCoroutine(Managers.UI.BubbleInvisibleAfter(bc.transform, 5.0f));
-        }
     }
 
     public static void S_UnEquipHandler(PacketSession session, IMessage packet)

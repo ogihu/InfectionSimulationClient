@@ -246,7 +246,6 @@ public class RealtimeSTTManager : MonoBehaviour
         Debug.Log(cleanTranscription);
 
         C_Talk talkPacket = new C_Talk();
-        talkPacket.IsTalking = true;
         talkPacket.Message = cleanTranscription;
         Managers.Network.Send(talkPacket);
 
@@ -315,7 +314,6 @@ public class RealtimeSTTManager : MonoBehaviour
         Debug.Log(cleanTranscription);
 
         C_Talk talkPacket = new C_Talk();
-        talkPacket.IsTalking = false;
         talkPacket.Message = cleanTranscription;
         Managers.Network.Send(talkPacket);
 

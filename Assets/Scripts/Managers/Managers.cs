@@ -13,12 +13,14 @@ public class Managers : MonoBehaviour
     ScenarioManager _scenario = new ScenarioManager();
     PhoneManager _phone = new PhoneManager();
     InventoryManager _inventory = new InventoryManager();
+    BubbleManager _bubble = new BubbleManager();    
 
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
     public static ScenarioManager Scenario { get { return Instance._scenario; } }
     public static PhoneManager Phone { get { return Instance._phone; } }
     public static InventoryManager Inventory { get { return Instance._inventory; } }
+    public static BubbleManager Bubble { get { return Instance._bubble; } }
     #endregion
 
     #region Core

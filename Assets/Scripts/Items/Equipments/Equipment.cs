@@ -7,6 +7,7 @@ public class Equipment : MonoBehaviour
 {
     public virtual void Equip(BaseController character)
     {
+        gameObject.layer = character.gameObject.layer;
         character.AddEquipment(this.gameObject);
     }
 }

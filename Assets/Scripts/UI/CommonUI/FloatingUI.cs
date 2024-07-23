@@ -16,7 +16,7 @@ public class FloatingUI : MonoBehaviour
         _canvas = GetComponent<Canvas>();
     }
 
-    public void ChangeMessage(string chat)
+    public virtual void ChangeMessage(string chat)
     {
         GetComponentInChildren<TMP_Text>().text = chat;
     }

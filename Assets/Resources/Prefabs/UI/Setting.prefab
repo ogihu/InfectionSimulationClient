@@ -101,9 +101,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T(Hold) - \uB9D0\uD558\uAE30(STT)\nY - \uC2DC\uB098\uB9AC\uC624 \uC2DC\uC791\nP{Toggle)
-    - \uD734\uB300\uC804\uD654 \uC0AC\uC6A9\nHome - \uC2DC\uB098\uB9AC\uC624 \uAC15\uC81C
-    \uC9C4\uD589\n"
+  m_text: "T(Hold) - \uB9D0\uD558\uAE30(STT)\nY - \uC2DC\uB098\uB9AC\uC624 \uC2DC\uC791\nP(Toggle)
+    - \uD734\uB300\uC804\uD654 \uC0AC\uC6A9\nL - \uCCAD\uC18C\nI - \uC778\uBCA4\uD1A0\uB9AC\nE
+    - \uC544\uC774\uD15C \uD68D\uB4DD\nZ - \uB9D0\uD48D\uC120 \uC774\uC804 \uBB38\uC7A5\nX
+    - \uB9D0\uD48D\uC120 \uB2E4\uC74C \uBB38\uC7A5\nC - \uB9D0\uD48D\uC120 \uB2EB\uAE30\nHome
+    - \uC2DC\uB098\uB9AC\uC624 \uAC15\uC81C \uC9C4\uD589\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d3e6875ca48c6143a9b060c1143ea44, type: 2}
   m_sharedMaterial: {fileID: -7633551795266376032, guid: 6d3e6875ca48c6143a9b060c1143ea44,

@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\UI\GameUI\ButtonInventory.cs" />
     <Compile Include="Assets\Scripts\Utils\Define.cs" />
     <Compile Include="Assets\Scripts\Controllers\CreatureController.cs" />
+    <Compile Include="Assets\Scripts\UI\CommonUI\PoolableUI.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\SettingUI.cs" />
     <Compile Include="Assets\Scripts\Managers\Core\InputManager.cs" />
     <Compile Include="Assets\Scripts\Managers\Contents\ObjectManager.cs" />

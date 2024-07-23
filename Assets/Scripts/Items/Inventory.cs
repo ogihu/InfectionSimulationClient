@@ -34,7 +34,19 @@ public class Inventory : MonoBehaviour
         for (; i < Managers.Inventory.ItemList.Count; i++)
         {
             if (i < _itemSlots.Count)
+            {
                 _itemSlots[i].SetItem(Managers.Inventory.ItemList[i]);
+                Button button = _itemSlots[i].GetComponent<Button>();
+                button.transition = Selectable.Transition.None;
+                ColorBlock colors = button.colors;
+                colors.normalColor = Color.white; // 기본 상태의 색상 설정
+                colors.highlightedColor = Color.white; // 강조된 상태의 색상 설정
+                colors.pressedColor = Color.gray; // 눌린 상태의 색상 설정
+                colors.selectedColor = Color.gray; // 선택된 상태의 색상 설정
+                colors.disabledColor = Color.gray; // 비활성화된 상태의 색상 설정
+                button.colors = colors;
+                button.transition = Selectable.Transition.ColorTint;
+            }
             else
             {
                 ButtonItemSlot itemSlot = Managers.UI.CreateUI("ItemSlot", _content).GetComponent<ButtonItemSlot>();
@@ -45,8 +57,8 @@ public class Inventory : MonoBehaviour
 
         for (; i < _itemSlots.Count; i++)
         {
-            //Managers.UI.DestroyUI(_itemSlots[i].gameObject);
-            Object.Destroy(_itemSlots[i].gameObject);
+            Managers.UI.DestroyUI(_itemSlots[i].gameObject);
+            _itemSlots.Remove(_itemSlots[i]);
         }
 
         Debug.Log($"아이템 슬롯 업데이트 - 보유한 아이템 {Managers.Inventory.ItemList.Count}개, 슬롯 {_itemSlots.Count}개");

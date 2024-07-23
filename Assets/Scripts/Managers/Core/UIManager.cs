@@ -82,7 +82,10 @@ public class UIManager
         }
 
         go = Managers.Resource.Instantiate($"UI/{name}", parent);
-        UICache.Add(name, new Stack<GameObject>());
+        if (go.GetComponent<PoolableUI>())
+        {
+            UICache.Add(name, new Stack<GameObject>());
+        }
         go.SetActive(true);
 
         return go;

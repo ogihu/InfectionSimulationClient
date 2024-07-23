@@ -64,7 +64,6 @@ public class Inventory : MonoBehaviour
         Debug.Log($"아이템 슬롯 업데이트 - 보유한 아이템 {Managers.Inventory.ItemList.Count}개, 슬롯 {_itemSlots.Count}개");
     }
 
-
     public void ChangeItemText(string name)
     {
         switch (name)
@@ -81,7 +80,7 @@ public class Inventory : MonoBehaviour
 
     private void OnEnable()
     {
-        _itemName.text = "아이템 이름";
+        _itemName.text = "";
         UpdateItemList();
     }
 }

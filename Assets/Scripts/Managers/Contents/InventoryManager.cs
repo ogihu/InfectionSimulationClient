@@ -62,6 +62,7 @@ public class InventoryManager
         Managers.Scenario.MyAction = "Equip";
         Managers.Scenario.Equipment = item.ItemData.Name;
         SelectedItem = null;
+        Inventory.ChangeItemText("");
 }
 
     public void UnEquipItem(Item item)
@@ -91,6 +92,7 @@ public class InventoryManager
         item.Equiped = false;
         Inventory.UpdateItemList();
         SelectedItem = null;
+        Inventory.ChangeItemText("");
         Managers.Scenario.MyAction = "UnEquip";
         Managers.Scenario.Equipment = null;
     }
@@ -113,6 +115,7 @@ public class InventoryManager
         ItemList.Remove(item);
         Inventory.UpdateItemList();
         SelectedItem = null;
+        Inventory.ChangeItemText("");
     }
 
     public void OpenInventory()

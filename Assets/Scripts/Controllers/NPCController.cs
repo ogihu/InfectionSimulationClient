@@ -99,6 +99,14 @@ public class NPCController : CreatureController
 
     #endregion
 
+    public bool IsWorking()
+    {
+        if (State == CreatureState.Idle)
+            return false;
+
+        return true;
+    }
+
     public void SetState(CreatureState state)
     {
         if (_agent.velocity != Vector3.zero)

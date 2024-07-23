@@ -26,11 +26,12 @@ public class PanelChatUI : FloatingUI
 
     void SetBuffer(string chat)
     {
+        MessageBuffer.Clear();
+
         if (string.IsNullOrEmpty(chat))
             return;
 
-        MessageBuffer.Clear();
-        string[] chatSplit = chat.Split('.');
+        string[] chatSplit = chat.Split(".\n");
 
         foreach(var message in chatSplit)
         {

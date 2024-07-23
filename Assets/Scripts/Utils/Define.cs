@@ -11,6 +11,9 @@ public class Define
     public static readonly Vector3 WaitingArea = new Vector3(-35, 0, 15);
     public static readonly Vector3 ObservationArea = new Vector3(11.5f, 0, 0);
     public static readonly Vector3 IsolationArea = new Vector3(22, 0, -44);
+    public static readonly Vector3 EntranceControlPoint = new Vector3(-5, 0, 13);
+    public static readonly Vector3 CorridorControlPoint = new Vector3(-5, 0, -16);
+    public static readonly Vector3 Station = new Vector3(-12, 0, -9);
 
     public static readonly string[] PhoneAddress =
     {

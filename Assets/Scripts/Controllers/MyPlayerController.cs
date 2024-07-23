@@ -181,16 +181,19 @@ public class MyPlayerController : PlayerController
 			Managers.Scenario.CompleteCount++;
         }
 
+		//말풍선 이전 문장
         if (Input.GetKeyDown(KeyCode.Z))
         {
 			Managers.Bubble.PrevPage();
         }
 
+		//말풍선 다음 문장
         if (Input.GetKeyDown(KeyCode.X))
         {
 			Managers.Bubble.NextPage();
         }
 
+		//말풍선 닫기
 		if (Input.GetKeyDown(KeyCode.C))
 		{
 			Managers.Bubble.CloseBubble();

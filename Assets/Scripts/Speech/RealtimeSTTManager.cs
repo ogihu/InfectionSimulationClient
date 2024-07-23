@@ -277,6 +277,15 @@ public class RealtimeSTTManager : MonoBehaviour
 
         string cleanTranscription = CleanText(res.Result);
 
+        if (string.IsNullOrWhiteSpace(cleanTranscription))
+        {
+            Managers.Speech.UpdateMySpeech(cleanTranscription);
+            Managers.Speech.CloseMySpeech(5.0f);
+            CheckInferencing.text = "입력된 음성이 없습니다.";
+            Microphone.ClearSavedClips();
+            return;
+        }
+
         if (CurCommand.text != null)
         {
             string confidenceReadout = "";

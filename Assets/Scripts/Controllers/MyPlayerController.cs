@@ -25,7 +25,7 @@ public class MyPlayerController : PlayerController
 	[SerializeField] private float _syncTimer = 0.5f;
 	[SerializeField] float _camRotationSpeed;
 	[SerializeField] float raycastDistance = 2f;
-	CameraArm _cameraArm;
+	public CameraArm _cameraArm;
 	float mouseX = 0f;
 	Coroutine _coSendPacket;
 	public GameObject _interactionObject;
@@ -90,6 +90,8 @@ public class MyPlayerController : PlayerController
 			InputBit = Managers.Input.SetKeyInput(KeyCode.S, InputBit, () => { CheckUpdatedFlag(); });
 			InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit, () => { CheckUpdatedFlag(); });
 		}
+        else
+			InputBit = 0;
 
 		//아이템 얻기
         if (Input.GetKeyDown(KeyCode.E))

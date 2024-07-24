@@ -12,6 +12,8 @@ public class Inventory : MonoBehaviour
     ButtonInventory _equipButton;
     ButtonInventory _unEquipButton;
     ButtonInventory _dropButton;
+    RawImage _myCharacter;
+    Camera _tpCam;
 
     List<ButtonItemSlot> _itemSlots = new List<ButtonItemSlot>();
 
@@ -22,10 +24,30 @@ public class Inventory : MonoBehaviour
         _equipButton = Util.FindChildByName(gameObject, "EquipButton").GetComponent<ButtonInventory>();
         _unEquipButton = Util.FindChildByName(gameObject, "UnEquipButton").GetComponent<ButtonInventory>();
         _dropButton = Util.FindChildByName(gameObject, "DropButton").GetComponent<ButtonInventory>();
+        _myCharacter = Util.FindChildByName(gameObject, "ThirdPersonView").GetComponent<RawImage>();
 
         _equipButton.SetEvent(Managers.Inventory.EquipItem);
         _unEquipButton.SetEvent(Managers.Inventory.UnEquipItem);
         _dropButton.SetEvent(Managers.Inventory.DropItem);
+    }
+
+    private void OnEnable()
+    {
+        _tpCam = Managers.Resource.Instantiate("System/ThirdPersonCamera").GetComponent<Camera>();
+        Vector3 camPos = Managers.Object.MyPlayer.transform.position + Managers.Object.MyPlayer.transform.forward * 2;
+        camPos.y += 1;
+        _tpCam.transform.position = camPos;
+        Vector3 lookAt = Managers.Object.MyPlayer.transform.position + Managers.Object.MyPlayer.transform.up;
+        _tpCam.transform.LookAt(lookAt);
+        _tpCam.targetTexture = Managers.Resource.Load<RenderTexture>("Textures/RenderTextures/ThirdPersonRenderTexture");
+        _myCharacter.texture = _tpCam.targetTexture;
+        _itemName.text = "";
+        UpdateItemList();
+    }
+
+    private void OnDisable()
+    {
+        Managers.Resource.Destroy(_tpCam.gameObject);
     }
 
     public void UpdateItemList()
@@ -76,11 +98,5 @@ public class Inventory : MonoBehaviour
                 break;
         }
         _itemName.text = name;
-    }
-
-    private void OnEnable()
-    {
-        _itemName.text = "";
-        UpdateItemList();
     }
 }

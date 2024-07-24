@@ -37,8 +37,8 @@ public class FloatingUI : MonoBehaviour
         if (GetComponent<RectTransform>().anchoredPosition3D == _target.position)
             return;
 
-        GetComponent<RectTransform>().anchoredPosition3D = new Vector3(_target.position.x, _target.position.y + _height, _target.position.z);
-        Vector3 dir = GetComponent<RectTransform>().anchoredPosition3D - Camera.main.transform.position;
+        GetComponent<RectTransform>().position = new Vector3(_target.position.x, _target.position.y + _height, _target.position.z);
+        Vector3 dir = GetComponent<RectTransform>().position - Camera.main.transform.position;
         dir = new Vector3(dir.x, 0, dir.z);
         Quaternion rotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, rotation.eulerAngles.y, transform.rotation.eulerAngles.z);

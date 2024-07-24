@@ -11,6 +11,7 @@ public class Setting : MonoBehaviour
 
     private void OnDisable()
     {
-        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
+        if(Managers.Instance != null)
+            Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
     }
 }

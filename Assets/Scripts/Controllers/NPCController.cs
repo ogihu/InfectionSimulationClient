@@ -99,6 +99,22 @@ public class NPCController : CreatureController
 
     #endregion
 
+    public void Equip(string equipment)
+    {
+        GameObject eqm = Managers.Resource.Instantiate($"Equipments/{equipment}");
+        Equipment component = eqm.GetComponent<Equipment>();
+        
+        if (component == null)
+            return;
+
+        component.Equip(this);
+    }
+
+    public void UnEquip(string equipment)
+    {
+        RemoveEquipment(equipment);
+    }
+
     public bool IsWorking()
     {
         if (State == CreatureState.Idle)

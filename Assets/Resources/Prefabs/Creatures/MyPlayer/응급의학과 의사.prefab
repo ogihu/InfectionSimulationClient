@@ -835,7 +835,7 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -972,6 +972,7 @@ MonoBehaviour:
   _syncTimer: 0.3
   _camRotationSpeed: 6
   raycastDistance: 2
+  _cameraArm: {fileID: 0}
   _interactionObject: {fileID: 0}
 --- !u!82 &2677265941901766202
 AudioSource:

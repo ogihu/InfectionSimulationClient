@@ -76,12 +76,6 @@ public class InventoryManager
         if (item.Object == null || item.Equiped == false)
             return;
 
-        if (!Managers.Scenario.CheckPlace())
-        {
-            Debug.Log("올바른 장소에서 장비를 해제하세요.");
-            return;
-        }
-
         C_UnEquip unEquipPacket = new C_UnEquip();
         unEquipPacket.ItemName = item.ItemData.Name;
         Managers.Network.Send(unEquipPacket);
@@ -102,12 +96,6 @@ public class InventoryManager
         if (item == null)
         {
             Debug.Log("There is no selected item");
-            return;
-        }
-
-        if (!Managers.Scenario.CheckPlace())
-        {
-            Debug.Log("올바른 장소에서 장비를 버리세요.");
             return;
         }
 

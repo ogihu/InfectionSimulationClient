@@ -168,6 +168,8 @@ public class ScenarioManager
                 {
                     NPCs["보안요원1"].Teleport(Entrance);
                     NPCs["보안요원2"].Teleport(Entrance);
+                    NPCs["보안요원1"].Equip("Mask");
+                    NPCs["보안요원2"].Equip("Mask");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     NPCs["이송요원"].Teleport(Entrance);
@@ -362,7 +364,7 @@ public class ScenarioManager
         return true;
     }
 
-    public bool CheckPlace()
+    bool CheckPlace()
     {
         if (CurrentScenarioInfo == null)
             return true;

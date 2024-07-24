@@ -95,7 +95,7 @@ namespace Whisper.Utils
                     .Select(text => new TMP_Dropdown.OptionData(text))
                     .ToList();
                 microphoneDropdown.value = microphoneDropdown.options
-                    .FindIndex(op => op.text == microphoneDefaultLabel);
+                    .FindIndex(op => op.text == SelectedMicDevice);
                 microphoneDropdown.onValueChanged.AddListener(OnMicrophoneChanged);
             }
         }
@@ -162,8 +162,14 @@ namespace Whisper.Utils
             recordingTime = 0;
         }
 
-        public void ClearSavedClips()
+        public void ClearClips()
         {
+            if(_clip != null)
+            {
+                Microphone.End(RecordStartMicDevice);
+                _clip = null;
+            }
+
             _savedClips.Clear();
         }
     }

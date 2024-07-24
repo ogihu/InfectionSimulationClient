@@ -164,6 +164,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(9));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(10));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(11));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(12));
                 //환자 음압격리실로 이송
                 {
                     NPCs["보안요원1"].Teleport(Entrance);
@@ -189,7 +190,6 @@ public class ScenarioManager
                     NPCs["환자"].StopOrder();
                     NPCs["환자"].SetOrder(NPCs["환자"].CoGoDestination(IsolationArea));
                 }
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(12));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(13));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));

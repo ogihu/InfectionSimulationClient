@@ -282,7 +282,7 @@ public class RealtimeSTTManager : MonoBehaviour
             Managers.Speech.UpdateMySpeech(cleanTranscription);
             Managers.Speech.CloseMySpeech(5.0f);
             CheckInferencing.text = "입력된 음성이 없습니다.";
-            Microphone.ClearSavedClips();
+            Microphone.ClearClips();
             return;
         }
 
@@ -330,8 +330,7 @@ public class RealtimeSTTManager : MonoBehaviour
         Managers.Speech.CloseMySpeech(5.0f);
 
         CheckInferencing.text = "입력된 음성이 없습니다.";
-
-        Microphone.ClearSavedClips();
+        Microphone.ClearClips();
     }
 
     string CleanText(string input)

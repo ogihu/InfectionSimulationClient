@@ -197,6 +197,7 @@ public class BaseController : MonoBehaviour
             _positionDisplay.GetComponent<FloatingUI>().Init(transform, 2.0f);
             _positionDisplay.GetComponent<FloatingUI>().ChangeMessage(Position);
         }
+        LoadMeshAndMat(Position);
     }
 
     private void Update()
@@ -347,6 +348,14 @@ public class BaseController : MonoBehaviour
     {
         if(transform.position != Pos)
             transform.position = Pos;
+    }
+
+    public void LoadMeshAndMat(string name)
+    {
+        SkinnedMeshRenderer smr = GetComponent<SkinnedMeshRenderer>();
+        smr.sharedMesh = Resources.Load<Mesh>($"Models/Characters/{name}");
+        Material[] materials = Resources.LoadAll<Material>($"Materials/Characters/{name}");
+        smr.materials = materials;
     }
 
     private void OnTriggerEnter(Collider other)

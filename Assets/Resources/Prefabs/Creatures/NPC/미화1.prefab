@@ -269,7 +269,7 @@ GameObject:
   - component: {fileID: -8885357404954146815}
   - component: {fileID: 4680353228814511309}
   - component: {fileID: 791952817893315141}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\uBBF8\uD6541"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -333,9 +333,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dc279c80a031cd54b9409549e2f07c3d, type: 2}
-  - {fileID: 2100000, guid: eb20f6a3f80a64f4ea673fa4cbe491b5, type: 2}
-  - {fileID: 2100000, guid: eb20f6a3f80a64f4ea673fa4cbe491b5, type: 2}
+  - {fileID: 2100000, guid: c2dea1e5d2ffd4c40a5a34edef3ffe5f, type: 2}
+  - {fileID: 2100000, guid: 36ce666ef16849a4ea8305899d5a8d42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -360,7 +359,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 4da00ee8abde16d419cc31e7e1930060, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 7f53f47b48e6039409029819afd64092, type: 2}
   m_Bones:
   - {fileID: 6232943216419101832}
   - {fileID: 2803774587858270568}

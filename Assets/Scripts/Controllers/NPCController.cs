@@ -17,6 +17,8 @@ public class NPCController : CreatureController
         _agent = GetComponent<NavMeshAgent>();
         _agent.stoppingDistance = 2.0f;
         _target = null;
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("NPC"), LayerMask.NameToLayer("Player"), true);
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("NPC"), LayerMask.NameToLayer("MyPlayer"), true);
     }
 
     protected override void UpdateMove()

@@ -196,7 +196,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 break;
         }
-
+        
         Managers.UI.CreateScenarioPopup($"{scenarioName} 시나리오를 완료하셨습니다.");
     }
 

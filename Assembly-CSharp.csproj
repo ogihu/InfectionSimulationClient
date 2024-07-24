@@ -114,6 +114,7 @@
     <Compile Include="Assets\Scripts\Items\Equipments\Equipment.cs" />
     <Compile Include="Assets\Scripts\Managers\Managers.cs" />
     <Compile Include="Assets\Scripts\Packet\ClientPacketHandler.cs" />
+    <Compile Include="Assets\Scripts\Items\Equipments\ProtectiveGear.cs" />
     <Compile Include="Assets\Scripts\ServerCore\Session.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\ButtonPhoneFuncConfirm.cs" />
     <Compile Include="Assets\Scripts\Controllers\BaseController.cs" />

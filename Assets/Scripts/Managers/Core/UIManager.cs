@@ -164,7 +164,8 @@ public class UIManager
 
     public void InvisibleBubble(Transform host)
     {
-        BubbleCache[host].SetActive(false);
+        if(BubbleCache[host] != null)
+            BubbleCache[host].SetActive(false);
     }
 
     public void DestroyUI(GameObject go)

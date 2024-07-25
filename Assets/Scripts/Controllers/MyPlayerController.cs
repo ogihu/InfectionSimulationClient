@@ -31,7 +31,7 @@ public class MyPlayerController : PlayerController
 	public GameObject _interactionObject;
 	int _layerMask;
 
-	protected override void Awake()
+	public override void Awake()
 	{
 		base.Awake();
 		GameObject cameraArm = Managers.Resource.Instantiate("System/CameraArm", this.gameObject.transform);

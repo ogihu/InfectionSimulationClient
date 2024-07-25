@@ -11,7 +11,7 @@ public class NPCController : CreatureController
     Coroutine _order;
     Queue<IEnumerator> _orderQueue = new Queue<IEnumerator>();
 
-    protected override void Awake()
+    public override void Awake()
     {
         base.Awake();
         _agent = GetComponent<NavMeshAgent>();

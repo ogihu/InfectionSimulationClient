@@ -63,6 +63,7 @@ public class SpeechManager
         if (message == null)
             return;
 
+        ResetBuffer();
         _speechBuffer = message;
 
         MySpeech.SetActive(true);
@@ -82,11 +83,6 @@ public class SpeechManager
     public void StopSpeech()
     {
         SttManager.Microphone.StopRecord();
-    }
-
-    public void AddStringToBuffer(string speech)
-    {
-        SpeechBuffer += speech;
     }
 
     public void ResetBuffer()

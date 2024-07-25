@@ -137,6 +137,12 @@ public class InventoryManager
             return;
         }
 
+        if(Managers.Scenario.CurrentScenarioInfo == null)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 버릴 수 있는 상황이 아닙니다.");
+            return;
+        }
+
         //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnEquip")
         {
@@ -159,13 +165,24 @@ public class InventoryManager
 
     public void OpenInventory()
     {
-        Inventory = Managers.UI.CreateUI("Inventory").GetComponent<Inventory>();
+        if (Inventory == null)
+        {
+            Inventory = Managers.UI.CreateUI("Inventory").GetComponent<Inventory>();
+        }
+        else
+        {
+            Debug.Log("Inventory is already open.");
+        }
     }
 
     public void CloseInventory()
     {
-        SelectedItem = null;
-        Managers.UI.DestroyUI(Inventory.gameObject);
+        if (Inventory != null)
+        {
+            SelectedItem = null;
+            Managers.UI.DestroyUI(Inventory.gameObject);
+            Inventory = null;
+        }
     }
 
     public void Clear()

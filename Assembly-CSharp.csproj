@@ -131,7 +131,6 @@
     <Compile Include="Assets\Scripts\UI\GameUI\ButtonPhoneFuncCancel.cs" />
     <Compile Include="Assets\Scripts\UI\GameUI\ButtonPhoneFinishCall.cs" />
     <Compile Include="Assets\Scripts\UI\CommonUI\ButtonUI.cs" />
-    <Compile Include="Assets\Scripts\Speech\RealtimeSTT.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\TextMesh Pro\Shaders\TMPro.cginc" />

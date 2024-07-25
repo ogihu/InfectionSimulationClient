@@ -320,22 +320,14 @@ public class BaseController : MonoBehaviour
 
     public void AddEquipment(GameObject equipment)
     {
+        RemoveEquipment();
         Equipment = equipment;
     }
 
-    public void RemoveEquipment(GameObject equipment)
+    public void RemoveEquipment()
     {
-        Equipment = null;
-    }
-
-    public void RemoveEquipment(string itemName)
-    {
-        if (Equipment.name == itemName)
-        {
-            Managers.Resource.Destroy(Equipment);
-            RemoveEquipment(Equipment);
-            return;
-        }
+        if (Equipment != null)
+            Equipment.GetComponent<Equipment>().UnEquip(this);
     }
 
     public void UpdateSync()

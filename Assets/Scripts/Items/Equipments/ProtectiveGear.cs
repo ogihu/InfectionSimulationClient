@@ -17,4 +17,11 @@ public class ProtectiveGear : Equipment
 
         gameObject.transform.SetParent(parent.transform, false);
     }
+
+    public override void UnEquip(BaseController character)
+    {
+        character.LoadMeshAndMat(character.Position);
+
+        base.UnEquip(character);
+    }
 }

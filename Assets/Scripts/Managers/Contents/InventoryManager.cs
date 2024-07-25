@@ -50,13 +50,19 @@ public class InventoryManager
             return;
         }
 
-        //시나리오 상 본인의 차례가 아니거나, 장비를 착용할 단계가 아닐 경우 취소
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "Equip")
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "장비를 착용할 수 있는 상황이 아닙니다.");
             return;
         }
 
+        if (Managers.Scenario.CurrentScenarioInfo.Equipment != item.ItemData.Name)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "현재 필요한 장비가 아닙니다.");
+            return;
+        }
+
+        ItemList.ForEach(item => { if (item.Equiped == true) UnEquipItem(item); });
         item.Object = Managers.Resource.Instantiate(item.ItemData.Prefab);
         item.Equiped = true;
 
@@ -110,10 +116,9 @@ public class InventoryManager
         }
 
         C_UnEquip unEquipPacket = new C_UnEquip();
-        unEquipPacket.ItemName = item.ItemData.Name;
         Managers.Network.Send(unEquipPacket);
 
-        Managers.Object.MyPlayer.RemoveEquipment(item.Object);
+        Managers.Object.MyPlayer.RemoveEquipment();
         Managers.Resource.Destroy(item.Object);
         item.Object = null;
         item.Equiped = false;
@@ -135,7 +140,7 @@ public class InventoryManager
         //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnEquip")
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 버릴 수 있는 상황이 아닙니다.");
             return;
         }
 

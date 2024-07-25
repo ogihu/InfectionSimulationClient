@@ -112,9 +112,9 @@ public class NPCController : CreatureController
         component.Equip(this);
     }
 
-    public void UnEquip(string equipment)
+    public void UnEquip()
     {
-        RemoveEquipment(equipment);
+        RemoveEquipment();
     }
 
     public bool IsWorking()

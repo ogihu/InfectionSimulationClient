@@ -99,7 +99,7 @@ class PacketHandler
         if (bc == null)
             return;
 
-        bc.RemoveEquipment(unEquipPacket.ItemName);
+        bc.RemoveEquipment();
     }
 
     public static void S_EquipHandler(PacketSession session, IMessage packet)

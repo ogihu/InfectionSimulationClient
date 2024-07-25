@@ -10,4 +10,10 @@ public class Equipment : MonoBehaviour
         gameObject.layer = character.gameObject.layer;
         character.AddEquipment(this.gameObject);
     }
+
+    public virtual void UnEquip(BaseController character)
+    {
+        Managers.Resource.Destroy(gameObject);
+        character.Equipment = null;
+    }
 }

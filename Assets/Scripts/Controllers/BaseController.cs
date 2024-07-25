@@ -172,6 +172,7 @@ public class BaseController : MonoBehaviour
     Coroutine _coSync;
     GameObject _positionDisplay;
     public GameObject Equipment;
+    protected AudioSource _audioSource;
 
     //도구 부착할 Transform
     Transform _rightHand;
@@ -183,6 +184,7 @@ public class BaseController : MonoBehaviour
     {
         Place = "스테이션";
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
         _leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point").transform;
         _rightHand = Util.FindChildByName(this.gameObject, "R_hand_grap_point").transform;
 
@@ -356,6 +358,11 @@ public class BaseController : MonoBehaviour
         smr.sharedMesh = Resources.Load<Mesh>($"Models/Characters/{name}");
         Material[] materials = Resources.LoadAll<Material>($"Materials/Characters/{name}");
         smr.materials = materials;
+    }
+
+    void MakeSound(string clipName)
+    {
+        Managers.Sound.Play(_audioSource, clipName);
     }
 
     private void OnTriggerEnter(Collider other)

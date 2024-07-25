@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class ControlSphere : MonoBehaviour
 {
-    public string _message = "격리 환자를 이송 중 입니다.\n가까이 접근하지 마세요.";
+    public string _message;
     GameObject _popup;
+
+    private void Awake()
+    {
+        _message = "격리 환자를 이송 중 입니다.\n가까이 접근하지 마세요.";
+    }
 
     private void OnTriggerEnter(Collider other)
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -35,8 +36,23 @@ public class PanelChatUI : FloatingUI
 
         foreach(var message in chatSplit)
         {
-            if(!string.IsNullOrEmpty(message))
-                MessageBuffer.Add(message);
+            if (!string.IsNullOrEmpty(message))
+            {
+                if (message.Length <= 54)
+                {
+                    MessageBuffer.Add(message);
+                }
+                else
+                {
+                    int startIndex = 0;
+                    while (startIndex < message.Length)
+                    {
+                        int length = Math.Min(54, message.Length - startIndex);
+                        MessageBuffer.Add(message.Substring(startIndex, length));
+                        startIndex += length;
+                    }
+                }
+            }
         }
     }
 
@@ -67,5 +83,25 @@ public class PanelChatUI : FloatingUI
     public void CloseBubble()
     {
         Managers.UI.DestroyUI(this.gameObject);
+    }
+
+    List<string> SplitStringByLength(string str, int length)
+    {
+        List<string> result = new List<string>();
+        int strLength = str.Length;
+
+        for (int i = 0; i < strLength; i += length)
+        {
+            if (i + length > strLength)
+            {
+                result.Add(str.Substring(i));
+            }
+            else
+            {
+                result.Add(str.Substring(i, length));
+            }
+        }
+
+        return result;
     }
 }

@@ -123,7 +123,7 @@ public class SmartPhone : MonoBehaviour
                 _calling.SetActive(true);
                 _isCalling = true;
                 break;
-            case "KakaoTalk":
+            case "Messenger":
                 Managers.Phone.ClosePhone();
                 break;
         }

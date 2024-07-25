@@ -8,14 +8,7 @@ public class ProtectiveGear : Equipment
     {
         base.Equip(character);
 
-        Transform parent = Util.FindChildByName(character.gameObject, "basic_rig Spine").transform;
-        if (parent == null)
-        {
-            Debug.Log("Can't find transform");
-            return;
-        }
-
-        gameObject.transform.SetParent(parent.transform, false);
+        character.LoadMeshAndMat("ProtectedGear");
     }
 
     public override void UnEquip(BaseController character)

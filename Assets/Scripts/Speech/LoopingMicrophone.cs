@@ -111,6 +111,7 @@ namespace Whisper.Utils
         {
             OnRecordStart?.Invoke();
             RecordStartMicDevice = SelectedMicDevice;
+            ClearClips();
             _clip = Microphone.Start(RecordStartMicDevice, true, maxLengthSec, frequency);
             IsRecording = true;
         }

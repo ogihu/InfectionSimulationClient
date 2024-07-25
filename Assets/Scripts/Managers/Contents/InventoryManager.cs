@@ -132,6 +132,13 @@ public class InventoryManager
             return;
         }
 
+        //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
+        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnEquip")
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
+            return;
+        }
+
         if (!Managers.Scenario.CheckPlace())
         {
             Debug.Log("올바른 장소에서 버리세요.");

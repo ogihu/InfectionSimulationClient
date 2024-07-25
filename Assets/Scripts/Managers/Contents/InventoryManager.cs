@@ -37,11 +37,26 @@ public class InventoryManager
             return;
         }
 
+        //이미 착용한 장비일 경우 취소
         if (item.Equiped == true || item.Object != null)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "이미 착용하고 있는 장비입니다.");
             return;
+        }
 
-        //기존에 착용한 장비는 해제하고 새 장비 착용
-        ItemList.ForEach(item => UnEquipItem(item));
+        if(Managers.Scenario.CurrentScenarioInfo == null)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 착용할 수 있는 상황이 아닙니다.");
+            return;
+        }
+
+        //시나리오 상 본인의 차례가 아니거나, 장비를 착용할 단계가 아닐 경우 취소
+        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "Equip")
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 착용할 수 있는 상황이 아닙니다.");
+            return;
+        }
+
         item.Object = Managers.Resource.Instantiate(item.ItemData.Prefab);
         item.Equiped = true;
 
@@ -73,12 +88,24 @@ public class InventoryManager
             return;
         }
 
+        //선택한 장비를 착용하고 있지 않을 경우 취소
         if (item.Object == null || item.Equiped == false)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "해당 장비를 착용하고 있지 않습니다.");
             return;
+        }
 
+        //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
+        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnEquip")
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
+            return;
+        }
+
+        //시나리오 상 정해진 위치에서 탈의를 해야 할 경우
         if (!Managers.Scenario.CheckPlace())
         {
-            Debug.Log("올바른 장소에서 해제하세요.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "올바른 장소에서 장비를 해제하세요.");
             return;
         }
 

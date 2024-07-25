@@ -136,10 +136,10 @@ public class ScenarioManager
 
     IEnumerator CoScenario(string scenarioName)
     {
-        Managers.UI.CreateScenarioPopup($"{scenarioName} 시나리오를 시작합니다.");
+        Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 시작합니다.");
         yield return new WaitForSeconds(3.0f);
 
-        Managers.UI.CreateScenarioPopup($"사랑합니다.\n지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다.\n모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
+        Managers.UI.CreateSystemPopup("PopupNotice", $"사랑합니다.\n지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다.\n모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
         yield return new WaitForSeconds(3.0f);
 
         Init(scenarioName);
@@ -197,7 +197,7 @@ public class ScenarioManager
                 break;
         }
         
-        Managers.UI.CreateScenarioPopup($"{scenarioName} 시나리오를 완료하셨습니다.");
+        Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 완료하셨습니다.");
     }
 
     #endregion
@@ -281,6 +281,7 @@ public class ScenarioManager
         }
 
         CompleteCount++;
+        Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과했습니다.");
     }
 
     bool CheckCondition()
@@ -315,14 +316,14 @@ public class ScenarioManager
     {
         if (MyAction != CurrentScenarioInfo.Action)
         {
-            Managers.UI.CreateScenarioPopup("올바른 행동을 수행하지 않았습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "올바른 행동을 수행하지 않았습니다.");
             Reset();
             return false;
         }
 
         if (!CheckTarget())
         {
-            Managers.UI.CreateScenarioPopup("대상이 올바르지 않습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "대상이 올바르지 않습니다.");
             Reset();
             return false;
         }
@@ -331,7 +332,7 @@ public class ScenarioManager
         {
             if (Equipment != CurrentScenarioInfo.Equipment)
             {
-                Managers.UI.CreateScenarioPopup("현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
+                Managers.UI.CreateSystemPopup("WarningPopup", "현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
                 Reset();
                 return false;
             }
@@ -342,7 +343,7 @@ public class ScenarioManager
 
         if (!PassSpeech)
         {
-            Managers.UI.CreateScenarioPopup("상황에 맞지 않는 대화이거나 대화 장소가 잘못되었습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "상황에 맞지 않는 대화이거나 대화 장소가 잘못되었습니다.");
             Reset();
             return false;
         }

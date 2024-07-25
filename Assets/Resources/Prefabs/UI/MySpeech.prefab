@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8557201603893695401}
   - component: {fileID: 1685468456730876596}
   - component: {fileID: 6872530562740519868}
+  - component: {fileID: 7985266745204792648}
   m_Layer: 5
   m_Name: MySpeech
   m_TagString: Untagged
@@ -76,6 +77,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.4
+--- !u!114 &7985266745204792648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209517517590149787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc6d4f30de243b4f92165a8ee900199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8981443660089216566
 GameObject:
   m_ObjectHideFlags: 0

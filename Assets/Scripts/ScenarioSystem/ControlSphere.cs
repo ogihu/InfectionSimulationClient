@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class ControlSphere : MonoBehaviour
 {
-    public string message;
+    public string _message = "격리 환자를 이송 중 입니다.\n가까이 접근하지 마세요.";
+    GameObject _popup;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer != LayerMask.NameToLayer("MyPlayer"))
             return;
 
-        Managers.UI.CreateScenarioPopup(message, UIManager.PopupType.ManualDestroy);
+        _popup = Managers.UI.CreateSystemPopup("PopupNotice", _message, UIManager.PopupType.ManualDestroy);
     }
 
     private void OnTriggerExit(Collider other)
@@ -19,7 +20,7 @@ public class ControlSphere : MonoBehaviour
         if (other.gameObject.layer != LayerMask.NameToLayer("MyPlayer"))
             return;
 
-        if (Managers.UI.ScenarioPopup != null)
-            Managers.UI.DestroyUI(Managers.UI.ScenarioPopup);
+        if (_popup != null)
+            _popup.GetComponent<SystemPopup>().AutoDestroy(0);
     }
 }

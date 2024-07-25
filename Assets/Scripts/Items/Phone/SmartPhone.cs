@@ -75,6 +75,18 @@ public class SmartPhone : MonoBehaviour
         {
             case "Call":
             case "Messenger":
+                if (Managers.Scenario.CurrentScenarioInfo == null)
+                {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능을 사용할 수 있는 상황이 아닙니다.");
+                    return;
+                }
+
+                if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Call" || Managers.Scenario.CurrentScenarioInfo.Action == "Messenger"))
+                {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능을 사용할 수 있는 상황이 아닙니다.");
+                    return;
+                }
+
                 Managers.Scenario.MyAction = funcName;
                 _functions.SetActive(false);
                 _targets.SetActive(true);

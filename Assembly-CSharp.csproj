@@ -82,7 +82,6 @@
     <Compile Include="Assets\Scripts\Managers\Core\SettingManager.cs" />
     <Compile Include="Assets\Scripts\Items\Equipments\Mask.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\UI\CommonUI\Popup.cs" />
     <Compile Include="Assets\Scripts\UI\LoginUI\ButtonLoginUI.cs" />
     <Compile Include="Assets\Scripts\ServerCore\RecvBuffer.cs" />
     <Compile Include="Assets\Scripts\Managers\Contents\InventoryManager.cs" />
@@ -119,6 +118,8 @@
     <Compile Include="Assets\Scripts\UI\GameUI\ButtonPhoneFuncConfirm.cs" />
     <Compile Include="Assets\Scripts\Controllers\BaseController.cs" />
     <Compile Include="Assets\Scripts\Session\ServerSession.cs" />
+    <Compile Include="Assets\Scripts\UI\CommonUI\SystemPopup.cs" />
+    <Compile Include="Assets\Scripts\UI\CommonUI\ContentPopup.cs" />
     <Compile Include="Assets\Scripts\Items\Map.cs" />
     <Compile Include="Assets\Scripts\Scenes\LobbyScene.cs" />
     <Compile Include="Assets\Scripts\Scenes\GameScene.cs" />

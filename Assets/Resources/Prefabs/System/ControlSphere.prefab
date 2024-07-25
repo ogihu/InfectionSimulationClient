@@ -98,5 +98,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3eca436be196b846897e1b2a5e4263d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "\uD658\uC790\uB97C \uC774\uC1A1 \uC911\uC774\uB2C8 \uAC00\uAE4C\uC774
-    \uC811\uADFC\uD558\uC9C0 \uB9C8\uC138\uC694."
+  _message: 

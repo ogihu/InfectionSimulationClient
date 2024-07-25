@@ -19,8 +19,8 @@ public class UIManager
     }
 
     public Dictionary<string, Stack<GameObject>> UICache { get; set; } = new Dictionary<string, Stack<GameObject>>();
-    public Stack<GameObject> PopupStack { get; set; } = new Stack<GameObject>();
-    public GameObject ScenarioPopup { get; set; }
+    public Stack<GameObject> ContentPopups { get; set; } = new Stack<GameObject>();
+    public Dictionary<string, SystemPopup> SystemPopups { get; set; } = new Dictionary<string, SystemPopup>();
     Dictionary<Transform, GameObject> BubbleCache { get; set; } = new Dictionary<Transform, GameObject>();
     public Canvas overlayCanvas;
     public Canvas worldCanvas;
@@ -82,7 +82,7 @@ public class UIManager
         }
 
         go = Managers.Resource.Instantiate($"UI/{name}", parent);
-        if (go.GetComponent<PoolableUI>())
+        if (go.GetComponent<PoolableUI>() != null)
         {
             UICache.Add(name, new Stack<GameObject>());
         }
@@ -96,28 +96,26 @@ public class UIManager
     /// </summary>
     /// <param name="notice">팝업에 표시하고 싶은 내용 입력</param>
     /// <returns>GameObject</returns>
-    public GameObject CreateScenarioPopup(string notice, PopupType type = PopupType.AutoDestroy)
+    
+    public GameObject CreateSystemPopup(string name, string notice, PopupType type = PopupType.AutoDestroy)
     {
-        GameObject popup;
+        SystemPopup popup;
 
-        if (ScenarioPopup == null)
-        {
-            popup = CreateUI("PopupNotice");
-            popup.GetComponentInChildren<TMP_Text>().text = notice;
-        }
+        if (SystemPopups.ContainsKey(name))
+            popup = SystemPopups[name];
         else
         {
-            popup = ScenarioPopup;
-            popup.SetActive(true);
-            popup.GetComponentInChildren<TMP_Text>().text = notice;
+            GameObject go = CreateUI(name);
+            popup = go.GetComponent<SystemPopup>();
+            SystemPopups.Add(name, popup);
         }
+
+        popup.ChangeText(notice);
 
         if (type == PopupType.AutoDestroy)
-            Managers.Instance.StartCoroutine(DestroyAfter(popup, 3.0f));
-        else
-            ScenarioPopup = popup;
+            popup.AutoDestroy(3.0f);
 
-        return popup;
+        return popup.gameObject;
     }
 
     /// <summary>
@@ -182,10 +180,10 @@ public class UIManager
 
     public bool ExitPopup()
     {
-        if (PopupStack.Count == 0)
+        if (ContentPopups.Count == 0)
             return false;
 
-        GameObject go = PopupStack.Pop();
+        GameObject go = ContentPopups.Pop();
         DestroyUI(go);
         return true;
     }

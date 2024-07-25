@@ -198,7 +198,7 @@ public class BaseController : MonoBehaviour
             _positionDisplay.GetComponent<FloatingUI>().Init(transform, 2.0f);
             _positionDisplay.GetComponent<FloatingUI>().ChangeMessage(Position);
         }
-        LoadMeshAndMat(Position);
+        //LoadMeshAndMat("ProtectedGear");
     }
 
     private void Update()

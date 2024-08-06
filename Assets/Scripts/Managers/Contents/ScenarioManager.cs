@@ -127,7 +127,7 @@ public class ScenarioManager
         }
         else
         {
-            UpdateScenarioAssist("다른 플레이어가 시나리오를 진행 중 입니다...");
+            UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
         }
         SendComplete();
 

@@ -14,7 +14,7 @@ public class InteractableObject : MonoBehaviour
     {
         _itemData = new ItemData(gameObject.name);
         _interactionKey = Managers.UI.CreateUI("InteractionKey", UIManager.CanvasType.World).GetComponent<FloatingUI>();
-        _interactionKey.Init(transform, 0.2f);
+        _interactionKey.Init(transform, 0.4f, true);
         InActiveKeyUI();
     }
 

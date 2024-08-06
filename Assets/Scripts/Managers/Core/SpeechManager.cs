@@ -63,11 +63,10 @@ public class SpeechManager
         if (message == null)
             return;
 
-        ResetBuffer();
         _speechBuffer = message;
 
         MySpeech.SetActive(true);
-        MySpeech.transform.GetChild(0).GetComponent<TMP_Text>().text = _speechBuffer;
+        MySpeech.GetComponent<TextTwinkle>().PrintText(_speechBuffer, MySpeech);
     }
 
     public void CloseMySpeech(float time)

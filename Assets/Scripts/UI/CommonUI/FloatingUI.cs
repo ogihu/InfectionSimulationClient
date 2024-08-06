@@ -8,8 +8,9 @@ public class FloatingUI : MonoBehaviour
     Canvas _canvas;
     Transform _target;
     float _height = 3.5f;
+    bool _isStatic = false;
 
-    public void Init(Transform target, float height = 3.5f)
+    public void Init(Transform target, float height = 3.5f, bool isStatic = false)
     {
         _target = target;
         _height = height;
@@ -23,6 +24,9 @@ public class FloatingUI : MonoBehaviour
 
     private void Update()
     {
+        if (_isStatic)
+            return;
+
         ChasingTarget();
     }
 

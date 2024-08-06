@@ -69,8 +69,9 @@ public class SpeechManager
         MySpeech.GetComponent<TextTwinkle>().PrintText(_speechBuffer, MySpeech);
     }
 
-    public void CloseMySpeech(float time)
+    public IEnumerator CloseMySpeech(float time)
     {
+        yield return new WaitUntil(() => MySpeech.GetComponent<TextTwinkle>().IsPrinting == false);
         Managers.Instance.StartCoroutine(Managers.UI.InvisibleAfter(MySpeech, time));
     }
 

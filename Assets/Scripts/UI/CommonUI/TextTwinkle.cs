@@ -6,13 +6,17 @@ using UnityEngine;
 public class TextTwinkle : MonoBehaviour
 {
     TMP_Text printText;
+    public bool IsPrinting { get; private set; }
 
     public void PrintText(string print, GameObject MySpeech)
     {
         StartCoroutine(Typing(print, MySpeech));
     }
+
     public IEnumerator Typing(string print, GameObject MySpeech)
     {
+        IsPrinting = true;
+
         printText = MySpeech.transform.GetChild(0).GetComponent<TMP_Text>();
         printText.text = null;
         for (int i = 0; i < print.Length; i++)
@@ -21,5 +25,7 @@ public class TextTwinkle : MonoBehaviour
 
             yield return new WaitForSeconds(0.05f);
         }
+
+        IsPrinting = false;
     }
 }

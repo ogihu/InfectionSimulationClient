@@ -277,7 +277,7 @@ public class RealtimeSTTManager : MonoBehaviour
         if (string.IsNullOrWhiteSpace(cleanTranscription))
         {
             Managers.Speech.UpdateMySpeech(cleanTranscription);
-            Managers.Speech.CloseMySpeech(5.0f);
+            StartCoroutine(Managers.Speech.CloseMySpeech(3.0f));
             CheckInferencing.text = "입력된 음성이 없습니다.";
             Microphone.ClearClips();
             return;
@@ -303,7 +303,7 @@ public class RealtimeSTTManager : MonoBehaviour
         Managers.Network.Send(talkPacket);
 
         Managers.Speech.UpdateMySpeech(cleanTranscription);
-        Managers.Speech.CloseMySpeech(5.0f);
+        StartCoroutine(Managers.Speech.CloseMySpeech(3.0f));
 
         CheckInferencing.text = "입력된 음성이 없습니다.";
         Microphone.ClearClips();

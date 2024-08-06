@@ -13,8 +13,8 @@ public class ScenarioTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            Managers.Scenario.SendScenarioInfo("¿¥Æø½º");
+            Managers.Scenario.SendScenarioInfo("ì— í­ìŠ¤");
         }
     }
-    //¾È³çÇÏ¼¼¿ä
+    //ì•ˆë…•í•˜ì„¸ìš”
 }

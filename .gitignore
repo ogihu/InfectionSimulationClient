@@ -12,6 +12,8 @@
 Assets/Resources/**/*.bin
 Assets/StreamingAssets/**/*.bin
 Assets/StreamingAssets/**/*.meta
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data

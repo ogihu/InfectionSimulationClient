@@ -16,9 +16,8 @@ public class RealtimeSTTManager : MonoBehaviour
 {
     private class Command
     {
-        public string text;
+        public List<string> keywords;
         public Action thenDo;
-        public float score;
     }
 
     private Command CurCommand { get; set; }
@@ -116,9 +115,8 @@ public class RealtimeSTTManager : MonoBehaviour
         
         if (player)
         {
-            CurCommand.text = command;
+            CurCommand.keywords = Managers.Scenario.CurrentScenarioInfo.Keywords;
             CurCommand.thenDo = ThenDo;
-            CurCommand.score = 0f;
         }
     }
 
@@ -128,9 +126,8 @@ public class RealtimeSTTManager : MonoBehaviour
         {
             CurCommand = new Command();
         }
-        CurCommand.text = null;
+        CurCommand.keywords = null;
         CurCommand.thenDo = null;
-        CurCommand.score = 0f;
     }
 
     public bool IsModelPathInStreamingAssets
@@ -227,12 +224,22 @@ public class RealtimeSTTManager : MonoBehaviour
         _params.InitialPrompt = initialPrompt;
     }
 
+    private void MicrophoneOnRecordStart()
+    {
+        //UpdateParams();
+    }
+
+    private void MicrophoneOnRecordStop(AudioClip clip)
+    {
+        FinalEvaluate(clip);
+    }
+
     private async void Evaluate(AudioClip clip)
     {
         if (_task != null && !_task.IsCompleted)
             return;
 
-        CheckInferencing.text = "ÀÔ·ÂµÈ À½¼ºÀ» ÇØ¼® Áß ÀÔ´Ï´Ù.";
+        CheckInferencing.text = "ì…ë ¥ëœ ìŒì„±ì„ í•´ì„ ì¤‘ ì…ë‹ˆë‹¤.";
         _task = _whisper.GetTextAsync(Microphone.GetAllClipData(), clip.frequency,
                 clip.channels, _params);
 
@@ -251,25 +258,15 @@ public class RealtimeSTTManager : MonoBehaviour
 
         Managers.Speech.UpdateMySpeech(cleanTranscription);
 
-        CheckInferencing.text = "ÀÔ·ÂµÈ À½¼ºÀÌ ¾ø½À´Ï´Ù.";
+        CheckInferencing.text = "ì…ë ¥ëœ ìŒì„±ì´ ì—†ìŠµë‹ˆë‹¤.";
     }
 
-    private void MicrophoneOnRecordStart()
-    {
-        //UpdateParams();
-    }
-
-    private void MicrophoneOnRecordStop(AudioClip clip)
-    {
-        FinalEvaluate(clip);
-    }
-
-    async void FinalEvaluate(AudioClip clip)
+    private async void FinalEvaluate(AudioClip clip)
     {
         if (_task != null && !_task.IsCompleted)
             await _task;
 
-        CheckInferencing.text = "ÀÔ·ÂµÈ À½¼ºÀ» ÇØ¼® Áß ÀÔ´Ï´Ù.";
+        CheckInferencing.text = "ì…ë ¥ëœ ìŒì„±ì„ í•´ì„ ì¤‘ ì…ë‹ˆë‹¤.";
         _task = _whisper.GetTextAsync(Microphone.GetAllClipData(), clip.frequency,
                 clip.channels, _params);
 
@@ -281,40 +278,19 @@ public class RealtimeSTTManager : MonoBehaviour
         {
             Managers.Speech.UpdateMySpeech(cleanTranscription);
             Managers.Speech.CloseMySpeech(5.0f);
-            CheckInferencing.text = "ÀÔ·ÂµÈ À½¼ºÀÌ ¾ø½À´Ï´Ù.";
+            CheckInferencing.text = "ì…ë ¥ëœ ìŒì„±ì´ ì—†ìŠµë‹ˆë‹¤.";
             Microphone.ClearClips();
             return;
         }
 
-        if (CurCommand.text != null)
+        if (CurCommand.keywords != null)
         {
-            string confidenceReadout = "";
-
             string transcription = cleanTranscription;
-            int LCS = LongestCommonSubsequence(CurCommand.text, transcription);
-            float prevScore = 0f;
-            float Score = (2f * LCS) / (CurCommand.text.Length + transcription.Length);
-            while ((transcription.Length > CurCommand.text.Length) && Score > prevScore)
-            {
-                string[] pieces = transcription.Split(' ');
-                if (pieces.Length > 1)
-                {
-                    transcription = string.Join(" ", pieces, 1, pieces.Length - 1);
-                    LCS = LongestCommonSubsequence(CurCommand.text, transcription);
-                    prevScore = Score;
-                    Score = (2f * LCS) / (CurCommand.text.Length + transcription.Length);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            CurCommand.score = Score;
-            confidenceReadout += Score.ToString("F2") + " : " + CurCommand.text + "\n";
+            float score = Managers.Scenario.CheckKeywords(transcription);
 
-            Debug.Log($"Á¤È®µµ {CurCommand.score}");
+            Debug.Log($"ì •í™•ë„ {score}");
 
-            if (CurCommand.score > SimilarityThreshold)
+            if (score > SimilarityThreshold)
             {
                 CurCommand.thenDo.DynamicInvoke();
             }
@@ -329,7 +305,7 @@ public class RealtimeSTTManager : MonoBehaviour
         Managers.Speech.UpdateMySpeech(cleanTranscription);
         Managers.Speech.CloseMySpeech(5.0f);
 
-        CheckInferencing.text = "ÀÔ·ÂµÈ À½¼ºÀÌ ¾ø½À´Ï´Ù.";
+        CheckInferencing.text = "ì…ë ¥ëœ ìŒì„±ì´ ì—†ìŠµë‹ˆë‹¤.";
         Microphone.ClearClips();
     }
 
@@ -340,7 +316,7 @@ public class RealtimeSTTManager : MonoBehaviour
         input = RemoveEncapsulatedText('*', '*', input);
         input = RemoveEncapsulatedText('-', '.', input);
         input = RemoveMultipleSpaces(input);
-        input = ReplaceSpecificString(@"MBC", @"ÀÔ´Ï´Ù.", input);
+        input = ReplaceSpecificString(@"MBC", @"ì…ë‹ˆë‹¤.", input);
         input = EnterAfterPoint(input);
         return input;
     }

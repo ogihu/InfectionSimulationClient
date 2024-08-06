@@ -16,5 +16,4 @@ public class ScenarioTest : MonoBehaviour
             Managers.Scenario.SendScenarioInfo("엠폭스");
         }
     }
-    //안녕하세요
 }

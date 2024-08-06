@@ -16,4 +16,5 @@ public class ScenarioTest : MonoBehaviour
             Managers.Scenario.SendScenarioInfo("¿¥Æø½º");
         }
     }
+    //test
 }

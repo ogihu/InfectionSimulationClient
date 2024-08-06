@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System.Net;
 using System;
+
 public class TTSManager
 {
     string apiURL = "https://texttospeech.googleapis.com/v1beta1/text:synthesize?key=AIzaSyACwjFh0MfjsFDjsCgCE6qsNU8UmUVrhYk";
     SetTextToSpeech tts = new SetTextToSpeech();
-
-    //AudioSource audioSource;
 
     public void Speaking(Transform host, string message)
     {
@@ -59,7 +53,6 @@ public class TTSManager
         AudioClip audioClip = AudioClip.Create("audioContent", f.Length, 1, 44100, false);
         audioClip.SetData(f, 0);
 
-        //AudioSource audioSource = FindAnyObjectByType<AudioSource>();
         audioSource.PlayOneShot(audioClip);
     }
 
@@ -148,7 +141,6 @@ public class SetAudioConfig
     public int pitch;
     //크기
     public int volumeGainDb;
-    //public int sampleRateHertz;
 }
 [System.Serializable]
 public class GetContent

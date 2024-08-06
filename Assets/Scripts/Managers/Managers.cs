@@ -13,14 +13,17 @@ public class Managers : MonoBehaviour
     ScenarioManager _scenario = new ScenarioManager();
     PhoneManager _phone = new PhoneManager();
     InventoryManager _inventory = new InventoryManager();
-    BubbleManager _bubble = new BubbleManager();    
+    BubbleManager _bubble = new BubbleManager();
 
+    
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
     public static ScenarioManager Scenario { get { return Instance._scenario; } }
     public static PhoneManager Phone { get { return Instance._phone; } }
     public static InventoryManager Inventory { get { return Instance._inventory; } }
     public static BubbleManager Bubble { get { return Instance._bubble; } }
+   
+
     #endregion
 
     #region Core
@@ -33,7 +36,7 @@ public class Managers : MonoBehaviour
     SoundManager _sound = new SoundManager();
     SettingManager _setting = new SettingManager();
     SpeechManager _speech = new SpeechManager();
-
+    TTSManager _tts = new TTSManager();
     public static PoolManager Pool { get { return Instance._pool; } }
     public static ResourceManager Resource { get { return Instance._resource; } }
     public static SceneManagerEx Scene { get { return Instance._scene; } }
@@ -43,6 +46,7 @@ public class Managers : MonoBehaviour
     public static SoundManager Sound { get { return Instance._sound; } }
     public static SettingManager Setting { get { return Instance._setting; } }
     public static SpeechManager Speech { get { return Instance._speech; } }
+    public static TTSManager TTS { get { return Instance._tts; } }
     #endregion
 
     void Start()
@@ -76,7 +80,7 @@ public class Managers : MonoBehaviour
             {
                 _instance._network.Init();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Debug.Log(e);
             }

@@ -10,6 +10,7 @@ public class PanelChatUI : FloatingUI
     public List<string> MessageBuffer = new List<string>();
     TMP_Text _message;
     TMP_Text _pageText;
+
     int _pageIndex;
 
     private void Awake()

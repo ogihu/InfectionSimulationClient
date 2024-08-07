@@ -46,17 +46,15 @@ public class RealtimeSTTManager : MonoBehaviour
     [Tooltip("Force output text to English translation. Improves translation quality.")]
     public bool translateToEnglish;
 
-
     [Header("Advanced settings")]
     [SerializeField]
     private WhisperSamplingStrategy strategy = WhisperSamplingStrategy.WHISPER_SAMPLING_GREEDY;
 
     [Tooltip("Do not use past transcription (if any) as initial prompt for the decoder.")]
-    public bool noContext = true;
+    public bool noContext = false;
 
     [Tooltip("Force single segment output (useful for streaming).")]
     public bool singleSegment;
-
 
     [Tooltip("Output tokens with their confidence in each segment.")]
     public bool enableTokens;

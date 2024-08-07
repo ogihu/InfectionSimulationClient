@@ -52,8 +52,8 @@ MonoBehaviour:
   language: ko
   translateToEnglish: 0
   strategy: 0
-  noContext: 1
-  singleSegment: 0
+  noContext: 0
+  singleSegment: 1
   enableTokens: 0
   initialPrompt: 
   tokensTimestamps: 0

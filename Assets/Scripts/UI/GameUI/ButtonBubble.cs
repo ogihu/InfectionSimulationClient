@@ -7,6 +7,6 @@ public class ButtonBubble : ButtonUI
     protected override void OnClicked()
     {
         base.OnClicked();
-        Managers.Bubble.SelectedChat = GetComponent<PanelChatUI>();
+        Managers.Bubble.SelectedChat = GetComponentInParent<PanelChatUI>();
     }
 }

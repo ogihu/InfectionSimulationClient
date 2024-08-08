@@ -28,12 +28,12 @@ public class BubbleManager
         SelectedChat.PrevPage();
     }
 
-    public void CloseBubble()
+    public void OpenOrCloseBubble()
     {
         if (SelectedChat == null)
             return;
 
-        SelectedChat.CloseBubble();
+        SelectedChat.OpenOrCloseBubble();
     }
 
     public void ChangeButtonColor()
@@ -41,7 +41,10 @@ public class BubbleManager
         if (SelectedChat == null)
             return;
 
-        Button button = SelectedChat.GetComponent<Button>();
+        Button button = SelectedChat.GetComponentInChildren<Button>();
+        if (button == null)
+            return;
+
         ColorBlock cb = button.colors;
         cb.normalColor = button.colors.pressedColor;
         button.colors = cb;
@@ -51,7 +54,13 @@ public class BubbleManager
     IEnumerator CoRestoreButton(float time)
     {
         yield return new WaitForSeconds(time);
-        Button button = SelectedChat.GetComponent<Button>();
+        if (SelectedChat == null)
+            yield break;
+
+        Button button = SelectedChat.GetComponentInChildren<Button>();
+        if (button == null)
+            yield break;
+
         ColorBlock cb = button.colors;
         cb.normalColor = _normalColor;
         button.colors = cb;

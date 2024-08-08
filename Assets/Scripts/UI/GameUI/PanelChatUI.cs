@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 public class PanelChatUI : FloatingUI
 {
@@ -12,11 +12,34 @@ public class PanelChatUI : FloatingUI
     TMP_Text _pageText;
 
     int _pageIndex;
+    public bool _isVisible;
 
-    private void Awake()
+    public GameObject chatUI; // Chat UI 오브젝트
+    public GameObject closeChatUI; // CloseChat UI 오브젝트
+
+    public override void Init(Transform target, float height = 1.0f, bool isStatic = false)
     {
-        _message = Util.FindChildByName(gameObject, "Message").GetComponent<TMP_Text>();
-        _pageText = Util.FindChildByName(gameObject, "Page/Pages").GetComponent<TMP_Text>();
+        base.Init(target, height, isStatic);
+
+        chatUI = Util.FindChildByName(gameObject, "Chat");
+        closeChatUI = Util.FindChildByName(gameObject, "CloseChat");
+
+        if (chatUI == null || closeChatUI == null)
+        {
+            Debug.LogError("Chat 또는 CloseChat UI를 찾을 수 없습니다.");
+        }
+
+        _message = Util.FindChildByName(chatUI, "Message").GetComponent<TMP_Text>();
+        _pageText = Util.FindChildByName(chatUI, "Page/Pages").GetComponent<TMP_Text>();
+
+        if (_message == null || _pageText == null)
+        {
+            Debug.LogError("Message 또는 Page/Pages 컴포넌트를 찾을 수 없습니다.");
+        }
+
+        _isVisible = true;
+        chatUI.SetActive(_isVisible);
+        closeChatUI.SetActive(!_isVisible);
     }
 
     public override void ChangeMessage(string chat)
@@ -33,34 +56,28 @@ public class PanelChatUI : FloatingUI
         if (string.IsNullOrEmpty(chat))
             return;
 
-        string[] chatSplit = chat.Split(".\n");
+        string[] chatSplit = chat.Split(new[] { ".\n" }, System.StringSplitOptions.None);
 
-        foreach(var message in chatSplit)
+        foreach (var message in chatSplit)
         {
             if (!string.IsNullOrEmpty(message))
             {
-                if (message.Length <= 54)
-                {
-                    MessageBuffer.Add(message);
-                }
-                else
-                {
-                    int startIndex = 0;
-                    while (startIndex < message.Length)
-                    {
-                        int length = Math.Min(54, message.Length - startIndex);
-                        MessageBuffer.Add(message.Substring(startIndex, length));
-                        startIndex += length;
-                    }
-                }
+                MessageBuffer.AddRange(SplitStringByLength(message, 54));
             }
         }
     }
 
     void ChangeDisplay()
     {
-        _message.text = MessageBuffer[_pageIndex];
-        _pageText.text = $"{_pageIndex + 1} / {MessageBuffer.Count}";
+        if (MessageBuffer.Count == 0)
+        {
+            if (_message != null) _message.text = string.Empty;
+            if (_pageText != null) _pageText.text = "0 / 0";
+            return;
+        }
+
+        if (_message != null) _message.text = MessageBuffer[_pageIndex];
+        if (_pageText != null) _pageText.text = $"{_pageIndex + 1} / {MessageBuffer.Count}";
     }
 
     public void NextPage()
@@ -81,9 +98,12 @@ public class PanelChatUI : FloatingUI
         ChangeDisplay();
     }
 
-    public void CloseBubble()
+    public void OpenOrCloseBubble()
     {
-        Managers.UI.DestroyUI(this.gameObject);
+        _isVisible = !_isVisible;
+
+        chatUI.SetActive(_isVisible);
+        closeChatUI.SetActive(!_isVisible);
     }
 
     List<string> SplitStringByLength(string str, int length)

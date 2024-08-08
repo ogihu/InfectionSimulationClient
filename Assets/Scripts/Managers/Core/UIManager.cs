@@ -126,13 +126,23 @@ public class UIManager
     /// <returns>GameObject</returns>
     public GameObject CreateChatBubble(Transform targetObject)
     {
-        GameObject go = CreateUI("Chat", CanvasType.World);
+        GameObject go = CreateUI("PanelChat", CanvasType.World);
+        PanelChatUI panelChatUI = go.GetComponent<PanelChatUI>();
+        if (panelChatUI != null)
+        {
+            panelChatUI.Init(targetObject, 2);     // 초기화
+        }
+        else
+        {
+            Debug.LogError("PanelChatUI 컴포넌트를 찾을 수 없습니다.");
+        }
+
         BubbleCache.Add(targetObject, go);
-        go.GetComponent<PanelChatUI>().Init(targetObject);
         go.SetActive(false);
 
         return go;
     }
+
 
     public void ChangeChatBubble(Transform host, string message)
     {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Google.Protobuf.Protocol;
 using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Whisper.Utils
         private bool _madeLoopLap;
         public int ClipSamples => _clip.samples * _clip.channels;
         private float elapsedTime = 0f;
+        private int _lastSentSample = 0;
 
         [Header("Microphone selection (optional)")]
         [CanBeNull] public TMP_Dropdown microphoneDropdown;
@@ -51,6 +53,8 @@ namespace Whisper.Utils
 
         private void Awake()
         {
+            frequency = Define.VoiceFrequency;
+
             IsRecording = false;
             if (microphoneDropdown != null)
             {
@@ -77,6 +81,8 @@ namespace Whisper.Utils
                 elapsedTime -= evaluationTime;
                 OnEvaluate?.Invoke(_clip);
             }
+
+            SendUnsentAudio();
 
             if(recordingTime >= maxLengthSec)
             {
@@ -138,18 +144,23 @@ namespace Whisper.Utils
         float[] GetData()
         {
             int pos = Microphone.GetPosition(RecordStartMicDevice);
+            float[] arr;
+
             if (pos == 0)
             {
-                float[] arr = new float[_clip.samples];
+                arr = new float[_clip.samples];
                 _clip.GetData(arr, 0);
-                return arr;
             }
-            float[] arr1 = new float[_clip.samples - pos];
-            float[] arr2 = new float[pos];
-            _clip.GetData(arr1, pos);
-            _clip.GetData(arr2, 0);
+            else
+            {
+                float[] arr1 = new float[_clip.samples - pos];
+                float[] arr2 = new float[pos];
+                _clip.GetData(arr1, pos);
+                _clip.GetData(arr2, 0);
+                arr = arr1.Concat(arr2).ToArray();
+            }
 
-            return arr1.Concat(arr2).ToArray();
+            return arr;
         }
 
         void CopyAndSaveClip()
@@ -161,6 +172,27 @@ namespace Whisper.Utils
             _savedClips.AddRange(arr);
             _clip = Microphone.Start(RecordStartMicDevice, true, maxLengthSec, frequency);
             recordingTime = 0;
+            _lastSentSample = 0;
+        }
+
+        void SendUnsentAudio()
+        {
+            int pos = Microphone.GetPosition(RecordStartMicDevice);
+            int sampleCount = pos >= _lastSentSample ? pos - _lastSentSample : _clip.samples - _lastSentSample + pos;
+
+            if (sampleCount > 0)
+            {
+                float[] data = new float[sampleCount];
+                _clip.GetData(data, _lastSentSample);
+
+                float[] monoData = Define.ConvertMonoToStereo(data);
+
+                C_Voice voicePacket = new C_Voice();
+                voicePacket.VoiceClip.AddRange(monoData);
+                Managers.Network.Send(voicePacket);
+
+                _lastSentSample = pos;
+            }
         }
 
         public void ClearClips()

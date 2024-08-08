@@ -1,8 +1,9 @@
-﻿using Google.Protobuf;
+using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using ServerCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
@@ -82,6 +83,25 @@ class PacketHandler
             return;
 
         Managers.UI.ChangeChatBubble(bc.transform, talkPacket.Message);
+    }
+
+    public static void S_VoiceHandler(PacketSession session, IMessage packet)
+    {
+        S_Voice voicePacket = (S_Voice)packet;
+
+        GameObject go = Managers.Object.FindById(voicePacket.Id);
+        if (go == null)
+            return;
+
+        if (Managers.Object.MyPlayer.ObjectId == voicePacket.Id)
+            return;
+
+        BaseController bc = go.GetComponent<BaseController>();
+        if (bc == null)
+            return;
+
+        bc.ReceiveVoiceBuffer(voicePacket.VoiceClip.ToArray());
+        Debug.Log($"Audio data length: {voicePacket.VoiceClip.ToArray().Length}");
     }
 
     public static void S_UnEquipHandler(PacketSession session, IMessage packet)

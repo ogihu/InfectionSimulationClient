@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +7,107 @@ using UnityEngine;
 
 public class Define
 {
+    #region Voice
+
+    public class VoiceBuffer<T>
+    {
+        private T[] _buffer;
+        private int _writePos;
+        private int _readPos;
+        private int _bufferSize;
+        private int _count;
+
+        public VoiceBuffer(int size)
+        {
+            _bufferSize = size;
+            _buffer = new T[_bufferSize];
+            _writePos = 0;
+            _readPos = 0;
+            _count = 0;
+        }
+
+        public void Write(T item)
+        {
+            _buffer[_writePos] = item;
+            _writePos = (_writePos + 1) % _bufferSize;
+
+            if (_count == _bufferSize)
+            {
+                _readPos = (_readPos + 1) % _bufferSize;
+            }
+            else
+            {
+                _count++;
+            }
+        }
+
+        public void Write(T[] items)
+        {
+            foreach (var item in items)
+            {
+                Write(item);
+            }
+        }
+
+        public T Read()
+        {
+            if (_count == 0)
+            {
+                throw new InvalidOperationException("Buffer is empty");
+            }
+
+            T item = _buffer[_readPos];
+            _readPos = (_readPos + 1) % _bufferSize;
+            _count--;
+
+            return item;
+        }
+
+        public void Read(T[] output, int length)
+        {
+            if (_count < length)
+                return;
+
+            for (int i = 0; i < length; i++)
+            {
+                output[i] = Read();
+            }
+        }
+
+        public int Count { get { return _count; } }
+        public bool IsEmpty { get { return _count == 0; } }
+        public bool IsFull { get { return _count == _bufferSize; } }
+    }
+
+    public static int VoiceFrequency = 16000;
+    public static int VoiceChannel = 2;
+
+    public static float[] ConvertMonoToStereo(float[] monoSamples)
+    {
+        float[] stereoSamples = new float[monoSamples.Length * 2];
+        for (int i = 0; i < monoSamples.Length; i++)
+        {
+            stereoSamples[i * 2] = monoSamples[i];
+            stereoSamples[i * 2 + 1] = monoSamples[i];
+        }
+        return stereoSamples;
+    }
+
+    public static float[] ConvertStereoToMono(float[] stereoSamples)
+    {
+        int monoLength = stereoSamples.Length / 2;
+        float[] monoSamples = new float[monoLength];
+
+        for (int i = 0; i < monoLength; i++)
+        {
+            monoSamples[i] = (stereoSamples[i * 2] + stereoSamples[i * 2 + 1]) / 2;
+        }
+
+        return monoSamples;
+    }
+
+    #endregion
+
     public static readonly Vector3 Entrance = new Vector3(-4, 0, 18);
     public static readonly Vector3 WaitingArea = new Vector3(-35, 0, 15);
     public static readonly Vector3 ObservationArea = new Vector3(11.5f, 0, 0);

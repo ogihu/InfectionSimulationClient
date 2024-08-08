@@ -56,7 +56,7 @@ public class TTSManager
         audioSource.PlayOneShot(audioClip);
     }
 
-    private static float[] ConvertByteToFloat(byte[] array)
+    public static float[] ConvertByteToFloat(byte[] array)
     {
         float[] floatArr = new float[array.Length / 2];
 
@@ -66,6 +66,7 @@ public class TTSManager
         }
         return floatArr;
     }
+
     public string TextToSpeechPost(object data)
     {
         //JsonUtility 사용. string을 요청 보내기 위한 byte[]로 변환

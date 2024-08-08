@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static Define;
 
 public class BaseController : MonoBehaviour
 {
@@ -172,7 +173,12 @@ public class BaseController : MonoBehaviour
     Coroutine _coSync;
     GameObject _positionDisplay;
     public GameObject Equipment;
+
     protected AudioSource _audioSource;
+    public VoiceBuffer<float> VoiceBuffer { get; set; }
+    //AudioClip _voiceClip;
+    //int _clipSamplePosition = 0;
+    //bool _isTalking = false;
 
     //도구 부착할 Transform
     Transform _rightHand;
@@ -183,7 +189,12 @@ public class BaseController : MonoBehaviour
     public virtual void Awake()
     {
         _animator = GetComponent<Animator>();
+
         _audioSource = GetComponent<AudioSource>();
+        VoiceBuffer = new VoiceBuffer<float>(VoiceFrequency * VoiceChannel * 5);
+        //_voiceClip = AudioClip.Create("VoiceClip", VoiceFrequency * VoiceChannel * 10, VoiceChannel, VoiceFrequency, false);
+        //_audioSource.clip = _voiceClip;
+
         _leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point").transform;
         _rightHand = Util.FindChildByName(this.gameObject, "R_hand_grap_point").transform;
 
@@ -365,6 +376,31 @@ public class BaseController : MonoBehaviour
     {
         Managers.Sound.Play(_audioSource, clipName);
     }
+
+    public void ReceiveVoiceBuffer(float[] samples)
+    {
+        float[] stereoSamples = ConvertMonoToStereo(samples);
+        VoiceBuffer.Write(stereoSamples);
+        ReadVoiceBuffer();
+    }
+
+    private void ReadVoiceBuffer()
+    {
+        if (VoiceBuffer.Count < VoiceFrequency * VoiceChannel)
+            return;
+
+        float[] playSamples = new float[VoiceFrequency * VoiceChannel];
+        VoiceBuffer.Read(playSamples, VoiceFrequency * VoiceChannel);
+        AudioClip voiceClip = AudioClip.Create("VoiceClip", VoiceFrequency * VoiceChannel, VoiceChannel, VoiceFrequency, false);
+        voiceClip.SetData(playSamples, 0);
+        _audioSource.PlayOneShot(voiceClip);
+        //_voiceClip.SetData(playSamples, _clipSamplePosition);
+        //_clipSamplePosition = (_clipSamplePosition + VoiceFrequency * VoiceChannel) % _voiceClip.samples;
+
+        //if (!_audioSource.isPlaying)
+        //    _audioSource.Play();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

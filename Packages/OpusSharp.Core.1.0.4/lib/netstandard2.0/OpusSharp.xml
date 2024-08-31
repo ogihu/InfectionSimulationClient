@@ -1,0 +1,1239 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpusSharp</name>
+    </assembly>
+    <members>
+        <member name="T:OpusSharp.Core.Disposable">
+            <summary>
+            Provides a standard implementation of IDisposable and IIsDisposed.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.Disposable.IsDisposed">
+            <summary>
+            Returns wether the object is disposed or not.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.Disposable.#ctor">
+            <summary>
+            Makes an object disposable.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.Disposable.Finalize">
+            <summary>
+            When the object is destructed and not disposed, it does not dispose.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.Disposable.Dispose">
+            <summary>
+            Disposes the object.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.Disposable.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="T:OpusSharp.Core.Enums.DecoderCtl">
+            <summary>
+            Decoder related Ctl's.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.DecoderCtl.OPUS_SET_GAIN_REQUEST">
+            <summary>
+            Configures decoder gain adjustment.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.DecoderCtl.OPUS_GET_GAIN_REQUEST">
+            <summary>
+            Gets the decoder's configured gain adjustment.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.DecoderCtl.OPUS_GET_LAST_PACKET_DURATION_REQUEST">
+            <summary>
+            Gets the duration (in samples) of the last packet successfully decoded or concealed.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.DecoderCtl.OPUS_GET_PITCH_REQUEST">
+            <summary>
+            Gets the pitch of the last decoded frame, if available.
+            </summary>
+        </member>
+        <member name="T:OpusSharp.Core.Enums.EncoderCtl">
+            <summary>
+            Encoder related CTL's.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_COMPLEXITY_REQUEST">
+            <summary>
+            Configures the encoder's computational complexity.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_COMPLEXITY_REQUEST">
+            <summary>
+            Gets the encoder's complexity configuration.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_BITRATE_REQUEST">
+            <summary>
+            Configures the bitrate in the encoder.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_BITRATE_REQUEST">
+            <summary>
+            Gets the encoder's bitrate configuration.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_VBR_REQUEST">
+            <summary>
+            Enables or disables variable bitrate (VBR) in the encoder.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_VBR_REQUEST">
+            <summary>
+            Determine if variable bitrate (VBR) is enabled in the encoder.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_VBR_CONSTRAINT_REQUEST">
+            <summary>
+            Enables or disables variable bitrate (VBR) in the encoder.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_VBR_CONSTRAINT_REQUEST">
+            <summary>
+            Determine if constrained VBR is enabled in the encoder.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_FORCE_CHANNELS_REQUEST">
+            <summary>
+            Configures mono/stereo forcing in the encoder.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_FORCE_CHANNELS_REQUEST">
+            <summary>
+            Gets the encoder's forced channel configuration.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_MAX_BANDWIDTH_REQUEST">
+            <summary>
+            Configures the maximum bandpass that the encoder will select automatically.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_MAX_BANDWIDTH_REQUEST">
+            <summary>
+            Gets the encoder's configured maximum allowed bandpass.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_BANDWIDTH_REQUEST">
+            <summary>
+            Sets the encoder's bandpass to a specific value.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_SIGNAL_REQUEST">
+            <summary>
+            Configures the type of signal being encoded.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_SIGNAL_REQUEST">
+            <summary>
+            Gets the encoder's configured signal type.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_APPLICATION_REQUEST">
+            <summary>
+            Configures the encoder's intended application.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_APPLICATION_REQUEST">
+            <summary>
+            Gets the encoder's configured application.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_LOOKAHEAD_REQUEST">
+            <summary>
+            Gets the total samples of delay added by the entire codec.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_INBAND_FEC_REQUEST">
+            <summary>
+            Configures the encoder's use of inband forward error correction (FEC).
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_INBAND_FEC_REQUEST">
+            <summary>
+            Gets encoder's configured use of inband forward error correction.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_PACKET_LOSS_PERC_REQUEST">
+            <summary>
+            Configures the encoder's expected packet loss percentage.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_PACKET_LOSS_PERC_REQUEST">
+            <summary>
+            Gets the encoder's configured packet loss percentage.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_DTX_REQUEST">
+            <summary>
+            Configures the encoder's use of discontinuous transmission (DTX).
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_DTX_REQUEST">
+            <summary>
+            Gets encoder's configured use of discontinuous transmission.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_LSB_DEPTH_REQUEST">
+            <summary>
+            Configures the depth of signal being encoded.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_LSB_DEPTH_REQUEST">
+            <summary>
+            Gets the encoder's configured signal depth.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_EXPERT_FRAME_DURATION_REQUEST">
+            <summary>
+            Configures the encoder's use of variable duration frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_EXPERT_FRAME_DURATION_REQUEST">
+            <summary>
+            Gets the encoder's configured use of variable duration frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_PREDICTION_DISABLED_REQUEST">
+            <summary>
+            If set to 1, disables almost all use of prediction, making frames almost completely independent.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_PREDICTION_DISABLED_REQUEST">
+            <summary>
+            Gets the encoder's configured prediction status.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_DRED_DURATION_REQUEST">
+            <summary>
+            If non-zero, enables Deep Redundancy (DRED) and use the specified maximum number of 10-ms redundant frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_GET_DRED_DURATION_REQUEST">
+            <summary>
+            Gets the encoder's configured Deep Redundancy (DRED) maximum number of frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.EncoderCtl.OPUS_SET_DNN_BLOB_REQUEST">
+            <summary>
+            Provide external DNN weights from binary object (only when explicitly built without the weights).
+            </summary>
+        </member>
+        <member name="T:OpusSharp.Core.Enums.GenericCtl">
+            <summary>
+            These macros are used with the Decoder and Encoder CTL calls to generate a particular request.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.GenericCtl.OPUS_RESET_STATE">
+            <summary>
+            Resets the codec state to be equivalent to a freshly initialized state.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.GenericCtl.OPUS_GET_FINAL_RANGE_REQUEST">
+            <summary>
+            Gets the final state of the codec's entropy coder.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.GenericCtl.OPUS_GET_BANDWIDTH_REQUEST">
+            <summary>
+            Gets the encoder's configured bandpass or the decoder's last bandpass.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.GenericCtl.OPUS_GET_SAMPLE_RATE_REQUEST">
+            <summary>
+            Gets the sampling rate the encoder or decoder was initialized with.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.GenericCtl.OPUS_SET_PHASE_INVERSION_DISABLED_REQUEST">
+            <summary>
+            If set to 1, disables the use of phase inversion for intensity stereo, improving the quality of mono downmixes, but slightly reducing normal stereo quality.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.GenericCtl.OPUS_GET_PHASE_INVERSION_DISABLED_REQUEST">
+            <summary>
+            Gets the encoder's configured phase inversion status.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.GenericCtl.OPUS_GET_IN_DTX_REQUEST">
+            <summary>
+            Gets the DTX state of the encoder.
+            </summary>
+        </member>
+        <member name="T:OpusSharp.Core.Enums.OpusError">
+            <summary>
+            Specifies the type of opus error.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.OK">
+            <summary>
+            No error. This does not throw the <seealso cref="T:OpusSharp.Core.OpusException"/>
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.BAD_ARG">
+            <summary>
+            One or more invalid/out of range arguments.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.BUFFER_TOO_SMALL">
+            <summary>
+            Not enough bytes allocated in the buffer.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.INTERNAL_ERROR">
+            <summary>
+            An internal error was detected.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.INVALID_PACKET">
+            <summary>
+            The compressed data passed is corrupted.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.UNIMPLEMENTED">
+            <summary>
+            Invalid/unsupported request number.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.INVALID_STATE">
+            <summary>
+            An encoder or decoder structure is invalid or already freed.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.OpusError.ALLOC_FAIL">
+            <summary>
+            Memory allocation has failed.
+            </summary>
+        </member>
+        <member name="T:OpusSharp.Core.Enums.PreDefCtl">
+            <summary>
+            Pre-defined values for CTL interface.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_AUTO">
+            <summary>
+            Auto/default setting.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_BITRATE_MAX">
+            <summary>
+            Maximum bitrate.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_APPLICATION_VOIP">
+            <summary>
+            Best for most VoIP/videoconference applications where listening quality and intelligibility matter most.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_APPLICATION_AUDIO">
+            <summary>
+            Best for broadcast/high-fidelity application where the decoded audio should be as close as possible to the input.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_APPLICATION_RESTRICTED_LOWDELAY">
+            <summary>
+            Only use when lowest-achievable latency is what matters most. Voice-optimized modes cannot be used.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_SIGNAL_VOICE">
+            <summary>
+            Signal being encoded is voice.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_SIGNAL_MUSIC">
+            <summary>
+            Signal being encoded is music.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_BANDWIDTH_NARROWBAND">
+            <summary>
+            4 kHz bandpass.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_BANDWIDTH_MEDIUMBAND">
+            <summary>
+            6 kHz bandpass.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_BANDWIDTH_WIDEBAND">
+            <summary>
+            8 kHz bandpass.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_BANDWIDTH_SUPERWIDEBAND">
+            <summary>
+            12 kHz bandpass.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_BANDWIDTH_FULLBAND">
+            <summary>
+            20 kHz bandpass.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_ARG">
+            <summary>
+            Select frame size from the argument (default).
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_2_5_MS">
+            <summary>
+            Use 2.5 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_5_MS">
+            <summary>
+            Use 5 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_10_MS">
+            <summary>
+            Use 10 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_20_MS">
+            <summary>
+            Use 20 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_40_MS">
+            <summary>
+            Use 40 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_60_MS">
+            <summary>
+            Use 60 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_80_MS">
+            <summary>
+            Use 80 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_100_MS">
+            <summary>
+            Use 100 ms frames.
+            </summary>
+        </member>
+        <member name="F:OpusSharp.Core.Enums.PreDefCtl.OPUS_FRAMESIZE_120_MS">
+            <summary>
+            Use 120 ms frames.
+            </summary>
+        </member>
+        <member name="T:OpusSharp.Core.OpusDecoder">
+            <summary>
+            Audio decoder with opus.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusDecoder.SampleRate">
+            <summary>
+            Sampling rate of input signal (Hz) This must be one of 8000, 12000, 16000, 24000, or 48000.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusDecoder.Channels">
+            <summary>
+            Number of channels (1 or 2) in input signal.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusDecoder.Gain">
+            <summary>
+            Configures decoder gain adjustment.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusDecoder.LastPacketDuration">
+            <summary>
+            Gets the duration (in samples) of the last packet successfully decoded or concealed.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusDecoder.Pitch">
+            <summary>
+            Gets the pitch of the last decoded frame, if available.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Creates and initializes an opus decoder.
+            </summary>
+            <param name="SampleRate">Sample rate to decode at (Hz). This must be one of 8000, 12000, 16000, 24000, or 48000.</param>
+            <param name="Channels">Number of channels (1 or 2) to decode.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.Decode(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Decodes an Opus packet.
+            </summary>
+            <param name="input">Input payload. Use a NULL pointer to indicate packet loss.</param>
+            <param name="inputLength">Number of bytes in payload.</param>
+            <param name="output">Output signal (interleaved if 2 channels). length is frame_size*channels*sizeof(short).</param>
+            <param name="frame_size">Number of samples per channel of available space in pcm. If this is less than the maximum packet duration (120ms; 5760 for 48kHz), this function will not be capable of decoding some packets. In the case of PLC (data==NULL) or FEC (decode_fec=1), then frame_size needs to be exactly the duration of audio that is missing, otherwise the decoder will not be in the optimal state to decode the next incoming packet. For the PLC and FEC cases, frame_size must be a multiple of 2.5 ms.</param>
+            <param name="decodeFEC">Flag (false or true) to request that any in-band forward error correction data be decoded. If no such data is available, the frame is decoded as if it were lost.</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the decoded packet on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.Decode(System.Byte[],System.Int32,System.Int16[],System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Decodes an Opus packet.
+            </summary>
+            <param name="input">Input payload. Use a NULL pointer to indicate packet loss.</param>
+            <param name="inputLength">Number of bytes in payload.</param>
+            <param name="output">Output signal (interleaved if 2 channels). length is frame_size*channels.</param>
+            <param name="frame_size">Number of samples per channel of available space in pcm. If this is less than the maximum packet duration (120ms; 5760 for 48kHz), this function will not be capable of decoding some packets. In the case of PLC (data==NULL) or FEC (decode_fec=1), then frame_size needs to be exactly the duration of audio that is missing, otherwise the decoder will not be in the optimal state to decode the next incoming packet. For the PLC and FEC cases, frame_size must be a multiple of 2.5 ms.</param>
+            <param name="decodeFEC">Flag (false or true) to request that any in-band forward error correction data be decoded. If no such data is available, the frame is decoded as if it were lost.</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the decoded packet on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.DecodeFloat(System.Byte[],System.Int32,System.Single[],System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Decodes an Opus frame.
+            </summary>
+            <param name="input">Input in float format (interleaved if 2 channels), with a normal range of +/-1.0. Samples with a range beyond +/-1.0 are supported but will be clipped by decoders using the integer API and should only be used if it is known that the far end supports extended dynamic range. length is frame_size*channels*sizeof(float)</param>
+            <param name="inputLength">Number of samples per channel in the input signal. This must be an Opus frame size for the encoder's sampling rate. For example, at 48 kHz the permitted values are 120, 240, 480, 960, 1920, and 2880. Passing in a duration of less than 10 ms (480 samples at 48 kHz) will prevent the encoder from using the LPC or hybrid modes.</param>
+            <param name="output">Output payload</param>
+            <param name="frame_size">The number of samples per channel of available space in pcm. If this is less than the maximum packet duration (120 ms; 5760 for 48kHz), this function will not be capable of decoding some packets. In the case of PLC (data==NULL) or FEC (decode_fec=1), then frame_size needs to be exactly the duration of audio that is missing, otherwise the decoder will not be in the optimal state to decode the next incoming packet. For the PLC and FEC cases, frame_size must be a multiple of 2.5 ms.</param>
+            <param name="decodeFEC">Flag (false or true) to request that any in-band forward error correction data be decoded. If no such data is available, the frame is decoded as if it were lost.</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the decoded packet on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.DecoderCtl(OpusSharp.Core.Enums.DecoderCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.DecoderCtl(OpusSharp.Core.Enums.DecoderCtl)">
+            <summary>
+            Requests a CTL on the decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.DecoderCtl(OpusSharp.Core.Enums.GenericCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.DecoderCtl(OpusSharp.Core.Enums.GenericCtl)">
+            <summary>
+            Requests a CTL on the decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.GetNumberOfSamples(System.Byte[])">
+            <summary>
+            Gets the number of samples of an Opus packet.
+            </summary>
+            <param name="data">Opus packet</param>
+            <returns>Number of samples.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.ThrowIfDisposed">
+            <summary>
+            Checks if the object is disposed and throws.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.GetBandwidth(System.Byte[])">
+            <summary>
+            Gets the bandwidth of an Opus packet.
+            </summary>
+            <param name="data">Opus packet</param>
+            <returns>The bandwidth.</returns>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.GetSamplesPerFrame(System.Byte[],System.Int32)">
+            <summary>
+            Gets the number of samples per frame from an Opus packet.
+            </summary>
+            <param name="data">Opus packet. This must contain at least one byte of data.</param>
+            <param name="Fs">Sampling rate in Hz. This must be a multiple of 400, or inaccurate results will be returned.</param>
+            <returns>Number of samples per frame.</returns>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.GetNumberOfChannels(System.Byte[])">
+            <summary>
+            Gets the number of channels from an Opus packet.
+            </summary>
+            <param name="data">Opus packet</param>
+            <returns>Number of channels</returns>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.GetNumberOfFrames(System.Byte[])">
+            <summary>
+            Gets the number of frames in an Opus packet.
+            </summary>
+            <param name="data">Opus packet.</param>
+            <returns>Number of frames.</returns>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.GetNumberOfSamples(System.Byte[],System.Int32)">
+            <summary>
+            Gets the number of samples of an Opus packet.
+            </summary>
+            <param name="data">Opus packet</param>
+            <param name="Fs">Sampling rate in Hz. This must be a multiple of 400, or inaccurate results will be returned.</param>
+            <returns>Number of samples.</returns>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.HasLbrr(System.Byte[])">
+            <summary>
+            Checks whether an Opus packet has LBRR.
+            </summary>
+            <param name="data">Opus packet</param>
+            <returns>Wether the LBRR is present.</returns>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.Parse(System.Byte[],System.Byte@,System.Byte[]@,System.Int16[]@,System.Int32@)">
+            <summary>
+            Parse an opus packet into one or more frames. THIS FUNCTION IS NOT WORKING, DO NOT USE THIS FUNCTION UNTIL IT IS FIXED/FIGURED OUT.
+            </summary>
+            <param name="data">Opus packet to be parsed</param>
+            <param name="out_toc">TOC pointer</param>
+            <param name="frames">encapsulated frames</param>
+            <param name="size">sizes of the encapsulated frames</param>
+            <param name="payloadOffset">returns the position of the payload within the packet (in bytes)</param>
+            <returns>number of frames.</returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.PcmSoftClip(System.Single[],System.Int32,System.Single[]@)">
+            <summary>
+            Applies soft-clipping to bring a float signal within the [-1,1] range.
+            </summary>
+            <param name="data">Input PCM and modified PCM</param>
+            <param name="channels">Number of channels</param>
+            <param name="softclipMem">State memory for the soft clipping process (one float per channel, initialized to zero)</param>
+        </member>
+        <member name="M:OpusSharp.Core.OpusDecoder.CheckError(System.Int32)">
+            <summary>
+            Check's for an opus error and throws if there is one.
+            </summary>
+            <param name="result"></param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="T:OpusSharp.Core.OpusEncoder">
+            <summary>
+            Audio encoder with opus.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.SampleRate">
+            <summary>
+            Sampling rate of input signal (Hz) This must be one of 8000, 12000, 16000, 24000, or 48000.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.Channels">
+            <summary>
+            Number of channels (1 or 2) in input signal.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.Bitrate">
+            <summary>
+            Configures the bitrate in the encoder.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.OpusApplication">
+            <summary>
+            The coding mode that the encoder is set to.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.Complexity">
+            <summary>
+            Configures the encoder's computational complexity. The supported range is 0-10 inclusive with 10 representing the highest complexity.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.PacketLossPerc">
+            <summary>
+            Configures the encoder's expected packet loss percentage. Loss percentage in the range 0-100, inclusive (default: 0).
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.Signal">
+            <summary>
+            Configures the type of signal being encoded.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.VBR">
+            <summary>
+            Enables or disables variable bitrate (VBR) in the encoder.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusEncoder.VBRConstraint">
+            <summary>
+            Enables or disables constraint variable bitrate (CVBR) in the encoder.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.#ctor(System.Int32,System.Int32,OpusSharp.Core.Enums.PreDefCtl)">
+            <summary>
+            Creates and initializes an opus encoder.
+            </summary>
+            <param name="SampleRate">Sampling rate of input signal (Hz) This must be one of 8000, 12000, 16000, 24000, or 48000.</param>
+            <param name="Channels">Number of channels (1 or 2) in input signal.</param>
+            <param name="Application">The coding mode that the encoder should set to.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.Encode(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes an Opus frame.
+            </summary>
+            <param name="input">Input signal (interleaved if 2 channels). length is frame_size*channels</param>
+            <param name="frame_size">Number of samples per channel in the input signal. This must be an Opus frame size for the encoder's sampling rate. For example, at 48 kHz the permitted values are 120, 240, 480, 960, 1920, and 2880. Passing in a duration of less than 10 ms (480 samples at 48 kHz) will prevent the encoder from using the LPC or hybrid modes.</param>
+            <param name="output">Output payload</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the encoded packet (in bytes) on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.Encode(System.Int16[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes an Opus frame.
+            </summary>
+            <param name="input">Input signal (interleaved if 2 channels). length is frame_size*channels*sizeof(short)</param>
+            <param name="frame_size">Number of samples per channel in the input signal. This must be an Opus frame size for the encoder's sampling rate. For example, at 48 kHz the permitted values are 120, 240, 480, 960, 1920, and 2880. Passing in a duration of less than 10 ms (480 samples at 48 kHz) will prevent the encoder from using the LPC or hybrid modes.</param>
+            <param name="output">Output payload</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the encoded packet (in bytes) on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.EncodeFloat(System.Single[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes an Opus frame.
+            </summary>
+            <param name="input">Input in float format (interleaved if 2 channels), with a normal range of +/-1.0. Samples with a range beyond +/-1.0 are supported but will be clipped by decoders using the integer API and should only be used if it is known that the far end supports extended dynamic range. length is frame_size*channels*sizeof(float)</param>
+            <param name="frame_size">Number of samples per channel in the input signal. This must be an Opus frame size for the encoder's sampling rate. For example, at 48 kHz the permitted values are 120, 240, 480, 960, 1920, and 2880. Passing in a duration of less than 10 ms (480 samples at 48 kHz) will prevent the encoder from using the LPC or hybrid modes.</param>
+            <param name="output">Output payload</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the encoded packet (in bytes) on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.EncoderCtl(OpusSharp.Core.Enums.EncoderCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.EncoderCtl(OpusSharp.Core.Enums.EncoderCtl)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.EncoderCtl(OpusSharp.Core.Enums.GenericCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.EncoderCtl(OpusSharp.Core.Enums.GenericCtl)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.ThrowIfDisposed">
+            <summary>
+            Checks if the object is disposed and throws.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusEncoder.CheckError(System.Int32)">
+            <summary>
+            Check's for an opus error and throws if there is one.
+            </summary>
+            <param name="result"></param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="T:OpusSharp.Core.OpusException">
+            <summary>
+            An opus exception.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.OpusException.#ctor">
+            <summary>
+            Contructs an opus exception.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.OpusException.#ctor(System.String)">
+            <summary>
+            Contructs an opus exception.
+            </summary>
+            <param name="message">The message of the exception.</param>
+        </member>
+        <member name="M:OpusSharp.Core.OpusException.#ctor(System.String,System.Exception)">
+            <summary>
+            Contructs an opus exception.
+            </summary>
+            <param name="message">The message of the exception.</param>
+            <param name="innerException">The root exception.</param>
+        </member>
+        <member name="T:OpusSharp.Core.OpusInfo">
+            <summary>
+            Provides information about the opus DLL.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.OpusInfo.Version">
+            <summary>
+            Gets the libopus version string.
+            </summary>
+            <returns>Version string.</returns>
+        </member>
+        <member name="M:OpusSharp.Core.OpusInfo.StringError(System.Int32)">
+            <summary>
+            Converts an opus error code into a human readable string.
+            </summary>
+            <param name="error">Error number.</param>
+            <returns>Error string.</returns>
+        </member>
+        <member name="T:OpusSharp.Core.OpusMSDecoder">
+            <summary>
+            Audio multistream decoder with opus.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSDecoder.SampleRate">
+            <summary>
+            Sampling rate of input signal (Hz) This must be one of 8000, 12000, 16000, 24000, or 48000.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSDecoder.Channels">
+            <summary>
+            Number of channels in the input signal. This must be at most 255. It may be greater than the number of coded channels (streams + coupled_streams).
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSDecoder.Gain">
+            <summary>
+            Configures multistream decoder gain adjustment.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSDecoder.LastPacketDuration">
+            <summary>
+            Gets the duration (in samples) of the last packet successfully decoded or concealed.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSDecoder.Pitch">
+            <summary>
+            Gets the pitch of the last decoded frame, if available.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            Creates and initializes an opus multistream decoder.
+            </summary>
+            <param name="SampleRate">Sample rate to decode at (Hz). This must be one of 8000, 12000, 16000, 24000, or 48000.</param>
+            <param name="Channels">Number of channels to decode.</param>
+            <param name="Streams">The total number of streams coded in the input. This must be no more than 255.</param>
+            <param name="CoupledStreams">Number of streams to decode as coupled (2 channel) streams. This must be no larger than the total number of streams. Additionally, The total number of coded channels (streams + coupled_streams) must be no more than 255.</param>
+            <param name="mapping">Mapping from coded channels to output channels, as described in Opus Multistream API.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.Decode(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Decodes a multistream Opus packet.
+            </summary>
+            <param name="input">Input payload. Use a NULL pointer to indicate packet loss.</param>
+            <param name="inputLength">Number of bytes in payload.</param>
+            <param name="output">Output signal, with interleaved samples. This must contain room for frame_size*channels samples.</param>
+            <param name="frame_size">The number of samples per channel of available space in pcm. If this is less than the maximum packet duration (120 ms; 5760 for 48kHz), this function will not be capable of decoding some packets. In the case of PLC (data==NULL) or FEC (decode_fec=1), then frame_size needs to be exactly the duration of audio that is missing, otherwise the decoder will not be in the optimal state to decode the next incoming packet. For the PLC and FEC cases, frame_size must be a multiple of 2.5 ms.</param>
+            <param name="decodeFEC">Flag (false or true) to request that any in-band forward error correction data be decoded. If no such data is available, the frame is decoded as if it were lost.</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the decoded packet on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.Decode(System.Byte[],System.Int32,System.Int16[],System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Decodes a multistream Opus packet.
+            </summary>
+            <param name="input">Input payload. Use a NULL pointer to indicate packet loss.</param>
+            <param name="inputLength">Number of bytes in payload.</param>
+            <param name="output">Output signal, with interleaved samples. This must contain room for frame_size*channels samples.</param>
+            <param name="frame_size">The number of samples per channel of available space in pcm. If this is less than the maximum packet duration (120 ms; 5760 for 48kHz), this function will not be capable of decoding some packets. In the case of PLC (data==NULL) or FEC (decode_fec=1), then frame_size needs to be exactly the duration of audio that is missing, otherwise the decoder will not be in the optimal state to decode the next incoming packet. For the PLC and FEC cases, frame_size must be a multiple of 2.5 ms.</param>
+            <param name="decodeFEC">Flag (false or true) to request that any in-band forward error correction data be decoded. If no such data is available, the frame is decoded as if it were lost.</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the decoded packet on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.DecodeFloat(System.Byte[],System.Int32,System.Single[],System.Int32,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Decodes a multistream Opus frame.
+            </summary>
+            <param name="input">Input in float format (interleaved if 2 channels), with a normal range of +/-1.0. Samples with a range beyond +/-1.0 are supported but will be clipped by decoders using the integer API and should only be used if it is known that the far end supports extended dynamic range. length is frame_size*channels*sizeof(float)</param>
+            <param name="inputLength">The number of samples per channel of available space in pcm. If this is less than the maximum packet duration (120 ms; 5760 for 48kHz), this function will not be capable of decoding some packets. In the case of PLC (data==NULL) or FEC (decode_fec=1), then frame_size needs to be exactly the duration of audio that is missing, otherwise the decoder will not be in the optimal state to decode the next incoming packet. For the PLC and FEC cases, frame_size must be a multiple of 2.5 ms.</param>
+            <param name="output">Output signal, with interleaved samples. This must contain room for frame_size*channels samples.</param>
+            <param name="frame_size"></param>
+            <param name="decodeFEC">Flag (false or true) to request that any in-band forward error correction data be decoded. If no such data is available, the frame is decoded as if it were lost.</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the decoded packet on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.DecoderCtl(OpusSharp.Core.Enums.DecoderCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the multistream decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.DecoderCtl(OpusSharp.Core.Enums.DecoderCtl)">
+            <summary>
+            Requests a CTL on the multistream decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.DecoderCtl(OpusSharp.Core.Enums.GenericCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the multistream decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.DecoderCtl(OpusSharp.Core.Enums.GenericCtl)">
+            <summary>
+            Requests a CTL on the multistream decoder.
+            </summary>
+            <param name="ctl">The decoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.ThrowIfDisposed">
+            <summary>
+            Checks if the object is disposed and throws.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSDecoder.CheckError(System.Int32)">
+            <summary>
+            Check's for an opus error and throws if there is one.
+            </summary>
+            <param name="result"></param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="T:OpusSharp.Core.OpusMSEncoder">
+            <summary>
+            Audio multistream encoder with opus.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.SampleRate">
+            <summary>
+            Sampling rate of input signal (Hz) This must be one of 8000, 12000, 16000, 24000, or 48000.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.Channels">
+            <summary>
+            Number of channels in the input signal. This must be at most 255. It may be greater than the number of coded channels (streams + coupled_streams).
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.Bitrate">
+            <summary>
+            Configures the bitrate in the multistream encoder.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.OpusApplication">
+            <summary>
+            The coding mode that the multistream encoder is set to.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.Complexity">
+            <summary>
+            Configures the multistream encoder's computational complexity. The supported range is 0-10 inclusive with 10 representing the highest complexity.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.PacketLossPerc">
+            <summary>
+            Configures the multistream encoder's expected packet loss percentage. Loss percentage in the range 0-100, inclusive (default: 0).
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.Signal">
+            <summary>
+            Configures the type of signal being encoded.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.VBR">
+            <summary>
+            Enables or disables variable bitrate (VBR) in the multistream encoder.
+            </summary>
+        </member>
+        <member name="P:OpusSharp.Core.OpusMSEncoder.VBRConstraint">
+            <summary>
+            Enables or disables constraint variable bitrate (CVBR) in the multistream encoder.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Byte[],OpusSharp.Core.Enums.PreDefCtl)">
+            <summary>
+            Creates and initializes an opus multistream encoder.
+            </summary>
+            <param name="SampleRate">Sampling rate of the input signal (in Hz). This must be one of 8000, 12000, 16000, 24000, or 48000.</param>
+            <param name="Channels">Number of channels in the input signal. This must be at most 255. It may be greater than the number of coded channels (streams + coupled_streams).</param>
+            <param name="Streams">The total number of streams to encode from the input. This must be no more than the number of channels.</param>
+            <param name="CoupledStreams">Number of coupled (2 channel) streams to encode. This must be no larger than the total number of streams. Additionally, The total number of encoded channels (streams + coupled_streams) must be no more than the number of input channels.</param>
+            <param name="mapping">Mapping from encoded channels to input channels, as described in Opus Multistream API. As an extra constraint, the multistream encoder does not allow encoding coupled streams for which one channel is unused since this is never a good idea.</param>
+            <param name="Application">The target encoder application.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.Encode(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes a multistream Opus frame.
+            </summary>
+            <param name="input">The input signal as interleaved samples. This must contain frame_size*channels</param>
+            <param name="frame_size">Number of samples per channel in the input signal. This must be an Opus frame size for the encoder's sampling rate. For example, at 48 kHz the permitted values are 120, 240, 480, 960, 1920, and 2880. Passing in a duration of less than 10 ms (480 samples at 48 kHz) will prevent the encoder from using the LPC or hybrid modes.</param>
+            <param name="output">Output payload. This must contain storage for at least max_data_bytes. This variable is also used to determine the upper limit on the instant bitrate.</param>
+            <param name="outputOffset">Offset to start reading in the input.</param>
+            <param name="inputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the encoded packet (in bytes) on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.Encode(System.Int16[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes a multistream Opus frame.
+            </summary>
+            <param name="input">The input signal as interleaved samples. This must contain frame_size*channels</param>
+            <param name="frame_size">Number of samples per channel in the input signal. This must be an Opus frame size for the encoder's sampling rate. For example, at 48 kHz the permitted values are 120, 240, 480, 960, 1920, and 2880. Passing in a duration of less than 10 ms (480 samples at 48 kHz) will prevent the encoder from using the LPC or hybrid modes.</param>
+            <param name="output">Output payload. This must contain storage for at least max_data_bytes. This variable is also used to determine the upper limit on the instant bitrate.</param>
+            <param name="outputOffset">Offset to start reading in the input.</param>
+            <param name="inputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the encoded packet (in bytes) on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.EncodeFloat(System.Single[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes a multistream Opus frame from floating point input.
+            </summary>
+            <param name="input">The input signal as interleaved samples with a normal range of +/-1.0. Samples with a range beyond +/-1.0 are supported but will be clipped by decoders using the integer API and should only be used if it is known that the far end supports extended dynamic range. This must contain frame_size*channels samples.</param>
+            <param name="frame_size">Number of samples per channel in the input signal. This must be an Opus frame size for the encoder's sampling rate. For example, at 48 kHz the permitted values are 120, 240, 480, 960, 1920, and 2880. Passing in a duration of less than 10 ms (480 samples at 48 kHz) will prevent the encoder from using the LPC or hybrid modes.</param>
+            <param name="output">Output payload. This must contain storage for at least max_data_bytes. This variable is also used to determine the upper limit on the instant bitrate.</param>
+            <param name="inputOffset">Offset to start reading in the input.</param>
+            <param name="outputOffset">Offset to start writing in the output.</param>
+            <returns>The length of the encoded packet (in bytes) on success or a negative error code (see <see cref="T:OpusSharp.Core.Enums.OpusError"/>) on failure. Note: OpusSharp throws an error if there is a negative error code.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.EncoderCtl(OpusSharp.Core.Enums.EncoderCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.EncoderCtl(OpusSharp.Core.Enums.EncoderCtl)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.EncoderCtl(OpusSharp.Core.Enums.GenericCtl,System.Int32)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <param name="value">The value to input.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.EncoderCtl(OpusSharp.Core.Enums.GenericCtl)">
+            <summary>
+            Requests a CTL on the encoder.
+            </summary>
+            <param name="ctl">The encoder CTL to request.</param>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.ThrowIfDisposed">
+            <summary>
+            Checks if the object is disposed and throws.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.OpusMSEncoder.CheckError(System.Int32)">
+            <summary>
+            Check's for an opus error and throws if there is one.
+            </summary>
+            <param name="result"></param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="T:OpusSharp.Core.Repacketizer">
+            <summary>
+            The repacketizer can be used to merge multiple Opus packets into a single packet or alternatively to split Opus packets that have previously been merged.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.#ctor">
+            <summary>
+            Creates and initializes an opus repacketizer.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.ReInit">
+            <summary>
+            (Re)initializes a previously allocated repacketizer state.
+            </summary>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.Concat(System.Byte[])">
+            <summary>
+            Add a packet to the current repacketizer state.
+            </summary>
+            <param name="data">The packet data.</param>
+            <returns>The number of bytes in the packet data.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.GetNumberOfFrames">
+            <summary>
+            Return the total number of frames contained in packet data submitted to the repacketizer state so far via <seealso cref="M:OpusSharp.Core.Repacketizer.Concat(System.Byte[])"/> since the last call to <seealso cref="M:OpusSharp.Core.Repacketizer.ReInit"/> or on construction.
+            </summary>
+            <returns>The total number of frames contained in the packet data submitted to the repacketizer state.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.Out(System.Byte[])">
+            <summary>
+            Construct a new packet from data previously submitted to the repacketizer state via <seealso cref="M:OpusSharp.Core.Repacketizer.Concat(System.Byte[])"/>
+            </summary>
+            <param name="data">The buffer in which to store the output packet.</param>
+            <returns>The total size of the output packet on success, or an error code on failure.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.OutRange(System.Int32,System.Int32,System.Byte[])">
+            <summary>
+            Construct a new packet from data previously submitted to the repacketizer state via <seealso cref="M:OpusSharp.Core.Repacketizer.Concat(System.Byte[])"/>
+            </summary>
+            <param name="begin">The index of the first frame in the current repacketizer state to include in the output.</param>
+            <param name="end">One past the index of the last frame in the current repacketizer state to include in the output.</param>
+            <param name="data">The buffer in which to store the output packet.</param>
+            <returns>The total size of the output packet on success, or an <see cref="T:OpusSharp.Core.Enums.OpusError"/> on failure.</returns>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.ThrowIfDisposed">
+            <summary>
+            Checks if the object is disposed and throws.
+            </summary>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.Dispose(System.Boolean)">
+            <summary>
+            Disposes the object.
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.Pad(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Pads a given Opus packet to a larger size (possibly changing the TOC sequence).
+            </summary>
+            <param name="data">The buffer containing the packet to pad.</param>
+            <param name="len">The size of the packet. This must be at least 1.</param>
+            <param name="new_len">The desired size of the packet after padding. This must be at least as large as len.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.Unpad(System.Byte[],System.Int32)">
+            <summary>
+            Remove all padding from a given Opus packet and rewrite the TOC sequence to minimize space usage.
+            </summary>
+            <param name="data">The buffer containing the packet to strip.</param>
+            <param name="len">The size of the packet. This must be at least 1.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.MultiStreamPad(System.Byte[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Pads a given Opus packet to a larger size (possibly changing the TOC sequence).
+            </summary>
+            <param name="data">The buffer containing the packet to pad.</param>
+            <param name="len">The size of the packet. This must be at least 1.</param>
+            <param name="new_len">The desired size of the packet after padding. This must be at least as large as len.</param>
+            <param name="nb_streams">The number of streams (not channels) in the packet. This must be at least as large as len.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.MultiStreamUnpad(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Remove all padding from a given Opus packet and rewrite the TOC sequence to minimize space usage.
+            </summary>
+            <param name="data">The buffer containing the packet to strip.</param>
+            <param name="len">The size of the packet. This must be at least 1.</param>
+            <param name="nb_streams">The number of streams (not channels) in the packet. This must be at least 1.</param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+        <member name="M:OpusSharp.Core.Repacketizer.CheckError(System.Int32)">
+            <summary>
+            Check's for an opus error and throws if there is one.
+            </summary>
+            <param name="result"></param>
+            <exception cref="T:OpusSharp.Core.OpusException"></exception>
+        </member>
+    </members>
+</doc>

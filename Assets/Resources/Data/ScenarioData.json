@@ -2,7 +2,7 @@
   "엠폭스": [
     {
       "Progress": 0,
-      "Place": "관찰구역",
+      "Place": null,
       "Position": "응급센터 간호사1",
       "Equipment": null,
       "Action": "Tell",
@@ -124,19 +124,55 @@
       "Progress": 10,
       "Place": null,
       "Position": "응급의학과 의사",
-      "Equipment": "ProtectedGear",
+      "Equipment": "Glove",
       "Action": "Equip",
       "Keywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./",
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null
     },
     {
       "Progress": 11,
-      "Place": "관찰구역",
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Equipment": "Mask",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 12,
+      "Place": null,
       "Position": "응급의학과 의사",
       "Equipment": "ProtectedGear",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n방호복을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 13,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Equipment": "ShoeCover",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n덧신을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 14,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "엠폭스,확진자,접촉자,격리,진행,보건소,사실,확인,요청,결과,격리,해제",
       "Targets": null,
@@ -145,22 +181,58 @@
       "Confirm": "환자를 이송하시겠습니까?"
     },
     {
-      "Progress": 12,
+      "Progress": 15,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Equipment": "Glove",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 16,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Equipment": "Mask",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 17,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Equipment": "ProtectedGear",
       "Action": "Equip",
       "Keywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./",
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n방호복을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null
     },
     {
-      "Progress": 13,
-      "Place": "관찰구역",
+      "Progress": 18,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": "ShoeCover",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n덧신을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 19,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Equipment": null,
       "Action": "Clean",
       "Keywords": null,
       "Targets": null,
@@ -169,10 +241,10 @@
       "Confirm": null
     },
     {
-      "Progress": 14,
-      "Place": "관찰구역",
+      "Progress": 20,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": null,
+      "Equipment": "Mask",
       "Action": "UnEquip",
       "Keywords": null,
       "Targets": null,
@@ -181,7 +253,43 @@
       "Confirm": null
     },
     {
-      "Progress": 15,
+      "Progress": 21,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Equipment": "ProtectedGear",
+      "Action": "UnEquip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./",
+      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 22,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Equipment": "ShoeCover",
+      "Action": "UnEquip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./",
+      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 23,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Equipment": "Glove",
+      "Action": "UnEquip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 24,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Equipment": null,
@@ -193,10 +301,10 @@
       "Confirm": null
     },
     {
-      "Progress": 16,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 25,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "환자,확인,성함,생년,월일",
       "Targets": null,
@@ -205,10 +313,10 @@
       "Confirm": null
     },
     {
-      "Progress": 17,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 26,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "엠폭스,확진자,접촉자,격리,병실,입실,균,유출,차압,유지,외부인,출입,금지,감염,전파,예방,의료진,허락,입출입,준수",
       "Targets": null,
@@ -217,10 +325,10 @@
       "Confirm": null
     },
     {
-      "Progress": 18,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 27,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "안전,감염,전파,방지,씨씨티비,상태,병실,확인,동의,필요,응급,상황,인터폰,손소독제,마스크,위생,준수",
       "Targets": null,
@@ -229,10 +337,10 @@
       "Confirm": null
     },
     {
-      "Progress": 19,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 28,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "피부,발진,물집,농포,병변,확인",
       "Targets": null,
@@ -241,10 +349,10 @@
       "Confirm": null
     },
     {
-      "Progress": 20,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 29,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "확인,물집,의사",
       "Targets": null,
@@ -253,10 +361,10 @@
       "Confirm": null
     },
     {
-      "Progress": 21,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 30,
+      "Place": null,
       "Position": "응급의학과 의사",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "환자,확인,성함,생년,월일",
       "Targets": null,
@@ -265,10 +373,10 @@
       "Confirm": null
     },
     {
-      "Progress": 22,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 31,
+      "Place": null,
       "Position": "응급의학과 의사",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "물집,확인",
       "Targets": null,
@@ -277,10 +385,10 @@
       "Confirm": null
     },
     {
-      "Progress": 23,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 32,
+      "Place": null,
       "Position": "응급의학과 의사",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Bodycheck",
       "Keywords": null,
       "Targets": null,
@@ -289,10 +397,10 @@
       "Confirm": null
     },
     {
-      "Progress": 24,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 33,
+      "Place": null,
       "Position": "응급의학과 의사",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "수포,보건소,사실,여부,확인,엠폭스,접촉자,검체,채취,추가,검사,혈액,엑스레이",
       "Targets": null,
@@ -301,10 +409,10 @@
       "Confirm": null
     },
     {
-      "Progress": 25,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 34,
+      "Place": null,
       "Position": "응급의학과 의사",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "EMRWrite",
       "Keywords": null,
       "Targets": null,
@@ -313,10 +421,10 @@
       "Confirm": null
     },
     {
-      "Progress": 26,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 35,
+      "Place": null,
       "Position": "응급의학과 의사",
-      "Equipment": null,
+      "Equipment": "Mask",
       "Action": "UnEquip",
       "Keywords": null,
       "Targets": null,
@@ -325,8 +433,44 @@
       "Confirm": null
     },
     {
-      "Progress": 27,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 36,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Equipment": "ProtectedGear",
+      "Action": "UnEquip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
+      "Hint": "음압격리실에서 나와 4종 보호구를 탈의해주세요.",
+      "Confirm": null
+    },
+    {
+      "Progress": 37,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Equipment": "ShoeCover",
+      "Action": "UnEquip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
+      "Hint": "음압격리실에서 나와 4종 보호구를 탈의해주세요.",
+      "Confirm": null
+    },
+    {
+      "Progress": 38,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Equipment": "Glove",
+      "Action": "UnEquip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 39,
+      "Place": null,
       "Position": "응급의학과 의사",
       "Equipment": null,
       "Action": "Call",
@@ -337,8 +481,8 @@
       "Confirm": null
     },
     {
-      "Progress": 28,
-      "Place": "감염관리팀",
+      "Progress": 40,
+      "Place": null,
       "Position": "감염관리팀 간호사",
       "Equipment": null,
       "Action": "EMRRead",
@@ -349,8 +493,8 @@
       "Confirm": null
     },
     {
-      "Progress": 29,
-      "Place": "감염관리팀",
+      "Progress": 41,
+      "Place": null,
       "Position": "감염관리팀 간호사",
       "Equipment": null,
       "Action": "Report",
@@ -361,8 +505,8 @@
       "Confirm": null
     },
     {
-      "Progress": 30,
-      "Place": "감염병대응센터",
+      "Progress": 42,
+      "Place": null,
       "Position": "감염병대응센터 주무관",
       "Equipment": null,
       "Action": "Call",
@@ -373,8 +517,8 @@
       "Confirm": null
     },
     {
-      "Progress": 31,
-      "Place": "감염관리팀",
+      "Progress": 43,
+      "Place": null,
       "Position": "감염관리팀 간호사",
       "Equipment": null,
       "Action": "Call",
@@ -385,8 +529,8 @@
       "Confirm": null
     },
     {
-      "Progress": 32,
-      "Place": "감염병대응센터",
+      "Progress": 44,
+      "Place": null,
       "Position": "감염병대응센터 주무관",
       "Equipment": null,
       "Action": "Call",
@@ -397,10 +541,10 @@
       "Confirm": null
     },
     {
-      "Progress": 33,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 45,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "환자,확인,성함,생년,월일",
       "Targets": null,
@@ -409,10 +553,10 @@
       "Confirm": null
     },
     {
-      "Progress": 34,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 46,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "처방,채혈,엑스레이,촬영,진행",
       "Targets": null,
@@ -421,10 +565,10 @@
       "Confirm": null
     },
     {
-      "Progress": 35,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 47,
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "BloodCollection",
       "Keywords": null,
       "Targets": null,
@@ -433,8 +577,8 @@
       "Confirm": null
     },
     {
-      "Progress": 36,
-      "Place": "성인 응급의료센터 음압격리실",
+      "Progress": 48,
+      "Place": null,
       "Position": "응급센터 간호사2",
       "Equipment": null,
       "Action": "UnEquip",
@@ -445,8 +589,8 @@
       "Confirm": null
     },
     {
-      "Progress": 37,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 49,
+      "Place": null,
       "Position": "응급센터 간호사1",
       "Equipment": null,
       "Action": "Call",
@@ -457,22 +601,58 @@
       "Confirm": null
     },
     {
-      "Progress": 38,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 50,
+      "Place": null,
+      "Position": "영상의학팀 방사선사",
+      "Equipment": "Glove",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 51,
+      "Place": null,
+      "Position": "영상의학팀 방사선사",
+      "Equipment": "Mask",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 52,
+      "Place": null,
       "Position": "영상의학팀 방사선사",
       "Equipment": "ProtectedGear",
       "Action": "Equip",
       "Keywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./",
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n방호복을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null
     },
     {
-      "Progress": 39,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 53,
+      "Place": null,
       "Position": "영상의학팀 방사선사",
-      "Equipment": "PlasticBag",
+      "Equipment": "ShoeCover",
+      "Action": "Equip",
+      "Keywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n덧신을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 54,
+      "Place": null,
+      "Position": "영상의학팀 방사선사",
+      "Equipment": null,
       "Action": "Combine",
       "Keywords": null,
       "Targets": "X-Ray Machine",
@@ -481,10 +661,10 @@
       "Confirm": null
     },
     {
-      "Progress": 40,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 55,
+      "Place": null,
       "Position": "영상의학팀 방사선사",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "Tell",
       "Keywords": "성함,엑스레이,검사,시행",
       "Targets": null,
@@ -493,10 +673,10 @@
       "Confirm": null
     },
     {
-      "Progress": 41,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 56,
+      "Place": null,
       "Position": "영상의학팀 방사선사",
-      "Equipment": "ProtectedGear",
+      "Equipment": null,
       "Action": "X-Ray",
       "Keywords": null,
       "Targets": null,
@@ -505,8 +685,8 @@
       "Confirm": null
     },
     {
-      "Progress": 42,
-      "Place": "성인 응급의료센터 스테이션",
+      "Progress": 57,
+      "Place": null,
       "Position": "영상의학팀 방사선사",
       "Equipment": null,
       "Action": "UnEquip",

@@ -18,6 +18,14 @@ public class TwinEquipment : Equipment
         _rightEquipment = Util.FindChildByName(gameObject, $"{gameObject.name}R");
     }
 
+    public override bool Equip(BaseController character)
+    {
+        _leftEquipment.layer = character.gameObject.layer;
+        _rightEquipment.layer = character.gameObject.layer;
+
+        return base.Equip(character);
+    }
+
     public override void UnEquip(BaseController character)
     {
         Managers.Resource.Destroy(_leftEquipment);

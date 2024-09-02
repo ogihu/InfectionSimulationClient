@@ -204,19 +204,22 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(10));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(11));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(12));
-                NPCs["환자"].transform.position = Patientlying;
-
-                NPCs["환자"].GetComponent<NavMeshAgent>().enabled = false;
-                
-                NPCs["환자"].transform.localEulerAngles = new Vector3(-90, 180, 0);
-                NPCs["환자"].transform.localPosition = new Vector3(8.924f, 0.962f, 3.808f);
-                NPCs["환자"].transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
-                NPCs["환자"].DestoyRb();
-                NPCs["환자"].transform.SetParent(GameObject.Find("move_bed").transform);
-                NPCs["환자"]._positionDisplay.GetComponent<FloatingUI>().Init(GameObject.Find("move_bed").transform, y : 1.621f);
-
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(13));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
                 //환자 음압격리실로 이송
                 {
+                    NPCs["환자"].transform.position = Patientlying;
+
+                    NPCs["환자"].GetComponent<NavMeshAgent>().enabled = false;
+
+                    NPCs["환자"].transform.localEulerAngles = new Vector3(-90, 180, 0);
+                    NPCs["환자"].transform.localPosition = new Vector3(8.924f, 0.962f, 3.808f);
+                    NPCs["환자"].transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+                    NPCs["환자"].DestoyRb();
+                    NPCs["환자"].transform.SetParent(GameObject.Find("move_bed").transform);
+                    NPCs["환자"]._positionDisplay.GetComponent<FloatingUI>().Init(GameObject.Find("move_bed").transform, y: 1.621f);
+
                     NPCs["이송요원"].Equip("ProtectedGear");
                     NPCs["보안요원1"].Teleport(Entrance);
                     NPCs["보안요원2"].Teleport(Entrance);
@@ -231,15 +234,15 @@ public class ScenarioManager
                     yield return new WaitUntil(() => (!NPCs["보안요원1"].IsWorking()));
                     yield return new WaitUntil(() => (!NPCs["이송요원"].IsWorking()));
                     yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 2);
-          
+
                     NPCs["이송요원"].StopOrder();
                     NPCs["보안요원2"].StopOrder();
-            
+
                     GameObject.Find("move_bed").transform.SetParent(NPCs["이송요원"].transform);
                     NPCs["이송요원"].transform.GetChild(1).localPosition = new Vector3(0, 0, 1.2f);
-                    NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90,0);
-                    
-                    NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea,CreatureState.Push));
+                    NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90, 0);
+
+                    NPCs["이송요원"].SetOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea, CreatureState.Push));
                     NPCs["보안요원2"].SetOrder(NPCs["보안요원2"].CoFollow(NPCs["이송요원"].transform));
                     NPCs["이송요원"].ChangeSpeed(2f);
                     NPCs["보안요원2"].ChangeSpeed(2f);
@@ -251,10 +254,50 @@ public class ScenarioManager
                     NPCs["보안요원2"].StopOrder();
                     Managers.Resource.Destroy(go);
                 }
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(13));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(20));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(21));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(22));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(23));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(24));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(25));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(26));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(27));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(28));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(29));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(30));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(31));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(32));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(33));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(34));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(35));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(36));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(37));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(38));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(39));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(40));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(41));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(42));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(43));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(44));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(45));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(46));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(47));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(48));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(49));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(50));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(51));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(52));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(53));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(54));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(55));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(56));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(57));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(58));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(59));
                 break;
         }
 

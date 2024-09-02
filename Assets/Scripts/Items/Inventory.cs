@@ -120,6 +120,13 @@ public class Inventory : MonoBehaviour
 
     public void ChangeItemText(string name)
     {
+        if (string.IsNullOrEmpty(name))
+        {
+            _itemName.text = "";
+            _itemInfo.text = "";
+            return;
+        }
+
         _itemName.text = Define.ItemInfoDict[name].Name;
         _itemInfo.text = Define.ItemInfoDict[name].Description;
     }

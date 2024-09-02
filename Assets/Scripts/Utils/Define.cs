@@ -247,9 +247,10 @@ public class Define
     public static readonly Dictionary<string, ItemInfo> ItemInfoDict = new Dictionary<string, ItemInfo>()
     {
         {"Mask", new ItemInfo("마스크", "먼지, 바이러스, 세균 등 공기 중의 유해물질이나 감염으로부터 착용자를 보호")},
-        {"ProtectedGear", new ItemInfo("4종 보호구", "감염 및 오염으로부터 의료진을 보호하기 위해\n마스크, 장갑, 가운, 고글(또는 페이스쉴드)로 구성된 개인 보호장비")},
+        {"ProtectedGear", new ItemInfo("방호복", "의료진을 감염성 물질로부터 보호하여 안전을 유지")},
         {"ShoeCover", new ItemInfo("덧신", "병원 내 감염 예방과 위생 유지, 환자 보호를 위해 사용")},
-        {"Goggle", new ItemInfo("고글", "눈을 통한 감염을 방지하기 위해 착용하는 보호 장비")}
+        {"Goggle", new ItemInfo("고글", "눈을 통한 감염을 방지하기 위해 착용하는 보호 장비")},
+        {"Glove", new ItemInfo("장갑", "감염 예방과 위생 관리를 위해 의료진과 환자 간의 직접적인 접촉을 차단하는 보호 장비")}
     };
 
     public enum Scene

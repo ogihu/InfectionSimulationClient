@@ -220,12 +220,12 @@ public class ScenarioManager
                     NPCs["환자"].transform.SetParent(GameObject.Find("move_bed").transform);
                     NPCs["환자"]._positionDisplay.GetComponent<FloatingUI>().Init(GameObject.Find("move_bed").transform, y: 1.621f);
 
-                    NPCs["이송요원"].Equip("ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
                     NPCs["보안요원1"].Teleport(Entrance);
                     NPCs["보안요원2"].Teleport(Entrance);
                     NPCs["보안요원1"].Equip("Mask");
                     NPCs["보안요원2"].Equip("Mask");
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송     중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     NPCs["이송요원"].Teleport(Entrance1);
                     NPCs["보안요원1"].SetOrder(NPCs["보안요원1"].CoGoDestination(EntranceControlPoint));

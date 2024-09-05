@@ -12,6 +12,7 @@
 Assets/Resources/**/*.bin
 Assets/StreamingAssets/**/*.bin
 Assets/StreamingAssets/**/*.meta
+Assets/StreamingAssets/*.json
 Assets/PrivateAssets
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj

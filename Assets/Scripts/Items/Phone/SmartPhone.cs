@@ -118,7 +118,7 @@ public class SmartPhone : MonoBehaviour
         switch (Managers.Scenario.MyAction)
         {
             case "Call":
-                Managers.STT.StartSpeech();
+                Managers.STT.GoogleSpeechObj.StartListening();
                 _functions.SetActive(false);
                 _targets.SetActive(false);
                 _calling.SetActive(true);
@@ -146,7 +146,7 @@ public class SmartPhone : MonoBehaviour
     public void FinishCall()
     {
         _isCalling = false;
-        Managers.STT.StopSpeech();
+        Managers.STT.GoogleSpeechObj.StopListening();
         Managers.Phone.ClosePhone();
     }
 

@@ -1,3 +1,4 @@
+using GoogleCloudStreamingSpeechToText;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,28 +6,37 @@ using UnityEngine;
 
 public class STTManager
 {
-    private RealtimeSTTManager _sttManager;
-    public RealtimeSTTManager SttManager
+    private AccumulateText _sttstreamingtext;
+    public AccumulateText STTStreamingText
     {
         get
         {
-            if (_sttManager == null)
+            if (_sttstreamingtext == null)
             {
-                GameObject go = GameObject.Find("RealtimeSTT");
-
+                GameObject go = GameObject.Find("GoogleCloudSpeechListener");
                 if (go == null)
-                    go = Managers.Resource.Instantiate("System/RealtimeSTT");
-
-                if (go == null)
-                    Debug.LogError("Can't find prefab : RealtimeSTT");
-
-                _sttManager = go.GetComponent<RealtimeSTTManager>();
+                    go = Managers.Resource.Instantiate("Prefabs/STT/GoogleCloudSpeechListener.prefab");
+                StreamingRecognizer streamingRecognizer = go.GetComponent<StreamingRecognizer>();
+                _sttstreamingtext = streamingRecognizer.TextUI.GetComponent<AccumulateText>();
             }
 
-            return _sttManager;
+            return _sttstreamingtext;
+        }
+
+    }
+    private StreamingRecognizer _googlespeechobj;
+    public StreamingRecognizer GoogleSpeechObj
+    {
+        get
+        {
+            if (_googlespeechobj == null)
+            {
+                GameObject go = GameObject.Find("GoogleCloudSpeechListener");
+                _googlespeechobj = go.GetComponent<StreamingRecognizer>();
+            }
+            return _googlespeechobj;
         }
     }
-
     private string _speechBuffer;
     public string SpeechBuffer
     {
@@ -48,7 +58,7 @@ public class STTManager
             if (_mySpeech == null)
                 _mySpeech = GameObject.Find("MySpeech");
 
-            if( _mySpeech == null)
+            if (_mySpeech == null)
                 _mySpeech = Managers.UI.CreateUI("MySpeech");
 
             if (_mySpeech == null)
@@ -63,7 +73,7 @@ public class STTManager
     {
         get
         {
-            if(_openSpeech == null)
+            if (_openSpeech == null)
                 _openSpeech = MySpeech.transform.GetChild(0).gameObject;
 
             return _openSpeech;
@@ -75,7 +85,7 @@ public class STTManager
     {
         get
         {
-            if(_closeSpeech == null)
+            if (_closeSpeech == null)
                 _closeSpeech = MySpeech.transform.GetChild(1).gameObject;
 
             return _closeSpeech;
@@ -91,17 +101,17 @@ public class STTManager
         if (message == null)
             return;
 
-        if (reset)
-            ResetBuffer();
+        //if (reset)
+        //    ResetBuffer();
 
         _speechBuffer = message;
 
         ChangeSpeechState(false);
 
-        if (_textAnim != null)
-            Managers.Instance.StopCoroutine(_textAnim);
-
-        _textAnim = Managers.Instance.StartCoroutine(OpenSpeech.GetComponent<TextTwinkle>().Typing(_speechBuffer, OpenSpeech.transform.GetChild(0).gameObject));
+        //if (_textAnim != null)
+        //    Managers.Instance.StopCoroutine(_textAnim);
+        //수정
+        //_textAnim = Managers.Instance.StartCoroutine(OpenSpeech.GetComponent<TextTwinkle>().Typing(_speechBuffer, OpenSpeech.transform.GetChild(0).gameObject));
     }
 
     public void ChangeSpeechState()
@@ -128,16 +138,6 @@ public class STTManager
     public void OpenMySpeech()
     {
         ChangeSpeechState(false);
-    }
-
-    public void StartSpeech()
-    {
-        SttManager.Microphone.StartRecord();
-    }
-
-    public void StopSpeech()
-    {
-        SttManager.Microphone.StopRecord();
     }
 
     public void ResetBuffer()

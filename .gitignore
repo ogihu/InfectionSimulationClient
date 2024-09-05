@@ -12,6 +12,7 @@
 Assets/Resources/**/*.bin
 Assets/StreamingAssets/**/*.bin
 Assets/StreamingAssets/**/*.meta
+Assets/StreamingAssets/*.json
 Assets/PrivateAssets
 Assembly-CSharp.csproj
 Assembly-CSharp-Editor.csproj
@@ -76,3 +77,4 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+

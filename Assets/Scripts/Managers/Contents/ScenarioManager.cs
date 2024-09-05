@@ -137,7 +137,7 @@ public class ScenarioManager
 
     IEnumerator CoScenarioStep(int progress)
     {
-        Managers.STT.SttManager.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
+        Managers.STT.STTStreamingText.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");
@@ -384,8 +384,7 @@ public class ScenarioManager
     #region 시나리오 검증 관련 기능
 
     IEnumerator CoCheckAction()
-    {
-        ChangeKeyword(CurrentScenarioInfo.Keywords);
+    { 
         bool complete = false;
 
         while (!complete)
@@ -416,15 +415,6 @@ public class ScenarioManager
                 return false;
 
         return true;
-    }
-
-    void ChangeKeyword(List<string> keywords)
-    {
-        RealtimeSTT.GetComponent<RealtimeSTTManager>().initialPrompt = "";
-        foreach (var keyword in keywords)
-        {
-            RealtimeSTT.GetComponent<RealtimeSTTManager>().initialPrompt += $"{keyword} ";
-        }
     }
 
     bool CheckAction()

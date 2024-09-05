@@ -1,3 +1,4 @@
+using GoogleCloudStreamingSpeechToText;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,7 +13,7 @@ public class AIStateCheck : MonoBehaviour
     private void Awake()
     {
         Managers.STT.OpenSpeech.SetActive(true);
-        _text = Managers.STT.OpenSpeech.transform.GetChild(5).gameObject;
+        _text = Managers.STT.OpenSpeech.transform.GetChild(6).gameObject;
         Managers.STT.OpenSpeech.SetActive(false);
         _isInferencing = false;
         ChangeState(_isInferencing);
@@ -20,9 +21,9 @@ public class AIStateCheck : MonoBehaviour
 
     void Update()
     {
-        if(_isInferencing != Managers.STT.SttManager.AITasking)
+        if (_isInferencing != Managers.STT.GoogleSpeechObj.TalkCheck)
         {
-            _isInferencing = Managers.STT.SttManager.AITasking;
+            _isInferencing = Managers.STT.GoogleSpeechObj.TalkCheck;
             ChangeState(_isInferencing);
         }
     }

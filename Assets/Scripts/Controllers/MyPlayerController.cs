@@ -1,4 +1,5 @@
 using Google.Protobuf.Protocol;
+using GoogleCloudStreamingSpeechToText;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -189,12 +190,12 @@ public class MyPlayerController : PlayerController
             if (State == CreatureState.Idle)
             {
                 Managers.Scenario.MyAction = "Tell";
-                Managers.STT.StartSpeech();
+                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StartListening();
                 State = CreatureState.Conversation;
             }
             else if (State == CreatureState.Conversation)
             {
-                Managers.STT.StopSpeech();
+                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
                 State = CreatureState.Idle;
             }
         }

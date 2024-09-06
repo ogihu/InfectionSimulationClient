@@ -74,6 +74,13 @@ namespace GoogleCloudStreamingSpeechToText
 
         public void StartListening()
         {
+            TextUI.GetComponent<AccumulateText>().Stoptext = false;
+            if (TextUI.GetComponent<AccumulateText>().score < TextUI.GetComponent<AccumulateText>().SimilarityThreshold )
+            {
+                TextUI.GetComponent<AccumulateText>()._text.text = "";
+                TextUI.GetComponent<AccumulateText>()._accumulatedText = "";
+                TextUI.GetComponent<AccumulateText>()._interimText = "";
+            }
             if (!_initialized)
             {
                 return;
@@ -84,7 +91,7 @@ namespace GoogleCloudStreamingSpeechToText
 
         public async void StopListening()
         {
-            
+            TextUI.GetComponent<AccumulateText>().Stoptext = true;
             if (!_initialized || _cancellationTokenSource == null)
             {
                 return;

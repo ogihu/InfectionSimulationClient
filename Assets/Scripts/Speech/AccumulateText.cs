@@ -3,6 +3,7 @@ using Google.Protobuf.Protocol;
 using GoogleCloudStreamingSpeechToText;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,11 +11,11 @@ using UnityEngine.UI;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class AccumulateText : MonoBehaviour
 {
-    private string _accumulatedText = "";
-    private string _interimText = "";
-    private TextMeshProUGUI _text;
+    public string _accumulatedText = "";
+    public string _interimText = "";
+    public  TextMeshProUGUI _text;
     private RectTransform _canvasRect;
-   
+    public float score = 0;
     private class Command
     {
         public List<string> keywords;
@@ -42,17 +43,20 @@ public class AccumulateText : MonoBehaviour
         _accumulatedText += finalTranscription;
         _interimText = "";
         SetText();
-        FinalEvaluate();
+        //FinalEvaluate();
     }
+
 
     private void Awake()
     {
         _text = gameObject.GetComponent<TextMeshProUGUI>();
         _canvasRect = _text.canvas.GetComponent<RectTransform>();
     }
-
+    public bool Stoptext = false;
     private void SetText()
     {
+        if (Stoptext)
+            return;
         float textHeight = LayoutUtility.GetPreferredHeight(_text.rectTransform);
         float parentHeight = _canvasRect.rect.height;
         if (textHeight > parentHeight)
@@ -68,9 +72,9 @@ public class AccumulateText : MonoBehaviour
     }
     public  void FinalEvaluate()
     {
+        if (Managers.Scenario._doingScenario == false)
+            return;
         string transcription = _text.text;
-
-        float score = 0;
         
         if (CurCommand.keywords != null)
         {

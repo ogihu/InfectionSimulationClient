@@ -196,6 +196,7 @@ public class MyPlayerController : PlayerController
             else if (State == CreatureState.Conversation)
             {
                 Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
+                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
                 State = CreatureState.Idle;
             }
         }

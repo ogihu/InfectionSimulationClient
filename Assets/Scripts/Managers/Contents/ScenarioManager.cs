@@ -73,7 +73,7 @@ public class ScenarioManager
 
     private bool _checkComplete;    //이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
     public Coroutine _routine;
-    bool _doingScenario = false;
+    public bool _doingScenario = false;
     public int PopupConfirm { get; set; }   //평상시에는 0, CheckPopup에서 확인을 선택했으면 1, 취소를 선택했으면 2
 
     public ScenarioInfo CurrentScenarioInfo { get; set; }
@@ -133,6 +133,7 @@ public class ScenarioManager
             _doingScenario = true;
             Managers.Instance.StartCoroutine(CoScenario(scenarioName));
         }
+        
     }
 
     IEnumerator CoScenarioStep(int progress)

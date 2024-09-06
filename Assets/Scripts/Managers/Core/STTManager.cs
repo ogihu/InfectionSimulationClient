@@ -101,8 +101,8 @@ public class STTManager
         if (message == null)
             return;
 
-        //if (reset)
-        //    ResetBuffer();
+        if (reset)
+            ResetBuffer();
 
         _speechBuffer = message;
 

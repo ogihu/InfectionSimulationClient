@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ButtonInventory : ButtonUI
 {
-    Action<Item> _myAction;
+    Action<ItemInfo> _myAction;
 
     protected override void OnClicked()
     {
@@ -13,7 +13,7 @@ public class ButtonInventory : ButtonUI
         _myAction.Invoke(Managers.Item.SelectedItem);
     }
 
-    public void SetEvent(Action<Item> action)
+    public void SetEvent(Action<ItemInfo> action)
     {
         _myAction = action;
     }

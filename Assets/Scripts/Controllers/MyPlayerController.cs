@@ -233,7 +233,7 @@ public class MyPlayerController : PlayerController
             C_Equip equipPacket = new C_Equip();
             equipPacket.ItemName = go.name;
             Managers.Network.Send(equipPacket);
-            go.GetComponent<Equipment>().Equip(this);
+            go.GetComponent<Equipment>().Use(this);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -242,7 +242,7 @@ public class MyPlayerController : PlayerController
             C_Equip equipPacket = new C_Equip();
             equipPacket.ItemName = go.name;
             Managers.Network.Send(equipPacket);
-            go.GetComponent<Equipment>().Equip(this);
+            go.GetComponent<Equipment>().Use(this);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -251,7 +251,7 @@ public class MyPlayerController : PlayerController
             C_Equip equipPacket = new C_Equip();
             equipPacket.ItemName = go.name;
             Managers.Network.Send(equipPacket);
-            go.GetComponent<Equipment>().Equip(this);
+            go.GetComponent<Equipment>().Use(this);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
@@ -260,31 +260,31 @@ public class MyPlayerController : PlayerController
             C_Equip equipPacket = new C_Equip();
             equipPacket.ItemName = go.name;
             Managers.Network.Send(equipPacket);
-            go.GetComponent<Equipment>().Equip(this);
+            go.GetComponent<Equipment>().Use(this);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             {
-                Equipment["ShoeCover"].GetComponent<Equipment>().UnEquip(this);
+                Equipment["ShoeCover"].GetComponent<Equipment>().UnUse(this);
                 C_UnEquip unEquipPacket = new C_UnEquip();
                 unEquipPacket.ItemName = "ShoeCover";
                 Managers.Network.Send(unEquipPacket);
             }
             {
-                Equipment["Mask"].GetComponent<Equipment>().UnEquip(this);
+                Equipment["Mask"].GetComponent<Equipment>().UnUse(this);
                 C_UnEquip unEquipPacket = new C_UnEquip();
                 unEquipPacket.ItemName = "Mask";
                 Managers.Network.Send(unEquipPacket);
             }
             {
-                Equipment["ProtectedGear"].GetComponent<Equipment>().UnEquip(this);
+                Equipment["ProtectedGear"].GetComponent<Equipment>().UnUse(this);
                 C_UnEquip unEquipPacket = new C_UnEquip();
                 unEquipPacket.ItemName = "ProtectedGear";
                 Managers.Network.Send(unEquipPacket);
             }
             {
-                Equipment["Goggle"].GetComponent<Equipment>().UnEquip(this);
+                Equipment["Goggle"].GetComponent<Equipment>().UnUse(this);
                 C_UnEquip unEquipPacket = new C_UnEquip();
                 unEquipPacket.ItemName = "Goggle";
                 Managers.Network.Send(unEquipPacket);

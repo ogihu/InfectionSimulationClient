@@ -376,20 +376,27 @@ public class BaseController : MonoBehaviour
         }
     }
 
-    public bool EquipItem(GameObject equipment)
+    public bool UseItem(GameObject item)
     {
-        if (Equipment.ContainsKey(equipment.name))
-            return false;
+        if(item.GetComponent<Item>() as Equipment)
+        {
+            if (Equipment.ContainsKey(item.name))
+                return false;
 
-        Equipment.Add(equipment.name, equipment);
-        
-        if (equipment.GetComponent<Animator>() != null)
-            _equipmentAnimator.Add(equipment.GetComponent<Animator>());
+            Equipment.Add(item.name, item);
 
-        return true;
+            if (item.GetComponent<Animator>() != null)
+                _equipmentAnimator.Add(item.GetComponent<Animator>());
+
+            return true;
+        }
+        else
+        {
+            return true;
+        }
     }
 
-    public void UnEquipItem(string equipment)
+    public void UnUseItem(string equipment)
     {
         if (Equipment.ContainsKey(equipment))
         {

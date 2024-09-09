@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonItemSlot : ButtonUI
 {
-    Item _item;
+    ItemInfo _item;
     Image _icon;
     GameObject _equiped;
 
@@ -43,7 +43,7 @@ public class ButtonItemSlot : ButtonUI
         return;
     }
 
-    public void SetItem(Item item)
+    public void SetItem(ItemInfo item)
     {
         _item = item;
         _icon.sprite = _item.ItemData.Icon;

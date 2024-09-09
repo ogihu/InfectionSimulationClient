@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Equipment : Items
+public class Equipment : Item
 {
-    public override bool Equip(BaseController character)
+    public override bool Use(BaseController character)
     {
         gameObject.layer = character.gameObject.layer;
-        return character.EquipItem(this.gameObject);
+        
+        return base.Use(character);
     }
 
-    public override void UnEquip(BaseController character)
+    public override void UnUse(BaseController character)
     {
-        character.UnEquipItem(this.gameObject.name);
+        character.UnUseItem(this.gameObject.name);
     }
 }

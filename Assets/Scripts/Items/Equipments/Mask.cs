@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Mask : Equipment
 {
-    public override bool Equip(BaseController character)
+    public override bool Use(BaseController character)
     {
         Transform parent = Util.FindChildByName(character.gameObject, "basic_rig Head").transform;
         if(parent == null)
@@ -14,6 +14,6 @@ public class Mask : Equipment
         }
         gameObject.transform.SetParent(parent, false);
 
-        return base.Equip(character);
+        return base.Use(character);
     }
 }

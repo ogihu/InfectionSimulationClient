@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class Item
+public class ItemInfo
 {
     public ItemData ItemData { get; set; }
     public GameObject Object { get; set; }
@@ -16,16 +16,16 @@ public class Item
 
 public class ItemManager
 {
-    public List<Item> ItemList = new List<Item>();
+    public List<ItemInfo> ItemList = new List<ItemInfo>();
     public Inventory Inventory { get; set; }
-    public Item SelectedItem { get; set; }
+    public ItemInfo SelectedItem { get; set; }
 
     public bool IsCombining { get; set; }
-    public List<Item> CombineItems = new List<Item>();
+    public List<ItemInfo> CombineItems = new List<ItemInfo>();
 
     public void GetItem(ItemData itemData)
     {
-        Item item = new Item();
+        ItemInfo item = new ItemInfo();
         item.ItemData = itemData;
         item.Equiped = false;
 
@@ -33,7 +33,7 @@ public class ItemManager
         Debug.Log($"아이템 획득 - 현재 보유한 아이템 {ItemList.Count}개");
     }
 
-    public void EquipItem(Item item)
+    public void EquipItem(ItemInfo item)
     {
         if(item == null)
         {
@@ -81,8 +81,11 @@ public class ItemManager
             return;
         }
 
-        if (!equipment.Equip(Managers.Object.MyPlayer))
+        if (!equipment.Use(Managers.Object.MyPlayer))
+        {
             Managers.Resource.Destroy(item.Object);
+            return;
+        }
 
         item.Equiped = true;
 
@@ -123,7 +126,7 @@ public class ItemManager
         CombineItems.Clear();
     }
 
-    public void UnEquipItem(Item item)
+    public void UnEquipItem(ItemInfo item)
     {
         if (item == null)
         {
@@ -158,7 +161,7 @@ public class ItemManager
 
         Equipment equipment = item.Object.GetComponent<Equipment>();
 
-        equipment.UnEquip(Managers.Object.MyPlayer);
+        equipment.UnUse(Managers.Object.MyPlayer);
         item.Object = null;
         item.Equiped = false;
         Inventory.UpdateItemList();
@@ -168,7 +171,7 @@ public class ItemManager
         Managers.Scenario.Equipment = null;
     }
 
-    public void DropItem(Item item)
+    public void DropItem(ItemInfo item)
     {
         if (item == null)
         {

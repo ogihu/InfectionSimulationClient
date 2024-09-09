@@ -113,13 +113,13 @@ public class NPCController : CreatureController
         if (component == null)
             return;
 
-        component.Equip(this);
+        component.Use(this);
     }
 
     public void UnEquip(string equipment)
     {
         if(Equipment.ContainsKey(equipment))
-            Equipment[equipment].GetComponent<Equipment>().UnEquip(this);
+            Equipment[equipment].GetComponent<Equipment>().UnUse(this);
     }
 
     public bool IsWorking()

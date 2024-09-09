@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Glove : TwinEquipment
 {
-    public override bool Equip(BaseController character)
+    public override bool Use(BaseController character)
     {
         Transform leftParent = Util.FindChildByName(character.gameObject, "basic_rig L Hand").transform;
         Transform rightParent = Util.FindChildByName(character.gameObject, "basic_rig R Hand").transform;
@@ -18,6 +18,6 @@ public class Glove : TwinEquipment
         _leftEquipment.transform.SetParent(leftParent, false);
         _rightEquipment.transform.SetParent(rightParent, false);
 
-        return base.Equip(character);
+        return base.Use(character);
     }
 }

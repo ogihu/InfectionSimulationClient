@@ -149,7 +149,7 @@ public class MyPlayerController : PlayerController
                 if (State == CreatureState.Idle)
                     Managers.UI.CreateUI("Setting");
                 else if (State == CreatureState.Setting)
-                    Managers.UI.DestroyUI(Util.FindChildByName(Managers.UI.overlayCanvas.gameObject, "Setting"));
+                    Managers.UI.DestroyUI(Util.FindChildByName(Managers.UI.OverlayCanvas.gameObject, "Setting"));
             }
         }
 
@@ -196,6 +196,7 @@ public class MyPlayerController : PlayerController
             else if (State == CreatureState.Conversation)
             {
                 Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
+                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
                 State = CreatureState.Idle;
             }
         }

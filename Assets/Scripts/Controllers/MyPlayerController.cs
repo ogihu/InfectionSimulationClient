@@ -149,7 +149,7 @@ public class MyPlayerController : PlayerController
                 if (State == CreatureState.Idle)
                     Managers.UI.CreateUI("Setting");
                 else if (State == CreatureState.Setting)
-                    Managers.UI.DestroyUI(Util.FindChildByName(Managers.UI.overlayCanvas.gameObject, "Setting"));
+                    Managers.UI.DestroyUI(Util.FindChildByName(Managers.UI.OverlayCanvas.gameObject, "Setting"));
             }
         }
 

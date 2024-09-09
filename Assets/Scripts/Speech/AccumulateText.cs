@@ -74,8 +74,10 @@ public class AccumulateText : MonoBehaviour
     {
         if (Managers.Scenario._doingScenario == false)
             return;
+
         string transcription = _text.text;
-        
+        string content = transcription;
+
         if (CurCommand.keywords != null)
         {
             score = Managers.Scenario.CheckKeywords(ref transcription);
@@ -92,11 +94,12 @@ public class AccumulateText : MonoBehaviour
         Debug.Log(transcription);
         _text.text = transcription;
 
-        C_Talk talkPacket = new C_Talk();
-        talkPacket.Message = transcription;
-        if (talkPacket.Message == "")
-            Debug.Log("비어있어요");
-        Managers.Network.Send(talkPacket);
+        if (!string.IsNullOrEmpty(content))
+        {
+            C_Talk talkPacket = new C_Talk();
+            talkPacket.Message = content;
+            Managers.Network.Send(talkPacket);
+        }
     }
     public void ThenDo()
     {
@@ -117,6 +120,7 @@ public class AccumulateText : MonoBehaviour
         {
             CurCommand.keywords = Managers.Scenario.CurrentScenarioInfo.Keywords;
             CurCommand.thenDo = ThenDo;
+            StreamingRecognizer.needKeyword.Clear();
             StreamingRecognizer.needKeyword.AddRange(CurCommand.keywords);
         }
     }

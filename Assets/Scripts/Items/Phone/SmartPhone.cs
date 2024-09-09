@@ -1,3 +1,4 @@
+using GoogleCloudStreamingSpeechToText;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -147,6 +148,7 @@ public class SmartPhone : MonoBehaviour
     {
         _isCalling = false;
         Managers.STT.GoogleSpeechObj.StopListening();
+        Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
         Managers.Phone.ClosePhone();
     }
 

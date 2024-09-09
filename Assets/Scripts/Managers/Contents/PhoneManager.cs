@@ -11,7 +11,7 @@ public class PhoneManager
         {
             if (_device == null)
             {
-                GameObject device = Util.FindChildByName(Managers.UI.overlayCanvas.gameObject, "SmartPhone");
+                GameObject device = Util.FindChildByName(Managers.UI.OverlayCanvas.gameObject, "SmartPhone");
 
                 if (device == null)
                 {

@@ -22,8 +22,32 @@ public class UIManager
     public Stack<GameObject> ContentPopups { get; set; } = new Stack<GameObject>();
     public Dictionary<string, SystemPopup> SystemPopups { get; set; } = new Dictionary<string, SystemPopup>();
     Dictionary<Transform, GameObject> BubbleCache { get; set; } = new Dictionary<Transform, GameObject>();
-    public Canvas overlayCanvas;
-    public Canvas worldCanvas;
+
+    Canvas _overlayCanvas;
+    public Canvas OverlayCanvas
+    {
+        get
+        {
+            if(_overlayCanvas == null)
+            {
+                _overlayCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+            }
+
+            return _overlayCanvas;
+        }
+    }
+
+    Canvas _worldCanvas;
+    public Canvas WorldCanvas
+    {
+        get
+        {
+            if(_worldCanvas == null)
+                _worldCanvas = GameObject.Find("WorldCanvas").GetComponent<Canvas>();
+
+            return _worldCanvas;
+        }
+    }
 
     /// <summary>
     /// Resources/Prefabs/UI 폴더 산하에 있는 UI를 생성 및 리턴
@@ -41,18 +65,14 @@ public class UIManager
 
         if (canvasType == CanvasType.Overlay)
         {
-            if (overlayCanvas == null)
-                overlayCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-            canvas = overlayCanvas;
+            canvas = OverlayCanvas;
         }
         else
         {
-            if (worldCanvas == null)
-                worldCanvas = GameObject.Find("WorldCanvas").GetComponent<Canvas>();
-            canvas = worldCanvas;
+            canvas = WorldCanvas;
 
-            if (worldCanvas.worldCamera == null)
-                worldCanvas.worldCamera = Camera.main;
+            if (WorldCanvas.worldCamera == null)
+                WorldCanvas.worldCamera = Camera.main;
         }
 
         go = CreateUI(name, canvas.transform);

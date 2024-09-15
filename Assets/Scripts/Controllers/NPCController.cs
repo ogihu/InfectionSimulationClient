@@ -107,7 +107,7 @@ public class NPCController : CreatureController
 
     public void Equip(string equipment)
     {
-        GameObject eqm = Managers.Resource.Instantiate($"Equipments/{equipment}");
+        GameObject eqm = Managers.Resource.Instantiate($"Items/{equipment}");
         Equipment component = eqm.GetComponent<Equipment>();
         
         if (component == null)
@@ -118,8 +118,8 @@ public class NPCController : CreatureController
 
     public void UnEquip(string equipment)
     {
-        if(Equipment.ContainsKey(equipment))
-            Equipment[equipment].GetComponent<Equipment>().UnUse(this);
+        if(Items.ContainsKey(equipment))
+            Items[equipment].GetComponent<Equipment>().UnUse(this);
     }
 
     public bool IsWorking()

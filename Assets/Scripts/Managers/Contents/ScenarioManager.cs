@@ -14,7 +14,7 @@ public class ScenarioManager
 
     public string ScenarioName { get; set; }
     public int Progress { get; set; }
-    public string Equipment { get; set; }
+    public string Item { get; set; }
 
     public Dictionary<string, NPCController> NPCs = new Dictionary<string, NPCController>();
 
@@ -436,7 +436,7 @@ public class ScenarioManager
 
         if (!string.IsNullOrEmpty(CurrentScenarioInfo.Equipment))
         {
-            if (Equipment != CurrentScenarioInfo.Equipment)
+            if (Item != CurrentScenarioInfo.Equipment)
             {
                 Managers.UI.CreateSystemPopup("WarningPopup", "현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
                 Reset();

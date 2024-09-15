@@ -16,6 +16,6 @@ public class ItemData
     {
         Name = name;
         Icon = Managers.Resource.Load<Sprite>($"Sprites/ItemIcons/{Name}");
-        Prefab = Managers.Resource.Load<GameObject>($"Prefabs/Equipments/{Name}");
+        Prefab = Managers.Resource.Load<GameObject>($"Prefabs/Items/{Name}");
     }
 }

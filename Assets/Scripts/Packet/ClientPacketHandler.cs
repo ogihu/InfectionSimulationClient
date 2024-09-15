@@ -100,7 +100,7 @@ class PacketHandler
         if (bc == null)
             return;
 
-        Equipment eqm = bc.Equipment[unEquipPacket.ItemName].GetComponent<Equipment>();
+        Equipment eqm = bc.Items[unEquipPacket.ItemName].GetComponent<Equipment>();
         if (eqm != null)
             eqm.UnUse(bc);
     }
@@ -120,7 +120,7 @@ class PacketHandler
         if (bc == null)
             return;
 
-        Managers.Resource.Instantiate($"Equipments/{equipPacket.ItemName}").GetComponent<Equipment>().Use(bc);
+        Managers.Resource.Instantiate($"Items/{equipPacket.ItemName}").GetComponent<Equipment>().Use(bc);
     }
 
     public static void S_NextProgressHandler(PacketSession session, IMessage packet)

@@ -178,7 +178,7 @@ public class BaseController : MonoBehaviour
     protected GameObject _usingItem;
     Coroutine _coSync;
     public GameObject _positionDisplay;
-    public Dictionary<string, GameObject> Equipment = new Dictionary<string, GameObject>();
+    public Dictionary<string, GameObject> Items = new Dictionary<string, GameObject>();
 
     protected AudioSource _audioSource;
 
@@ -198,7 +198,7 @@ public class BaseController : MonoBehaviour
         target.Name = this.Name;
         target.Position = this.Position;
         target.Id = this.Id;
-        target.Equipment = this.Equipment;
+        target.Items = this.Items;
     }
 
     public virtual void Awake()
@@ -380,28 +380,38 @@ public class BaseController : MonoBehaviour
     {
         if(item.GetComponent<Item>() as Equipment)
         {
-            if (Equipment.ContainsKey(item.name))
+            if (Items.ContainsKey(item.name))
                 return false;
 
-            Equipment.Add(item.name, item);
+            Items.Add(item.name, item);
 
             if (item.GetComponent<Animator>() != null)
                 _equipmentAnimator.Add(item.GetComponent<Animator>());
 
             return true;
         }
-        else
+        else if(item.GetComponent<Item>() as UsingItem)
         {
+            if (Items.ContainsKey(item.name))
+                return false;
+
+            Items.Add(item.name, item);
+
+            if (item.GetComponent<Animator>() != null)
+                _equipmentAnimator.Add(item.GetComponent<Animator>());
+
             return true;
         }
+
+        return false;
     }
 
-    public void UnUseItem(string equipment)
+    public void UnUseItem(string item)
     {
-        if (Equipment.ContainsKey(equipment))
+        if (Items.ContainsKey(item))
         {
-            GameObject go = Equipment[equipment];
-            Equipment.Remove(equipment);
+            GameObject go = Items[item];
+            Items.Remove(item);
 
             Animator animator = go.GetComponent<Animator>();
             if(animator != null)

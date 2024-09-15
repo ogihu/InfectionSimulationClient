@@ -5,15 +5,5 @@ using UnityEngine;
 
 public class Equipment : Item
 {
-    public override bool Use(BaseController character)
-    {
-        gameObject.layer = character.gameObject.layer;
-        
-        return base.Use(character);
-    }
 
-    public override void UnUse(BaseController character)
-    {
-        character.UnUseItem(this.gameObject.name);
-    }
 }

@@ -250,7 +250,8 @@ public class Define
         {"ProtectedGear", new ItemInfo("방호복", "의료진을 감염성 물질로부터 보호하여 안전을 유지")},
         {"ShoeCover", new ItemInfo("덧신", "병원 내 감염 예방과 위생 유지, 환자 보호를 위해 사용")},
         {"Goggle", new ItemInfo("고글", "눈을 통한 감염을 방지하기 위해 착용하는 보호 장비")},
-        {"Glove", new ItemInfo("장갑", "감염 예방과 위생 관리를 위해 의료진과 환자 간의 직접적인 접촉을 차단하는 보호 장비")}
+        {"Glove", new ItemInfo("장갑", "감염 예방과 위생 관리를 위해 의료진과 환자 간의 직접적인 접촉을 차단하는 보호 장비")},
+        {"Handwash", new ItemInfo("손소독제", "피부 살균, 소독의 목적으로 사용하는 소모품")}
     };
 
     public enum Scene

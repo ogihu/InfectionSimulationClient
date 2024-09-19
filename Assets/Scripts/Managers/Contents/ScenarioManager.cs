@@ -101,6 +101,7 @@ public class ScenarioManager
         PassSpeech = false;
         MyAction = null;
         Targets.Clear();
+        Item = null;
     }
 
     #region 시나리오 패킷 관련 기능
@@ -406,6 +407,12 @@ public class ScenarioManager
 
         if (MyAction == null)
             return false;
+
+        if (!string.IsNullOrEmpty(CurrentScenarioInfo.Item))
+        {
+            if (string.IsNullOrEmpty(Item))
+                return false;
+        }
 
         if (CurrentScenarioInfo.Action == "Tell" || CurrentScenarioInfo.Action == "Call")
             if (PassSpeech == false)

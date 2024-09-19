@@ -94,7 +94,7 @@ public class ItemManager
         Managers.Network.Send(equipPacket);
 
         Inventory.UpdateItemList();
-        Managers.Scenario.MyAction = "Equip";
+        Managers.Scenario.MyAction = "Use";
         Managers.Scenario.Item = item.ItemData.Name;
         SelectedItem = null;
         Inventory.ChangeItemText("");
@@ -167,8 +167,8 @@ public class ItemManager
         Inventory.UpdateItemList();
         SelectedItem = null;
         Inventory.ChangeItemText("");
-        Managers.Scenario.MyAction = "UnEquip";
-        Managers.Scenario.Item = null;
+        Managers.Scenario.Item = item.ItemData.Name;
+        Managers.Scenario.MyAction = "UnUse";
     }
 
     public void DropItem(ItemInfo item)

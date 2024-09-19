@@ -209,7 +209,7 @@ public class Define
         public int Progress { get; set; }
         public string Place { get; set; }
         public string Position { get; set; }
-        public string Equipment { get; set; }
+        public string Item { get; set; }
         public string Action { get; set; }
         public string Keywords { get; set; }
         public string Targets { get; set; }
@@ -223,7 +223,7 @@ public class Define
         public int Progress { get; set; }
         public string Place { get; set; }
         public string Position { get; set; }
-        public string Equipment { get; set; }
+        public string Item { get; set; }
         public string Action { get; set; }
         public List<string> Keywords { get; set; } = new List<string>();
         public List<string> Targets { get; set; } = new List<string>();

@@ -66,7 +66,7 @@ public class ItemManager
             return;
         }
 
-        if (Managers.Scenario.CurrentScenarioInfo.Equipment != item.ItemData.Name)
+        if (Managers.Scenario.CurrentScenarioInfo.Item != item.ItemData.Name)
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "현재 필요한 장비가 아닙니다.");
             return;

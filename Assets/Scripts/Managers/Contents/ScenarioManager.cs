@@ -434,9 +434,9 @@ public class ScenarioManager
             return false;
         }
 
-        if (!string.IsNullOrEmpty(CurrentScenarioInfo.Equipment))
+        if (!string.IsNullOrEmpty(CurrentScenarioInfo.Item))
         {
-            if (Item != CurrentScenarioInfo.Equipment)
+            if (Item != CurrentScenarioInfo.Item)
             {
                 Managers.UI.CreateSystemPopup("WarningPopup", "현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
                 Reset();

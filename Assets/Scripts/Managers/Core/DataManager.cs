@@ -26,7 +26,7 @@ public class DataManager
                 scenarioInfo.Progress = scenarioList.Progress;
                 scenarioInfo.Place = scenarioList.Place;
                 scenarioInfo.Position = scenarioList.Position;
-                scenarioInfo.Equipment = scenarioList.Equipment;
+                scenarioInfo.Item = scenarioList.Item;
                 scenarioInfo.Action = scenarioList.Action;
                 scenarioInfo.Hint = scenarioList.Hint;
                 scenarioInfo.Confirm = scenarioList.Confirm;

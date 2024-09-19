@@ -101,6 +101,7 @@ public class AccumulateText : MonoBehaviour
             Managers.Network.Send(talkPacket);
         }
     }
+
     public void ThenDo()
     {
         if (String.IsNullOrEmpty(Managers.Scenario.CurrentScenarioInfo.Place))
@@ -110,8 +111,8 @@ public class AccumulateText : MonoBehaviour
             if (Managers.Scenario.CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
                 Managers.Scenario.PassSpeech = true;
         }
-
     }
+
     public  void RegisterCommand(string command, bool player)
     {
         initializeCommands();

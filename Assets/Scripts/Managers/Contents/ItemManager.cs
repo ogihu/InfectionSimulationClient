@@ -60,9 +60,9 @@ public class ItemManager
             return;
         }
 
-        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "Equip")
+        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "Use")
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 착용할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 사용할 수 있는 상황이 아닙니다.");
             return;
         }
 
@@ -142,7 +142,7 @@ public class ItemManager
         }
 
         //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
-        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnEquip")
+        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnUse")
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
             return;

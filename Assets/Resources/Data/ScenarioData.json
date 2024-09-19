@@ -437,7 +437,7 @@
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Mask",
-      "Action": "UnEquip",
+      "Action": "UnUse",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
@@ -449,7 +449,7 @@
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ProtectedGear",
-      "Action": "UnEquip",
+      "Action": "UnUse",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
@@ -461,7 +461,7 @@
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ShoeCover",
-      "Action": "UnEquip",
+      "Action": "UnUse",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
@@ -473,7 +473,7 @@
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Glove",
-      "Action": "UnEquip",
+      "Action": "UnUse",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
@@ -591,18 +591,6 @@
     {
       "Progress": 49,
       "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": null,
-      "Action": "UnEquip",
-      "Keywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 탈의하고 퇴실하세요./",
-      "Hint": "4종 보호구를 탈의하고 퇴실하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 50,
-      "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
       "Action": "Call",
@@ -613,11 +601,11 @@
       "Confirm": null
     },
     {
-      "Progress": 51,
+      "Progress": 50,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
-      "Action": "Equip",
+      "Action": "Use",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
@@ -625,11 +613,11 @@
       "Confirm": null
     },
     {
-      "Progress": 52,
+      "Progress": 51,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Mask",
-      "Action": "Equip",
+      "Action": "Use",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
@@ -637,11 +625,11 @@
       "Confirm": null
     },
     {
-      "Progress": 53,
+      "Progress": 52,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ProtectedGear",
-      "Action": "Equip",
+      "Action": "Use",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n방호복을 착용하세요.",
@@ -649,11 +637,11 @@
       "Confirm": null
     },
     {
-      "Progress": 54,
+      "Progress": 53,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ShoeCover",
-      "Action": "Equip",
+      "Action": "Use",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n덧신을 착용하세요.",
@@ -661,7 +649,7 @@
       "Confirm": null
     },
     {
-      "Progress": 55,
+      "Progress": 54,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -673,7 +661,7 @@
       "Confirm": null
     },
     {
-      "Progress": 56,
+      "Progress": 55,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -685,7 +673,7 @@
       "Confirm": null
     },
     {
-      "Progress": 57,
+      "Progress": 56,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -697,11 +685,11 @@
       "Confirm": null
     },
     {
-      "Progress": 58,
+      "Progress": 57,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
-      "Action": "UnEquip",
+      "Action": "UnUse",
       "Keywords": null,
       "Targets": null,
       "DetailHint": "기계 표면 및 카세트 표현 소독을 진행하고 순서를 준수하여 4종 보호구를 탈의하세요./",

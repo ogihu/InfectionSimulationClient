@@ -60,7 +60,13 @@ public class ItemManager
             return;
         }
 
-        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "Use")
+        if(Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 사용할 수 있는 상황이 아닙니다.");
+            return;
+        }
+
+        if (Managers.Scenario.CurrentScenarioInfo.Action != "Use")
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "장비를 사용할 수 있는 상황이 아닙니다.");
             return;
@@ -68,26 +74,27 @@ public class ItemManager
 
         if (Managers.Scenario.CurrentScenarioInfo.Item != item.ItemData.Name)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "현재 필요한 장비가 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "현재 필요한 아이템이 아닙니다.");
             return;
         }
 
         item.Object = Managers.Resource.Instantiate(item.ItemData.Prefab);
-        Equipment equipment = item.Object.GetComponent<Equipment>();
+        Item selectedItem = item.Object.GetComponent<Item>();
 
-        if (equipment == null)
+        if (selectedItem == null)
         {
-            Debug.Log("Can't find the component : Equipment");
+            Debug.Log("Can't find the component : Item");
             return;
         }
 
-        if (!equipment.Use(Managers.Object.MyPlayer))
+        if (!selectedItem.Use(Managers.Object.MyPlayer))
         {
             Managers.Resource.Destroy(item.Object);
             return;
         }
 
-        item.Equiped = true;
+        if(selectedItem as Equipment)
+            item.Equiped = true;
 
         C_Equip equipPacket = new C_Equip();
         equipPacket.ItemName = item.ItemData.Name;
@@ -142,9 +149,21 @@ public class ItemManager
         }
 
         //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
-        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnUse")
+        if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
+            return;
+        }
+
+        if (Managers.Scenario.CurrentScenarioInfo.Action != "UnUse")
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
+            return;
+        }
+
+        if(item.ItemData.Name != Managers.Scenario.CurrentScenarioInfo.Item)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "현재 해제가 필요한 장비가 아닙니다.");
             return;
         }
 

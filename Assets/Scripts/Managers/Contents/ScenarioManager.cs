@@ -209,7 +209,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(13));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
-                //환자 음압격리실로 이송
+                ////환자 음압격리실로 이송
                 {
                     NPCs["환자"].transform.position = Patientlying;
 
@@ -288,6 +288,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(45));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(46));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(47));
+                NPCs["환자"].transform.GetChild(1).gameObject.SetActive(true);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(48));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(49));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(50));
@@ -298,8 +299,8 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(55));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(56));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(57));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(58));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(59));
+                //yield return Managers.Instance.StartCoroutine(CoScenarioStep(58));
+                //yield return Managers.Instance.StartCoroutine(CoScenarioStep(59));
                 break;
         }
 

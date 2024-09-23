@@ -133,7 +133,8 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("SWEEPING_FLOOR")] SweepingFloor = 11,
     [pbr::OriginalName("USING_TISSUE")] UsingTissue = 12,
     [pbr::OriginalName("LYING_IDLE")] LyingIdle = 13,
-  }
+    [pbr::OriginalName("Syringe")] Syringe = 14,
+    }
 
   public enum GameObjectType {
     [pbr::OriginalName("None")] None = 0,

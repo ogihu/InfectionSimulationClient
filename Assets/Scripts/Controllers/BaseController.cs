@@ -361,6 +361,9 @@ public class BaseController : MonoBehaviour
             case CreatureState.LyingIdle:
                 return "LyingIdle";
 
+            case CreatureState.Syringe:
+                return "Syringe";
+
             default:
                 return "idle";
         }

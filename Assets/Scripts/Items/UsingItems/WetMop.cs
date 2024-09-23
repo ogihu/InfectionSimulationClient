@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class WetMop : UsingItem
 {
-    // Start is called before the first frame update
-    void Start()
+    public override bool Use(BaseController character)
     {
-        
-    }
+        Transform parent = Util.FindChildByName(character.gameObject, "R_hand_grap_point").transform;
+        if (parent == null)
+        {
+            Debug.LogWarning("Can't find transform");
+            return false;
+        }
+        gameObject.transform.SetParent(parent, false);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //TODO : 캐릭터 상태 변경 - SweepingFloor
+
+        return base.Use(character);
     }
 }

@@ -352,6 +352,15 @@ public class BaseController : MonoBehaviour
             case CreatureState.Typing:
                 return "typing";
 
+            case CreatureState.SweepingFloor:
+                return "SweepingFloor";
+
+            case CreatureState.UsingTissue:
+                return "UsingTissue";
+
+            case CreatureState.LyingIdle:
+                return "LyingIdle";
+
             default:
                 return "idle";
         }

@@ -197,13 +197,22 @@ public class ScenarioManager
         switch (scenarioName)
         {
             case "엠폭스":
+                var patient = NPCs["환자"];
+
                 NPCs["환자"].Teleport(ObservationArea);
-                NPCs["환자"].transform.rotation = Quaternion.Euler(0, -90, 0);
+                NPCs["환자"].GetComponent<NavMeshAgent>().enabled = false;
+                NPCs["환자"].DestoyRb();
+
+                // 침대의 자식으로 설정하여 이동시 자연스럽게 함께 움직임
+                patient.transform.SetParent(GameObject.Find("move_bed").transform);
+
+                patient.transform.localPosition = Patientlying;
+                NPCs["환자"].transform.localEulerAngles = new Vector3(0, 270, 0);
+                NPCs["환자"].SetState(CreatureState.LyingIdle);
+
                 Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "선생님 방금 가족 중에 한명이 보건소로부터 엠폭스 확진받았다고 연락을 받아서요.\n저도 곧 보건소로부터 연락올거라고 합니다.");
-                NPCs["환자"].SetState(CreatureState.Conversation);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(1));
                 Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이관리 980421 입니다.\n같이 살고있어요.");
-                NPCs["환자"].SetState(CreatureState.Conversation);
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(2));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(3));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(4));
@@ -220,15 +229,6 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
                 //환자 음압격리실로 이송
                 {
-                    NPCs["환자"].transform.position = Patientlying;
-                    NPCs["환자"].GetComponent<NavMeshAgent>().enabled = false;
-                    NPCs["환자"].transform.localEulerAngles = new Vector3(-90, 180, 0);
-                    NPCs["환자"].transform.localPosition = new Vector3(8.924f, 0.962f, 3.808f);
-                    NPCs["환자"].transform.localScale = new Vector3(1.8f, 1.8f, 1.8f);
-                    NPCs["환자"].DestoyRb();
-                    NPCs["환자"].transform.SetParent(GameObject.Find("move_bed").transform);
-                    NPCs["환자"]._positionDisplay.GetComponent<FloatingUI>().Init(GameObject.Find("move_bed").transform, y: 1.621f);
-
                     NPCs["보안요원1"].Use("Mask");
                     NPCs["보안요원2"].Use("Mask");
                     NPCs["미화1"].Use("Mask");
@@ -339,11 +339,6 @@ public class ScenarioManager
             case "Call":
                 Managers.Phone.Device.SendMessage(CurrentScenarioInfo.Position, CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Targets);
                 break;
-        }
-
-        foreach(var npc in NPCs.Values)
-        {
-            npc.SetState(CreatureState.Idle);
         }
     }
 

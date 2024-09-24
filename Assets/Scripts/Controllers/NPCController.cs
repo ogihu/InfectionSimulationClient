@@ -194,7 +194,7 @@ public class NPCController : CreatureController
     {
         Rigidbody rb = _agent.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        _agent.GetComponent<NPCController>().enabled = false;
+        //_agent.GetComponent<NPCController>().enabled = false;
         
     }
 

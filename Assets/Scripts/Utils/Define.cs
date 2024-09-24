@@ -117,12 +117,11 @@ public class Define
     public static readonly Vector3 EntranceControlPoint = new Vector3(0, 0, 17);
     public static readonly Vector3 OAControlPoint = new Vector3(10, 0, 0);
     public static readonly Vector3 Station = new Vector3(-12, 0, -9);
-    public static readonly Vector3 Patientlying = new Vector3(100, 0.7812495f, 100f);
+    public static readonly Vector3 Patientlying = new Vector3(0.02f, 0.26f, 0.02f);
     public static readonly Vector3 Entrance1 = new Vector3(-5, 0, 18);
     public static readonly Vector3 MovePosition = new Vector3(9.6f, 0, 2.32f);
     public static readonly Vector3 OATable = new Vector3(7, 0, 5);
     public static readonly Vector3 OABed = new Vector3(9.5f, 0, 4);
-
 
     public static readonly string[] PhoneAddress =
     {

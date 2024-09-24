@@ -228,6 +228,7 @@ public class BaseController : MonoBehaviour
         }
     }
 
+
     private void Update()
     {
         UpdateController();
@@ -463,4 +464,6 @@ public class BaseController : MonoBehaviour
 
         Place = other.gameObject.name;
     }
+
+
 }

@@ -109,19 +109,19 @@ public class Define
 
     #endregion
 
-    public static readonly Vector3 Entrance = new Vector3(-4, 0, 18);
+    public static readonly Vector3 Entrance = new Vector3(-6.5f, 0, 17.5f);
+    public static int WaitingCount = 0;
     public static readonly Vector3 WaitingArea = new Vector3(-35, 0, 15);
     public static readonly Vector3 ObservationArea = new Vector3(11.5f, 0, 0);
-    public static readonly Vector3 IsolationArea = new Vector3(22, 0, -44);
-    public static readonly Vector3 EntranceControlPoint = new Vector3(-5, 0, 13);
-    public static readonly Vector3 CorridorControlPoint = new Vector3(-5, 0, -16);
+    public static readonly Vector3 IsolationArea = new Vector3(21, 0, -47.4f);
+    public static readonly Vector3 EntranceControlPoint = new Vector3(0, 0, 17);
+    public static readonly Vector3 OAControlPoint = new Vector3(10, 0, 0);
     public static readonly Vector3 Station = new Vector3(-12, 0, -9);
-
-    //추가 08.07 최우진
     public static readonly Vector3 Patientlying = new Vector3(0.02f, 0.26f, 0.02f);
     public static readonly Vector3 Entrance1 = new Vector3(-5, 0, 18);
     public static readonly Vector3 MovePosition = new Vector3(9.6f, 0, 2.32f);
-   
+    public static readonly Vector3 OATable = new Vector3(7, 0, 5);
+    public static readonly Vector3 OABed = new Vector3(9.5f, 0, 4);
 
     public static readonly string[] PhoneAddress =
     {
@@ -138,71 +138,7 @@ public class Define
         "진단검사의학팀"
     };
 
-    public interface IJob
-    {
-        void Execute();
-    }
-
-    //인수가 없는 작업
-    public class Job : IJob
-    {
-        Action _action;
-
-        public Job(Action action)
-        {
-            _action = action;
-        }
-
-        public void Execute()
-        {
-            _action.Invoke();
-        }
-    }
-
-    //인수가 1개인 작업
-    public class Job<T1> : IJob
-    {
-        Action<T1> _action;
-        T1 _t1;
-
-        public Job(Action<T1> action, T1 t1)
-        {
-            _action = action;
-            _t1 = t1;
-        }
-
-        public void Execute()
-        {
-            _action.Invoke(_t1);
-        }
-    }
-
-    //인수가 2개인 작업
-    public class Job<T1, T2> : IJob
-    {
-        Action<T1, T2> _action;
-        T1 _t1;
-        T2 _t2;
-
-        public Job(Action<T1, T2> action, T1 t1, T2 t2)
-        {
-            _action = action;
-            _t1 = t1;
-            _t2 = t2;
-        }
-
-        public void Execute()
-        {
-            _action.Invoke(_t1, _t2);
-        }
-    }
-
-    public enum Sound
-    {
-        Bgm,
-        Effect,
-        MaxCount
-    }
+    #region Informations
 
     public class JScenarioInfo
     {
@@ -254,6 +190,10 @@ public class Define
         {"Handwash", new ItemInfo("손소독제", "피부 살균, 소독의 목적으로 사용하는 소모품")}
     };
 
+    #endregion
+
+    #region Enums
+
     public enum Scene
     {
         Unknown,
@@ -268,4 +208,13 @@ public class Define
         UsingPhone,
         UsingSetting
     }
+
+    public enum Sound
+    {
+        Bgm,
+        Effect,
+        MaxCount
+    }
+
+    #endregion
 }

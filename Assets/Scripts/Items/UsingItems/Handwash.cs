@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Handwash : UsingItem
+public class Handwash : ImmediatelyUsingItem
 {
     public override bool Use(BaseController character)
     {

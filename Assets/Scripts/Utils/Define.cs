@@ -118,7 +118,7 @@ public class Define
     public static readonly Vector3 Station = new Vector3(-12, 0, -9);
 
     //추가 08.07 최우진
-    public static readonly Vector3 Patientlying = new Vector3(100, 0.7812495f, 100f);
+    public static readonly Vector3 Patientlying = new Vector3(0.02f, 0.26f, 0.02f);
     public static readonly Vector3 Entrance1 = new Vector3(-5, 0, 18);
     public static readonly Vector3 MovePosition = new Vector3(9.6f, 0, 2.32f);
    

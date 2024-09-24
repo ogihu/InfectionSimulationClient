@@ -47,6 +47,6 @@ public class ButtonItemSlot : ButtonUI
     {
         _item = item;
         _icon.sprite = _item.ItemData.Icon;
-        _equiped.SetActive(_item.Equiped);
+        _equiped.SetActive(_item.Using);
     }
 }

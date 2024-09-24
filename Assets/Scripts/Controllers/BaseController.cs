@@ -411,6 +411,10 @@ public class BaseController : MonoBehaviour
 
             return true;
         }
+        else if (item.GetComponent<Item>() as ImmediatelyUsingItem)
+        {
+            return true;
+        }
 
         return false;
     }

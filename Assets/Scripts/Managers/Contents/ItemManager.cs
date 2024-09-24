@@ -11,7 +11,7 @@ public class ItemInfo
 {
     public ItemData ItemData { get; set; }
     public GameObject Object { get; set; }
-    public bool Equiped { get; set; }
+    public bool Using { get; set; }
 }
 
 public class ItemManager
@@ -27,7 +27,7 @@ public class ItemManager
     {
         ItemInfo item = new ItemInfo();
         item.ItemData = itemData;
-        item.Equiped = false;
+        item.Using = false;
 
         ItemList.Add(item);
         Debug.Log($"아이템 획득 - 현재 보유한 아이템 {ItemList.Count}개");
@@ -48,7 +48,7 @@ public class ItemManager
         }
 
         //이미 착용한 장비일 경우 취소
-        if (item.Equiped == true || item.Object != null)
+        if (item.Using == true || item.Object != null)
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "이미 착용하고 있는 장비입니다.");
             return;
@@ -93,8 +93,8 @@ public class ItemManager
             return;
         }
 
-        if(selectedItem as Equipment)
-            item.Equiped = true;
+        if(!(selectedItem as ImmediatelyUsingItem))
+            item.Using = true;
 
         C_Equip equipPacket = new C_Equip();
         equipPacket.ItemName = item.ItemData.Name;
@@ -142,22 +142,22 @@ public class ItemManager
         }
 
         //선택한 장비를 착용하고 있지 않을 경우 취소
-        if (item.Object == null || item.Equiped == false)
+        if (item.Object == null || item.Using == false)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "해당 장비를 착용하고 있지 않습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "해당 장비를 사용하고 있지 않습니다.");
             return;
         }
 
         //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "해제할 수 있는 상황이 아닙니다.");
             return;
         }
 
         if (Managers.Scenario.CurrentScenarioInfo.Action != "UnUse")
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 해제할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "해제할 수 있는 상황이 아닙니다.");
             return;
         }
 
@@ -178,11 +178,11 @@ public class ItemManager
         unEquipPacket.ItemName = item.ItemData.Name;
         Managers.Network.Send(unEquipPacket);
 
-        Equipment equipment = item.Object.GetComponent<Equipment>();
+        Item selectedItem = item.Object.GetComponent<Item>();
 
-        equipment.UnUse(Managers.Object.MyPlayer);
+        selectedItem.UnUse(Managers.Object.MyPlayer);
         item.Object = null;
-        item.Equiped = false;
+        item.Using = false;
         Inventory.UpdateItemList();
         SelectedItem = null;
         Inventory.ChangeItemText("");
@@ -224,9 +224,29 @@ public class ItemManager
         Inventory.ChangeItemText("");
     }
 
+    public void OpenOrCloseInventory()
+    {
+        if (Inventory == null)
+        {
+            Inventory = Managers.UI.CreateUI("Inventory").GetComponent<Inventory>();
+            Inventory.gameObject.SetActive(false);
+        }
+
+        //인벤토리가 열려있으면 닫기
+        if (Inventory.gameObject.activeSelf)
+        {
+            CloseInventory();
+        }
+        //인벤토리가 닫혀있으면 열기
+        else
+        {
+            OpenInventory();
+        }
+    }
+
     public void OpenInventory()
     {
-        Managers.Object.MyPlayer.State = CreatureState.UsingInventory;
+        //Managers.Object.MyPlayer.State = CreatureState.UsingInventory;
 
         if (Inventory == null)
         {
@@ -240,7 +260,7 @@ public class ItemManager
 
     public void CloseInventory()
     {
-        Managers.Object.MyPlayer.State = CreatureState.Idle;
+        //Managers.Object.MyPlayer.State = CreatureState.Idle;
 
         if (Inventory != null)
         {

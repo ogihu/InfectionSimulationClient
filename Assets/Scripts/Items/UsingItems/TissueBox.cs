@@ -30,7 +30,7 @@ public class TissueBox : UsingItem
         }
         _tissue.transform.SetParent(subParent, false);
 
-        //TODO : character 상태 변경 - UsingTissue
+        character.State = Google.Protobuf.Protocol.CreatureState.UsingTissue;
 
         return base.Use(character);
     }
@@ -38,7 +38,6 @@ public class TissueBox : UsingItem
     public override void UnUse(BaseController character)
     {
         Managers.Resource.Destroy(_tissue);
-        //TODO : 상태 되돌리기
         base.UnUse(character);
     }
 }

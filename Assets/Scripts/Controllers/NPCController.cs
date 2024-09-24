@@ -1,4 +1,5 @@
 using Google.Protobuf.Protocol;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,10 +17,12 @@ public class NPCController : CreatureController
     {
         base.Awake();
         _agent = GetComponent<NavMeshAgent>();
-        _agent.stoppingDistance = 2.0f;
+        _agent.stoppingDistance = 0.1f;
         _target = null;
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("NPC"), LayerMask.NameToLayer("Player"), true);
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("NPC"), LayerMask.NameToLayer("MyPlayer"), true);
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("NPC"), LayerMask.NameToLayer("NPC"), true);
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("NPC"), LayerMask.NameToLayer("Default"), true);
     }
 
     protected override void UpdateMove()
@@ -27,7 +30,7 @@ public class NPCController : CreatureController
         if (!(State == CreatureState.Idle || State == CreatureState.Run))
             return;
 
-        if(_orderQueue.Count > 0)
+        if (_orderQueue.Count > 0)
         {
             if (_order != null)
                 return;
@@ -36,13 +39,13 @@ public class NPCController : CreatureController
             return;
         }
 
-        if (_agent.velocity == Vector3.zero)
+        if (_agent.velocity != Vector3.zero)
         {
-            State = CreatureState.Idle;
+            State = CreatureState.Run;
             return;
         }
 
-        State = CreatureState.Run;
+        State = CreatureState.Idle;
     }
 
     protected override void UpdateRotation()
@@ -51,22 +54,26 @@ public class NPCController : CreatureController
             return;
 
         Vector3 dir = Managers.Object.MyPlayer.transform.position - transform.position;
+
         Quaternion targetRotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
     }
 
-    public void SetOrder(IEnumerator enumerator)          
+    public void AddOrder(IEnumerator enumerator)          
     {
         _orderQueue.Enqueue(enumerator);
     }
 
-    #region NPC 명령 수행 기능
+    #region NPC 제어 기능
 
     public IEnumerator CoGoDestination(Vector3 point)
     {
         SetDestination(point);
+        yield return new WaitUntil(() => !_agent.pathPending);
+        State = CreatureState.Run;
         yield return new WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance);
-        SetState(CreatureState.Idle);
+        _agent.velocity = Vector3.zero;
+        _agent.isStopped = true;
         StopOrder();
     }
 
@@ -75,12 +82,33 @@ public class NPCController : CreatureController
         if (target == null)
             yield break;
 
-        SetFollow(target);
+        SetTarget(target);
         while (true)
         {
             SetDestination(_target.position);
             yield return new WaitForSeconds(1.0f);
+
+            if (Vector3.Distance(transform.position, _target.position) <= _agent.stoppingDistance || _target == null)
+                break;
         }
+
+        StopOrder();
+    }
+
+    public IEnumerator CoUse(string itemName, Action action = null)
+    {
+        Use(itemName);
+        if (action != null)
+            action.Invoke();
+        StopOrder();
+        yield break;
+    }
+
+    public IEnumerator CoUnUse(string itemName)
+    {
+        UnUse(itemName);
+        StopOrder();
+        yield break;
     }
 
     public void StopOrder()
@@ -90,6 +118,7 @@ public class NPCController : CreatureController
 
         StopCoroutine(_order);
         _order = null;
+        _target = null;
     }
 
     void SetDestination(Vector3 point)
@@ -98,36 +127,32 @@ public class NPCController : CreatureController
         _agent.SetDestination(Pos);
     }
 
-    void SetFollow(Transform target)
+    public void SetTarget(Transform target)
     {
         _target = target;
     }
 
-    #endregion
+    public void SetForward(Vector3 forward)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(forward);
+        transform.rotation = targetRotation;
+    }
 
-    public void Equip(string equipment)
+    public void Use(string equipment)
     {
         GameObject eqm = Managers.Resource.Instantiate($"Items/{equipment}");
-        Equipment component = eqm.GetComponent<Equipment>();
-        
+        Item component = eqm.GetComponent<Item>();
+
         if (component == null)
             return;
 
         component.Use(this);
     }
 
-    public void UnEquip(string equipment)
+    public void UnUse(string equipment)
     {
-        if(Items.ContainsKey(equipment))
+        if (Items.ContainsKey(equipment))
             Items[equipment].GetComponent<Equipment>().UnUse(this);
-    }
-
-    public bool IsWorking()
-    {
-        if (State == CreatureState.Idle)
-            return false;
-
-        return true;
     }
 
     public void SetState(CreatureState state)
@@ -143,8 +168,26 @@ public class NPCController : CreatureController
 
     public bool Teleport(Vector3 point)
     {
-        Pos = point;
+        if(point == Define.WaitingArea)
+        {
+            Pos = new Vector3(point.x, point.y, point.z - (6 * Define.WaitingCount++));
+        }
+        else
+        {
+            Define.WaitingCount--;
+            Pos = point;
+        }
         return _agent.Warp(Pos);
+    }
+
+    #endregion
+
+    public bool IsWorking()
+    {
+        if (State == CreatureState.Idle)
+            return false;
+
+        return true;
     }
 
     public void DestoyRb()

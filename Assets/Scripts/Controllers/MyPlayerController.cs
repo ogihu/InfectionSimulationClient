@@ -24,7 +24,7 @@ public class MyPlayerController : PlayerController
         }
     }
 
-    [SerializeField] private float _syncTimer = 0.5f;
+    [SerializeField] private float _syncTimer = 0.2f;
     [SerializeField] float _camRotationSpeed;
     [SerializeField] float raycastDistance = 2f;
     public CameraArm _cameraArm;
@@ -58,7 +58,6 @@ public class MyPlayerController : PlayerController
             Pos = transform.position;
     }
 
-
     protected override void UpdateRotation()
     {
         if (!IsCanActive())
@@ -74,7 +73,6 @@ public class MyPlayerController : PlayerController
 
         Dir = new Vector3(Camera.main.transform.forward.x, 0, Camera.main.transform.forward.z);
     }
-
 
     void UpdateCursor()
     {
@@ -100,11 +98,13 @@ public class MyPlayerController : PlayerController
             InputBit = Managers.Input.SetKeyInput(KeyCode.S, InputBit);
             InputBit = Managers.Input.SetKeyInput(KeyCode.D, InputBit);
 
-            if(lastValue != InputBit)
+            if (lastValue != InputBit)
                 CheckUpdatedFlag();
         }
         else
             InputBit = 0;
+
+        #region 기능 키
 
         //아이템 얻기
         if (Input.GetKeyDown(KeyCode.E))
@@ -113,7 +113,7 @@ public class MyPlayerController : PlayerController
                 GetItem();
         }
 
-        if(Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             Managers.Scenario.ScenarioAssist_HintActive();
         }
@@ -129,11 +129,6 @@ public class MyPlayerController : PlayerController
             {
                 Managers.Item.CloseInventory();
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.PageDown))
-        {
-            Managers.Object.ChangeModel(this, "ProtectedGear");
         }
 
         if (Input.GetKeyDown(KeyCode.M))
@@ -224,6 +219,8 @@ public class MyPlayerController : PlayerController
         {
             Managers.Bubble.OpenOrCloseBubble();
         }
+
+        #endregion
     }
 
     void UpdateObjectRay()

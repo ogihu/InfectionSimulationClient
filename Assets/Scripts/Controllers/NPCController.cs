@@ -27,14 +27,11 @@ public class NPCController : CreatureController
 
     protected override void UpdateMove()
     {
-        if (!(State == CreatureState.Idle || State == CreatureState.Run))
+        if (_order != null)
             return;
 
         if (_orderQueue.Count > 0)
         {
-            if (_order != null)
-                return;
-
             _order = StartCoroutine(_orderQueue.Dequeue());
             return;
         }
@@ -44,8 +41,6 @@ public class NPCController : CreatureController
             State = CreatureState.Run;
             return;
         }
-
-        State = CreatureState.Idle;
     }
 
     protected override void UpdateRotation()
@@ -73,7 +68,16 @@ public class NPCController : CreatureController
         State = CreatureState.Run;
         yield return new WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance);
         _agent.velocity = Vector3.zero;
-        _agent.isStopped = true;
+        StopOrder();
+    }
+
+    public IEnumerator CoGoDestination_Animation(Vector3 point, CreatureState animation)
+    {
+        SetDestination(point);
+        yield return new WaitUntil(() => !_agent.pathPending);
+        State = animation;
+        yield return new WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance);
+        _agent.velocity = Vector3.zero;
         StopOrder();
     }
 
@@ -111,6 +115,13 @@ public class NPCController : CreatureController
         yield break;
     }
 
+    public IEnumerator CoTeleport(Vector3 point)
+    {
+        Teleport(point);
+        StopOrder();
+        yield break;
+    }
+
     public void StopOrder()
     {
         if (_order == null)
@@ -119,6 +130,7 @@ public class NPCController : CreatureController
         StopCoroutine(_order);
         _order = null;
         _target = null;
+        SetState(CreatureState.Idle);
     }
 
     void SetDestination(Vector3 point)
@@ -160,7 +172,6 @@ public class NPCController : CreatureController
         if (_agent.velocity != Vector3.zero)
         {
             _agent.velocity = Vector3.zero;
-            _agent.isStopped = true;
         }
 
         State = state;
@@ -190,30 +201,15 @@ public class NPCController : CreatureController
         return true;
     }
 
-    public void DestoyRb()
+    public void FreezePosition()
     {
         Rigidbody rb = _agent.GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeAll;
-        //_agent.GetComponent<NPCController>().enabled = false;
-        
-    }
-
-    public void AddController()
-    {
-        _agent.GetComponent<NPCController>().enabled = true;
-    }
-
-    public IEnumerator CoGoDestination_Animation(Vector3 point , CreatureState animation)
-    {
-        SetDestination(point);
-        yield return new WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance);
-        SetState(animation);
-        StopOrder();
     }
 
     public void ResetSpeed()
     {
-        ChangeSpeed(3);
+        ChangeSpeed(4);
     }
 
     public void ChangeSpeed(float value)

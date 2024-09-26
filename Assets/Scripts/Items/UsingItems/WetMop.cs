@@ -14,7 +14,7 @@ public class WetMop : UsingItem
         }
         gameObject.transform.SetParent(parent, false);
 
-        //TODO : 캐릭터 상태 변경 - SweepingFloor
+        character.State = Google.Protobuf.Protocol.CreatureState.SweepingFloor;
 
         return base.Use(character);
     }

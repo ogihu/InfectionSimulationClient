@@ -19,7 +19,18 @@ public class PanelChatUI : FloatingUI
 
     public override void Init(Transform target, float x = 0, float y = 1.0f, float z = 0, bool isStatic = false)
     {
-        base.Init(target,x, y, z ,isStatic);
+        _target = target;
+        _isStatic = isStatic;
+        _width = x;
+        _height = y;
+        _length = z;
+
+        transform.position = new Vector3(target.position.x + _width, 1.6f, target.position.z + _length);
+
+        if (_canvas == null)
+        {
+            _canvas = GetComponent<Canvas>();
+        }
 
         chatUI = Util.FindChildByName(gameObject, "Chat");
         closeChatUI = Util.FindChildByName(gameObject, "CloseChat");
@@ -43,6 +54,41 @@ public class PanelChatUI : FloatingUI
         _isVisible = true;
         chatUI.SetActive(_isVisible);
         closeChatUI.SetActive(!_isVisible);
+    }
+
+    public override void ChasingTarget()
+    {
+        if (_target == null)
+        {
+            Debug.LogError("There is no target to chase, Check the target of this object");
+            return;
+        }
+
+        if (_canvas == null)
+        {
+            Debug.LogError("There is no Canvas attached to this object, Check the Canvas component");
+            return;
+        }
+
+        Vector3 targetPosition = new Vector3(_target.position.x + _width, 1.6f, _target.position.z + _length);
+
+        if (GetComponent<RectTransform>().position != targetPosition)
+        {
+            GetComponent<RectTransform>().position = targetPosition;
+        }
+
+        if (_canvas != null)
+        {
+            int distance = (int)(Camera.main.transform.position - transform.position).magnitude;
+            if (distance == 0)
+                _canvas.sortingOrder = 0;
+            else
+                _canvas.sortingOrder = (1 / distance) * 100;
+        }
+        else
+        {
+            Debug.LogWarning("Canvas 컴포넌트를 찾을 수 없습니다. sortingOrder를 설정할 수 없습니다.");
+        }
     }
 
     public override void ChangeMessage(string chat)

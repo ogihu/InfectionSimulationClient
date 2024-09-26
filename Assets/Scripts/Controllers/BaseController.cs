@@ -1,5 +1,4 @@
 using Google.Protobuf.Protocol;
-using POpusCodec;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -206,15 +205,11 @@ public class BaseController : MonoBehaviour
         _animator = GetComponent<Animator>();
 
         _audioSource = GetComponent<AudioSource>();
-        //VoiceBuffer = new VoiceBuffer<float>(VoiceFrequency * VoiceChannel * 10);
 
         _leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point").transform;
         _rightHand = Util.FindChildByName(this.gameObject, "R_hand_grap_point").transform;
 
         Managers.UI.CreateChatBubble(this.transform);
-        //_voiceClip = AudioClip.Create("VoiceClip", VoiceFrequency * VoiceChannel, VoiceChannel, VoiceFrequency, true, OnAudioRead);
-        //_decoder = new OpusDecoder(POpusCodec.Enums.SamplingRate.Sampling16000,
-        //                                  POpusCodec.Enums.Channels.Stereo);
     }
 
     public virtual void Start()
@@ -227,6 +222,7 @@ public class BaseController : MonoBehaviour
             Debug.Log($"{Position} 캐릭터 생성");
         }
     }
+
 
     private void Update()
     {
@@ -414,6 +410,10 @@ public class BaseController : MonoBehaviour
 
             return true;
         }
+        else if (item.GetComponent<Item>() as ImmediatelyUsingItem)
+        {
+            return true;
+        }
 
         return false;
     }
@@ -462,4 +462,6 @@ public class BaseController : MonoBehaviour
 
         Place = other.gameObject.name;
     }
+
+
 }

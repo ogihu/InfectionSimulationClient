@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class FloatingUI : MonoBehaviour
 {
-    Canvas _canvas;
-    Transform _target;
+    protected Canvas _canvas;
+    protected Transform _target;
     protected bool _isStatic = false;
-    float _height = 1.0f;
-    float _width = 0.0f;
-    float _length = 0.0f;
+    protected float _height = 1.0f;
+    protected float _width = 0.0f;
+    protected float _length = 0.0f;
     public virtual void Init(Transform target, float x = 0.0f, float y = 1.0f, float z = 0.0f ,bool isStatic = false)
     {
         _target = target;
@@ -51,7 +51,7 @@ public class FloatingUI : MonoBehaviour
         ChasingTarget();
     }
 
-    void ChasingTarget()
+    public virtual void ChasingTarget()
     {
         if (_target == null)
         {
@@ -93,4 +93,10 @@ public class FloatingUI : MonoBehaviour
         Quaternion rotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
     }
+
+    public void SetHeight(float height)
+    {
+        _height = height;
+    }
+
 }

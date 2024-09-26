@@ -502,6 +502,7 @@
       "Targets": null,
       "DetailHint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요./",
       "Hint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요.",
+      "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?"
     },
     {
       "Progress": 42,

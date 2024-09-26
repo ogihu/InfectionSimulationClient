@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using static Define;
+using static Google.Cloud.Speech.V1.LanguageCodes;
 
 
 public class MyPlayerController : PlayerController
@@ -178,7 +180,7 @@ public class MyPlayerController : PlayerController
                     Managers.Phone.ClosePhone();
             }
         }
-
+        
         //대화하기
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -222,7 +224,7 @@ public class MyPlayerController : PlayerController
 
         #endregion
     }
-
+    
     void UpdateObjectRay()
     {
         if (!IsCanActive())
@@ -235,8 +237,9 @@ public class MyPlayerController : PlayerController
         }
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hitInfo;
 
+
+        RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, raycastDistance, _layerMask))
         {
             if (hitInfo.transform.gameObject == _interactionObject)
@@ -252,6 +255,7 @@ public class MyPlayerController : PlayerController
 
             _interactionObject = hitInfo.transform.gameObject;
             _interactionObject.GetComponent<InteractableObject>().ActiveKeyUI();
+
         }
         else
         {
@@ -261,7 +265,7 @@ public class MyPlayerController : PlayerController
                 _interactionObject = null;
             }
         }
-
+        
 #if UNITY_EDITOR
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
 #endif

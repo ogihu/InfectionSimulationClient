@@ -66,7 +66,7 @@ public class ItemManager
             return;
         }
 
-        if (Managers.Scenario.CurrentScenarioInfo.Action != "Use")
+        if (Managers.Scenario.CurrentScenarioInfo.Action != "Use" && Managers.Scenario.CurrentScenarioInfo.Action != "BloodCollection")
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "장비를 사용할 수 있는 상황이 아닙니다.");
             return;

@@ -111,8 +111,14 @@ public class MyPlayerController : PlayerController
         //아이템 얻기
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (State == CreatureState.Idle)
-                GetItem();
+            if (_interactionObject != null && _interactionObject.name == "EMRPC")
+            {
+                Managers.Scenario.MyAction = "EMRWrite";
+            }
+            else if (State == CreatureState.Idle)
+            {
+                GetItem();  // 아이템 상호작용
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))

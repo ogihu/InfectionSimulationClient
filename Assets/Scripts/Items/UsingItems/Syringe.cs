@@ -20,16 +20,16 @@ public class Syringe : UsingItem
     private float clickTime = 0f;
     // 원하는 시간이 지나면 실행할 함수
     public float holdDuration = 3f;
-    void Awake()
+
+    public override void Init()
     {
+        base.Init();
         _layerPoint = 1 << LayerMask.NameToLayer("Point");
-        
     }
 
     void Update()
     {
         UpdateObjectRay();
-        
     }
 
     void UpdateObjectRay()
@@ -73,7 +73,7 @@ public class Syringe : UsingItem
             return false;
         }
 
-        Managers.Item.SelectedItem.Equiped = true;
+        Managers.Item.SelectedItem.Using = true;
         // 주사기 오브젝트를 손에 붙임
         gameObject.transform.SetParent(parent, false);
         gameObject.transform.localPosition = new Vector3(-0.0751f, 0.0215f, 0.0073f);

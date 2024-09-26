@@ -106,6 +106,7 @@ public class ItemManager
         if(!(selectedItem as ImmediatelyUsingItem))
             item.Using = true;
 
+        selectedItem.ItemInfo = item;
         C_Equip equipPacket = new C_Equip();
         equipPacket.ItemName = item.ItemData.Name;
         Managers.Network.Send(equipPacket);
@@ -184,6 +185,15 @@ public class ItemManager
             return;
         }
 
+        ForceUnUseItem(item);
+    }
+
+    /// <summary>
+    /// 아이템 강제 사용 해제
+    /// </summary>
+    /// <param name="item"></param>
+    public void ForceUnUseItem(ItemInfo item)
+    {
         C_UnEquip unEquipPacket = new C_UnEquip();
         unEquipPacket.ItemName = item.ItemData.Name;
         Managers.Network.Send(unEquipPacket);

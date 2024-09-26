@@ -34,23 +34,7 @@ public class Syringe : UsingItem
 
     void UpdateObjectRay()
     {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-        RaycastHit hitInfo;
-        _layerPoint = LayerMask.GetMask("Point");
-        //자식 오브젝트에 리지드바디 안달려있으면 부모껄로 인식됨
-        if (Physics.Raycast(ray, out hitInfo, raycastDistance, _layerPoint))
-        {
-            obj = hitInfo.transform.gameObject;
-            Debug.Log(obj);
-        }
-        else
-        {
-            if (obj != null)
-            {
-                obj = null;
-            }
-        }
+       
     }
 
     public override bool Use(BaseController character)
@@ -163,6 +147,23 @@ public class Syringe : UsingItem
                 // 마우스 좌클릭 유지 중
                 if (Input.GetMouseButton(0))
                 {
+                    Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+                    RaycastHit hitInfo;
+                    _layerPoint = LayerMask.GetMask("Point");
+                    //자식 오브젝트에 리지드바디 안달려있으면 부모껄로 인식됨
+                    if (Physics.Raycast(ray, out hitInfo, raycastDistance, _layerPoint))
+                    {
+                        obj = hitInfo.transform.gameObject;
+                        Debug.Log(obj);
+                    }
+                    else
+                    {
+                        if (obj != null)
+                        {
+                            obj = null;
+                        }
+                    }
                     // 시나리오 액션이 "Use"일 때
                     if (Managers.Scenario.CurrentScenarioInfo.Action == "Use")
                     {

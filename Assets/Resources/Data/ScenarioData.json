@@ -502,7 +502,6 @@
       "Targets": null,
       "DetailHint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요./",
       "Hint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요.",
-      "Confirm": null
     },
     {
       "Progress": 42,
@@ -580,10 +579,10 @@
       "Progress": 48,
       "Place": null,
       "Position": "응급센터 간호사2",
-      "Item": "Syringe",
-      "Action": "Use",
+      "Item": null,
+      "Action": "BloodCollection",
       "Keywords": null,
-      "Targets": "AccuratePoint",
+      "Targets": null,
       "DetailHint": "환자에게서 채혈을 진행하세요./",
       "Hint": "채혈을 진행하세요",
       "Confirm": null

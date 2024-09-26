@@ -581,9 +581,9 @@
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
-      "Action": "BloodCollection",
+      "Action": "Use",
       "Keywords": null,
-      "Targets": null,
+      "Targets": "AccuratePoint",
       "DetailHint": "환자에게서 채혈을 진행하세요./",
       "Hint": "채혈을 진행하세요",
       "Confirm": null

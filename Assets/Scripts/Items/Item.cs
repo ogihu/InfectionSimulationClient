@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    public ItemInfo ItemInfo { get; set; }
+
     protected void Awake()
     {
         Init();

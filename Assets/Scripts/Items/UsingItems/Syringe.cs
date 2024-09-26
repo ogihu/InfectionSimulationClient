@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics.PerformanceData;
 using System.Linq;
 using UnityEngine.EventSystems;
+using System.Drawing;
 
 public class Syringe : UsingItem
 {
@@ -20,7 +21,8 @@ public class Syringe : UsingItem
     private float clickTime = 0f;
     // 원하는 시간이 지나면 실행할 함수
     public float holdDuration = 3f;
-
+    GameObject Point;
+    List<GameObject> points = new List<GameObject>();
     public override void Init()
     {
         base.Init();
@@ -38,7 +40,45 @@ public class Syringe : UsingItem
         if (go == null)
         {
             go = gameObject;
-            Managers.Scenario.NPCs["환자"].transform.GetChild(1).gameObject.SetActive(true);
+            Point = Managers.Scenario.NPCs["환자"].transform.GetChild(1).gameObject;
+            Point.SetActive(true);
+            Point.transform.localScale = new Vector3(0.0764116f, 0.009552589f, 0.07533843f);
+            Transform point = Point.transform.GetChild(0); points.Add(point.gameObject);
+            point.SetParent(Util.FindChildByName(Managers.Scenario.NPCs["환자"].gameObject, "basic_rig R Forearm").transform, false);
+            point.transform.localPosition = new Vector3(-0.0261f, -0.0131f, -0.0409f);
+            point.transform.localRotation = Quaternion.Euler(83.043f, -0.499f, -0.359f);
+            point.transform.localScale = new Vector3(0.0764116f, 0.01577159f, 0.07533843f);
+
+            point = Point.transform.GetChild(0); points.Add(point.gameObject);
+            Point.transform.GetChild(0).SetParent(Util.FindChildByName(Managers.Scenario.NPCs["환자"].gameObject, "basic_rig L Forearm").transform, false);
+            point.transform.localPosition = new Vector3(-0.0232f, -0.0232f, 0.0377f);
+            point.transform.localRotation = Quaternion.Euler(109.183f, 21.666f, 21.255f);
+            point.transform.localScale = new Vector3(0.0764116f, 0.01577159f, 0.07533843f);
+
+            point = Point.transform.GetChild(0); points.Add(point.gameObject);
+            Point.transform.GetChild(0).SetParent(Util.FindChildByName(Managers.Scenario.NPCs["환자"].gameObject, "basic_rig L UpperArm").transform, false);
+            point.transform.localPosition = new Vector3(0.006689013f, -0.02759328f, 0.01746411f);
+            point.transform.localRotation = Quaternion.Euler(90f, 0, 0);
+            point.transform.localScale = new Vector3(0.0764116f, 0.01577159f, 0.07533843f);
+
+            point = Point.transform.GetChild(0); points.Add(point.gameObject);
+            Point.transform.GetChild(0).SetParent(Util.FindChildByName(Managers.Scenario.NPCs["환자"].gameObject, "basic_rig UpperArm").transform, false);
+            point.transform.localPosition = new Vector3(-0.0036f, -0.0311f, -0.0329f);
+            point.transform.localRotation = Quaternion.Euler(64.809f, -5.752f, -1.137f);
+            point.transform.localScale = new Vector3(0.0764116f, 0.01577159f, 0.07533843f);
+
+            point = Point.transform.GetChild(0); points.Add(point.gameObject);
+            Point.transform.GetChild(0).SetParent(Util.FindChildByName(Managers.Scenario.NPCs["환자"].gameObject, "basic_rig R Calf").transform, false);
+            point.transform.localPosition = new Vector3(0.0195f, 0.0195f, 0.0005f);
+            point.transform.localRotation = Quaternion.Euler(202.019f, 180.416f, 179.297f);
+            point.transform.localScale = new Vector3(0.0764116f, 0.01577159f, 0.07533843f);
+
+            point = Point.transform.GetChild(0); points.Add(point.gameObject);
+            Point.transform.GetChild(0).SetParent(Util.FindChildByName(Managers.Scenario.NPCs["환자"].gameObject, "basic_rig L Calf").transform, false);
+            point.transform.localPosition = new Vector3(0.0195f, 0.0195f, 0.0005f);
+            point.transform.localRotation = Quaternion.Euler(21.205f, 47.349f, 14.175f);
+            point.transform.localScale = new Vector3(0.0764116f, 0.01577159f, 0.07533843f);
+
         }
 
         if (parent == null)
@@ -104,41 +144,52 @@ public class Syringe : UsingItem
                             if (Managers.Scenario.CurrentScenarioInfo != null)
                             {
                                 Mycharacter.State = CreatureState.Syringe;
-                                clickTime += Time.deltaTime;
+                                //clickTime += Time.deltaTime;
 
-                                // 3초 이상 클릭 유지시
-                                if (clickTime >= holdDuration)
-                                {
-                                    Managers.Scenario.MyAction = "Use";
-                                    if (obj.name != "AccuratePoint")
-                                        Debug.Log("다른게 들어감");
+                                //// 3초 이상 클릭 유지시
+                                //if (clickTime >= holdDuration)
+                                //{
+                                //    Managers.Scenario.MyAction = "Use";
+                                //    if (obj.name != "AccuratePoint")
+                                //        Debug.Log("다른게 들어감");
 
-                                    Managers.Scenario.Targets.Add("AccuratePoint");
-                                    Mycharacter.State = CreatureState.Idle;
-                                    check = true;  // check를 true로 설정하여 완료
-                                    Managers.Scenario.NPCs["환자"].transform.GetChild(1).gameObject.SetActive(false);
-                                }
+                                //    Managers.Scenario.Targets.Add("AccuratePoint");
+                                //    Mycharacter.State = CreatureState.Idle;
+                                //    check = true;  // check를 true로 설정하여 완료
+                                //    Managers.Scenario.NPCs["환자"].transform.GetChild(1).gameObject.SetActive(false);
+                                //}
+                                Managers.Scenario.MyAction = "Use";
+                                if (obj.name != "AccuratePoint")
+                                    Debug.Log("다른게 들어감");
+
+                                Managers.Scenario.Targets.Add("AccuratePoint");
+                                Mycharacter.State = CreatureState.Idle;
+                                check = true;  // check를 true로 설정하여 완료
+                                for (int i = 0; i < points.Count; i++)
+                                    points[i].SetActive(false);
+                                Managers.Item.ForceUnUseItem(ItemInfo);
+                                this.UnUse(Mycharacter);
                             }
-                            else if (clickTime < holdDuration)
-                            {
-                                Managers.UI.CreateSystemPopup("WarningPopup", "3초가 지나야 합니다.");
-                            }
+                            //else if (clickTime < holdDuration)
+                            //{
+                            //    Managers.UI.CreateSystemPopup("WarningPopup", "3초가 지나야 합니다.");
+                            //}
                         }
-                        else if (!(Mycharacter.State == CreatureState.UsingInventory))
+                        else if (!Managers.Item.IsInventoryOpen)
                         {
                             Managers.UI.CreateSystemPopup("WarningPopup", "올바른 곳에 사용하세요");
                         }
                     }
                 }
                 // 마우스 버튼을 떼면 상태를 Idle로 복구
-                else if (Input.GetMouseButtonUp(0))
-                {
-                    if (Mycharacter.State == CreatureState.Syringe)
-                    {
-                        Mycharacter.State = CreatureState.Idle;
-                        clickTime = 0f; // 클릭 시간 초기화
-                    }
-                }
+                //else if (Input.GetMouseButtonUp(0))
+                //{
+                //    if (Mycharacter.State == CreatureState.Syringe)
+                //    {
+                //        Mycharacter.State = CreatureState.Idle;
+                //        clickTime = 0f; // 클릭 시간 초기화
+                //    }
+                //}
             }
 
             // 다음 프레임까지 대기

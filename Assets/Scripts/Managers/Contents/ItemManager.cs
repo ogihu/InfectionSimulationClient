@@ -20,6 +20,16 @@ public class ItemManager
     public Inventory Inventory { get; set; }
     public ItemInfo SelectedItem { get; set; }
 
+    public bool IsInventoryOpen {
+        get
+        {
+            if (Inventory == null)
+                return false;
+
+            return Inventory.gameObject.activeSelf;
+        }
+    }
+
     public bool IsCombining { get; set; }
     public List<ItemInfo> CombineItems = new List<ItemInfo>();
 
@@ -233,7 +243,7 @@ public class ItemManager
         }
 
         //인벤토리가 열려있으면 닫기
-        if (Inventory.gameObject.activeSelf)
+        if (IsInventoryOpen)
         {
             CloseInventory();
         }
@@ -246,22 +256,17 @@ public class ItemManager
 
     public void OpenInventory()
     {
-        //Managers.Object.MyPlayer.State = CreatureState.UsingInventory;
-
         if (Inventory == null)
         {
             Inventory = Managers.UI.CreateUI("Inventory").GetComponent<Inventory>();
         }
-        else
-        {
-            Debug.Log("Inventory is already open.");
-        }
+
+        Inventory.UpdateItemList();
+        Inventory.gameObject.SetActive(true);
     }
 
     public void CloseInventory()
     {
-        //Managers.Object.MyPlayer.State = CreatureState.Idle;
-
         if (Inventory != null)
         {
             SelectedItem = null;

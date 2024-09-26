@@ -27,32 +27,6 @@ public class Syringe : UsingItem
         _layerPoint = 1 << LayerMask.NameToLayer("Point");
     }
 
-    void Update()
-    {
-        UpdateObjectRay();
-    }
-
-    void UpdateObjectRay()
-    {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
-        RaycastHit hitInfo;
-        _layerPoint = LayerMask.GetMask("Point");
-        //자식 오브젝트에 리지드바디 안달려있으면 부모껄로 인식됨
-        if (Physics.Raycast(ray, out hitInfo, raycastDistance, _layerPoint))
-        {
-            obj = hitInfo.transform.gameObject;
-            Debug.Log(obj);
-        }
-        else
-        {
-            if (obj != null)
-            {
-                obj = null;
-            }
-        }
-    }
-
     public override bool Use(BaseController character)
     {
         // 주사기 오브젝트를 캐릭터 손에 생성
@@ -85,66 +59,6 @@ public class Syringe : UsingItem
         return base.Use(character);
     }
 
-    // check가 true가 될 때까지 기다리는 코루틴
-    //IEnumerator WaitForCheck()
-    //{
-    //    while(!check)
-    //    {
-    //        StartCoroutine(SyringeUseCheck());
-    //    }
-       
-    //    // check가 true가 될 때까지 기다림
-    //    yield return new WaitUntil(() => check);
-
-    //    // check가 true가 된 후 추가 작업
-    //    Debug.Log("check가 true가 되어 다음 작업을 수행합니다.");
-    //}
-    //IEnumerator SyringeUseCheck()
-    //{
-    //    if (go != null)
-    //    {
-    //        if (Input.GetMouseButtonDown(0))
-    //        {
-    //            if (Managers.Scenario.CurrentScenarioInfo.Action == "Use")
-    //            {
-    //                if (obj != null && obj.transform.gameObject.name == "AccuratePoint")
-    //                {
-    //                    if (Managers.Scenario.CurrentScenarioInfo != null)
-    //                    {
-    //                        Mycharacter.State = CreatureState.Syringe;
-    //                        clickTime += Time.deltaTime;
-    //                        if (clickTime >= holdDuration)
-    //                        {
-    //                            Managers.Scenario.MyAction = "Use";
-    //                            if (obj.name != "AccuratePoint")
-    //                                Debug.Log("다른게 들어감");
-    //                            Managers.Scenario.Targets.Add("AccuratePoint");
-    //                            Mycharacter.State = CreatureState.Idle;
-    //                            check = true;  // check를 true로 설정   
-    //                            yield return null;
-    //                        }
-    //                    }
-    //                    else if(clickTime < holdDuration)
-    //                    {
-    //                        Managers.UI.CreateSystemPopup("WarningPopup", "3초가 지나야 합니다.");
-    //                    }
-    //                }
-    //                else
-    //                {
-    //                    Managers.UI.CreateSystemPopup("WarningPopup", "올바른 곳에 사용하세요");
-    //                }
-    //            }
-    //        }
-    //        else if (Input.GetMouseButtonUp(0))
-    //        {
-    //            if (Mycharacter.State == CreatureState.Syringe)
-    //            {
-    //                Mycharacter.State = CreatureState.Idle;
-
-    //            }
-    //        }
-    //    }
-    //}
     IEnumerator WaitForCheck()
     {
         // check가 true가 될 때까지 SyringeUseCheck를 실행하고 기다림
@@ -163,6 +77,23 @@ public class Syringe : UsingItem
                 // 마우스 좌클릭 유지 중
                 if (Input.GetMouseButton(0))
                 {
+                    Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+                    RaycastHit hitInfo;
+                    _layerPoint = LayerMask.GetMask("Point");
+                    //자식 오브젝트에 리지드바디 안달려있으면 부모껄로 인식됨
+                    if (Physics.Raycast(ray, out hitInfo, raycastDistance, _layerPoint))
+                    {
+                        obj = hitInfo.transform.gameObject;
+                        Debug.Log(obj);
+                    }
+                    else
+                    {
+                        if (obj != null)
+                        {
+                            obj = null;
+                        }
+                    }
                     // 시나리오 액션이 "Use"일 때
                     if (Managers.Scenario.CurrentScenarioInfo.Action == "Use")
                     {
@@ -193,7 +124,7 @@ public class Syringe : UsingItem
                                 Managers.UI.CreateSystemPopup("WarningPopup", "3초가 지나야 합니다.");
                             }
                         }
-                        else if(!(Mycharacter.State == CreatureState.UsingInventory))
+                        else if (!(Mycharacter.State == CreatureState.UsingInventory))
                         {
                             Managers.UI.CreateSystemPopup("WarningPopup", "올바른 곳에 사용하세요");
                         }

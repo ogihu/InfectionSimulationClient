@@ -62,7 +62,7 @@ public class MyPlayerController : PlayerController
 
     protected override void UpdateRotation()
     {
-        if (!IsCanActive())
+        if (!IsCanActive() || Managers.Item.IsInventoryOpen)
             return;
 
         Quaternion currentRotation = this.transform.localRotation;
@@ -78,8 +78,8 @@ public class MyPlayerController : PlayerController
 
     void UpdateCursor()
     {
-        Cursor.lockState = !(IsCanActive() || State == CreatureState.PickUp) ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = !(IsCanActive() || State == CreatureState.PickUp);
+        Cursor.lockState = (!(IsCanActive() || State == CreatureState.PickUp) || Managers.Item.IsInventoryOpen) ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = (!(IsCanActive() || State == CreatureState.PickUp) || Managers.Item.IsInventoryOpen);
     }
 
     public bool IsCanActive()
@@ -123,14 +123,7 @@ public class MyPlayerController : PlayerController
         //인벤토리 열기/닫기
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (State == CreatureState.Idle)
-            {
-                Managers.Item.OpenInventory();
-            }
-            else if (State == CreatureState.UsingInventory)
-            {
-                Managers.Item.CloseInventory();
-            }
+            Managers.Item.OpenOrCloseInventory();
         }
 
         if (Input.GetKeyDown(KeyCode.M))

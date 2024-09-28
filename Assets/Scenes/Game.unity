@@ -1756,11 +1756,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2603790112000458553, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      propertyPath: m_Name
+      value: ScenarioX-ray
+      objectReference: {fileID: 0}
+    - target: {fileID: 2603790112000458553, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3584276479469267769, guid: f617b5858cd036e4a82367565da1b8a5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 37dba24bae80b734da9b121eb1c910b9, type: 2}
+    - target: {fileID: 5241660683930591137, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d5a3a1fe1b05c7c46b0fa2a8f47472fe, type: 2}
     - target: {fileID: 6046602037381244216, guid: f617b5858cd036e4a82367565da1b8a5,
         type: 3}
       propertyPath: m_Name
@@ -1783,6 +1798,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5383953988925397209}
+    - targetCorrespondingSourceObject: {fileID: 2603790112000458553, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5383953988925397213}
+    - targetCorrespondingSourceObject: {fileID: 2603790112000458553, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5383953988925397212}
   m_SourcePrefab: {fileID: 100100000, guid: f617b5858cd036e4a82367565da1b8a5, type: 3}
 --- !u!1 &5383953988925397208 stripped
 GameObject:
@@ -1825,6 +1848,49 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemData:
     Name: EMRPC
+    Icon: {fileID: 0}
+    Prefab: {fileID: 0}
+--- !u!1 &5383953988925397211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2603790112000458553, guid: f617b5858cd036e4a82367565da1b8a5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5383953988925397207}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5383953988925397212
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383953988925397211}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5844096, y: 1.542412, z: 1.1012511}
+  m_Center: {x: 0.034669444, y: 0.7727543, z: -0.1978862}
+--- !u!114 &5383953988925397213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5383953988925397211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f431806d6e302546b567598ebd3755d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemData:
+    Name: 
     Icon: {fileID: 0}
     Prefab: {fileID: 0}
 --- !u!1001 &5649226547436898858

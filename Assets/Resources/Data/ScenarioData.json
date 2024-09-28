@@ -682,7 +682,7 @@
       "Targets": null,
       "DetailHint": "X-Ray 촬영을 진행하세요./",
       "Hint": "X-Ray 검사를 진행하세요",
-      "Confirm": null
+      "Confirm": "X-Ray 촬영을 하시겠습니까?"
     },
     {
       "Progress": 57,

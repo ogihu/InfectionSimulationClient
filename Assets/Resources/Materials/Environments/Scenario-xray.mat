@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: lowpoly_mat
+  m_Name: Scenario-xray
   m_Shader: {fileID: 4800000, guid: bbfc9fc2a53d0b34598ee55a3417edc4, type: 3}
-  m_Parent: {fileID: 2100000, guid: 37dba24bae80b734da9b121eb1c910b9, type: 2}
+  m_Parent: {fileID: 2100000, guid: 6dde076a0b1438f43b2284e489dd63a0, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -29,9 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _OutLineWidth: 0.001
+    - _OutLineWidth: 0.007
     m_Colors:
-    - _OutLineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutLineColor: {r: 0.9528302, g: 0.112362035, b: 0.112362035, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8762089498904334642
 MonoBehaviour:

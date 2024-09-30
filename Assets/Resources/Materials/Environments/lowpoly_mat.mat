@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: lowpoly_mat
-  m_Shader: {fileID: 4800000, guid: bbfc9fc2a53d0b34598ee55a3417edc4, type: 3}
-  m_Parent: {fileID: 2100000, guid: 37dba24bae80b734da9b121eb1c910b9, type: 2}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Parent: {fileID: 2100000, guid: 61b8784f3a07af640beff3196199fd72, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []

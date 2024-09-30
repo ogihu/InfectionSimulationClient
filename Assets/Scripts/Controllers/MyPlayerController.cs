@@ -194,6 +194,14 @@ public class MyPlayerController : PlayerController
         //대화하기
         if (Input.GetKeyDown(KeyCode.T))
         {
+            if(Managers.Scenario.CurrentScenarioInfo != null)
+            {
+                if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
+                {
+                    return;
+                }
+            }
+
             if (State == CreatureState.Idle)
             {
                 Managers.Scenario.MyAction = "Tell";

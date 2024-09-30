@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -17,7 +17,7 @@ public abstract class BaseScene : MonoBehaviour
         if (obj == null)
             Managers.Resource.Instantiate("UI/EventSystem").name = "@EventSystem";
 
-        Screen.SetResolution(1280, 720, false);
+        Screen.SetResolution(1920, 1080, false);
     }
 
     public abstract void Clear();

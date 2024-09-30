@@ -66,7 +66,7 @@ public class GUIKeywordPanel : MonoBehaviour
 
         string content = Managers.Scenario.CurrentScenarioInfo.Sentence;
         NewSentenceArea();
-        //string[] splits = content.Split('\n');
+
         string sentence = null;
         foreach(var ch in content)
         {
@@ -98,6 +98,37 @@ public class GUIKeywordPanel : MonoBehaviour
         if (!string.IsNullOrEmpty(sentence))
         {
             NewSentenceUI(sentence);
+        }
+
+        RandomizeKeywords();
+    }
+
+    public void RandomizeKeywords()
+    {
+        // 현재 게임 오브젝트의 자식 개수 가져오기
+        int childCount = _keywordsArea.transform.childCount;
+
+        // 자식 오브젝트의 인덱스를 담을 배열 생성
+        int[] indices = new int[childCount];
+        for (int i = 0; i < childCount; i++)
+        {
+            indices[i] = i; // 인덱스 초기화
+        }
+
+        // 인덱스 배열을 랜덤하게 섞기
+        for (int i = 0; i < childCount; i++)
+        {
+            int randomIndex = Random.Range(i, childCount);
+            // 인덱스 교환
+            int temp = indices[i];
+            indices[i] = indices[randomIndex];
+            indices[randomIndex] = temp;
+        }
+
+        // 랜덤 인덱스에 따라 자식 오브젝트 순서 변경
+        for (int i = 0; i < childCount; i++)
+        {
+            _keywordsArea.transform.GetChild(indices[i]).SetSiblingIndex(i);
         }
     }
 

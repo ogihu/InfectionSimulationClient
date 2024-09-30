@@ -3,7 +3,6 @@ using Google.Protobuf.Protocol;
 using GoogleCloudStreamingSpeechToText;
 using System;
 using System.Collections.Generic;
-using System.Drawing.Printing;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

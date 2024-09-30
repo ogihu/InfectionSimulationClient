@@ -34,6 +34,7 @@ public class ScenarioManager
         }
     }
 
+
     GameObject _scenarioAssist;
     bool _scenarioHint = false;
     public GameObject ScenarioAssist
@@ -64,6 +65,8 @@ public class ScenarioManager
         }
     }
 
+
+
     #region 시나리오 수행 결과 저장 버퍼
 
     public string MyAction { get; set; }
@@ -88,6 +91,7 @@ public class ScenarioManager
         PassSpeech = false;
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
         _scenarioAssist.transform.GetChild(2).gameObject.SetActive(_scenarioHint);
+
 
         bool patientAdded = AddNPC("환자", WaitingArea);
         bool transportOfficerAdded = AddNPC("이송요원", WaitingArea);
@@ -143,9 +147,12 @@ public class ScenarioManager
         {
             _doingScenario = true;
             Managers.Instance.StartCoroutine(CoScenario(scenarioName));
+
+
         }
         
     }
+
 
     IEnumerator CoScenarioStep(int progress)
     {
@@ -289,6 +296,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(20));
+
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(21));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(22));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(23));
@@ -362,6 +370,8 @@ public class ScenarioManager
         Reset();
         CurrentScenarioInfo = Managers.Data.ScenarioData[ScenarioName][Progress];
         _routine = null;
+
+
     }
 
     //화면 상단에 시나리오 진행 관련 힌트를 주는 UI 업데이트
@@ -380,8 +390,29 @@ public class ScenarioManager
         if (CurrentScenarioInfo == null)
             return;
 
+
+        // 애초에 YudoLine을 비활성화 상태로 유지
+        if (GameScene.YudoLine != null)
+        {
+            GameScene.YudoLine.SetActive(false);  // Progress 상관없이 기본적으로 비활성화
+        }
+
+        // 특정 Progress 값에서만 YudoLine을 활성화
+        if (ShouldShowYudoLine(Progress))
+        {
+            if (GameScene.YudoLine != null)
+            {
+                GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
+            }
+        }
+
         Util.FindChildByName(Hint, "HintSpeech").GetComponent<TMP_Text>().text = CurrentScenarioInfo.DetailHint;
     }
+
+
+
+
+
 
     #endregion
 
@@ -612,6 +643,20 @@ public class ScenarioManager
             npc.AddOrder(npc.CoTeleport(des));
         }
     }
+
+   
+
+
+
+    bool ShouldShowYudoLine(int progress)
+    {
+        int[] showYudoLineProgress = { 26, 31, 34, 46, 56 };
+
+        return Array.Exists(showYudoLineProgress, p => p == progress);
+    }
+
+
+
 
     #endregion
 }

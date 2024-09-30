@@ -19,8 +19,6 @@ public class Syringe : UsingItem
 
     // 마우스 클릭 지속 시간을 추적할 변수
     private float clickTime = 0f;
-    // 원하는 시간이 지나면 실행할 함수
-    public float holdDuration = 3f;
     GameObject Point;
     List<GameObject> points = new List<GameObject>();
     public override void Init()
@@ -114,8 +112,7 @@ public class Syringe : UsingItem
         {
             if (go != null)
             {
-                // 마우스 좌클릭 유지 중
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButtonDown(0))
                 {
                     Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
@@ -143,7 +140,7 @@ public class Syringe : UsingItem
                             // 시나리오 정보가 유효할 때
                             if (Managers.Scenario.CurrentScenarioInfo != null)
                             {
-                                Mycharacter.State = CreatureState.Syringe;
+
                                 //clickTime += Time.deltaTime;
 
                                 //// 3초 이상 클릭 유지시
@@ -156,19 +153,12 @@ public class Syringe : UsingItem
                                 //    Managers.Scenario.Targets.Add("AccuratePoint");
                                 //    Mycharacter.State = CreatureState.Idle;
                                 //    check = true;  // check를 true로 설정하여 완료
-                                //    Managers.Scenario.NPCs["환자"].transform.GetChild(1).gameObject.SetActive(false);
                                 //}
-                                Managers.Scenario.MyAction = "Use";
-                                if (obj.name != "AccuratePoint")
-                                    Debug.Log("다른게 들어감");
+                                Mycharacter.State = CreatureState.Syringe;
+                               
+                                StartCoroutine(CoDelayIdle(3.0f));
+                                
 
-                                Managers.Scenario.Targets.Add("AccuratePoint");
-                                Mycharacter.State = CreatureState.Idle;
-                                check = true;  // check를 true로 설정하여 완료
-                                for (int i = 0; i < points.Count; i++)
-                                    points[i].SetActive(false);
-                                Managers.Item.ForceUnUseItem(ItemInfo);
-                                this.UnUse(Mycharacter);
                             }
                             //else if (clickTime < holdDuration)
                             //{
@@ -191,10 +181,32 @@ public class Syringe : UsingItem
                 //    }
                 //}
             }
-
             // 다음 프레임까지 대기
             yield return null;
         }
     }
+    IEnumerator CoDelayIdle(float time)
+    {
 
+        yield return new WaitForSeconds(time);
+        if (obj.name != "AccuratePoint")
+        {
+            Debug.Log("다른게 들어감");
+            yield break;
+        }
+
+        Managers.Scenario.Targets.Add("AccuratePoint");
+        
+        for (int i = 0; i < points.Count; i++)
+            points[i].SetActive(false);
+        Managers.Item.ForceUnUseItem(ItemInfo);
+        Managers.Scenario.MyAction = "Use";
+        check = true;  // check를 true로 설정하여 완료
+        if(Managers.Item.IsInventoryOpen == true)
+        {
+            Managers.Item.OpenOrCloseInventory();
+        }
+       
+        Mycharacter.State = CreatureState.Idle;
+    }
 }

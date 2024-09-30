@@ -25,15 +25,15 @@ namespace GoogleCloudStreamingSpeechToText
     {
         public string microphoneName
         {
-            get => _microphoneName;
+            get => Managers.Setting.SelectedMic;
             set
             {
-                if (_microphoneName == value)
+                if (Managers.Setting.SelectedMic == value)
                 {
                     return;
                 }
 
-                _microphoneName = value;
+                Managers.Setting.SelectedMic = value;
                 if (Application.isPlaying && IsListening())
                 {
                     Restart();
@@ -54,7 +54,6 @@ namespace GoogleCloudStreamingSpeechToText
         private bool _restart = false;
         private bool _newStreamOnRestart = false;
         private bool _newStream = false;
-        [SerializeField] private string _microphoneName;
         [SerializeField] public GameObject TextUI;
         private AudioSource _audioSource;
         private CancellationTokenSource _cancellationTokenSource;
@@ -159,9 +158,9 @@ namespace GoogleCloudStreamingSpeechToText
             }
 
             string[] microphoneDevices = Microphone.devices;
-            if (string.IsNullOrEmpty(_microphoneName) || Array.IndexOf(microphoneDevices, _microphoneName) == -1)
+            if (string.IsNullOrEmpty(microphoneName) || Array.IndexOf(microphoneDevices, microphoneName) == -1)
             {
-                _microphoneName = microphoneDevices[0];
+                microphoneName = microphoneDevices[0];
             }
 
             _initialized = true;
@@ -179,7 +178,7 @@ namespace GoogleCloudStreamingSpeechToText
                 return;
             }
 
-            Microphone.End(_microphoneName);
+            Microphone.End(microphoneName);
             _audioSource.Stop();
             _cancellationTokenSource?.Dispose();
         }
@@ -258,12 +257,12 @@ namespace GoogleCloudStreamingSpeechToText
             }
 
             AudioConfiguration audioConfiguration = AudioSettings.GetConfiguration();
-            _audioSource.clip = Microphone.Start(_microphoneName, true, 10, audioConfiguration.sampleRate);
+            _audioSource.clip = Microphone.Start(microphoneName, true, 10, audioConfiguration.sampleRate);
 
             // wait for microphone to initialize
             float timerStartTime = Time.realtimeSinceStartup;
             bool timedOut = false;
-            while (!(Microphone.GetPosition(_microphoneName) > 0) && !timedOut)
+            while (!(Microphone.GetPosition(microphoneName) > 0) && !timedOut)
             {
                 timedOut = Time.realtimeSinceStartup - timerStartTime >= MicInitializationTimeout;
             }

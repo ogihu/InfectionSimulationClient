@@ -119,14 +119,22 @@ public class SmartPhone : MonoBehaviour
         switch (Managers.Scenario.MyAction)
         {
             case "Call":
-                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._text.text = "";
-                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._accumulatedText = "";
-                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._interimText = "";
-                Managers.STT.GoogleSpeechObj.StartListening();
-                _functions.SetActive(false);
-                _targets.SetActive(false);
-                _calling.SetActive(true);
-                _isCalling = true;
+                if (Managers.Setting.UsingMic)
+                {
+                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._text.text = "";
+                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._accumulatedText = "";
+                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._interimText = "";
+                    Managers.STT.GoogleSpeechObj.StartListening();
+                    _functions.SetActive(false);
+                    _targets.SetActive(false);
+                    _calling.SetActive(true);
+                    _isCalling = true;
+                }
+                else
+                {
+                    Managers.Phone.ClosePhone();
+                    Managers.Keyword.OpenGUIKeyword();
+                }
                 break;
             case "Messenger":
                 Managers.Phone.ClosePhone();

@@ -197,14 +197,28 @@ public class MyPlayerController : PlayerController
             if (State == CreatureState.Idle)
             {
                 Managers.Scenario.MyAction = "Tell";
-                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StartListening();
-                State = CreatureState.Conversation;
+                if(Managers.Setting.UsingMic)
+                {
+                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StartListening();
+                    State = CreatureState.Conversation;
+                }
+                else
+                {
+                    Managers.Keyword.OpenGUIKeyword();
+                }
             }
             else if (State == CreatureState.Conversation)
             {
-                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
-                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
-                State = CreatureState.Idle;
+                if (Managers.Setting.UsingMic)
+                {
+                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
+                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
+                    State = CreatureState.Idle;
+                }
+                else
+                {
+                    Managers.Keyword.CloseGUIKeyword();
+                }
             }
         }
 

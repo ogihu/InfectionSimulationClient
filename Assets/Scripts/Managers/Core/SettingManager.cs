@@ -37,9 +37,14 @@ public class SettingManager
 
     #endregion
 
+    public bool UsingMic { get; set; }
+
+    public string SelectedMic { get; set; }
+
     public void Init()
     {
         BGMVol = 1f;
         SFXVol = 1f;
+        UsingMic = false;
     }
 }

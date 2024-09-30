@@ -75,6 +75,8 @@ public class Managers : MonoBehaviour
 
             _instance._pool.Init();
             _instance._data.Init();
+            _instance._sound.Init();
+            _instance._setting.Init();
 
             try
             {

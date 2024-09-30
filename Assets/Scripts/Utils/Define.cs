@@ -148,7 +148,8 @@ public class Define
         public string Position { get; set; }
         public string Item { get; set; }
         public string Action { get; set; }
-        public string Keywords { get; set; }
+        public string Sentence { get; set; }
+        public string STTKeywords { get; set; }
         public string Targets { get; set; }
         public string DetailHint { get; set; }
         public string Hint { get; set; }
@@ -162,7 +163,9 @@ public class Define
         public string Position { get; set; }
         public string Item { get; set; }
         public string Action { get; set; }
-        public List<string> Keywords { get; set; } = new List<string>();
+        public string Sentence { get; set; }
+        public List<string> GUIKeywords { get; set; } = new List<string>();
+        public List<string> STTKeywords { get; set; } = new List<string>();
         public List<string> Targets { get; set; } = new List<string>();
         public string DetailHint { get; set; }
         public string Hint { get; set; }

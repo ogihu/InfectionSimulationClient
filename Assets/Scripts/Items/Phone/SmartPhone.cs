@@ -33,13 +33,11 @@ public class SmartPhone : MonoBehaviour
             Init();
         }
         Reset();
-        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.UsingPhone;
     }
 
     private void OnDisable()
     {
         Reset();
-        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
     }
 
     public void Init()

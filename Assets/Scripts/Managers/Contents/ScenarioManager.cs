@@ -106,7 +106,7 @@ public class ScenarioManager
         );
     }
 
-    void Reset()
+    public void Reset()
     {
         PassSpeech = false;
         MyAction = null;
@@ -511,7 +511,7 @@ public class ScenarioManager
         float count = 0;
         List<string> needKeywords = new List<string>();
 
-        foreach (var keyword in CurrentScenarioInfo.Keywords)
+        foreach (var keyword in CurrentScenarioInfo.STTKeywords)
         {
             if (message.Contains(keyword))
             {
@@ -535,7 +535,7 @@ public class ScenarioManager
             message += "</color>";
         }
 
-        return count / (float)CurrentScenarioInfo.Keywords.Count;
+        return count / (float)CurrentScenarioInfo.STTKeywords.Count;
     }
 
     #endregion

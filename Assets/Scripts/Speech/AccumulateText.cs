@@ -106,10 +106,13 @@ public class AccumulateText : MonoBehaviour
     {
         if (String.IsNullOrEmpty(Managers.Scenario.CurrentScenarioInfo.Place))
             Managers.Scenario.PassSpeech = true;
+        else if(Managers.Scenario.CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
+        {
+            Managers.Scenario.PassSpeech = true;
+        }
         else
         {
-            if (Managers.Scenario.CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
-                Managers.Scenario.PassSpeech = true;
+            Managers.Scenario.Reset();
         }
     }
 
@@ -119,7 +122,7 @@ public class AccumulateText : MonoBehaviour
 
         if (player)
         {
-            CurCommand.keywords = Managers.Scenario.CurrentScenarioInfo.Keywords;
+            CurCommand.keywords = Managers.Scenario.CurrentScenarioInfo.STTKeywords;
             CurCommand.thenDo = ThenDo;
             StreamingRecognizer.needKeyword.Clear();
             StreamingRecognizer.needKeyword.AddRange(CurCommand.keywords);

@@ -128,8 +128,6 @@ public class MyPlayerController : PlayerController
             }
         }
 
-
-
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Managers.Scenario.ScenarioAssist_HintActive();
@@ -179,13 +177,17 @@ public class MyPlayerController : PlayerController
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (State == CreatureState.Idle)
+            {
                 Managers.Phone.OpenPhone();
+                State = CreatureState.UsingPhone;
+            }
             else if (State == CreatureState.UsingPhone)
             {
                 if (Managers.Phone.Device._isCalling)
                     Managers.Phone.Device.FinishCall();
                 else
                     Managers.Phone.ClosePhone();
+                State = CreatureState.Idle;
             }
         }
         

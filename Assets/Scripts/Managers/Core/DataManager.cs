@@ -30,20 +30,48 @@ public class DataManager
                 scenarioInfo.Action = scenarioList.Action;
                 scenarioInfo.Hint = scenarioList.Hint;
                 scenarioInfo.Confirm = scenarioList.Confirm;
+                scenarioInfo.Sentence = scenarioList.Sentence;
 
-                if (scenarioList.Keywords != null)
+                string guiWord = null;
+                bool isKeyword = false;
+
+                if (!string.IsNullOrEmpty(scenarioList.Sentence))
                 {
-                    string[] keywordSplit = scenarioList.Keywords.Split(',');
+                    foreach (var word in scenarioList.Sentence)
+                    {
+                        if (word == '[')
+                        {
+                            isKeyword = true;
+                            continue;
+                        }
+                        else if (word == ']')
+                        {
+                            isKeyword = false;
+                            scenarioInfo.GUIKeywords.Add(guiWord);
+                            guiWord = null;
+                            continue;
+                        }
+
+                        if (isKeyword)
+                        {
+                            guiWord += word;
+                        }
+                    }
+                }
+
+                if (scenarioList.STTKeywords != null)
+                {
+                    string[] keywordSplit = scenarioList.STTKeywords.Split(',');
                     foreach (string keyword in keywordSplit)
                     {
-                        scenarioInfo.Keywords.Add(keyword);
+                        scenarioInfo.STTKeywords.Add(keyword);
                     }
                 }
 
                 string newSpeech = scenarioList.DetailHint;
                 string[] split = newSpeech.Split('/');
                 scenarioInfo.DetailHint = split[0];
-                foreach (var keyword in scenarioInfo.Keywords)
+                foreach (var keyword in scenarioInfo.STTKeywords)
                 {
                     if (split[1].Contains(keyword))
                     {

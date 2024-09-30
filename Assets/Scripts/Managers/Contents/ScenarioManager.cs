@@ -106,7 +106,7 @@ public class ScenarioManager
         );
     }
 
-    void Reset()
+    public void Reset()
     {
         PassSpeech = false;
         MyAction = null;
@@ -254,7 +254,8 @@ public class ScenarioManager
                     NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90, 0);
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea, CreatureState.Push));
                     NPCs["이송요원"].ChangeSpeed(2f);
-                    //GameObject go = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
+                    GameObject go = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "관찰구역 소독 중입니다. 접근하지 마세요.");
                     yield return new WaitForSeconds(1.0f);
 
                     NPCs["미화1"].Teleport(Entrance);
@@ -281,8 +282,8 @@ public class ScenarioManager
                     SetStateAllNPC(CreatureState.Idle, NPCs["환자"]);
                     MoveAllNPC(Entrance, NPCs["환자"]);
                     WarpAllNPC(WaitingArea, NPCs["환자"]);
-                    
-                    //Managers.Resource.Destroy(go);
+
+                    Managers.Resource.Destroy(go);
                 }
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
@@ -296,11 +297,14 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(25));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(26));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(27));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(28));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(29));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(30));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "아니요. 딱히 없었어요.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(31));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(32));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(33));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(34));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(35));
@@ -314,6 +318,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(43));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(44));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(45));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(46));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(47));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(48));
@@ -322,12 +327,9 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(51));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(52));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(53));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(54));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(55));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(56));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(57));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(58));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(59));
                 break;
         }
 
@@ -511,7 +513,7 @@ public class ScenarioManager
         float count = 0;
         List<string> needKeywords = new List<string>();
 
-        foreach (var keyword in CurrentScenarioInfo.Keywords)
+        foreach (var keyword in CurrentScenarioInfo.STTKeywords)
         {
             if (message.Contains(keyword))
             {
@@ -535,7 +537,7 @@ public class ScenarioManager
             message += "</color>";
         }
 
-        return count / (float)CurrentScenarioInfo.Keywords.Count;
+        return count / (float)CurrentScenarioInfo.STTKeywords.Count;
     }
 
     #endregion

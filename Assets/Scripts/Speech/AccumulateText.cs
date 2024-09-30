@@ -70,12 +70,18 @@ public class AccumulateText : MonoBehaviour
         }
         
     }
+
     public  void FinalEvaluate()
+    {
+        FinalEvaluate(_text.text);
+    }
+
+    public void FinalEvaluate(string text)
     {
         if (Managers.Scenario._doingScenario == false)
             return;
 
-        string transcription = _text.text;
+        string transcription = text;
         string content = transcription;
 
         if (CurCommand.keywords != null)
@@ -106,10 +112,13 @@ public class AccumulateText : MonoBehaviour
     {
         if (String.IsNullOrEmpty(Managers.Scenario.CurrentScenarioInfo.Place))
             Managers.Scenario.PassSpeech = true;
+        else if(Managers.Scenario.CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
+        {
+            Managers.Scenario.PassSpeech = true;
+        }
         else
         {
-            if (Managers.Scenario.CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
-                Managers.Scenario.PassSpeech = true;
+            Managers.Scenario.Reset();
         }
     }
 
@@ -119,7 +128,7 @@ public class AccumulateText : MonoBehaviour
 
         if (player)
         {
-            CurCommand.keywords = Managers.Scenario.CurrentScenarioInfo.Keywords;
+            CurCommand.keywords = Managers.Scenario.CurrentScenarioInfo.STTKeywords;
             CurCommand.thenDo = ThenDo;
             StreamingRecognizer.needKeyword.Clear();
             StreamingRecognizer.needKeyword.AddRange(CurCommand.keywords);

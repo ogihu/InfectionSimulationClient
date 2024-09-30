@@ -75,9 +75,6 @@ class PacketHandler
         if (go == null)
             return;
 
-        if (Managers.Object.MyPlayer.ObjectId == talkPacket.Id)
-            return;
-
         BaseController bc = go.GetComponent<BaseController>();
         if (bc == null)
             return;

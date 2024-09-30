@@ -18,7 +18,6 @@ public class UIManager
         ManualDestroy
     }
 
-    public Dictionary<string, Stack<GameObject>> UICache { get; set; } = new Dictionary<string, Stack<GameObject>>();
     public Stack<GameObject> ContentPopups { get; set; } = new Stack<GameObject>();
     public Dictionary<string, SystemPopup> SystemPopups { get; set; } = new Dictionary<string, SystemPopup>();
     Dictionary<Transform, GameObject> BubbleCache { get; set; } = new Dictionary<Transform, GameObject>();
@@ -82,30 +81,46 @@ public class UIManager
 
     public GameObject CreateUI(string name, Transform parent)
     {
-        GameObject go;
-
-        if (UICache.ContainsKey(name))
-        {
-            Stack<GameObject> stack = UICache[name];
-
-            if (stack.Count > 0)
-            {
-                go = stack.Pop();
-                go.transform.parent = parent;
-            }
-            else
-                go = Managers.Resource.Instantiate($"UI/{name}", parent);
-
-            go.SetActive(true);
-
-            return go;
-        }
-
-        go = Managers.Resource.Instantiate($"UI/{name}", parent);
-        go.SetActive(true);
+        GameObject go = Managers.Resource.Load<GameObject>($"Prefabs/UI/{name}");
+        go = CreateUI(go, parent);
 
         return go;
     }
+
+    public GameObject CreateUI(GameObject obj, Transform parent)
+    {
+        GameObject go = Managers.Resource.Instantiate(obj, parent);
+        if (go.GetComponent<Poolable>())
+            go.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
+        return go;
+    }
+
+    //public GameObject CreateUI(GameObject obj, Transform parent)
+    //{
+    //    GameObject go;
+
+    //    if (UICache.ContainsKey(obj.name))
+    //    {
+    //        Stack<GameObject> stack = UICache[obj.name];
+
+    //        if (stack.Count > 0)
+    //        {
+    //            go = stack.Pop();
+    //            go.transform.parent = parent;
+    //        }
+    //        else
+    //            go = Managers.Resource.Instantiate(obj, parent);
+
+    //        go.SetActive(true);
+
+    //        return go;
+    //    }
+
+    //    go = Managers.Resource.Instantiate(obj, parent);
+    //    go.SetActive(true);
+
+    //    return go;
+    //}
 
     /// <summary>
     /// 화면 상단에 팝업 안내를 띄움
@@ -175,8 +190,8 @@ public class UIManager
         BubbleCache[host].GetComponent<FloatingUI>().ChangeMessage(message);
 
         //추가
-        NPCController nc = host.GetComponent<NPCController>();
-        if(nc != null)
+        BaseController bc = host.GetComponent<BaseController>();
+        if(bc != null)
             Managers.TTS.Speaking(host, message);
     }
 
@@ -206,19 +221,21 @@ public class UIManager
 
     public void DestroyUI(GameObject go)
     {
-        if (go.GetComponent<PoolableUI>() != null)
-        {
-            if (!UICache.ContainsKey(go.name))
-            {
-                UICache.Add(go.name, new Stack<GameObject>());
-            }
+        Managers.Resource.Destroy(go);
 
-            Stack<GameObject> stack = UICache[go.name];
-            stack.Push(go);
-            go.SetActive(false);
-        }
-        else
-            GameObject.Destroy(go);
+        //if (go.GetComponent<PoolableUI>() != null)
+        //{
+        //    if (!UICache.ContainsKey(go.name))
+        //    {
+        //        UICache.Add(go.name, new Stack<GameObject>());
+        //    }
+
+        //    Stack<GameObject> stack = UICache[go.name];
+        //    stack.Push(go);
+        //    go.SetActive(false);
+        //}
+        //else
+        //    GameObject.Destroy(go);
     }
 
     public bool ExitPopup()
@@ -229,10 +246,5 @@ public class UIManager
         GameObject go = ContentPopups.Pop();
         DestroyUI(go);
         return true;
-    }
-
-    public void Clear()
-    {
-        UICache.Clear();
     }
 }

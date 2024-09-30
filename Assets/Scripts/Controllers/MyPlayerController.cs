@@ -128,8 +128,6 @@ public class MyPlayerController : PlayerController
             }
         }
 
-
-
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             Managers.Scenario.ScenarioAssist_HintActive();
@@ -179,13 +177,17 @@ public class MyPlayerController : PlayerController
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (State == CreatureState.Idle)
+            {
                 Managers.Phone.OpenPhone();
+                State = CreatureState.UsingPhone;
+            }
             else if (State == CreatureState.UsingPhone)
             {
                 if (Managers.Phone.Device._isCalling)
                     Managers.Phone.Device.FinishCall();
                 else
                     Managers.Phone.ClosePhone();
+                State = CreatureState.Idle;
             }
         }
         
@@ -203,6 +205,19 @@ public class MyPlayerController : PlayerController
                 Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
                 Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
                 State = CreatureState.Idle;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (State == CreatureState.Idle)
+            {
+                Managers.Scenario.MyAction = "Tell";
+                Managers.Keyword.OpenGUIKeyword();
+            }
+            else if (State == CreatureState.Conversation)
+            {
+                Managers.Keyword.CloseGUIKeyword();
             }
         }
 

@@ -14,6 +14,7 @@ public class Managers : MonoBehaviour
     PhoneManager _phone = new PhoneManager();
     ItemManager _item = new ItemManager();
     BubbleManager _bubble = new BubbleManager();
+    KeywordManager _keyword = new KeywordManager();
 
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
@@ -21,6 +22,7 @@ public class Managers : MonoBehaviour
     public static PhoneManager Phone { get { return Instance._phone; } }
     public static ItemManager Item { get { return Instance._item; } }
     public static BubbleManager Bubble { get { return Instance._bubble; } }
+    public static KeywordManager Keyword { get { return Instance._keyword; } }
    
     #endregion
 

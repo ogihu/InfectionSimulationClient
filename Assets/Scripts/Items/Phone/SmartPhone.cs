@@ -140,7 +140,7 @@ public class SmartPhone : MonoBehaviour
             return;
 
         GameObject content = Util.FindChildByName(_messages, "Content");
-        for(int i = Messages.Count - 1; i >= 0; i--)
+        for (int i = Messages.Count - 1; i >= 0; i--)
         {
             GameObject go = Managers.UI.CreateUI("Message", content.transform);
             go.GetComponent<ButtonMessage>().Init(Messages[i]);

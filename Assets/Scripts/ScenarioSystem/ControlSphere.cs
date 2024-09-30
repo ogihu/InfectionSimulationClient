@@ -28,4 +28,9 @@ public class ControlSphere : MonoBehaviour
         if (_popup != null)
             _popup.GetComponent<SystemPopup>().AutoDestroy(0);
     }
+
+    private void OnDisable()
+    {
+        Managers.UI.DestroyUI(_popup);
+    }
 }

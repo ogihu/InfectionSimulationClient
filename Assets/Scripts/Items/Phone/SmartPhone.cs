@@ -76,6 +76,24 @@ public class SmartPhone : MonoBehaviour
         switch (funcName)
         {
             case "Call":
+                if (Managers.Scenario.CurrentScenarioInfo == null)
+                {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.");
+                    return;
+                }
+
+                if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Call"))
+                {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.");
+                    return;
+                }
+
+                Managers.Scenario.MyAction = funcName;
+                _functions.SetActive(false);
+                _targets.SetActive(true);
+                _messages.SetActive(false);
+                _calling.SetActive(false);
+                break;
             case "Messenger":
                 if (Managers.Scenario.CurrentScenarioInfo == null)
                 {
@@ -83,7 +101,7 @@ public class SmartPhone : MonoBehaviour
                     return;
                 }
 
-                if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Call" || Managers.Scenario.CurrentScenarioInfo.Action == "Messenger"))
+                if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Messenger"))
                 {
                     Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.");
                     return;

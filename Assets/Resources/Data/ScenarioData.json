@@ -19,7 +19,7 @@
       "Position": "응급센터 간호사1",
       "Item": null,
       "Action": "Tell",
-      "Sentence": null,
+      "Sentence": "복통으로 [관찰구역]에 계신 이감염환자분 엠폭스 확진자 [접촉자]로 방금 전화받았다고 하십니다.\n[감염관리팀]에 [사실여부] 확인 요청 드리겠습니다.",
       "STTKeywords": "관찰,구역,환자,엠폭스,확진자,접촉자,감염,관리팀,사실,확인",
       "Targets": null,
       "DetailHint": "응급의학과 의사에게 다음과 같이 말하세요./\n\n복통으로 관찰구역에 계신 이감염환자분 엠폭스 확진자 접촉자로 방금 전화받았다고 하십니다.\n감염관리팀에 사실여부 확인 요청 드리겠습니다.",
@@ -32,7 +32,7 @@
       "Position": "응급의학과 의사",
       "Item": null,
       "Action": "Tell",
-      "Sentence": null,
+      "Sentence": "[접촉자] 맞으면 바로 말씀해주세요 일단 환자는 [음압격리] 하도록 하겠습니다.",
       "STTKeywords": "환자,음압,격리",
       "Targets": null,
       "DetailHint": "응급센터 간호사1에게 다음과 같이 말하세요./\n\n접촉자 맞으면 바로 말씀해주세요 일단 환자는 음압격리 하도록 하겠습니다.",
@@ -45,7 +45,7 @@
       "Position": "응급센터 간호사1",
       "Item": null,
       "Action": "Call",
-      "Sentence": null,
+      "Sentence": "[응급센터 간호사] 한가인입니다.\n지금 응급실에 엠폭스 확진자와 [접촉]했다는 사람이 있어 [사실여부] 확인 부탁드립니다.\n엠폭스 확진받은 사람은 환자분의 형으로 이관리 980421입니다.\n응급의학과 [상황 공유] 후 환자분은 [음압격리실]로 격리 결정되었습니다.\n보호자분 없이 혼자 자차타고 오셨습니다.",
       "STTKeywords": "응급,센터,간호사,엠폭스,확진자,접촉자,사실,확인,환자,음압,격리실,격리,보호자",
       "Targets": "감염관리팀",
       "DetailHint": "P를 눌러 휴대전화를 열고, 감염관리팀에 연락해 다음과 같이 말하세요./\n\n응급센터 간호사 한가인입니다.\n지금 응급실에 엠폭스 확진자와 접촉했다는 사람이 있어 사실여부 확인 부탁드립니다.\n엠폭스 확진받은 사람은 환자분의 형으로 이관리 980421입니다.\n응급의학과 상황 공유 후 환자분은 음압격리실로 격리 결정되었습니다.\n보호자분 없이 혼자 자차타고 오셨습니다.",
@@ -58,7 +58,7 @@
       "Position": "감염관리팀 간호사",
       "Item": null,
       "Action": "Call",
-      "Sentence": null,
+      "Sentence": "확인 후 바로 연락 드리겠습니다.\r\n환자분은 확인될때 까지 [격리 유지] 부탁드리고 [4종 보호구] 착용 부탁드립니다.",
       "STTKeywords": "확인,환자,격리,유지,보호구,착용",
       "Targets": "응급센터",
       "DetailHint": "P를 눌러 휴대전화를 열고, 응급센터에 연락하여 다음과 같이 말하세요./\n\n확인 후 바로 연락 드리겠습니다.\n환자분은 확인될때 까지 격리 유지 부탁드리고 4종 보호구 착용 부탁드립니다.",
@@ -399,7 +399,7 @@
       "Sentence": null,
       "STTKeywords": "확인,물집,의사",
       "Targets": null,
-      "DetailHint": "음압격리실의 환자에게 다음과 같이 말하고 자세한 피부 사정을 파악하세요./\n\n제가 한번 더 확인해봐도 될까요?\n확인해보겠습니다.\n등쪽에 살짝 물집이 잡혀있기는 하네요.\n담당 의사에게 말씀 드려놓겠습니다.\n잠시만 기다려주시기 바랍니다",
+      "DetailHint": "음압격리실의 환자에게 다음과 같이 말하고 자세한 피부 사정을 파악하세요./\n\n제가 한번 더 확인해보겠습니다.\n등쪽에 살짝 물집이 잡혀있기는 하네요.\n담당 의사에게 말씀 드려놓겠습니다.\n잠시만 기다려주시기 바랍니다",
       "Hint": "의심환자의 피부 사정을 자세히 파악하세요.",
       "Confirm": null
     },
@@ -434,19 +434,6 @@
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
-      "Action": "Bodycheck",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "의심환자의 신체사정을 자세히 확인하세요./",
-      "Hint": "의심환자의 복부촉진 및 발진여부를 관찰하세요.",
-      "Confirm": null
-    },
-    {
-      "Progress": 34,
-      "Place": null,
-      "Position": "응급의학과 의사",
-      "Item": null,
       "Action": "Tell",
       "Sentence": null,
       "STTKeywords": "수포,보건소,사실,여부,확인,엠폭스,접촉자,검체,채취,추가,검사,혈액,엑스레이",
@@ -456,7 +443,7 @@
       "Confirm": null
     },
     {
-      "Progress": 35,
+      "Progress": 34,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -469,7 +456,7 @@
       "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?"
     },
     {
-      "Progress": 36,
+      "Progress": 35,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Mask",
@@ -477,12 +464,12 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
       "Hint": "음압격리실에서 나와 4종 보호구를 탈의해주세요.",
       "Confirm": null
     },
     {
-      "Progress": 37,
+      "Progress": 36,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ProtectedGear",
@@ -490,12 +477,12 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n방호복을 해제하세요.",
       "Hint": "음압격리실에서 나와 4종 보호구를 탈의해주세요.",
       "Confirm": null
     },
     {
-      "Progress": 38,
+      "Progress": 37,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ShoeCover",
@@ -503,12 +490,12 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "음압격리실에서 나와 순서를 준수하여 4종 보호구를 탈의해주세요./",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n덧신을 해제하세요.",
       "Hint": "음압격리실에서 나와 4종 보호구를 탈의해주세요.",
       "Confirm": null
     },
     {
-      "Progress": 39,
+      "Progress": 38,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Glove",
@@ -516,8 +503,21 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
-      "Hint": "4종 보호구를 착용하세요",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
+      "Hint": "음압격리실에서 나와 4종 보호구를 탈의해주세요.",
+      "Confirm": null
+    },
+    {
+      "Progress": 39,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": "Handwash",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n손소독제를 사용하세요.",
+      "Hint": "음압격리실에서 나와 4종 보호구를 탈의해주세요.",
       "Confirm": null
     },
     {
@@ -536,32 +536,6 @@
     {
       "Progress": 41,
       "Place": null,
-      "Position": "감염관리팀 간호사",
-      "Item": null,
-      "Action": "EMRRead",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요./",
-      "Hint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요.",
-      "Confirm": null
-    },
-    {
-      "Progress": 42,
-      "Place": null,
-      "Position": "감염관리팀 간호사",
-      "Item": null,
-      "Action": "Report",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요./",
-      "Hint": "EMR 법정감염병 신고서를 확인 후 신고를 진행하세요.",
-      "Confirm": null
-    },
-    {
-      "Progress": 43,
-      "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
       "Action": "Call",
@@ -573,20 +547,20 @@
       "Confirm": null
     },
     {
-      "Progress": 44,
+      "Progress": 42,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
       "Action": "Call",
       "Sentence": null,
       "STTKeywords": "환자,상황,공유,의료진,수포,확인,법정,감염병,신고,엠폭스,검체,채취,여부",
-      "Targets": "감염병대응센터 주무관",
+      "Targets": "감염병대응센터",
       "DetailHint": "P를 눌러 휴대전화를 열고 감염병대응센터에 연락하여 다음과 같이 말하세요./\n\n010-1234-5678입니다.\n환자분에게는 상황 공유드리도록 하겠습니다.\n그리고 의료진이 확인했을 때 등쪽에 수포가 확인되어 법정감염병 신고 진행했습니다.\n엠폭스 검체채취 여부 확인 후 알려주시기 바랍니다.",
       "Hint": "환자 개인정보를 공유 후 검체채취 여부 확인을 요청하세요",
       "Confirm": null
     },
     {
-      "Progress": 45,
+      "Progress": 43,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -599,7 +573,7 @@
       "Confirm": null
     },
     {
-      "Progress": 46,
+      "Progress": 44,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -612,7 +586,7 @@
       "Confirm": null
     },
     {
-      "Progress": 47,
+      "Progress": 45,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -625,20 +599,20 @@
       "Confirm": null
     },
     {
-      "Progress": 48,
+      "Progress": 46,
       "Place": null,
       "Position": "응급센터 간호사2",
-      "Item": null,
-      "Action": "BloodCollection",
+      "Item": "Syringe",
+      "Action": "Use",
       "Sentence": null,
       "STTKeywords": null,
-      "Targets": null,
+      "Targets": "AccuratePoint",
       "DetailHint": "환자에게서 채혈을 진행하세요./",
       "Hint": "채혈을 진행하세요",
       "Confirm": null
     },
     {
-      "Progress": 49,
+      "Progress": 47,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -651,7 +625,7 @@
       "Confirm": null
     },
     {
-      "Progress": 50,
+      "Progress": 48,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
@@ -664,7 +638,7 @@
       "Confirm": null
     },
     {
-      "Progress": 51,
+      "Progress": 49,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Mask",
@@ -677,7 +651,7 @@
       "Confirm": null
     },
     {
-      "Progress": 52,
+      "Progress": 50,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ProtectedGear",
@@ -690,7 +664,7 @@
       "Confirm": null
     },
     {
-      "Progress": 53,
+      "Progress": 51,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ShoeCover",
@@ -703,20 +677,7 @@
       "Confirm": null
     },
     {
-      "Progress": 54,
-      "Place": null,
-      "Position": "영상의학팀 방사선사",
-      "Item": null,
-      "Action": "Combine",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": "X-Ray Machine",
-      "DetailHint": "I를 눌러 인벤토리를 열고 결합 버튼을 누른 뒤, X-Ray 촬영 기계와 비닐을 선택하고 확인을 누르세요./",
-      "Hint": "기계표면 및 카세트에 비닐을 씌워주세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 55,
+      "Progress": 52,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -729,7 +690,7 @@
       "Confirm": null
     },
     {
-      "Progress": 56,
+      "Progress": 53,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -740,19 +701,6 @@
       "DetailHint": "X-Ray 촬영을 진행하세요./",
       "Hint": "X-Ray 검사를 진행하세요",
       "Confirm": "X-Ray 촬영을 하시겠습니까?"
-    },
-    {
-      "Progress": 57,
-      "Place": null,
-      "Position": "영상의학팀 방사선사",
-      "Item": null,
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "기계 표면 및 카세트 표현 소독을 진행하고 순서를 준수하여 4종 보호구를 탈의하세요./",
-      "Hint": "전실에서 기계 표면 및 카세트 표면소독 및 보호구를 탈의해주세요.",
-      "Confirm": null
     }
   ]
 }

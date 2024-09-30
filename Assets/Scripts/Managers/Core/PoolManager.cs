@@ -43,9 +43,9 @@ public class PoolManager
             if(poolable.gameObject.layer != LayerMask.NameToLayer("UI"))
             {
                 poolable.transform.position = Vector3.zero;
-                poolable.gameObject.SetActive(false);
-                poolable.IsUsing = false;
             }
+            poolable.gameObject.SetActive(false);
+            poolable.IsUsing = false;
 
             _poolStack.Push(poolable);
         }

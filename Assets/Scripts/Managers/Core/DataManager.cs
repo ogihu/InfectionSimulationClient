@@ -32,6 +32,17 @@ public class DataManager
                 scenarioInfo.Confirm = scenarioList.Confirm;
                 scenarioInfo.Sentence = scenarioList.Sentence;
 
+                if (!string.IsNullOrEmpty(scenarioList.Sentence))
+                {
+                    foreach (var ch in scenarioList.Sentence)
+                    {
+                        if (ch == '[' || ch == ']')
+                            continue;
+
+                        scenarioInfo.OriginalSentence += ch;
+                    }
+                }
+
                 string guiWord = null;
                 bool isKeyword = false;
 

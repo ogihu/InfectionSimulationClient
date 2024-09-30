@@ -90,7 +90,8 @@ public class UIManager
     public GameObject CreateUI(GameObject obj, Transform parent)
     {
         GameObject go = Managers.Resource.Instantiate(obj, parent);
-        go.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
+        if (go.GetComponent<Poolable>())
+            go.GetComponent<RectTransform>().anchoredPosition3D = Vector3.zero;
         return go;
     }
 
@@ -189,8 +190,8 @@ public class UIManager
         BubbleCache[host].GetComponent<FloatingUI>().ChangeMessage(message);
 
         //추가
-        NPCController nc = host.GetComponent<NPCController>();
-        if(nc != null)
+        BaseController bc = host.GetComponent<BaseController>();
+        if(bc != null)
             Managers.TTS.Speaking(host, message);
     }
 

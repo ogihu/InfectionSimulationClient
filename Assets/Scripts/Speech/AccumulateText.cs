@@ -70,12 +70,18 @@ public class AccumulateText : MonoBehaviour
         }
         
     }
+
     public  void FinalEvaluate()
+    {
+        FinalEvaluate(_text.text);
+    }
+
+    public void FinalEvaluate(string text)
     {
         if (Managers.Scenario._doingScenario == false)
             return;
 
-        string transcription = _text.text;
+        string transcription = text;
         string content = transcription;
 
         if (CurCommand.keywords != null)

@@ -21,6 +21,8 @@ public class GUIKeywordPanel : MonoBehaviour
     List<BlankUI> _blankUIs = new List<BlankUI>();
     List<KeywordUI> _keywordUIs = new List<KeywordUI>();
 
+    bool _isInit = false;
+
     private void Awake()
     {
         Init();
@@ -29,32 +31,80 @@ public class GUIKeywordPanel : MonoBehaviour
     public void Init()
     {
         _sentencesArea = Util.FindChildByName(gameObject, "SentencesArea");
-        _sentenceAreaPrefab = Managers.Resource.Load<GameObject>("UI/SentenceArea");
-        _sentenceUIPrefab = Managers.Resource.Load<GameObject>("UI/SentenceUI");
-        _blankUIPrefab = Managers.Resource.Load<GameObject>("UI/BlankUI");
+        _sentenceAreaPrefab = Managers.Resource.Load<GameObject>("Prefabs/UI/GUIKeyword/SentenceArea");
+        _sentenceUIPrefab = Managers.Resource.Load<GameObject>("Prefabs/UI/GUIKeyword/SentenceUI");
+        _blankUIPrefab = Managers.Resource.Load<GameObject>("Prefabs/UI/GUIKeyword/BlankUI");
 
         _keywordsArea = Util.FindChildByName(gameObject, "KeywordsArea");
-        _keywordUIprefab = Managers.Resource.Load<GameObject>("UI/KeywordUI");
+        _keywordUIprefab = Managers.Resource.Load<GameObject>("Prefabs/UI/GUIKeyword/KeywordUI");
+
+        _isInit = true;
     }
 
-    void UpdateUI()
+    /// <summary>
+    /// 남은 키워드가 있으면 false, 아니면 true
+    /// </summary>
+    /// <returns></returns>
+    public bool CheckRemainKeywords()
+    {
+        if (_keywordsArea.transform.childCount > 0)
+            return false;
+        else
+            return true;
+    }
+
+    /// <summary>
+    /// UI들을 업데이트
+    /// </summary>
+    public void UpdateUI()
     {
         if (Managers.Scenario.CurrentScenarioInfo == null)
             return;
 
+        if (_isInit == false)
+            Init();
+
         string content = Managers.Scenario.CurrentScenarioInfo.Sentence;
+        NewSentenceArea();
         //string[] splits = content.Split('\n');
         string sentence = null;
         foreach(var ch in content)
         {
-
+            if(ch == '[')
+            {
+                NewSentenceUI(sentence);
+                sentence = null;
+                continue;
+            }
+            else if(ch == ']')
+            {
+                NewBlankUI(sentence);
+                NewKeywordUI(sentence);
+                sentence = null;
+                continue;
+            }
+            else if(ch == '\n')
+            {
+                NewSentenceUI(sentence);
+                sentence = null;
+                NewSentenceArea();
+            }
+            else
+            {
+                sentence += ch;
+            }
+        }
+        
+        if (!string.IsNullOrEmpty(sentence))
+        {
+            NewSentenceUI(sentence);
         }
     }
 
     /// <summary>
     /// 모든 공간, 문장, 빈칸, 키워드를 초기화
     /// </summary>
-    void ResetSentences()
+    public void ResetUIs()
     {
         if(_keywordUIs.Count > 0)
         {

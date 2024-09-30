@@ -164,6 +164,7 @@ public class Define
         public string Item { get; set; }
         public string Action { get; set; }
         public string Sentence { get; set; }
+        public string OriginalSentence { get; set; }
         public List<string> GUIKeywords { get; set; } = new List<string>();
         public List<string> STTKeywords { get; set; } = new List<string>();
         public List<string> Targets { get; set; } = new List<string>();

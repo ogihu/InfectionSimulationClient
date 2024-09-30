@@ -33,11 +33,13 @@ public class SmartPhone : MonoBehaviour
             Init();
         }
         Reset();
+        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.UsingPhone;
     }
 
     private void OnDisable()
     {
         Reset();
+        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
     }
 
     public void Init()
@@ -117,6 +119,9 @@ public class SmartPhone : MonoBehaviour
         switch (Managers.Scenario.MyAction)
         {
             case "Call":
+                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._text.text = "";
+                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._accumulatedText = "";
+                Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._interimText = "";
                 Managers.STT.GoogleSpeechObj.StartListening();
                 _functions.SetActive(false);
                 _targets.SetActive(false);
@@ -135,7 +140,7 @@ public class SmartPhone : MonoBehaviour
             return;
 
         GameObject content = Util.FindChildByName(_messages, "Content");
-        for(int i = Messages.Count - 1; i >= 0; i--)
+        for (int i = Messages.Count - 1; i >= 0; i--)
         {
             GameObject go = Managers.UI.CreateUI("Message", content.transform);
             go.GetComponent<ButtonMessage>().Init(Messages[i]);

@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class PhoneManager
 {
-    public SmartPhone Device { get; set; }
+    public SmartPhone _device;
+    public SmartPhone Device
+    {
+        get 
+        {
+            if (_device == null)
+            {
+                OpenPhone();
+                ClosePhone();
+            }
+
+            return _device;
+        }
+    }
 
     public SmartPhone OpenPhone()
     {
         GameObject go = Managers.UI.CreateUI("SmartPhone");
-        Device = go.GetComponent<SmartPhone>();
+        _device = go.GetComponent<SmartPhone>();
         return Device;
     }
 

@@ -208,6 +208,19 @@ public class MyPlayerController : PlayerController
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (State == CreatureState.Idle)
+            {
+                Managers.Scenario.MyAction = "Tell";
+                Managers.Keyword.OpenGUIKeyword();
+            }
+            else if (State == CreatureState.Conversation)
+            {
+                Managers.Keyword.CloseGUIKeyword();
+            }
+        }
+
         //시나리오 스킵
         if (Input.GetKeyDown(KeyCode.Home))
         {

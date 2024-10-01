@@ -120,7 +120,7 @@ class PacketHandler
         if (bc == null)
             return;
 
-        Managers.Resource.Instantiate($"Items/{equipPacket.ItemName}").GetComponent<Equipment>().Use(bc);
+        Managers.Resource.Instantiate($"Items/{equipPacket.ItemName}").GetComponent<Item>().Use(bc);
     }
 
     public static void S_NextProgressHandler(PacketSession session, IMessage packet)

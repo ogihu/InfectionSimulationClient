@@ -1263,6 +1263,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MySpeech
       objectReference: {fileID: 0}
+    - target: {fileID: 8092313675156695080, guid: 5903cba77dc87e84ebf5a156cb2a34ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6818939401485196271, guid: 5903cba77dc87e84ebf5a156cb2a34ae, type: 3}
     - {fileID: 5831600859118215391, guid: 5903cba77dc87e84ebf5a156cb2a34ae, type: 3}

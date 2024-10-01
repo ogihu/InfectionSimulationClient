@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+
+using UnityEngine;
 
 public class GameScene : BaseScene
 {
+    public static GameObject YudoLine;
     protected override void Init()
     {
         base.Init();
@@ -9,9 +11,18 @@ public class GameScene : BaseScene
         SceneType = Define.Scene.Game;
 
         Application.runInBackground = true;
+
+        YudoLine = GameObject.Find("YudoLine");
+        YudoLine.SetActive(false);
     }
 
-    public override void Clear()
+
+    
+
+
+
+
+public override void Clear()
     {
         
     }

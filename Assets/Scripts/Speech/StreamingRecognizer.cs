@@ -15,6 +15,7 @@ using System.Text;
 using UnityEngine.Networking;
 using Google.Protobuf.Collections;
 using Google.Protobuf.Protocol;
+using TMPro;
 
 namespace GoogleCloudStreamingSpeechToText
 {
@@ -248,7 +249,6 @@ namespace GoogleCloudStreamingSpeechToText
             {
                 yield return Application.RequestUserAuthorization(UserAuthorization.Microphone);
             }
-
             InitializeMicrophoneAndBeginStream();
         }
 

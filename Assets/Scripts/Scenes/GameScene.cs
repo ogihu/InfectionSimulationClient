@@ -16,14 +16,8 @@ public class GameScene : BaseScene
         YudoLine.SetActive(false);
     }
 
-
-    
-
-
-
-
-public override void Clear()
+    public override void Clear()
     {
-        
+
     }
 }

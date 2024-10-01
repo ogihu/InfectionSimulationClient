@@ -247,12 +247,6 @@ public class ItemManager
 
     public void OpenOrCloseInventory()
     {
-        if (Inventory == null)
-        {
-            Inventory = Managers.UI.CreateUI("Inventory").GetComponent<Inventory>();
-            Inventory.gameObject.SetActive(false);
-        }
-
         //인벤토리가 열려있으면 닫기
         if (IsInventoryOpen)
         {

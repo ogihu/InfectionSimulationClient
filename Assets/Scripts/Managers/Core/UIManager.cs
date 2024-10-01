@@ -21,6 +21,7 @@ public class UIManager
     public Stack<GameObject> ContentPopups { get; set; } = new Stack<GameObject>();
     public Dictionary<string, SystemPopup> SystemPopups { get; set; } = new Dictionary<string, SystemPopup>();
     Dictionary<Transform, GameObject> BubbleCache { get; set; } = new Dictionary<Transform, GameObject>();
+    public GameObject SettingUI { get; set; }
 
     Canvas _overlayCanvas;
     public Canvas OverlayCanvas
@@ -95,39 +96,26 @@ public class UIManager
         return go;
     }
 
-    //public GameObject CreateUI(GameObject obj, Transform parent)
-    //{
-    //    GameObject go;
-
-    //    if (UICache.ContainsKey(obj.name))
-    //    {
-    //        Stack<GameObject> stack = UICache[obj.name];
-
-    //        if (stack.Count > 0)
-    //        {
-    //            go = stack.Pop();
-    //            go.transform.parent = parent;
-    //        }
-    //        else
-    //            go = Managers.Resource.Instantiate(obj, parent);
-
-    //        go.SetActive(true);
-
-    //        return go;
-    //    }
-
-    //    go = Managers.Resource.Instantiate(obj, parent);
-    //    go.SetActive(true);
-
-    //    return go;
-    //}
+    public void OpenOrCloseSetting()
+    {
+        if(SettingUI == null)
+        {
+            SettingUI = CreateUI("Setting");
+            Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Setting;
+        }
+        else
+        {
+            DestroyUI(SettingUI);
+            SettingUI = null;
+            Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
+        }
+    }
 
     /// <summary>
     /// 화면 상단에 팝업 안내를 띄움
     /// </summary>
     /// <param name="notice">팝업에 표시하고 싶은 내용 입력</param>
     /// <returns>GameObject</returns>
-
     public GameObject CreateSystemPopup(string name, string notice, PopupType type = PopupType.AutoDestroy)
     {
         SystemPopup popup;

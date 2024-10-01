@@ -14,6 +14,7 @@ using Grpc.Core;
 using System.Text;
 using UnityEngine.Networking;
 using Google.Protobuf.Collections;
+using Google.Protobuf.Protocol;
 
 namespace GoogleCloudStreamingSpeechToText
 {
@@ -73,6 +74,7 @@ namespace GoogleCloudStreamingSpeechToText
 
         public void StartListening()
         {
+            Managers.Object.MyPlayer.State = CreatureState.Conversation;
             TextUI.GetComponent<AccumulateText>().Stoptext = false;
             if (TextUI.GetComponent<AccumulateText>().score < TextUI.GetComponent<AccumulateText>().SimilarityThreshold )
             {
@@ -90,6 +92,7 @@ namespace GoogleCloudStreamingSpeechToText
 
         public async void StopListening()
         {
+            Managers.Object.MyPlayer.State = CreatureState.Idle;
             TextUI.GetComponent<AccumulateText>().Stoptext = true;
             if (!_initialized || _cancellationTokenSource == null)
             {

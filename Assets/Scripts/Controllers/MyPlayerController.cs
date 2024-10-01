@@ -149,10 +149,8 @@ public class MyPlayerController : PlayerController
         {
             if (!Managers.UI.ExitPopup())
             {
-                if (State == CreatureState.Idle)
-                    Managers.UI.CreateUI("Setting");
-                else if (State == CreatureState.Setting)
-                    Managers.UI.DestroyUI(Util.FindChildByName(Managers.UI.OverlayCanvas.gameObject, "Setting"));
+                if (State == CreatureState.Idle || State == CreatureState.Setting)
+                    Managers.UI.OpenOrCloseSetting();
             }
         }
 
@@ -179,7 +177,6 @@ public class MyPlayerController : PlayerController
             if (State == CreatureState.Idle)
             {
                 Managers.Phone.OpenPhone();
-                State = CreatureState.UsingPhone;
             }
             else if (State == CreatureState.UsingPhone)
             {
@@ -187,17 +184,17 @@ public class MyPlayerController : PlayerController
                     Managers.Phone.Device.FinishCall();
                 else
                     Managers.Phone.ClosePhone();
-                State = CreatureState.Idle;
             }
         }
         
-        //대화하기
+        //대화하기 or 키워드
         if (Input.GetKeyDown(KeyCode.T))
         {
             if(Managers.Scenario.CurrentScenarioInfo != null)
             {
                 if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
                 {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.");
                     return;
                 }
             }
@@ -208,7 +205,6 @@ public class MyPlayerController : PlayerController
                 if(Managers.Setting.UsingMic)
                 {
                     Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StartListening();
-                    State = CreatureState.Conversation;
                 }
                 else
                 {
@@ -221,25 +217,11 @@ public class MyPlayerController : PlayerController
                 {
                     Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
                     Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
-                    State = CreatureState.Idle;
                 }
                 else
                 {
                     Managers.Keyword.CloseGUIKeyword();
                 }
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (State == CreatureState.Idle)
-            {
-                Managers.Scenario.MyAction = "Tell";
-                Managers.Keyword.OpenGUIKeyword();
-            }
-            else if (State == CreatureState.Conversation)
-            {
-                Managers.Keyword.CloseGUIKeyword();
             }
         }
 

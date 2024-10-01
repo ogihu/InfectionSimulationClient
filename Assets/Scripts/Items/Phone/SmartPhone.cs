@@ -1,3 +1,4 @@
+using Google.Protobuf.Protocol;
 using GoogleCloudStreamingSpeechToText;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,13 +34,11 @@ public class SmartPhone : MonoBehaviour
             Init();
         }
         Reset();
-        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.UsingPhone;
     }
 
     private void OnDisable()
     {
         Reset();
-        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Idle;
     }
 
     public void Init()
@@ -78,7 +77,7 @@ public class SmartPhone : MonoBehaviour
             case "Call":
                 if (Managers.Scenario.CurrentScenarioInfo == null)
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "시나리오가 시작되지 않았습니다.");
                     return;
                 }
 
@@ -97,7 +96,7 @@ public class SmartPhone : MonoBehaviour
             case "Messenger":
                 if (Managers.Scenario.CurrentScenarioInfo == null)
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "시나리오가 시작되지 않았습니다.");
                     return;
                 }
 

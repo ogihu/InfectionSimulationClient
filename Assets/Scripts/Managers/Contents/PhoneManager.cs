@@ -1,33 +1,36 @@
+using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PhoneManager
 {
-    public SmartPhone _device;
-    public SmartPhone Device
+    public SmartPhone Device { get; private set; }
+
+    public void OpenPhone()
     {
-        get 
+        if(Device != null)
         {
-            if (_device == null)
-            {
-                OpenPhone();
-                ClosePhone();
-            }
-
-            return _device;
+            ClosePhone();
+            return;
         }
-    }
 
-    public SmartPhone OpenPhone()
-    {
+        Managers.Object.MyPlayer.State = CreatureState.UsingPhone;
         GameObject go = Managers.UI.CreateUI("SmartPhone");
-        _device = go.GetComponent<SmartPhone>();
-        return Device;
+        Device = go.GetComponent<SmartPhone>();
+        return;
     }
 
     public void ClosePhone()
     {
+        if(Device == null)
+        {
+            OpenPhone();
+            return;
+        }
+
         Managers.UI.DestroyUI(Device.gameObject);
+        Device = null;
+        Managers.Object.MyPlayer.State = CreatureState.Idle;
     }
 }

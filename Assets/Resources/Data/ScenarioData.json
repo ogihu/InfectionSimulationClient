@@ -198,6 +198,19 @@
     {
       "Progress": 15,
       "Place": null,
+      "Position": "감염관리팀 간호사",
+      "Item": null,
+      "Action": "Call",
+      "Sentence": "안녕하세요 순천향대학교 부속 천안병원 [감염관리팀] 입니다.\r\n본원 응급실에 본인이 엠폭스 [확진자]와 접촉했다는 환자분이 방문하셔서 확인 부탁드립니다.\r\n확진자는 [동거가족]으로 이관리 980421년생이고 [접촉자]로 본원에 계신 분은 이감염으로 001218년생입니다.",
+      "STTKeywords": "감염,관리팀,엠폭스,확진자,접촉,확인,요청,동거,가족,접촉자",
+      "Targets": "감염병대응센터",
+      "DetailHint": "P를 눌러 휴대전화를 열고, 감염병대응센터(보건소)에 연락하여 다음과 사실을 확인하세요./\n\n안녕하세요 순천향대학교 부속 천안병원 감염관리팀 입니다.\n본원 응급실에 본인이 엠폭스 확진자와 접촉했다는 환자분이 방문하셔서 확인 부탁드립니다.\n확진자는 동거가족으로 이관리 980421년생이고 접촉자로 본원에 계신 분은 이감염으로 001218년생입니다.",
+      "Hint": "감염병대응센터(보건소)에 연락하여 확진 사실 여부를 확인하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 16,
+      "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Glove",
       "Action": "Use",
@@ -209,7 +222,7 @@
       "Confirm": null
     },
     {
-      "Progress": 16,
+      "Progress": 17,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Mask",
@@ -222,7 +235,7 @@
       "Confirm": null
     },
     {
-      "Progress": 17,
+      "Progress": 18,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "ProtectedGear",
@@ -235,7 +248,7 @@
       "Confirm": null
     },
     {
-      "Progress": 18,
+      "Progress": 19,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "ShoeCover",
@@ -248,98 +261,7 @@
       "Confirm": null
     },
     {
-      "Progress": 19,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": null,
-      "Action": "Clean",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "관찰구역에서 L을 눌러 소독을 시행하세요./",
-      "Hint": "관찰구역을 소독하세요",
-      "Confirm": null
-    },
-    {
       "Progress": 20,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "Mask",
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
-      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 21,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "ProtectedGear",
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n방호복을 해제하세요.",
-      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 22,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "ShoeCover",
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n덧신을 해제하세요.",
-      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 23,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "Glove",
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
-      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 24,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "Handwash",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n손소독제를 사용하세요.",
-      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 25,
-      "Place": null,
-      "Position": "감염관리팀 간호사",
-      "Item": null,
-      "Action": "Call",
-      "Sentence": "안녕하세요 순천향대학교 부속 천안병원 [감염관리팀] 입니다.\r\n본원 응급실에 본인이 엠폭스 [확진자]와 접촉했다는 환자분이 방문하셔서 확인 부탁드립니다.\r\n확진자는 [동거가족]으로 이관리 980421년생이고 [접촉자]로 본원에 계신 분은 이감염으로 001218년생입니다.",
-      "STTKeywords": "감염,관리팀,엠폭스,확진자,접촉,확인,요청,동거,가족,접촉자",
-      "Targets": "감염병대응센터",
-      "DetailHint": "P를 눌러 휴대전화를 열고, 감염병대응센터(보건소)에 연락하여 다음과 사실을 확인하세요./\n\n안녕하세요 순천향대학교 부속 천안병원 감염관리팀 입니다.\n본원 응급실에 본인이 엠폭스 확진자와 접촉했다는 환자분이 방문하셔서 확인 부탁드립니다.\n확진자는 동거가족으로 이관리 980421년생이고 접촉자로 본원에 계신 분은 이감염으로 001218년생입니다.",
-      "Hint": "감염병대응센터(보건소)에 연락하여 확진 사실 여부를 확인하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 26,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -352,7 +274,7 @@
       "Confirm": null
     },
     {
-      "Progress": 27,
+      "Progress": 21,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -365,7 +287,7 @@
       "Confirm": null
     },
     {
-      "Progress": 28,
+      "Progress": 22,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -378,7 +300,7 @@
       "Confirm": null
     },
     {
-      "Progress": 29,
+      "Progress": 23,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -391,7 +313,7 @@
       "Confirm": null
     },
     {
-      "Progress": 30,
+      "Progress": 24,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -404,7 +326,7 @@
       "Confirm": null
     },
     {
-      "Progress": 31,
+      "Progress": 25,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -417,20 +339,7 @@
       "Confirm": null
     },
     {
-      "Progress": 32,
-      "Place": null,
-      "Position": "응급의학과 의사",
-      "Item": null,
-      "Action": "Tell",
-      "Sentence": "이감염님, [담당의사] 박보검입니다.\n등쪽에 [물집]이 있다고 하여 [확인]해보도록 하겠습니다.",
-      "STTKeywords": "물집,확인",
-      "Targets": null,
-      "DetailHint": "음압격리실의 환자의 신체사정을 자세히 확인하기 위해 다음과 같이 말하세요./\n\n이감염님, 담당의사 박보검입니다.\n등쪽에 물집이 있다고 하여 확인해보도록 하겠습니다.",
-      "Hint": "의심환자의 신체사정을 파악하세요.",
-      "Confirm": null
-    },
-    {
-      "Progress": 33,
+      "Progress": 26,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -443,7 +352,7 @@
       "Confirm": null
     },
     {
-      "Progress": 34,
+      "Progress": 27,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -451,12 +360,12 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "EMR을 통해 엠폭스 법정감염병 신고서를 작성하세요/",
-      "Hint": "관찰구역에서 EMR을 통해 엠폭스 법정감염병 신고서를 작성하세요",
+      "DetailHint": "EMR을 통해 법정감염병 신고서를 작성하세요/",
+      "Hint": "관찰구역에서 EMR 법정감염병 신고서를 작성하세요",
       "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?"
     },
     {
-      "Progress": 35,
+      "Progress": 28,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Mask",
@@ -469,7 +378,7 @@
       "Confirm": null
     },
     {
-      "Progress": 36,
+      "Progress": 29,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ProtectedGear",
@@ -482,7 +391,7 @@
       "Confirm": null
     },
     {
-      "Progress": 37,
+      "Progress": 30,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ShoeCover",
@@ -495,7 +404,7 @@
       "Confirm": null
     },
     {
-      "Progress": 38,
+      "Progress": 31,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Glove",
@@ -508,7 +417,7 @@
       "Confirm": null
     },
     {
-      "Progress": 39,
+      "Progress": 32,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -521,7 +430,7 @@
       "Confirm": null
     },
     {
-      "Progress": 40,
+      "Progress": 33,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -534,7 +443,20 @@
       "Confirm": null
     },
     {
-      "Progress": 41,
+      "Progress": 34,
+      "Place": null,
+      "Position": "감염관리팀 간호사",
+      "Item": null,
+      "Action": "EMRRead",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "EMR 법정감염병 신고서를 확인하고 신고를 진행하세요./",
+      "Hint": "관찰구역에서 EMR 법정감염병 신고서를 확인하고 신고하세요.",
+      "Confirm": "신고를 진행하시겠습니까?"
+    },
+    {
+      "Progress": 35,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -547,7 +469,7 @@
       "Confirm": null
     },
     {
-      "Progress": 42,
+      "Progress": 36,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -560,7 +482,7 @@
       "Confirm": null
     },
     {
-      "Progress": 43,
+      "Progress": 37,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -573,59 +495,7 @@
       "Confirm": null
     },
     {
-      "Progress": 44,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "Glove",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
-      "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 45,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "Mask",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
-      "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 46,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "ProtectedGear",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n방호복을 착용하세요.",
-      "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 47,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "ShoeCover",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n덧신을 착용하세요.",
-      "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
-    },
-    {
-      "Progress": 48,
+      "Progress": 38,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -633,12 +503,12 @@
       "Sentence": "안전한 [환자] 확인 위해 다시 한번 확인하겠습니다.\r\n[성함]과 [생년월일]이 어떻게 되십니까?",
       "STTKeywords": "환자,확인,성함,생년,월일",
       "Targets": null,
-      "DetailHint": "음압격리실로 이동하여 다음과 같이 환자 확인을 진행하세요./\n\n안전한 환자확인 위해 다시 한번 확인하겠습니다.\n성함과 생년월일이 어떻게 되십니까?",
+      "DetailHint": "음압격리실로 이동하여 다음과 같이 환자 확인을 진행하세요./\n\n안전한 환자 확인 위해 다시 한번 확인하겠습니다.\n성함과 생년월일이 어떻게 되십니까?",
       "Hint": "음압격리실에서 환자를 확인하세요",
       "Confirm": null
     },
     {
-      "Progress": 49,
+      "Progress": 39,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -651,7 +521,7 @@
       "Confirm": null
     },
     {
-      "Progress": 50,
+      "Progress": 40,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -664,7 +534,72 @@
       "Confirm": null
     },
     {
-      "Progress": 51,
+      "Progress": 41,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Mask",
+      "Action": "UnUse",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
+      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 42,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "ProtectedGear",
+      "Action": "UnUse",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n방호복을 해제하세요.",
+      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 43,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "ShoeCover",
+      "Action": "UnUse",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n덧신을 해제하세요.",
+      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 44,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Glove",
+      "Action": "UnUse",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
+      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 45,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Handwash",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n손소독제를 사용하세요.",
+      "Hint": "관찰구역에서 4종 보호구를 해제하세요",
+      "Confirm": null
+    },
+    {
+      "Progress": 46,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -677,7 +612,7 @@
       "Confirm": null
     },
     {
-      "Progress": 52,
+      "Progress": 47,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
@@ -690,7 +625,7 @@
       "Confirm": null
     },
     {
-      "Progress": 53,
+      "Progress": 48,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Mask",
@@ -703,7 +638,7 @@
       "Confirm": null
     },
     {
-      "Progress": 54,
+      "Progress": 49,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ProtectedGear",
@@ -716,7 +651,7 @@
       "Confirm": null
     },
     {
-      "Progress": 55,
+      "Progress": 50,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ShoeCover",
@@ -729,7 +664,7 @@
       "Confirm": null
     },
     {
-      "Progress": 56,
+      "Progress": 51,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -742,7 +677,7 @@
       "Confirm": null
     },
     {
-      "Progress": 57,
+      "Progress": 52,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -755,7 +690,7 @@
       "Confirm": null
     },
     {
-      "Progress": 58,
+      "Progress": 53,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,

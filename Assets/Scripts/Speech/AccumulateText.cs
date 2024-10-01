@@ -103,6 +103,7 @@ public class AccumulateText : MonoBehaviour
         {
             C_Talk talkPacket = new C_Talk();
             talkPacket.Message = content;
+            talkPacket.TTSSelf = false;
             Managers.Network.Send(talkPacket);
         }
     }

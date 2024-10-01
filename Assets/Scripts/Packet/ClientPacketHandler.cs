@@ -75,6 +75,9 @@ class PacketHandler
         if (go == null)
             return;
 
+        if ((Managers.Object.MyPlayer.ObjectId == talkPacket.Id) && talkPacket.TTSSelf == false)
+            return;
+
         BaseController bc = go.GetComponent<BaseController>();
         if (bc == null)
             return;

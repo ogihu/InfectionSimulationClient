@@ -43,6 +43,7 @@ public class KeywordManager
 
         C_Talk talkPacket = new C_Talk();
         talkPacket.Message = Managers.Scenario.CurrentScenarioInfo.OriginalSentence;
+        talkPacket.TTSSelf = true;
         Managers.Network.Send(talkPacket);
 
         CloseGUIKeyword();

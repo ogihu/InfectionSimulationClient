@@ -107,10 +107,7 @@ public class SmartPhone : MonoBehaviour
                 }
 
                 Managers.Scenario.MyAction = funcName;
-                _functions.SetActive(false);
-                _targets.SetActive(true);
-                _messages.SetActive(false);
-                _calling.SetActive(false);
+                Managers.Phone.ClosePhone();
                 break;
             case "MessageCheck":
                 UpdateMessageList();
@@ -154,7 +151,6 @@ public class SmartPhone : MonoBehaviour
                 }
                 break;
             case "Messenger":
-                Managers.Phone.ClosePhone();
                 break;
         }
     }

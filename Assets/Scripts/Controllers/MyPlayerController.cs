@@ -129,6 +129,15 @@ public class MyPlayerController : PlayerController
                     GetItem();  // 아이템 상호작용
                 }
             }
+
+            // 추가된 조건: 시나리오 액션이 EMRWrite 또는 EMRRead이고 플레이어 위치가 맞는지 확인
+            if ((Managers.Scenario.CurrentScenarioInfo.Action == "EMRWrite" ||
+                 Managers.Scenario.CurrentScenarioInfo.Action == "EMRRead") &&
+                Managers.Scenario.CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position)
+            {
+                // 시나리오 액션 수행
+                Managers.Scenario.MyAction = Managers.Scenario.CurrentScenarioInfo.Action;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Tab))

@@ -84,6 +84,9 @@ public class MyPlayerController : PlayerController
 
     public bool IsCanActive()
     {
+        if (Managers.Item.IsInventoryOpen)
+            return false;
+
         if (State == CreatureState.Idle || State == CreatureState.Run)
             return true;
 

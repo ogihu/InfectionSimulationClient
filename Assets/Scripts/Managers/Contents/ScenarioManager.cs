@@ -6,7 +6,6 @@ using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
-using Whisper;
 using static Define;
 
 public class ScenarioManager

@@ -1072,6 +1072,11 @@ PrefabInstance:
       objectReference: {fileID: 2019686293}
     - target: {fileID: 8469543796790321463, guid: a96dbf92bbcf8b545adfc06b811fcd7d,
         type: 3}
+      propertyPath: startOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8469543796790321463, guid: a96dbf92bbcf8b545adfc06b811fcd7d,
+        type: 3}
       propertyPath: onFinalResult.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2019686297}

@@ -203,9 +203,12 @@ public class ItemManager
         selectedItem.UnUse(Managers.Object.MyPlayer);
         item.Object = null;
         item.Using = false;
-        Inventory.UpdateItemList();
+        if(Inventory != null)
+        {
+            Inventory.UpdateItemList();
+            Inventory.ChangeItemText("");
+        }
         SelectedItem = null;
-        Inventory.ChangeItemText("");
         Managers.Scenario.Item = item.ItemData.Name;
         Managers.Scenario.MyAction = "UnUse";
     }

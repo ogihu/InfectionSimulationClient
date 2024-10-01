@@ -30,6 +30,16 @@ public class Syringe : UsingItem
     {
         // 주사기 오브젝트를 캐릭터 손에 생성
         parent = Util.FindChildByName(character.gameObject, "basic_rig L Hand").transform;
+
+        // 주사기 오브젝트를 손에 붙임
+        gameObject.transform.SetParent(parent, false);
+        gameObject.transform.localPosition = new Vector3(-0.0985f, 0.0297f, -0.0181f);
+        gameObject.transform.localRotation = Quaternion.Euler(-0.215f, 133.05f, -82.805f);
+        gameObject.transform.localScale = new Vector3(0.8333f, 0.8333f, 0.8333f);
+
+        if (Managers.Object.MyPlayer != character)
+            return true;
+
         check = false;
 
         if (Mycharacter == null)
@@ -85,11 +95,6 @@ public class Syringe : UsingItem
         }
 
         Managers.Item.SelectedItem.Using = true;
-        // 주사기 오브젝트를 손에 붙임
-        gameObject.transform.SetParent(parent, false);
-        gameObject.transform.localPosition = new Vector3(-0.0985f, 0.0297f, -0.0181f);
-        gameObject.transform.localRotation = Quaternion.Euler(-0.215f, 133.05f, -82.805f);
-        gameObject.transform.localScale = new Vector3(0.8333f, 0.8333f, 0.8333f);
 
         // 코루틴 시작, check가 true가 될 때까지 기다림
         Managers.Instance.StartCoroutine(WaitForCheck());

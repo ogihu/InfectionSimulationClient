@@ -53,38 +53,38 @@ public class ItemManager
 
         if (item.ItemData.Prefab == null)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "착용할 수 있는 장비가 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>착용할 수 있는 장비가 아닙니다.</color>");
             return;
         }
 
         //이미 착용한 장비일 경우 취소
         if (item.Using == true || item.Object != null)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "이미 착용하고 있는 장비입니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>이미 착용하고 있는 장비입니다.</color>");
             return;
         }
 
         if(Managers.Scenario.CurrentScenarioInfo == null)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 착용할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>장비를 착용할 수 있는 상황이 아닙니다.</color>");
             return;
         }
 
         if(Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 사용할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>장비를 사용할 수 있는 상황이 아닙니다.</color>");
             return;
         }
 
         if (Managers.Scenario.CurrentScenarioInfo.Action != "Use" && Managers.Scenario.CurrentScenarioInfo.Action != "BloodCollection")
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 사용할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>장비를 사용할 수 있는 상황이 아닙니다.</color>");
             return;
         }
 
         if (Managers.Scenario.CurrentScenarioInfo.Item != item.ItemData.Name)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "현재 필요한 아이템이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>현재 필요한 아이템이 아닙니다.</color>");
             return;
         }
 
@@ -116,7 +116,8 @@ public class ItemManager
         Managers.Scenario.Item = item.ItemData.Name;
         SelectedItem = null;
         Inventory.ChangeItemText("");
-}
+        Managers.UI.CreateSystemPopup("WarningPopup", $"<color=#00ff00>{Define.ItemInfoDict[item.ItemData.Name].Name}을 사용하였습니다.</color>");
+    }
 
     public void StartCombineItem()
     {
@@ -129,11 +130,11 @@ public class ItemManager
     {
         if(CombineItems.Count < 2)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "아이템이 선택되지 않았습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>아이템이 선택되지 않았습니다.</color>");
             return;
         }
 
-        Managers.UI.CreateSystemPopup("WarningPopup", "결합할 수 없는 아이템 입니다.");
+        Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>결합할 수 없는 아이템 입니다.</color>");
         //결합할 수 있는 아이템은 결합하여 인벤토리에 새로 저장, 기존 아이템은 삭제?
         //결합할 수 없는 아이템은 결합할 수 없다는 UI 띄우기
     }
@@ -155,37 +156,38 @@ public class ItemManager
         //선택한 장비를 착용하고 있지 않을 경우 취소
         if (item.Object == null || item.Using == false)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "해당 장비를 사용하고 있지 않습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>해당 장비를 사용하고 있지 않습니다.</color>");
             return;
         }
 
         //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "해제할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>해제할 수 있는 상황이 아닙니다.</color>");
             return;
         }
 
         if (Managers.Scenario.CurrentScenarioInfo.Action != "UnUse")
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "해제할 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>해제할 수 있는 상황이 아닙니다.</color>");
             return;
         }
 
         if(item.ItemData.Name != Managers.Scenario.CurrentScenarioInfo.Item)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "현재 해제가 필요한 장비가 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>현재 해제가 필요한 장비가 아닙니다.</color>");
             return;
         }
 
         //시나리오 상 정해진 위치에서 탈의를 해야 할 경우
         if (!Managers.Scenario.CheckPlace())
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "올바른 장소에서 장비를 해제하세요.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>올바른 장소에서 장비를 해제하세요.</color>");
             return;
         }
 
         ForceUnUseItem(item);
+        Managers.UI.CreateSystemPopup("WarningPopup", $"<color=#00ff00>{Define.ItemInfoDict[item.ItemData.Name].Name}을 해제하였습니다.</color>");
     }
 
     /// <summary>
@@ -223,14 +225,14 @@ public class ItemManager
 
         if(Managers.Scenario.CurrentScenarioInfo == null)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 버릴 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>장비를 버릴 수 있는 상황이 아닙니다.</color>");
             return;
         }
 
         //시나리오 상 본인의 차례가 아니거나, 장비를 해제할 단계가 아닐 경우 취소
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position || Managers.Scenario.CurrentScenarioInfo.Action != "UnEquip")
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "장비를 버릴 수 있는 상황이 아닙니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>장비를 버릴 수 있는 상황이 아닙니다.</color>");
             return;
         }
 

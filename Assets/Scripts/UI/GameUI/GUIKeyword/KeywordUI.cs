@@ -59,11 +59,13 @@ public class KeywordUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
             if (result.gameObject.name == "BlankUI")
             {
                 // BlankUI 오브젝트의 자식으로 드래그한 오브젝트를 이동\
-                if(result.gameObject.GetComponentInChildren<TMP_Text>().text == this.GetComponentInChildren<TMP_Text>().text)
+                if(result.gameObject.GetComponent<BlankUI>().Answer == this.GetComponentInChildren<TMP_Text>().text)
                 {
+                    GUIKeywordPanel.SetText(result.gameObject, this.GetComponentInChildren<TMP_Text>().text);
+                    result.gameObject.GetComponent<BlankUI>().Recalculate();
                     this.transform.SetParent(result.gameObject.transform);
-                    _rect.localPosition = Vector2.zero;
                     _isSame = true;
+                    _rect.localPosition = Vector2.zero;
                 }
                 else
                 {

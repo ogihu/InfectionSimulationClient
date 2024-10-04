@@ -7,6 +7,7 @@ public class BlankUI : MonoBehaviour
 {
     public Image targetImage;
     private Color originalColor;
+    public string Answer { get; set; }
     Coroutine _co;
 
     void Awake()
@@ -18,6 +19,11 @@ public class BlankUI : MonoBehaviour
         {
             originalColor = targetImage.color;
         }
+    }
+
+    public void Recalculate()
+    {
+        LayoutRebuilder.ForceRebuildLayoutImmediate(GetComponent<RectTransform>());
     }
 
     // 색상을 1초 동안 빨간색으로 변경한 후 다시 원래 색상으로 돌리는 함수

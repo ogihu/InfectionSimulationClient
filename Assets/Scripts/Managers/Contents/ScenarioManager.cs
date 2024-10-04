@@ -134,10 +134,7 @@ public class ScenarioManager
         {
             _doingScenario = true;
             Managers.Instance.StartCoroutine(CoScenario(scenarioName));
-
-
         }
-        
     }
 
     IEnumerator CoScenarioStep(int progress)
@@ -159,7 +156,7 @@ public class ScenarioManager
                 if(PopupConfirm == 1)
                 {
                     PopupConfirm = 0;
-                    Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과했습니다.");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#00ff00>시나리오를 통과했습니다.</color>");
                 }
                 else if(PopupConfirm == 2)
                 {
@@ -225,6 +222,10 @@ public class ScenarioManager
                     NPCs["미화1"].Use("Mask");
                     NPCs["미화2"].Use("Mask");
 
+                    Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원1"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원2"], "ProtectedGear");
+
                     Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
 
@@ -236,7 +237,6 @@ public class ScenarioManager
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(EntranceControlPoint));
                     yield return new WaitForSeconds(1.0f);
 
-                    Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
                     NPCs["이송요원"].Teleport(Entrance);
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
 
@@ -443,14 +443,14 @@ public class ScenarioManager
     {
         if (MyAction != CurrentScenarioInfo.Action)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "올바른 행동을 수행하지 않았습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>올바른 행동을 수행하지 않았습니다.</color>");
             Reset();
             return false;
         }
 
         if (!CheckTarget())
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "대상이 올바르지 않습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>대상이 올바르지 않습니다.</color>");
             Reset();
             return false;
         }
@@ -459,7 +459,7 @@ public class ScenarioManager
         {
             if (Item != CurrentScenarioInfo.Item)
             {
-                Managers.UI.CreateSystemPopup("WarningPopup", "현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.");
+                Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.</color>");
                 Reset();
                 return false;
             }
@@ -470,7 +470,7 @@ public class ScenarioManager
 
         if (!PassSpeech)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "상황에 맞지 않는 대화이거나 대화 장소가 잘못되었습니다.");
+            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>상황에 맞지 않는 대화이거나 대화 장소가 잘못되었습니다.</color>");
             Reset();
             return false;
         }
@@ -528,7 +528,7 @@ public class ScenarioManager
             if (message.Contains(keyword))
             {
                 count += 1;
-                message = message.Replace(keyword, $"<color=#0000ff>{keyword}</color>");
+                message = message.Replace(keyword, $"<color=#00ff00>{keyword}</color>");
             }
             else
             {

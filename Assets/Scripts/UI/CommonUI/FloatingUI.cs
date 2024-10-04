@@ -12,6 +12,7 @@ public class FloatingUI : MonoBehaviour
     protected float _height = 1.0f;
     protected float _width = 0.0f;
     protected float _length = 0.0f;
+
     public virtual void Init(Transform target, float x = 0.0f, float y = 1.0f, float z = 0.0f ,bool isStatic = false)
     {
         _target = target;
@@ -26,6 +27,14 @@ public class FloatingUI : MonoBehaviour
         {
             _canvas = GetComponent<Canvas>();
         }
+    }
+
+    public void SetDescription(string content)
+    {
+        if (content == null)
+            return;
+
+        GetComponentInChildren<TMP_Text>().text = content;
     }
 
     public virtual void ChangeMessage(string chat)

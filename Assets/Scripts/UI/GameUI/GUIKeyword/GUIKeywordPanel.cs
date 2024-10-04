@@ -209,8 +209,9 @@ public class GUIKeywordPanel : MonoBehaviour
     GameObject NewBlankUI(string content)
     {
         GameObject go = Managers.UI.CreateUI(_blankUIPrefab, _sentenceAreas[_sentenceAreas.Count - 1].transform);
-        SetText(go, content);
+        SetText(go, "빈칸");
         _blankUIs.Add(go.GetComponent<BlankUI>());
+        go.GetComponent<BlankUI>().Answer = content;
         return go;
     }
 
@@ -232,7 +233,7 @@ public class GUIKeywordPanel : MonoBehaviour
     /// </summary>
     /// <param name="obj"></param>
     /// <param name="content"></param>
-    void SetText(GameObject obj, string content)
+    public static void SetText(GameObject obj, string content)
     {
         obj.GetComponentInChildren<TMP_Text>().text = content;
     }

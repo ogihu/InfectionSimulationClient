@@ -360,6 +360,9 @@ public class BaseController : MonoBehaviour
             case CreatureState.Syringe:
                 return "Syringe";
 
+            case CreatureState.Blocking:
+                return "Blocking";
+
             default:
                 return "idle";
         }

@@ -122,6 +122,26 @@ public class NPCController : CreatureController
         yield break;
     }
 
+    public IEnumerator CoSetForward(Vector3 forward)
+    {
+        Quaternion targetRotation = Quaternion.LookRotation(forward);
+        transform.rotation = targetRotation;
+        StopOrder();
+        yield break;
+    }
+
+    public IEnumerator CoSetState(CreatureState state)
+    {
+        if (_agent.velocity != Vector3.zero)
+        {
+            _agent.velocity = Vector3.zero;
+        }
+
+        State = state;
+        StopOrder();
+        yield break;
+    }
+
     public void StopOrder()
     {
         if (_order == null)

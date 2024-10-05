@@ -229,13 +229,20 @@ public class ScenarioManager
                     Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
 
+                    NPCs["이송요원"].Teleport(WaitingArea);
                     NPCs["보안요원1"].Teleport(Entrance);
-                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(OAControlPoint));
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(BlockingPoint1));
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetState(CreatureState.Blocking));
                     yield return new WaitForSeconds(1.0f);
 
                     NPCs["보안요원2"].Teleport(Entrance);
-                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(EntranceControlPoint));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint2));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetState(CreatureState.Blocking));
                     yield return new WaitForSeconds(1.0f);
+
+                    yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint2).magnitude < 1);
 
                     NPCs["이송요원"].Teleport(Entrance);
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
@@ -248,8 +255,8 @@ public class ScenarioManager
                     NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90, 0);
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea, CreatureState.Push));
                     NPCs["이송요원"].ChangeSpeed(2f);
-                    GameObject go = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "관찰구역 소독 중입니다. 접근하지 마세요.");
+                    GameObject go1 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
+                    GameObject go2 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
                     yield return new WaitForSeconds(1.0f);
 
                     NPCs["미화1"].Teleport(Entrance);
@@ -277,7 +284,8 @@ public class ScenarioManager
                     MoveAllNPC(Entrance, NPCs["환자"]);
                     WarpAllNPC(WaitingArea, NPCs["환자"]);
 
-                    Managers.Resource.Destroy(go);
+                    Managers.Resource.Destroy(go1);
+                    Managers.Resource.Destroy(go2);
                 }
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));

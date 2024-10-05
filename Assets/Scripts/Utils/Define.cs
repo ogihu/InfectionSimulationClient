@@ -123,6 +123,8 @@ public class Define
     public static readonly Vector3 OATable = new Vector3(7, 0, 5);
     public static readonly Vector3 OABed = new Vector3(9.5f, 0, 4);
     public static readonly Vector3 IABed = new Vector3(21, 0, -45);
+    public static readonly Vector3 BlockingPoint1 = new Vector3(0, 0, 0);
+    public static readonly Vector3 BlockingPoint2 = new Vector3(-3, 0, -22);
 
     public static readonly string[] PhoneAddress =
     {

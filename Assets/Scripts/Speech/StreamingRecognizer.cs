@@ -352,8 +352,15 @@ namespace GoogleCloudStreamingSpeechToText
 
         private async void StreamingMicRecognizeAsync()
         {
-            SpeechClient speech = SpeechClient.Create();
-            _streamingCall = speech.StreamingRecognize();
+            try
+            {
+                SpeechClient speech = SpeechClient.Create();
+                _streamingCall = speech.StreamingRecognize();
+            }
+            catch (Exception ex) 
+            {
+                GameObject.Find("DebugText").GetComponent<TMP_Text>().text = ex.Message;
+            }
 
             AudioConfiguration audioConfiguration = AudioSettings.GetConfiguration();
 

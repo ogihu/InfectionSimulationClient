@@ -15,7 +15,7 @@ public class Managers : MonoBehaviour
     ItemManager _item = new ItemManager();
     BubbleManager _bubble = new BubbleManager();
     KeywordManager _keyword = new KeywordManager();
-
+    QuizManager _quiz = new QuizManager();
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
     public static ScenarioManager Scenario { get { return Instance._scenario; } }
@@ -23,7 +23,7 @@ public class Managers : MonoBehaviour
     public static ItemManager Item { get { return Instance._item; } }
     public static BubbleManager Bubble { get { return Instance._bubble; } }
     public static KeywordManager Keyword { get { return Instance._keyword; } }
-   
+    public static QuizManager Quiz { get {   return Instance._quiz; } }
     #endregion
 
     #region Core

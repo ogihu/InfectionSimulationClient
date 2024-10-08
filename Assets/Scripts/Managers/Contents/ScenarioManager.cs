@@ -341,6 +341,10 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(37));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(38));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(39));
+                //퀴즈 
+                if (Managers.Scenario.CurrentScenarioInfo.Position == "응급센터 간호사2")
+                    yield return Managers.Instance.StartCoroutine(Managers.Quiz.QuizUI(40));
+
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(40));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(41));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(42));

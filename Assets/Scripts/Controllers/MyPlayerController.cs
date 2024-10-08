@@ -153,7 +153,10 @@ public class MyPlayerController : PlayerController
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            Managers.STT.ChangeSpeechState();
+            if (!Managers.STT.MySpeech.activeSelf)
+                return;
+            else
+                Managers.STT.ChangeSpeechState();
         }
 
         //팝업 닫기 or 설정 열기/닫기

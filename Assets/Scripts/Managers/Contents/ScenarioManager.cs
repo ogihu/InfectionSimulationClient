@@ -341,16 +341,16 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(37));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(38));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(39));
-                //퀴즈 
-                if (Managers.Scenario.CurrentScenarioInfo.Position == "응급센터 간호사2")
-                    yield return Managers.Instance.StartCoroutine(Managers.Quiz.QuizUI(40));
-
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(40));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(41));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(42));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(43)); 
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(44));
                 Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
+                //퀴즈 
+                if (Managers.Scenario.CurrentScenarioInfo.Position == "응급센터 간호사2")
+                    yield return Managers.Instance.StartCoroutine(Managers.Quiz.QuizUI(45));
+
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(45));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(46));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(47));

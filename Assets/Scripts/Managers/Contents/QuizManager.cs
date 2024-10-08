@@ -10,7 +10,8 @@ public class QuizManager
 
     public IEnumerator QuizUI(int Quiznumber)
     {
-        Managers.Scenario.ScenarioAssist.transform.GetChild(0).GetComponent<TMP_Text>().text = "퀴즈";
+        Util.FindChildByName(Managers.Scenario.ScenarioAssist, "TurnNotice").GetComponent<TMP_Text>().text = "퀴즈"; ;
+
         quizUI = Managers.UI.CreateUI("QUIZUI" + Quiznumber);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

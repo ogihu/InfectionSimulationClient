@@ -93,6 +93,8 @@ public class ScenarioManager
         bool transportOfficerAdded = AddNPC("이송요원", WaitingArea);
         bool securityOfficer1Added = AddNPC("보안요원1", WaitingArea);
         bool securityOfficer2Added = AddNPC("보안요원2", WaitingArea);
+        bool securityOfficer3Added = AddNPC("보안요원3", WaitingArea);
+        bool securityOfficer4Added = AddNPC("보안요원4", WaitingArea);
         bool cleaner1Added = AddNPC("미화1", WaitingArea);
         bool cleaner2Added = AddNPC("미화2", WaitingArea);
     }
@@ -215,6 +217,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(13));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 //환자 음압격리실로 이송
                 {
                     NPCs["보안요원1"].Use("Mask");
@@ -225,29 +228,50 @@ public class ScenarioManager
                     Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
                     Managers.Object.ChangeModel(NPCs["보안요원1"], "ProtectedGear");
                     Managers.Object.ChangeModel(NPCs["보안요원2"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원3"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원4"], "ProtectedGear");
+
+                    NPCs["이송요원"].Teleport(WaitingArea);
+                    NPCs["보안요원1"].Teleport(WaitingArea);
+                    NPCs["보안요원2"].Teleport(WaitingArea);
+                    NPCs["보안요원3"].Teleport(WaitingArea);
+                    NPCs["보안요원4"].Teleport(WaitingArea);
 
                     Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
 
-                    NPCs["이송요원"].Teleport(WaitingArea);
                     NPCs["보안요원1"].Teleport(Entrance);
-                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(BlockingPoint1));
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(BlockingPoint4));
                     NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetForward(-Vector3.right));
                     NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetState(CreatureState.Blocking));
                     yield return new WaitForSeconds(1.0f);
 
                     NPCs["보안요원2"].Teleport(Entrance);
-                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint2));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint3));
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetState(CreatureState.Blocking));
                     yield return new WaitForSeconds(1.0f);
 
-                    yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint2).magnitude < 1);
+                    NPCs["보안요원3"].Teleport(Entrance);
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoGoDestination(BlockingPoint2));
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
+
+                    NPCs["보안요원4"].Teleport(Entrance);
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoGoDestination(BlockingPoint1));
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
+
+                    yield return new WaitUntil(() => (NPCs["보안요원1"].transform.position - BlockingPoint4).magnitude < 1);
 
                     NPCs["이송요원"].Teleport(Entrance);
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
 
-                    yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 1);
+                    yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 0.3f);
 
                     GameObject bed = GameObject.Find("move_bed");
                     bed.transform.SetParent(NPCs["이송요원"].transform);
@@ -257,6 +281,8 @@ public class ScenarioManager
                     NPCs["이송요원"].ChangeSpeed(2f);
                     GameObject go1 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
                     GameObject go2 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
+                    GameObject go3 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원3"].transform);
+                    GameObject go4 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원4"].transform);
                     yield return new WaitForSeconds(1.0f);
 
                     NPCs["미화1"].Teleport(Entrance);
@@ -286,23 +312,24 @@ public class ScenarioManager
 
                     Managers.Resource.Destroy(go1);
                     Managers.Resource.Destroy(go2);
+                    Managers.Resource.Destroy(go3);
+                    Managers.Resource.Destroy(go4);
                 }
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(20));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(21));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(22));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(23));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(24));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "아니요. 딱히 없었어요.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(25));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(26));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "아니요. 딱히 없었어요.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(27));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(28));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(29));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(30));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(31));
@@ -314,12 +341,12 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(37));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(38));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(39));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(40));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(41));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(42));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(43));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(43)); 
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(44));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(45));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(46));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(47));
@@ -328,9 +355,17 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(50));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(51));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(52));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(53));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(54));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(55));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(56));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(57));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(58));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(59));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(60));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(61));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(62));
                 break;
         }
 

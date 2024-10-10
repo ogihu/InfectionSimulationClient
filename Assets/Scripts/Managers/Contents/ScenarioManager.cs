@@ -150,6 +150,11 @@ public class ScenarioManager
             Managers.Instance.StartCoroutine(CoCheckAction());  
             yield return new WaitUntil(() => CompleteCount >= 1);
 
+            if(Managers.Quiz.popup != null)
+                Managers.UI.DestroyUI(Managers.Quiz.popup);
+            if (Managers.Quiz.quizUI != null)
+                Managers.UI.DestroyUI(Managers.Quiz.quizUI);
+
             if (CurrentScenarioInfo.Confirm != null)
             {
                 GameObject go = Managers.UI.CreateUI("ScenarioCheckPopup");

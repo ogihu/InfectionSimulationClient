@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class QuizManager
 {
-    GameObject quizUI;
+    public GameObject quizUI;
+    public GameObject popup;
     GameObject quizUI_Answer;
     GameObject TopRightUI;
     bool Passcheck = false;
@@ -24,18 +25,20 @@ public class QuizManager
         
         yield return Managers.Instance.StartCoroutine(QuizCheck());
     }
-    GameObject popup;
+    
     bool QuizApear = false;
     IEnumerator ShowQuizWithCountdown()
     {
         int i = 0;
         popup = Managers.UI.CreateUI("PopupNotice"); // 퀴즈 안내 문구
-        popup.transform.GetChild(0).GetComponent<TMP_Text>().text = "곧 돌발 퀴즈가 발생합니다.";
+        popup.transform.GetChild(0).GetComponent<TMP_Text>().text = "돌발 퀴즈가 발생합니다.";
        yield return new WaitForSeconds(1f); // 잠깐 보여줌
 
         // 카운트다운 시작
         for (i = 3; i > 0; i--)
         {
+            if (popup == null)
+                yield return null;
             popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 후에 돌발퀴즈가 발생합니다.";
             yield return new WaitForSeconds(1f); // 1초 대기
         }
@@ -64,7 +67,6 @@ public class QuizManager
             }
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            DisablePlayerControls();
         }
 
     }
@@ -75,15 +77,7 @@ public class QuizManager
             yield return null;
         }
     }
-    void DisablePlayerControls()
-    {
-        // 플레player이어 움직임을 제어하는 스크립트 비활성화
-        if (Managers.Object.MyPlayer!= null)
-        {
-            // 예시: PlayerController라는 플레이어 제어 스크립트가 있다고 가정
-            Managers.Object.MyPlayer.GetComponent<PlayerController>().enabled = false;
-        }
-    }
+
     float timer;
     GameObject RightPanel;  
     GameObject WrongPanel;
@@ -114,7 +108,7 @@ public class QuizManager
     //정상화
     void NormalizationestroyUI()
     {
-        Managers.Object.MyPlayer.GetComponent<PlayerController>().enabled = true;
+        Managers.Object.MyPlayer.GetComponent<MyPlayerController>().enabled = true;
         Cursor.lockState = CursorLockMode.Locked;  // 마우스 포인터를 고정 (화면 중앙에 위치하고 움직이지 않음)
         Cursor.visible = false;  // 마우스 포인터를 숨김
         Managers.UI.DestroyUI(quizUI);

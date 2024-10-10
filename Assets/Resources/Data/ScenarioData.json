@@ -699,8 +699,8 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": "EDTA",
-      "DetailHint": null,
-      "Hint": null,
+      "DetailHint": "퀴즈를 해결하세요./",
+      "Hint": "퀴즈를 해결하세요.",
       "Confirm": null,
       "Question": "CBC(총혈구검사)시에 사용되는 항응고제를 선택하세요.",
       "Answers": "시트르산,헤파린,EDTA,플루오라이드"

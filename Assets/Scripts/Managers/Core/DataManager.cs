@@ -82,7 +82,7 @@ public class DataManager
 
                 if (scenarioList.Answers != null)
                 {
-                    string[] keywordSplit = scenarioList.STTKeywords.Split(',');
+                    string[] keywordSplit = scenarioList.Answers.Split(',');
                     foreach (string keyword in keywordSplit)
                     {
                         scenarioInfo.Answers.Add(keyword);

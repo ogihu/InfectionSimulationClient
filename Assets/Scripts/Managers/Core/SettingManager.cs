@@ -50,52 +50,57 @@ public class SettingManager
     public bool startcheck = false;
     UnityEngine.SceneManagement.Scene scene;
     string str = "Game";
+    void init()
+    {
+        MicCheckUI = GameObject.Find("CheckInferencing");
+        if (MicCheckUI == null)
+            return;
+    }
     public void SceneStartMicCheck()
     {
+        if(MicCheckUI == null)
+            init();
         if (scene.Equals(str) && startcheck)
             return;
 
-        scene = SceneManager.GetActiveScene();
+       scene = SceneManager.GetActiveScene();
 
-
-        if (!startcheck)
-        {
-            if (!UsingMic)
-            {
-                ChangeMicStateFalse();
-                startcheck = true;
-            }
-            else
-            {
-                ChangeMicStateTrue();
-                startcheck = true;
-            }
-        }
+        if (!UsingMic)
+            ChangeMicStateFalse();
         else
-            return;
-
+            ChangeMicStateTrue();
     }
     public void ChangeMicStateFalse()
     {
-        if (MicCheckUI == null)
-        {
-            MicCheckUI = GameObject.Find("CheckInferencing");
-            if (MicCheckUI == null)
-                return;
-        }
-        MicCheckUI.GetComponent<TMP_Text>().text = "키워드를 알맞은 칸에 넣으세요";
         Managers.STT.MySpeech.SetActive(false);
+        if (!Managers.Scenario._doingScenario)
+            return;
+        if(MicCheckUI == null)
+             init();
+        MicCheckUI.GetComponent<TMP_Text>().text = "키워드를 알맞은 칸에 넣으세요";
+        if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
+            MicCheckUI.SetActive(true);  
+        else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
+            MicCheckUI.SetActive(false);
     }
     public void ChangeMicStateTrue()
     {
+        if (!Managers.Scenario._doingScenario)
+            return;
         if (MicCheckUI == null)
-        {
-            MicCheckUI = GameObject.Find("CheckInferencing");
-            if (MicCheckUI == null)
-                return;
-        }
-        MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요";
+            init();
+        
         Managers.STT.MySpeech.SetActive(true);
+
+        MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요";
+        if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
+            MicCheckUI.SetActive(true);
+        else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
+        {
+            MicCheckUI.SetActive(false);
+            Managers.STT.MySpeech.SetActive(false);
+        }
+            
     }
     public void Init()
     {
@@ -106,22 +111,22 @@ public class SettingManager
     }
     public void UseCheckMic()
     {
-        if (MicCheckUI == null)
+        if(MicCheckUI == null)
         {
             MicCheckUI = GameObject.Find("CheckInferencing");
         }
-        if (PlayerUsingMic)
+        if(PlayerUsingMic)
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요.";
             PlayerUsingMic = false;
         }
-
+            
         else
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 중단하세요.";
             PlayerUsingMic = true;
         }
-
+            
 
     }
 }

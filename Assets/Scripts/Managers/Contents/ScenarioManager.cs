@@ -138,10 +138,27 @@ public class ScenarioManager
             Managers.Instance.StartCoroutine(CoScenario(scenarioName));
         }
     }
+    void LeftDownUI()
+    {
+        if (CurrentScenarioInfo.Action == "Tell")
+        {
+            Managers.Setting.SceneStartMicCheck();
+            if (Managers.Setting.MicCheckUI.activeSelf)
+                Managers.Setting.MicCheckUI.SetActive(true);
+        }
+        else
+        {
+            Managers.Setting.SceneStartMicCheck();
+            if (!Managers.Setting.MicCheckUI.activeSelf)
+                Managers.Setting.MicCheckUI.SetActive(false);
+        }
 
+    }
     IEnumerator CoScenarioStep(int progress)
     {
         Managers.STT.STTStreamingText.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
+        Managers.Setting.SceneStartMicCheck();
+        //LeftDownUI();
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");

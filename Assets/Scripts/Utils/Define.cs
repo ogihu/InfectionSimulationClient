@@ -158,6 +158,8 @@ public class Define
         public string DetailHint { get; set; }
         public string Hint { get; set; }
         public string Confirm { get; set; }
+        public string Question { get; set; }
+        public string Answers { get; set; }
     }
 
     public class ScenarioInfo
@@ -175,6 +177,8 @@ public class Define
         public string DetailHint { get; set; }
         public string Hint { get; set; }
         public string Confirm { get; set; }
+        public string Question { get; set; }
+        public List<string> Answers { get; set; }
     }
 
     public class ItemInfo

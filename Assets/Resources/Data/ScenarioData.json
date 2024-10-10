@@ -11,7 +11,9 @@
       "Targets": null,
       "DetailHint": "관찰구역에서 환자에게 다음과 같이 말하세요./\n\n말씀해주셔서 감사합니다.\n사실여부 확인이 필요하여 확진받으신 분 성함과 생년월일 확인 부탁드립니다.\n더하여 엠폭스 확진환자 접촉 확인 전까지 환자분께서는 엠폭스 환자 밀접접촉자로 분류되며\n잠시만 기다려주시면 감염 전파 예방을 위해 제가 보호구를 착용하고 별도의 안내를 도와드리겠습니다.\n혹시 피부 발진이나 수포가 있는지 확인 부탁드리며 잠시만 기다려주시기 바랍니다.",
       "Hint": "관찰구역에서 상황을 확인하고 알맞게 대응하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 1,
@@ -24,7 +26,9 @@
       "Targets": null,
       "DetailHint": "응급의학과 의사에게 다음과 같이 말하세요./\n\n복통으로 관찰구역에 계신 이감염환자분 엠폭스 확진자 접촉자로 방금 전화받았다고 하십니다.\n감염관리팀에 사실여부 확인 요청 드리겠습니다.",
       "Hint": "응급의학과 의사에게 상황을 공유하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 2,
@@ -37,7 +41,9 @@
       "Targets": null,
       "DetailHint": "응급센터 간호사1에게 다음과 같이 말하세요./\n\n접촉자 맞으면 바로 말씀해주세요 일단 환자는 음압격리 하도록 하겠습니다.",
       "Hint": "격리결정을 내리세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 3,
@@ -50,7 +56,9 @@
       "Targets": "감염관리팀",
       "DetailHint": "P를 눌러 휴대전화를 열고, 감염관리팀에 연락해 다음과 같이 말하세요./\n\n응급센터 간호사 한가인입니다.\n지금 응급실에 엠폭스 확진자와 접촉했다는 사람이 있어 사실여부 확인 부탁드립니다.\n엠폭스 확진받은 사람은 환자분의 형으로 이관리 980421입니다.\n응급의학과 상황 공유 후 환자분은 음압격리실로 격리 결정되었습니다.\n보호자분 없이 혼자 자차타고 오셨습니다.",
       "Hint": "감염관리실에 연락하여 상황을 공유하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 4,
@@ -63,7 +71,9 @@
       "Targets": "응급센터",
       "DetailHint": "P를 눌러 휴대전화를 열고, 응급센터에 연락하여 다음과 같이 말하세요./\n\n확인 후 바로 연락 드리겠습니다.\n환자분은 확인될때 까지 격리 유지 부탁드리고 4종 보호구 착용 부탁드립니다.",
       "Hint": "응급센터에게 연락하여 상황 대응 안내를 해주세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 5,
@@ -76,7 +86,9 @@
       "Targets": null,
       "DetailHint": "P를 눌러 휴대전화를 열고, 감염재난신속대응팀 카카오톡을 활성화하세요./",
       "Hint": "감염재난신속대응팀 카카오톡을 활성화하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 6,
@@ -89,7 +101,9 @@
       "Targets": "감염재난대책본부",
       "DetailHint": "P를 눌러 휴대전화를 열고, 감염재난대책본부에 연락하여 다음과 같이 말하세요./\n\n감염관리팀입니다.\n지금 응급의료센터 관찰구역에 재실중인 이감염, 등록번호 1234568님 엠폭스 확진자 접촉했다고 확인된 환자분 발생하였습니다.\n의심환자는 성인 응급의료센터 음압격리실로 전실 후 진료할 계획입니다.\n감염재난신속대응팀 소집되어 대응중 입니다.",
       "Hint": "감염재난대책본부에 연락하여 상황을 보고하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 7,
@@ -102,7 +116,9 @@
       "Targets": "이송팀",
       "DetailHint": "P를 눌러 휴대전화를 열고, 이송팀에 연락하여 다음과 같이 말하세요./\n\n엠폭스 의심환자가 관찰구역에서 발생하였습니다.\n원내 지침에 따라 4종보호구 착용 후 음압격리실로 이송 부탁드립니다",
       "Hint": "이송팀에 연락하여 이송을 부탁하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 8,
@@ -115,7 +131,9 @@
       "Targets": "보안팀",
       "DetailHint": "P를 눌러 휴대전화를 열고, 보안팀에 연락하여 다음과 같이 말하세요./\n\n엠폭스 의심환자가 관찰구역에서 발생하였습니다.\n원내 지침에 따라 4종보호구 착용 후 이동동선 통제 부탁드립니다",
       "Hint": "보안팀에 연락하여 동선 통제를 부탁하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 9,
@@ -128,7 +146,9 @@
       "Targets": "미화팀",
       "DetailHint": "P를 눌러 휴대전화를 열고, 미화팀에 연락하여 다음과 같이 말하세요./\n\n엠폭스 의심환자가 관찰구역에서 발생하였습니다.\n원내 지침에 따라4종보호구 착용 후 환자자리 및 이동동선 환경소독 부탁드립니다",
       "Hint": "미화팀에 연락하여 환경 소독을 부탁하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 10,
@@ -141,7 +161,9 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 11,
@@ -154,7 +176,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n가운을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 12,
@@ -167,7 +191,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 13,
@@ -180,7 +206,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n고글을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 14,
@@ -193,7 +221,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 15,
@@ -206,7 +236,9 @@
       "Targets": null,
       "DetailHint": "관찰구역에서 환자에게 다음과 같이 안내하세요./\n\n담당의사 박보검 입니다.\n이감염님 엠폭스 확진자 밀접접촉자로 의심되는 상태로 격리진행 예정입니다.\n보건소에 사실확인 요청 중이며 결과에 따라 격리해제될 수 있습니다.\n이송직원 통해서 격리병실로 안내 도와드리겠습니다",
       "Hint": "관찰구역의 환자에게 격리 예정임을 안내하세요",
-      "Confirm": "환자를 이송하시겠습니까?"
+      "Confirm": "환자를 이송하시겠습니까?",
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 16,
@@ -219,7 +251,9 @@
       "Targets": "감염병대응센터",
       "DetailHint": "P를 눌러 휴대전화를 열고, 감염병대응센터(보건소)에 연락하여 다음과 사실을 확인하세요./\n\n안녕하세요 순천향대학교 부속 천안병원 감염관리팀 입니다.\n본원 응급실에 본인이 엠폭스 확진자와 접촉했다는 환자분이 방문하셔서 확인 부탁드립니다.\n확진자는 동거가족으로 이관리 980421년생이고 접촉자로 본원에 계신 분은 이감염으로 001218년생입니다.",
       "Hint": "감염병대응센터(보건소)에 연락하여 확진 사실 여부를 확인하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 17,
@@ -232,7 +266,9 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 18,
@@ -245,7 +281,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n가운을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 19,
@@ -258,7 +296,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 20,
@@ -271,7 +311,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n고글을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 21,
@@ -284,7 +326,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 22,
@@ -297,7 +341,9 @@
       "Targets": null,
       "DetailHint": "음압격리실로 이동해 다음과 같이 환자를 확인하세요./\n\n안전한 환자 확인 위해 다시 한번 확인하겠습니다.\n성함과 생년월일이 어떻게 되십니까?",
       "Hint": "음압격리실에서 환자를 확인하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 23,
@@ -310,7 +356,9 @@
       "Targets": null,
       "DetailHint": "음압격리실의 환자에게 다음과 같이 입원안내를 하세요./\n\n이감염님, 담당간호사 김태희입니다.\n지금 이감염님은 엠폭스 확진자의 접촉자로 확인되어 음압 격리 병실에 입실하셨습니다.\n이 병실은 균이 외부로 유출될 수 없도록 음압구역 내 적정한 실간 차압이 유지되고 있습니다.\n외부인이나 다른 환자들은 출입을 금지하며 담당 의료진 만이 입실할 수 있습니다.\n이감염님도 감염 전파 방지를 위하여 의료진의 허락없이 입출입이나 면회가 금지되오니 반드시 준수하시기 바랍니다.",
       "Hint": "환자에게 입원안내를 하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 24,
@@ -323,7 +371,9 @@
       "Targets": null,
       "DetailHint": "음압격리실의 환자에게 다음과 같이 CCTV 동의를 받고 입원 교육을 실시하세요./\n\n환자 안전과 감염 전파 방지를 위해 병실에는 CCTV가 설치되어 환자분의 상태나 병실 등을 확인할 수 있는 것에 대해 동의 부탁드립니다.\n필요한 것이 있거나 응급상황시 병실에 비치되어 있는 인터폰으로 말씀해주시기 바랍니다.\n병실 내에 손소독제와 수술용 마스크가 준비되어 있으니 손위생 및 기침예절을 준수하시기 바랍니다.",
       "Hint": "환자에게 CCTV 설치 동의를 받고 입원 교육을 실시하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 25,
@@ -336,7 +386,9 @@
       "Targets": null,
       "DetailHint": "음압격리실의 환자에게 다음과 같이 간호사정을 실시하세요./\n\n혹시 피부 발진이나 물집, 농포 형태의 병변이 확인된게 있으신가요?",
       "Hint": "간호사정을 실시하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 26,
@@ -349,7 +401,9 @@
       "Targets": null,
       "DetailHint": "음압격리실의 환자에게 다음과 같이 말하고 자세한 피부 사정을 파악하세요./\n\n제가 한번 더 확인해보겠습니다.\n등쪽에 살짝 물집이 잡혀있기는 하네요.\n담당 의사에게 말씀 드려놓겠습니다.\n잠시만 기다려주시기 바랍니다",
       "Hint": "의심환자의 피부 사정을 자세히 파악하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 27,
@@ -362,7 +416,9 @@
       "Targets": null,
       "DetailHint": "음압격리실로 이동해 다음과 같이 환자를 확인하세요./\n\n안전한 환자 확인 위해 다시 한번 확인하겠습니다.\n성함과 생년월일이 어떻게 되십니까?",
       "Hint": "음압격리실에서 환자를 확인하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 28,
@@ -375,7 +431,9 @@
       "Targets": null,
       "DetailHint": "환자에게 다음과 같이 처방을 내리세요./\n\n등쪽에 수포가 있는것이 확인되네요.\n보건소로부터 사실여부 확인 후 엠폭스 밀접접촉자로 분류되어 검체채취 시행여부확인되면 그때 엠폭스 검체채취 진행하도록 하겠습니다.\n복통으로 오셨어서 추가 검사가 필요할 것으로 확인되어 혈액검사와 X-ray 먼저 진행하도록 하겠습니다.",
       "Hint": "의심환자에게 처방을 내리세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 29,
@@ -388,7 +446,9 @@
       "Targets": null,
       "DetailHint": "EMR을 통해 법정감염병 신고서를 작성하세요/",
       "Hint": "관찰구역에서 EMR 법정감염병 신고서를 작성하세요",
-      "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?"
+      "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?",
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 30,
@@ -401,7 +461,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 31,
@@ -414,7 +476,9 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 32,
@@ -427,7 +491,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 33,
@@ -440,7 +506,9 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 34,
@@ -453,7 +521,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 35,
@@ -466,7 +536,9 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 36,
@@ -479,7 +551,9 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 37,
@@ -492,7 +566,9 @@
       "Targets": null,
       "DetailHint": "손 위생을 청결하게 유지하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 청결하게 유지하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 38,
@@ -505,7 +581,9 @@
       "Targets": "감염관리팀",
       "DetailHint": "P를 눌러 휴대전화를 열고 감염관리팀에 연락하여 다음과 같이 요청하세요./\n\n응급의학과 박보검입니다.\n이관리 환자 역학적 연관성과 피부질환 확인되어서 법정감염병 신고서 작성 해 놓았습니다.\n엠폭스 검체채취 진행해야하는지 확인 후 알려주세요.",
       "Hint": "감염관리팀에 연락하여 엠폭스 검체채취 가능 여부 확인을 요청하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 39,
@@ -518,7 +596,9 @@
       "Targets": null,
       "DetailHint": "EMR 법정감염병 신고서를 확인하고 신고를 진행하세요./",
       "Hint": "관찰구역에서 EMR 법정감염병 신고서를 확인하고 신고하세요.",
-      "Confirm": "신고를 진행하시겠습니까?"
+      "Confirm": "신고를 진행하시겠습니까?",
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 40,
@@ -531,7 +611,9 @@
       "Targets": "감염관리팀",
       "DetailHint": "P를 눌러 휴대전화를 열고 감염관리팀에 연락하여 다음과 같이 말하세요./\n\n이관리님 엠폭스 확진자로 확인되셨고 이감염님은 밀접접촉자로 분류되었다고 아산시 보건소에서 확인되었습니다.\n환자분 전화 통화 가능하다면 역학조사 진행하려고 하는데 핸드폰번호 알 수 있을까요?",
       "Hint": "의심환자 접촉자 분류 안내 후 역학조사를 위한 개인정보를 요청하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 41,
@@ -544,7 +626,9 @@
       "Targets": "감염병대응센터",
       "DetailHint": "P를 눌러 휴대전화를 열고 감염병대응센터에 연락하여 다음과 같이 말하세요./\n\n010-1234-5678입니다.\n환자분에게는 상황 공유드리도록 하겠습니다.\n그리고 의료진이 확인했을 때 등쪽에 수포가 확인되어 법정감염병 신고 진행했습니다.\n엠폭스 검체채취 여부 확인 후 알려주시기 바랍니다.",
       "Hint": "환자 개인정보를 공유 후 검체채취 여부 확인을 요청하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 42,
@@ -557,7 +641,9 @@
       "Targets": "감염관리팀",
       "DetailHint": "P를 눌러 휴대전화를 열고 감염관리팀에 연락하여 다음과 같이 안내하세요./\n\n역학조사 시행 후 시도 역학조사관에게 의사환자 사례 분류 요청 후 검체채취 여부 알려드리도록 하겠습니다.",
       "Hint": "검체채취 여부 확인 과정을 안내하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 43,
@@ -570,7 +656,9 @@
       "Targets": null,
       "DetailHint": "음압격리실로 이동하여 다음과 같이 환자 확인을 진행하세요./\n\n안전한 환자 확인 위해 다시 한번 확인하겠습니다.\n성함과 생년월일이 어떻게 되십니까?",
       "Hint": "음압격리실에서 환자를 확인하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 44,
@@ -583,7 +671,9 @@
       "Targets": null,
       "DetailHint": "환자에게 다음과 같이 처방을 안내하세요./\n\n이감염님, 담당간호사 김태희입니다.\n처방에 의해 채혈과 엑스레이 촬영 예정입니다.\n채혈 먼저 진행하도록 하겠습니다",
       "Hint": "환자에게 채혈과 엑스레이 촬영 예정을 안내하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 45,
@@ -596,10 +686,27 @@
       "Targets": "AccuratePoint",
       "DetailHint": "환자에게서 채혈을 진행하세요./",
       "Hint": "채혈을 진행하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
       "Progress": 46,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": null,
+      "Action": "Quiz",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": "EDTA",
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": "CBC(총혈구검사)시에 사용되는 항응고제를 선택하세요.",
+      "Answers": "시트르산,헤파린,EDTA,플루오라이드"
+    },
+    {
+      "Progress": 47,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Glove",
@@ -609,10 +716,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 47,
+      "Progress": 48,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -622,10 +731,12 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 48,
+      "Progress": 49,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "ProtectedGear",
@@ -635,10 +746,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 49,
+      "Progress": 50,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -648,10 +761,12 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 50,
+      "Progress": 51,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Goggle",
@@ -661,10 +776,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 51,
+      "Progress": 52,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -674,10 +791,12 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 52,
+      "Progress": 53,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Mask",
@@ -687,10 +806,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 53,
+      "Progress": 54,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -700,10 +821,12 @@
       "Targets": null,
       "DetailHint": "손 위생을 청결하게 유지하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 청결하게 유지하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 54,
+      "Progress": 55,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -713,10 +836,12 @@
       "Targets": "영상의학팀",
       "DetailHint": "P를 눌러 휴대전화를 열고, 영상의학팀에 연락하여 다음과 같이 요청하세요./\n\n사랑합니다. 성인 응급의료센터 한가인입니다.\n지금 성인 응급의료센터 음압격리실에 엠폭스 의심환자가 있는데 엑스레이 처방에 의해 Portable 로 즉시 부탁드리겠습니다.\n원내 지침에 따라 4종 보호구 착용 준수가 필요한 상태로 보호구 착용 및 검사 후 기기 소독 관리도 부탁드리겠습니다.",
       "Hint": "영상의학팀에 X-Ray 검사를 요청하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 55,
+      "Progress": 56,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Handwash",
@@ -726,10 +851,12 @@
       "Targets": null,
       "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 시행하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 56,
+      "Progress": 57,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ProtectedGear",
@@ -739,10 +866,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n가운을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 57,
+      "Progress": 58,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Mask",
@@ -752,10 +881,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 58,
+      "Progress": 59,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Goggle",
@@ -765,10 +896,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n고글을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 59,
+      "Progress": 60,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
@@ -778,10 +911,12 @@
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
       "Hint": "4종 보호구를 착용하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 60,
+      "Progress": 61,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -791,10 +926,12 @@
       "Targets": null,
       "DetailHint": "음압격리실로 이동해 다음과 같이 환자를 확인하세요./\n\n안전한 환자 확인 위해 다시 한번 확인하겠습니다.\n성함과 생년월일이 어떻게 되십니까?",
       "Hint": "음압격리실에서 환자를 확인하세요",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 61,
+      "Progress": 62,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -804,10 +941,12 @@
       "Targets": null,
       "DetailHint": "음압격리실로 이동하여 환자에게 다음과 같이 안내하세요./\n\n방사선사 강기영 입니다.\n이감염님, 엑스레이 처방이 있어 검사를 시행하도록 하겠습니다.",
       "Hint": "환자에게 X-Ray 촬영을 안내하세요.",
-      "Confirm": null
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     },
     {
-      "Progress": 62,
+      "Progress": 63,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -817,7 +956,9 @@
       "Targets": null,
       "DetailHint": "음압격리실에서 X-Ray 촬영을 진행하세요./",
       "Hint": "X-Ray 촬영을 진행하세요.",
-      "Confirm": "X-Ray 촬영을 하시겠습니까?"
+      "Confirm": "X-Ray 촬영을 하시겠습니까?",
+      "Question": null,
+      "Answers": null
     }
   ]
 }

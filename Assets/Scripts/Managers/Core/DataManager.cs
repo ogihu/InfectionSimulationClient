@@ -31,6 +31,7 @@ public class DataManager
                 scenarioInfo.Hint = scenarioList.Hint;
                 scenarioInfo.Confirm = scenarioList.Confirm;
                 scenarioInfo.Sentence = scenarioList.Sentence;
+                scenarioInfo.Question = scenarioList.Question;
 
                 if (!string.IsNullOrEmpty(scenarioList.Sentence))
                 {
@@ -76,6 +77,15 @@ public class DataManager
                     foreach (string keyword in keywordSplit)
                     {
                         scenarioInfo.STTKeywords.Add(keyword);
+                    }
+                }
+
+                if (scenarioList.Answers != null)
+                {
+                    string[] keywordSplit = scenarioList.STTKeywords.Split(',');
+                    foreach (string keyword in keywordSplit)
+                    {
+                        scenarioInfo.Answers.Add(keyword);
                     }
                 }
 

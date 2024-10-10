@@ -20,7 +20,7 @@ public class QuizManager
     {
        
         
-        Util.FindChildByName(Managers.Scenario.ScenarioAssist, "TurnNotice").GetComponent<TMP_Text>().text = "퀴즈";
+        Util.FindChildByName(Managers.Scenario.ScenarioAssist, "TurnNotice").GetComponent<TMP_Text>().text = Managers.Scenario.CurrentScenarioInfo.Hint;
         Managers.Instance.StartCoroutine(ShowQuizWithCountdown());
         
         yield return Managers.Instance.StartCoroutine(QuizCheck());

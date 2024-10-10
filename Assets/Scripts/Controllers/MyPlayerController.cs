@@ -42,6 +42,8 @@ public class MyPlayerController : PlayerController
         _cameraArm = cameraArm.GetComponent<CameraArm>();
         _coSendPacket = StartCoroutine(CoSyncUpdate());
         _layerMask = 1 << LayerMask.NameToLayer("Interaction");
+        Managers.Setting.SceneStartMicCheck();
+        Managers.Setting.MicCheckUI.SetActive(false);
     }
 
     protected override void UpdateController()
@@ -153,7 +155,10 @@ public class MyPlayerController : PlayerController
 
         if (Input.GetKeyDown(KeyCode.M))
         {
-            Managers.STT.ChangeSpeechState();
+            if (!Managers.STT.MySpeech.activeSelf)
+                return;
+            else
+                Managers.STT.ChangeSpeechState();
         }
 
         //팝업 닫기 or 설정 열기/닫기
@@ -198,11 +203,13 @@ public class MyPlayerController : PlayerController
                     Managers.Phone.ClosePhone();
             }
         }
-        
+
         //대화하기 or 키워드
         if (Input.GetKeyDown(KeyCode.T))
         {
-            if(Managers.Scenario.CurrentScenarioInfo != null)
+            if (!Managers.Scenario._doingScenario)
+                return;
+            if (Managers.Scenario.CurrentScenarioInfo != null)
             {
                 if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
                 {
@@ -214,7 +221,7 @@ public class MyPlayerController : PlayerController
             if (State == CreatureState.Idle)
             {
                 Managers.Scenario.MyAction = "Tell";
-                if(Managers.Setting.UsingMic)
+                if (Managers.Setting.UsingMic)
                 {
                     Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StartListening();
                 }
@@ -263,7 +270,7 @@ public class MyPlayerController : PlayerController
 
         #endregion
     }
-    
+
     void UpdateObjectRay()
     {
         if (!IsCanActive())
@@ -304,7 +311,7 @@ public class MyPlayerController : PlayerController
                 _interactionObject = null;
             }
         }
-        
+
 #if UNITY_EDITOR
         Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
 #endif
@@ -361,7 +368,7 @@ public class MyPlayerController : PlayerController
             Debug.Log("This object don't have component : InteractableObject");
             return;
         }
-        if(_interactionObject.name == "Computer")
+        if (_interactionObject.name == "Computer")
         {
             State = CreatureState.Sit;
         }

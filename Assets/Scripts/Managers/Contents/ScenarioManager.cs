@@ -142,6 +142,7 @@ public class ScenarioManager
     IEnumerator CoScenarioStep(int progress)
     {
         Managers.STT.STTStreamingText.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
+        Managers.Setting.SceneStartMicCheck();
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");

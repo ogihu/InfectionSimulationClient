@@ -8,6 +8,6 @@ public class QuizAnswerButton : ButtonUI
     protected override void OnClicked()
     {
         base.OnClicked();
-        Managers.Quiz.AnswerButtonCheck();
+        Managers.Instance.StartCoroutine(Managers.Quiz.AnswerButtonCheck());
     }
 }

@@ -7,6 +7,6 @@ public class QuizWorongButton : ButtonUI
     protected override void OnClicked()
     {
         base.OnClicked();
-        Managers.Quiz.WrongButton();
+        Managers.Instance.StartCoroutine(Managers.Quiz.WrongButton());
     }
 }

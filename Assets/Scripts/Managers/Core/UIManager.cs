@@ -116,7 +116,7 @@ public class UIManager
     /// </summary>
     /// <param name="notice">팝업에 표시하고 싶은 내용 입력</param>
     /// <returns>GameObject</returns>
-    public GameObject CreateSystemPopup(string name, string notice, PopupType type = PopupType.AutoDestroy)
+    public GameObject CreateSystemPopup(string name, string notice, PopupType type = PopupType.AutoDestroy,float time = 3.0f)
     {
         SystemPopup popup;
 
@@ -132,7 +132,7 @@ public class UIManager
         popup.ChangeText(notice);
 
         if (type == PopupType.AutoDestroy)
-            popup.AutoDestroy(3.0f);
+            popup.AutoDestroy(time);
 
         return popup.gameObject;
     }

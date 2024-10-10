@@ -178,7 +178,7 @@ public class Define
         public string Hint { get; set; }
         public string Confirm { get; set; }
         public string Question { get; set; }
-        public List<string> Answers { get; set; }
+        public List<string> Answers { get; set; } = new List<string>();
     }
 
     public class ItemInfo

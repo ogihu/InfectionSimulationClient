@@ -86,10 +86,13 @@ public class SettingManager
     public void ChangeMicStateTrue()
     {
         if (!Managers.Scenario._doingScenario)
+        {
+            Managers.STT.MySpeech.SetActive(false);
             return;
+        }
+            
         if (MicCheckUI == null)
             init();
-        
         Managers.STT.MySpeech.SetActive(true);
 
         MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요";

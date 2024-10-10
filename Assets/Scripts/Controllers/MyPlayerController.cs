@@ -207,6 +207,8 @@ public class MyPlayerController : PlayerController
         //대화하기 or 키워드
         if (Input.GetKeyDown(KeyCode.T))
         {
+            if (!Managers.Scenario._doingScenario)
+                return;
             if(Managers.Scenario.CurrentScenarioInfo != null)
             {
                 if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")

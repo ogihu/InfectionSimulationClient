@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow;
 
 public class QuizManager
 {
@@ -31,15 +32,16 @@ public class QuizManager
     {
         int i = 0;
         popup = Managers.UI.CreateUI("PopupNotice"); // 퀴즈 안내 문구
-        popup.transform.GetChild(0).GetComponent<TMP_Text>().text = "돌발 퀴즈가 발생합니다.";
-       yield return new WaitForSeconds(1f); // 잠깐 보여줌
+       // popup.transform.GetChild(0).GetComponent<TMP_Text>().text = "돌발 퀴즈가 발생합니다.";
+       //yield return new WaitForSeconds(1f); // 잠깐 보여줌
 
         // 카운트다운 시작
         for (i = 3; i > 0; i--)
         {
             if (popup == null)
                 yield return null;
-            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 후에 돌발퀴즈가 발생합니다.";
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString()+ "초 뒤에 돌발 퀴즈가 주어집니다.";
             yield return new WaitForSeconds(1f); // 1초 대기
         }
         Managers.UI.DestroyUI(popup);

@@ -217,7 +217,7 @@ public class BaseController : MonoBehaviour
         if (Position != null)
         {
             _positionDisplay = Managers.UI.CreateUI("PositionDisplay", UIManager.CanvasType.World);
-            _positionDisplay.GetComponent<FloatingUI>().Init(transform, y : 2.0f);
+            _positionDisplay.GetComponent<FloatingUI>().Init(transform, y: 2.0f);
             _positionDisplay.GetComponent<FloatingUI>().ChangeMessage(Position);
             Debug.Log($"{Position} 캐릭터 생성");
         }

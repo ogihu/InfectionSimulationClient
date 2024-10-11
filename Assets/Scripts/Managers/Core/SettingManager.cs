@@ -1,5 +1,8 @@
+
+
 using System.Linq.Expressions;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -55,12 +58,12 @@ public class SettingManager
     }
     public void SceneStartMicCheck()
     {
-        if (MicCheckUI == null)
+        if(MicCheckUI == null)
             init();
         if (scene.Equals(str) && startcheck)
             return;
 
-        scene = SceneManager.GetActiveScene();
+       scene = SceneManager.GetActiveScene();
 
         if (!UsingMic)
             ChangeMicStateFalse();
@@ -72,11 +75,11 @@ public class SettingManager
         Managers.STT.MySpeech.SetActive(false);
         if (!Managers.Scenario._doingScenario)
             return;
-        if (MicCheckUI == null)
-            init();
+        if(MicCheckUI == null)
+             init();
         MicCheckUI.GetComponent<TMP_Text>().text = "키워드를 알맞은 칸에 넣으세요";
         if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
-            MicCheckUI.SetActive(true);
+            MicCheckUI.SetActive(true);  
         else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
             MicCheckUI.SetActive(false);
     }
@@ -87,7 +90,7 @@ public class SettingManager
             Managers.STT.MySpeech.SetActive(false);
             return;
         }
-
+            
         if (MicCheckUI == null)
             init();
         Managers.STT.MySpeech.SetActive(true);
@@ -100,7 +103,7 @@ public class SettingManager
             MicCheckUI.SetActive(false);
             Managers.STT.MySpeech.SetActive(false);
         }
-
+            
     }
     public void Init()
     {
@@ -111,22 +114,22 @@ public class SettingManager
     }
     public void UseCheckMic()
     {
-        if (MicCheckUI == null)
+        if(MicCheckUI == null)
         {
             MicCheckUI = GameObject.Find("CheckInferencing");
         }
-        if (PlayerUsingMic)
+        if(PlayerUsingMic)
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요.";
             PlayerUsingMic = false;
         }
-
+            
         else
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 중단하세요.";
             PlayerUsingMic = true;
         }
-
+            
 
     }
 }

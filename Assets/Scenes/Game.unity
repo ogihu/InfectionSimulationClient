@@ -1714,6 +1714,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckInferencing
       objectReference: {fileID: 0}
+    - target: {fileID: 5739796962834428180, guid: fe9bfdf309726084eab49a1f760050bd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8517606078249838681, guid: fe9bfdf309726084eab49a1f760050bd,
         type: 3}
       propertyPath: m_Pivot.x

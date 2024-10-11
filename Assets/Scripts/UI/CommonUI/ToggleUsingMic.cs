@@ -37,3 +37,4 @@ public class ToggleUsingMic : MonoBehaviour
         //Managers.Setting.MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요.";
     }
 }
+

@@ -86,6 +86,8 @@ public class MyPlayerController : PlayerController
 
     public bool IsCanActive()
     {
+        if (Managers.Quiz.quizUI != null)
+            return false;
         if (Managers.Item.IsInventoryOpen)
             return false;
 

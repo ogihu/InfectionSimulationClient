@@ -4,6 +4,7 @@ using UnityEngine;
 public class GameScene : BaseScene
 {
     public static GameObject YudoLine;
+
     protected override void Init()
     {
         base.Init();

@@ -77,7 +77,7 @@ public class ObjectManager
 			{
 				GameObject go = Managers.Resource.Instantiate($"Creatures/MyPlayer/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
-				go.name = $"{info.UserInfo.Name}";
+				go.name = $"{info.UserInfo.AccountId}";
 
 				MyPlayer = go.GetComponent<MyPlayerController>();
 				MyPlayer.ObjectId = info.ObjectId;
@@ -91,7 +91,7 @@ public class ObjectManager
 			{
 				GameObject go = Managers.Resource.Instantiate($"Creatures/Player/{info.UserInfo.Position}");
 				_objects.Add(info.ObjectId, go);
-				go.name = $"{info.UserInfo.Name}";
+				go.name = $"{info.UserInfo.AccountId}";
 
 				PlayerController pc = go.GetComponent<PlayerController>();
 				pc.ObjectId = info.ObjectId;

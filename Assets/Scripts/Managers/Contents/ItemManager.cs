@@ -287,5 +287,8 @@ public class ItemManager
     public void Clear()
     {
         ItemList.Clear();
+        Inventory = null;
+        SelectedItem = null;
+        CombineItems.Clear();
     }
 }

@@ -119,33 +119,20 @@ public class BaseController : MonoBehaviour
             if (_userInfo.Equals(value))
                 return;
 
-            Name = value.Name;
-            Id = value.Id;
+            AccountId = value.AccountId;
             Position = value.Position;
         }
     }
 
-    public string Name
+    public string AccountId
     {
-        get { return UserInfo.Name; }
+        get { return UserInfo.AccountId; }
         set
         {
-            if (UserInfo.Name.Equals(value))
+            if (UserInfo.AccountId.Equals(value))
                 return;
 
-            UserInfo.Name = value;
-        }
-    }
-
-    public string Id
-    {
-        get { return UserInfo.Id; }
-        set
-        {
-            if (UserInfo.Id.Equals(value))
-                return;
-
-            UserInfo.Id = value;
+            UserInfo.AccountId = value;
         }
     }
 
@@ -194,9 +181,8 @@ public class BaseController : MonoBehaviour
         target.Dir = this.Dir;
         target.State = this.State;
         target.InputBit = this.InputBit;
-        target.Name = this.Name;
+        target.AccountId = this.AccountId;
         target.Position = this.Position;
-        target.Id = this.Id;
         target.Items = this.Items;
     }
 

@@ -91,7 +91,16 @@ public class Managers : MonoBehaviour
 
     public static void Clear()
     {
-        Scene.Clear();
         Pool.Clear();
+        Bubble.Clear();
+        Item.Clear();
+        Keyword.Clear();
+        Object.Clear();
+        Phone.Clear();
+        Quiz.Clear();
+        Scenario.Clear();
+        Setting.Clear();
+        STT.Clear();
+        UI.Clear();
     }
 }

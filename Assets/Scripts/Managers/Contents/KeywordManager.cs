@@ -48,4 +48,9 @@ public class KeywordManager
 
         CloseGUIKeyword();
     }
+
+    public void Clear()
+    {
+        _panel = null;
+    }
 }

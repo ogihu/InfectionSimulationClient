@@ -2,6 +2,7 @@ using Google.Protobuf;
 using Google.Protobuf.Protocol;
 using ServerCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -147,5 +148,71 @@ class PacketHandler
 
         bc.PosInfo = syncPacket.PosInfo;
         bc.UpdateSync();
+    }
+
+    public static void S_RegistAccountHandler(PacketSession session, IMessage packet)
+    {
+        S_RegistAccount registPacket = (S_RegistAccount)packet;
+        
+        if(Managers.Network.WaitingUI != null)
+            Managers.UI.DestroyUI(Managers.Network.WaitingUI);
+
+        GameObject warningUI = Managers.UI.CreateUI("WarningUI");
+
+        switch (registPacket.Result)
+        {
+            case RegistAccountState.ExistPlayer:
+                //이미 등록된 사용자입니다.
+                warningUI.GetComponent<WarningUI>().SetText("이미 등록된 사용자입니다.");
+                break;
+            case RegistAccountState.ExistAccount:
+                //사용 중인 아이디입니다.
+                warningUI.GetComponent<WarningUI>().SetText("사용 중인 아이디입니다.");
+                break;
+            case RegistAccountState.RegistError:
+                warningUI.GetComponent<WarningUI>().SetText("계정 등록 중 오류가 발생하였습니다.\n잠시 후 다시 시도해주세요.");
+                break;
+            case RegistAccountState.RegistComplete:
+                //계정이 생성되었습니다.
+                warningUI.GetComponent<WarningUI>().SetText("계정이 등록되었습니다.");
+                Managers.UI.DestroyUI(GameObject.Find("RegistUI"));
+                break;
+        }
+    }
+
+    public static void S_LoginHandler(PacketSession session, IMessage packet)
+    {
+        S_Login loginPacket = (S_Login)packet;
+
+        if (Managers.Network.WaitingUI != null)
+            Managers.UI.DestroyUI(Managers.Network.WaitingUI);
+
+        GameObject warningUI = Managers.UI.CreateUI("WarningUI");
+
+        switch (loginPacket.Result)
+        {
+            case LoginState.NoAccount:
+                // 등록되지 않은 계정입니다.
+                warningUI.GetComponent<WarningUI>().SetText("등록되지 않은 계정입니다.");
+                break;
+            case LoginState.WrongPassword:
+                // 비밀번호가 틀렸습니다.
+                warningUI.GetComponent<WarningUI>().SetText("비밀번호가 틀렸습니다.");
+                break;
+            case LoginState.LoginComplete:
+                // 로비로 이동
+                Managers.Scene.LoadScene(Define.Scene.Lobby);
+                break;
+        }
+    }
+
+    public static void S_RankHandler(PacketSession session, IMessage packet)
+    {
+        S_Rank rankPacket = (S_Rank)packet;
+
+        Managers.UI.CreateUI("RankingUI").GetComponent<RankingUI>().SetRanks(rankPacket);
+        
+        if (Managers.Network.WaitingUI != null)
+            Managers.UI.DestroyUI(Managers.Network.WaitingUI);
     }
 }

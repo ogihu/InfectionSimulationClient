@@ -20,5 +20,8 @@ public abstract class BaseScene : MonoBehaviour
         Screen.SetResolution(1920, 1080, false);
     }
 
-    public abstract void Clear();
+    public virtual void Clear()
+    {
+        Managers.Clear();
+    }
 }

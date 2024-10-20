@@ -210,20 +210,6 @@ public class UIManager
     public void DestroyUI(GameObject go)
     {
         Managers.Resource.Destroy(go);
-
-        //if (go.GetComponent<PoolableUI>() != null)
-        //{
-        //    if (!UICache.ContainsKey(go.name))
-        //    {
-        //        UICache.Add(go.name, new Stack<GameObject>());
-        //    }
-
-        //    Stack<GameObject> stack = UICache[go.name];
-        //    stack.Push(go);
-        //    go.SetActive(false);
-        //}
-        //else
-        //    GameObject.Destroy(go);
     }
 
     public bool ExitPopup()
@@ -234,5 +220,15 @@ public class UIManager
         GameObject go = ContentPopups.Pop();
         DestroyUI(go);
         return true;
+    }
+
+    public void Clear()
+    {
+        ContentPopups.Clear();
+        SystemPopups.Clear();
+        BubbleCache.Clear();
+        SettingUI = null;
+        _overlayCanvas = null;
+        _worldCanvas = null;
     }
 }

@@ -9,6 +9,7 @@ using Google.Protobuf;
 public class NetworkManager
 {
 	ServerSession _session = new ServerSession();
+	public GameObject WaitingUI {  get; set; }
 
 	public void Send(IMessage packet)
 	{

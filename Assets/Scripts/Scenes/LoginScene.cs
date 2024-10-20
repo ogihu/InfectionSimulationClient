@@ -13,10 +13,10 @@ public class LoginScene : BaseScene
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        GameObject go = GameObject.Find("LoginUI");
+        GameObject go = GameObject.Find("MenuUI");
         if(go == null)
         {
-            Managers.UI.CreateUI("LoginUI");
+            Managers.UI.CreateUI("MenuUI");
         }
     }
 

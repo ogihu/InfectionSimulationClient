@@ -25,6 +25,7 @@ public class ToggleUsingMic : MonoBehaviour
     {
         // 전달된 value를 사용하여 설정 값 변경
         Managers.Setting.UsingMic = value;
+
         if (Managers.Setting.MicCheckUI == null)
             Managers.Setting.MicCheckUI = GameObject.Find("CheckInferencing");
 

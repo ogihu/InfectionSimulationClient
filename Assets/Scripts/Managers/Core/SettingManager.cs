@@ -1,11 +1,6 @@
-
-
-using System.Linq.Expressions;
 using TMPro;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class SettingManager
 {
@@ -99,13 +94,13 @@ public class SettingManager
         Managers.STT.MySpeech.SetActive(true);
 
         MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요";
-        if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
-            MicCheckUI.SetActive(true);
-        else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
-        {
-            MicCheckUI.SetActive(false);
-            Managers.STT.MySpeech.SetActive(false);
-        }
+        //if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
+        //    MicCheckUI.SetActive(true);
+        //else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
+        //{
+        //    MicCheckUI.SetActive(false);
+        //    Managers.STT.MySpeech.SetActive(false);
+        //}
             
     }
 
@@ -123,12 +118,12 @@ public class SettingManager
         {
             MicCheckUI = GameObject.Find("CheckInferencing");
         }
+
         if(PlayerUsingMic)
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요.";
             PlayerUsingMic = false;
         }
-            
         else
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 중단하세요.";

@@ -18,6 +18,13 @@ public class UIManager
         ManualDestroy
     }
 
+    public enum NoticeType
+    {
+        None,
+        Warning,
+        Info
+    }
+
     public Stack<GameObject> ContentPopups { get; set; } = new Stack<GameObject>();
     public Dictionary<string, SystemPopup> SystemPopups { get; set; } = new Dictionary<string, SystemPopup>();
     Dictionary<Transform, GameObject> BubbleCache { get; set; } = new Dictionary<Transform, GameObject>();
@@ -116,8 +123,9 @@ public class UIManager
     /// </summary>
     /// <param name="notice">팝업에 표시하고 싶은 내용 입력</param>
     /// <returns>GameObject</returns>
-    public GameObject CreateSystemPopup(string name, string notice, PopupType type = PopupType.AutoDestroy,float time = 3.0f)
+    public GameObject CreateSystemPopup(string name, string notice, PopupType type = PopupType.AutoDestroy, float time = 3.0f)
     {
+        //TODO : 인자에 NoticeType 추가하여 점수에 참조할 수 있도록
         SystemPopup popup;
 
         if (SystemPopups.ContainsKey(name))

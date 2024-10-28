@@ -252,12 +252,6 @@ public class ScenarioManager
                     Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
                     Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
 
-                    NPCs["보안요원1"].Teleport(Entrance);
-                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(BlockingPoint4));
-                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetForward(-Vector3.right));
-                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetState(CreatureState.Blocking));
-                    yield return new WaitForSeconds(1.0f);
-
                     NPCs["보안요원2"].Teleport(Entrance);
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint3));
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
@@ -276,10 +270,19 @@ public class ScenarioManager
                     NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetState(CreatureState.Blocking));
                     yield return new WaitForSeconds(1.0f);
 
-                    yield return new WaitUntil(() => (NPCs["보안요원1"].transform.position - BlockingPoint4).magnitude < 1);
+                    yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint3).magnitude < 1);
+
+                    NPCs["보안요원1"].Teleport(Entrance);
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(MovePosition));
+                    yield return new WaitForSeconds(3.0f);
 
                     NPCs["이송요원"].Teleport(Entrance);
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
+
+                    yield return new WaitUntil(() => (NPCs["보안요원1"].transform.position - MovePosition).magnitude < 0.3f);
+
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(IsolationArea));
+                    NPCs["보안요원1"].ChangeSpeed(2f);
 
                     yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 0.3f);
 
@@ -315,6 +318,7 @@ public class ScenarioManager
 
                     //환자 이송이 끝나면 모든 NPC 상태 초기화, 출입구로 이동 후 퇴장 (환자 제외)
                     NPCs["이송요원"].ResetSpeed();
+                    NPCs["보안요원1"].ResetSpeed();
                     StopAllNPC(NPCs["환자"]);
                     SetStateAllNPC(CreatureState.Idle, NPCs["환자"]);
                     MoveAllNPC(Entrance, NPCs["환자"]);

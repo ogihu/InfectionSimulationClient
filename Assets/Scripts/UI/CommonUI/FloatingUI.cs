@@ -97,6 +97,9 @@ public class FloatingUI : MonoBehaviour
 
     void UpdateRotation()
     {
+        if (Camera.main == null)
+            return;
+
         Vector3 dir = GetComponent<RectTransform>().position - Camera.main.transform.position;
         dir = new Vector3(dir.x, 0, dir.z);
         Quaternion rotation = Quaternion.LookRotation(dir);

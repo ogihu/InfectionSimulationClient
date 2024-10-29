@@ -12,10 +12,13 @@ public class WarningUI : MonoBehaviour
         
     }
 
-    public void SetText(string text)
+    public void SetText(string text, string title = null)
     {
         if(warningText == null)
             warningText = Util.FindChildByName(gameObject, "WarningText").GetComponent<TMP_Text>();
+
+        if(title != null)
+            Util.FindChildByName(gameObject, "Title").GetComponent<TMP_Text>().text = title;
 
         warningText.text = text;
     }

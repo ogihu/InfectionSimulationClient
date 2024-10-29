@@ -8,15 +8,15 @@ public class RegistUI : MonoBehaviour
 {
     TMP_InputField inputAccountId;
     TMP_InputField inputAccountPw;
-    TMP_InputField inputPlayerId;
     TMP_InputField inputPlayerName;
+    TMP_InputField confirmPw;
 
     private void Awake()
     {
         inputAccountId = Util.FindChildByName(gameObject, "InputAccountId").GetComponent<TMP_InputField>();
         inputAccountPw = Util.FindChildByName(gameObject, "InputAccountPw").GetComponent<TMP_InputField>();
-        inputPlayerId = Util.FindChildByName(gameObject, "InputPlayerId").GetComponent<TMP_InputField>();
         inputPlayerName = Util.FindChildByName(gameObject, "InputPlayerName").GetComponent<TMP_InputField>();
+        confirmPw = Util.FindChildByName(gameObject, "PwConfirm").GetComponent<TMP_InputField>();
     }
 
     /// <summary>
@@ -25,8 +25,7 @@ public class RegistUI : MonoBehaviour
     /// <returns></returns>
     public bool CheckEmptyField()
     {
-        if(string.IsNullOrEmpty(inputAccountId.text) || string.IsNullOrEmpty(inputAccountPw.text) || 
-            string.IsNullOrEmpty(inputPlayerId.text) || string.IsNullOrEmpty(inputPlayerName.text))
+        if(string.IsNullOrEmpty(inputAccountId.text) || string.IsNullOrEmpty(inputAccountPw.text) || string.IsNullOrEmpty(inputPlayerName.text) || string.IsNullOrEmpty(confirmPw.text))
         {
             return false;
         }
@@ -45,12 +44,18 @@ public class RegistUI : MonoBehaviour
             return;
         }
 
+        if (inputAccountPw.text != confirmPw.text)
+        {
+            GameObject go = Managers.UI.CreateUI("WarningUI");
+            go.GetComponent<WarningUI>().SetText("비밀번호가 일치하지 않습니다.");
+            return;
+        }
+
         Managers.Network.WaitingUI = Managers.UI.CreateUI("WaitingUI");
 
         C_RegistAccount registPacket = new C_RegistAccount();
         registPacket.AccountId = inputAccountId.text;
         registPacket.AccountPw = inputAccountPw.text;
-        registPacket.PlayerId = inputPlayerId.text;
         registPacket.PlayerName = inputPlayerName.text;
 
         Managers.Network.Send(registPacket);

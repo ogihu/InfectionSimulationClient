@@ -48,6 +48,9 @@ public class NPCController : CreatureController
         if (State != CreatureState.Idle)
             return;
 
+        if (Managers.Object.MyPlayer == null)
+            return;
+
         Vector3 dir = Managers.Object.MyPlayer.transform.position - transform.position;
 
         Quaternion targetRotation = Quaternion.LookRotation(dir);

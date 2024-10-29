@@ -228,7 +228,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
-                //환자 음압격리실로 이송
+                #region 환자 격리실 이송
                 {
                     NPCs["보안요원1"].Use("Mask");
                     NPCs["보안요원2"].Use("Mask");
@@ -329,6 +329,7 @@ public class ScenarioManager
                     Managers.Resource.Destroy(go3);
                     Managers.Resource.Destroy(go4);
                 }
+                #endregion
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));

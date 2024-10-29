@@ -174,7 +174,7 @@ class PacketHandler
                 break;
             case RegistAccountState.RegistComplete:
                 //계정이 생성되었습니다.
-                warningUI.GetComponent<WarningUI>().SetText("계정이 등록되었습니다.");
+                warningUI.GetComponent<WarningUI>().SetText("계정이 등록되었습니다.", "NOTICE");
                 Managers.UI.DestroyUI(GameObject.Find("RegistUI"));
                 break;
         }

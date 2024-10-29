@@ -39,7 +39,7 @@ public class ToggleUI : MonoBehaviour
                 }
                 else
                 {
-                    _label.color = Color.red;
+                    _label.color = Color.red; 
                 }
             }
         }

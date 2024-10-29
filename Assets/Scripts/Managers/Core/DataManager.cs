@@ -89,17 +89,20 @@ public class DataManager
                     }
                 }
 
-                string newSpeech = scenarioList.DetailHint;
-                string[] split = newSpeech.Split('/');
-                scenarioInfo.DetailHint = split[0];
-                foreach (var keyword in scenarioInfo.STTKeywords)
+                if (!string.IsNullOrEmpty(scenarioList.DetailHint))
                 {
-                    if (split[1].Contains(keyword))
+                    string newSpeech = scenarioList.DetailHint;
+                    string[] split = newSpeech.Split('/');
+                    scenarioInfo.DetailHint = split[0];
+                    foreach (var keyword in scenarioInfo.STTKeywords)
                     {
-                        split[1] = split[1].Replace(keyword, $"<color=#00ff00>{keyword}</color>");
+                        if (split[1].Contains(keyword))
+                        {
+                            split[1] = split[1].Replace(keyword, $"<color=#00ff00>{keyword}</color>");
+                        }
                     }
+                    scenarioInfo.DetailHint += split[1];
                 }
-                scenarioInfo.DetailHint += split[1];
 
                 if (scenarioList.Targets != null)
                 {

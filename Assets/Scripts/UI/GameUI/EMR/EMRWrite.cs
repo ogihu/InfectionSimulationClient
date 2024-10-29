@@ -13,7 +13,7 @@ public class EMRWrite : MonoBehaviour
         if(_rightCount >= 6)
         {
             Managers.Scenario.MyAction = "EMRWrite";
-            Managers.UI.DestroyUI(this.gameObject);
+            Managers.EMR.CloseEMR();
         }
     }
 }

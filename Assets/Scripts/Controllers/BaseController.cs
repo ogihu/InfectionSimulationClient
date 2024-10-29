@@ -308,6 +308,7 @@ public class BaseController : MonoBehaviour
             case CreatureState.Idle:
             case CreatureState.Setting:
             case CreatureState.UsingInventory:
+            case CreatureState.Emr:
                 return "idle";
 
             case CreatureState.Run:

@@ -151,8 +151,7 @@ public class UIManager
                 if (Managers.Scenario.CurrentScenarioInfo != null)
                 {
                     Managers.Scenario.Score -= 1;
-                    Managers.Scenario.FaultCount++;
-                    Debug.Log($"Score : {Managers.Scenario.Score} / FaultCount : {Managers.Scenario.FaultCount}");
+                    Debug.Log($"Score : {Managers.Scenario.Score}");
                 }
 
                 break;

@@ -453,5 +453,10 @@ public class BaseController : MonoBehaviour
         Place = other.gameObject.name;
     }
 
-
+    public void Clear()
+    {
+        Managers.UI.DestroyUI(_positionDisplay);
+        _positionDisplay = null;
+        Items.Clear();
+    }
 }

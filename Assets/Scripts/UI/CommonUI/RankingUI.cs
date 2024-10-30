@@ -2,15 +2,18 @@ using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class RankingUI : MonoBehaviour
 {
     Transform _content;
+    TMP_Text _titleText;
 
     private void Awake()
     {
         _content = Util.FindChildByName(gameObject, "Content").transform;
+        _titleText = Util.FindChildByName(gameObject, "TitleText").GetComponent<TMP_Text>();
     }
 
     public void SetRanks(S_Rank rankPacket)
@@ -20,10 +23,12 @@ public class RankingUI : MonoBehaviour
 
         var sortedScores = rankPacket.Scores
             .OrderByDescending(score => score.FinalScore) // 1. 점수 높은 순서
-            .ThenBy(score => score.FaultCount)            // 2. 실수 적은 순서
-            .ThenBy(score => score.GameDate);             // 3. Date 빠른 순서
+            .ThenBy(score => score.GameDate);             // 2. Date 빠른 순서
 
         int rank = 1;
+
+        _titleText.text = $"Ranking  -  {rankPacket.Scores[0].Position}";
+
         foreach (var score in sortedScores)
         {
             // 새로운 Ranking UI 생성

@@ -123,10 +123,12 @@ public class ObjectManager
 	public void Clear()
 	{
 		foreach (GameObject obj in _objects.Values)
+		{
+			obj.GetComponent<PlayerController>().Clear();
 			Managers.Resource.Destroy(obj);
+		}
 
 		_objects.Clear();
-
 		MyPlayer = null;
 	}
 

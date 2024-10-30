@@ -40,6 +40,8 @@ public class ItemManager
         item.Using = false;
 
         ItemList.Add(item);
+
+        Managers.UI.CreateSystemPopup("WarningPopup", $"{Define.ItemInfoDict[itemData.Name].Name} 아이템을 획득하였습니다.", UIManager.NoticeType.Info);
         Debug.Log($"아이템 획득 - 현재 보유한 아이템 {ItemList.Count}개");
     }
 

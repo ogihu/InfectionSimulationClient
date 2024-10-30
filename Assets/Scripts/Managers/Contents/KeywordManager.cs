@@ -11,13 +11,13 @@ public class KeywordManager
     {
         if (Managers.Scenario.CurrentScenarioInfo == null)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>시나리오가 시작되지 않았습니다.</color>");
+            Managers.UI.CreateSystemPopup("WarningPopup", "시나리오가 시작되지 않았습니다.", UIManager.NoticeType.Warning);
             return;
         }
 
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>시나리오를 수행할 차례가 아닙니다.</color>");
+            Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 수행할 차례가 아닙니다.", UIManager.NoticeType.None);
             return;
         }
 

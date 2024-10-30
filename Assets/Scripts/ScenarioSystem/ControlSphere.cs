@@ -17,7 +17,7 @@ public class ControlSphere : MonoBehaviour
         if (other.gameObject.layer != LayerMask.NameToLayer("MyPlayer"))
             return;
 
-        _popup = Managers.UI.CreateSystemPopup("PopupNotice", _message, UIManager.PopupType.ManualDestroy);
+        _popup = Managers.UI.CreateSystemPopup("PopupNotice", _message, UIManager.NoticeType.Warning, UIManager.PopupType.ManualDestroy);
     }
 
     private void OnTriggerExit(Collider other)

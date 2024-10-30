@@ -171,7 +171,7 @@ public class Syringe : UsingItem
                         }
                         else if (!Managers.Item.IsInventoryOpen)
                         {
-                            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>올바른 곳에 사용하세요</color>");
+                            Managers.UI.CreateSystemPopup("WarningPopup", "올바른 곳에 사용하세요.", UIManager.NoticeType.Warning);
                         }
                     }
                 }

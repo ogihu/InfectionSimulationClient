@@ -32,7 +32,7 @@ public class EMRCheck : MonoBehaviour
                     _isRight = true;
                     break;
                 case "FaultCheck":
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>올바르지 않은 선택입니다.</color=#ff0000>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "올바르지 않은 선택입니다.", UIManager.NoticeType.Warning);
                     GetComponent<Toggle>().isOn = false;
                     break;
             }

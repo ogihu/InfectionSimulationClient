@@ -141,7 +141,7 @@ public class MyPlayerController : PlayerController
                         }
                         return;
                     }
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>현재 사용할 수 없는 기능입니다.</color=#ff0000>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);
                 }
                 else if (_interactionObject.name == "ScenarioX-ray")
                 {
@@ -208,7 +208,7 @@ public class MyPlayerController : PlayerController
             {
                 if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>현재 사용할 수 없는 기능입니다.</color=#ff0000>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);
                     return;
                 }
             }

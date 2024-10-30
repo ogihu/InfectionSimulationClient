@@ -204,6 +204,28 @@ public class Define
         {"Syringe",new ItemInfo("주사기","약액(주사약)을 생물체의 체내에 주사하는 의료 기기") }
     };
 
+    public static readonly Dictionary<char, char> KtoE = new Dictionary<char, char>()
+    {
+        {'ㅂ', 'q'}, {'ㅈ', 'w'}, {'ㄷ', 'e'}, {'ㄱ', 'r'}, {'ㅅ', 't'},
+        {'ㅛ', 'y'}, {'ㅕ', 'u'}, {'ㅑ', 'i'}, {'ㅐ', 'o'}, {'ㅔ', 'p'},
+        {'ㅁ', 'a'}, {'ㄴ', 's'}, {'ㅇ', 'd'}, {'ㄹ', 'f'}, {'ㅎ', 'g'},
+        {'ㅗ', 'h'}, {'ㅓ', 'j'}, {'ㅏ', 'k'}, {'ㅣ', 'l'},
+        {'ㅋ', 'z'}, {'ㅌ', 'x'}, {'ㅊ', 'c'}, {'ㅍ', 'v'}, {'ㅠ', 'b'},
+        {'ㅜ', 'n'}, {'ㅡ', 'm'}
+    };
+
+    public static char ChangeKtoE(char korean)
+    {
+        // 영어와 맵핑된 한글은 영어로 변경하여 반환
+        if (KtoE.TryGetValue(korean, out char englishChar))
+        {
+            return englishChar;
+        }
+
+        // 맵핑되어 있지 않은 문자는 그대로 반환
+        return korean;
+    }
+
     #endregion
 
     #region Enums

@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using static Define;
@@ -16,8 +15,8 @@ public class ScenarioManager
     public int Progress { get; set; }
     public string Item { get; set; }
 
-    int _score = 100;
-    int _faultCount = 0;
+    public int Score = 100;
+    public int FaultCount = 0;
 
     public Dictionary<string, NPCController> NPCs = new Dictionary<string, NPCController>();
 
@@ -168,7 +167,7 @@ public class ScenarioManager
                 if(PopupConfirm == 1)
                 {
                     PopupConfirm = 0;
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#00ff00>시나리오를 통과했습니다.</color>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과했습니다.", UIManager.NoticeType.Info);
                 }
                 else if(PopupConfirm == 2)
                 {
@@ -190,10 +189,10 @@ public class ScenarioManager
 
     IEnumerator CoScenario(string scenarioName)
     {
-        Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 시작합니다.");
+        Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 시작합니다.", UIManager.NoticeType.None);
         yield return new WaitForSeconds(3.0f);
 
-        Managers.UI.CreateSystemPopup("PopupNotice", $"사랑합니다.\n지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다.\n모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.");
+        Managers.UI.CreateSystemPopup("PopupNotice", $"사랑합니다.\n지금부터 신종감염병 대응 모의 훈련을 시작하고자 하오니 환자 및 보호자께서는 동요하지 마시기 바랍니다.\n모의 훈련 요원들은 지금부터 훈련을 시작하도록 하겠습니다.", UIManager.NoticeType.None);
         yield return new WaitForSeconds(3.0f);
 
         Init(scenarioName);
@@ -385,13 +384,13 @@ public class ScenarioManager
         }
 
         UpdateScenarioAssist("시나리오를 완료하셨습니다.");
-        Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 완료하셨습니다.");
+        Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 완료하셨습니다.", UIManager.NoticeType.None);
 
         yield return new WaitForSeconds(3.0f);
 
         string poisition = Managers.Object.MyPlayer.Position;
-        int score = _score;
-        int faultCount = _faultCount;
+        int score = Score;
+        int faultCount = FaultCount;
 
         Managers.Object.Clear();
 
@@ -520,14 +519,14 @@ public class ScenarioManager
     {
         if (MyAction != CurrentScenarioInfo.Action)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>올바른 행동을 수행하지 않았습니다.</color>");
+            Managers.UI.CreateSystemPopup("WarningPopup", "올바른 행동을 수행하지 않았습니다.", UIManager.NoticeType.Warning);
             Reset();
             return false;
         }
 
         if (!CheckTarget())
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>대상이 올바르지 않습니다.</color>");
+            Managers.UI.CreateSystemPopup("WarningPopup", "대상이 올바르지 않습니다.", UIManager.NoticeType.Warning);
             Reset();
             return false;
         }
@@ -536,7 +535,7 @@ public class ScenarioManager
         {
             if (Item != CurrentScenarioInfo.Item)
             {
-                Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.</color>");
+                Managers.UI.CreateSystemPopup("WarningPopup", "현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.", UIManager.NoticeType.Warning);
                 Reset();
                 return false;
             }
@@ -547,11 +546,12 @@ public class ScenarioManager
 
         if (!PassSpeech)
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>상황에 맞지 않는 대화이거나 대화 장소가 잘못되었습니다.</color>");
+            Managers.UI.CreateSystemPopup("WarningPopup", "상황에 맞지 않는 대화이거나 대화 장소가 잘못되었습니다.", UIManager.NoticeType.Warning);
             Reset();
             return false;
         }
 
+        Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과하셨습니다.", UIManager.NoticeType.Info);
         return true;
     }
 
@@ -717,8 +717,8 @@ public class ScenarioManager
         ScenarioName = null;
         Progress = 0;
         Item = null;
-        _score = 100;
-        _faultCount = 0;
+        Score = 100;
+        FaultCount = 0;
         NPCs.Clear();
         _realtimeSTT = null;
         _scenarioAssist = null;

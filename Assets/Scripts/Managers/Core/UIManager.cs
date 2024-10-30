@@ -123,7 +123,7 @@ public class UIManager
     /// </summary>
     /// <param name="notice">팝업에 표시하고 싶은 내용 입력</param>
     /// <returns>GameObject</returns>
-    public GameObject CreateSystemPopup(string name, string notice, PopupType type = PopupType.AutoDestroy, float time = 3.0f)
+    public GameObject CreateSystemPopup(string name, string notice, NoticeType noticeType, PopupType type = PopupType.AutoDestroy, float time = 3.0f)
     {
         //TODO : 인자에 NoticeType 추가하여 점수에 참조할 수 있도록
         SystemPopup popup;
@@ -137,7 +137,26 @@ public class UIManager
             SystemPopups.Add(name, popup);
         }
 
-        popup.ChangeText(notice);
+        switch (noticeType)
+        {
+            case NoticeType.None:
+                popup.ChangeText(notice);
+                break;
+            case NoticeType.Info:
+                popup.ChangeText($"<color=#0000ff>{notice}</color>");
+                break;
+            case NoticeType.Warning:
+                popup.ChangeText($"<color=#ff0000>{notice}</color>");
+
+                if (Managers.Scenario.CurrentScenarioInfo != null)
+                {
+                    Managers.Scenario.Score -= 1;
+                    Managers.Scenario.FaultCount++;
+                    Debug.Log($"Score : {Managers.Scenario.Score} / FaultCount : {Managers.Scenario.FaultCount}");
+                }
+
+                break;
+        }
 
         if (type == PopupType.AutoDestroy)
             popup.AutoDestroy(time);

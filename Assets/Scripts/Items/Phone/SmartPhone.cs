@@ -77,13 +77,13 @@ public class SmartPhone : MonoBehaviour
             case "Call":
                 if (Managers.Scenario.CurrentScenarioInfo == null)
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>시나리오가 시작되지 않았습니다.</color>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "시나리오가 시작되지 않았습니다.", UIManager.NoticeType.None);
                     return;
                 }
 
                 if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Call"))
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>해당 기능은 필요한 상황에만 사용할 수 있습니다.</color>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.", UIManager.NoticeType.None);
                     return;
                 }
 
@@ -96,18 +96,18 @@ public class SmartPhone : MonoBehaviour
             case "Messenger":
                 if (Managers.Scenario.CurrentScenarioInfo == null)
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>시나리오가 시작되지 않았습니다.</color>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "시나리오가 시작되지 않았습니다.", UIManager.NoticeType.None);
                     return;
                 }
 
                 if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Messenger"))
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>해당 기능은 필요한 상황에만 사용할 수 있습니다.</color>");
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.", UIManager.NoticeType.Warning);
                     return;
                 }
 
                 Managers.Scenario.MyAction = funcName;
-                Managers.UI.CreateSystemPopup("WarningPopup", "<color=#00ff00>신속대응팀을 활성화 하였습니다.</color>");
+                Managers.UI.CreateSystemPopup("WarningPopup", "신속대응팀을 활성화 하였습니다.", UIManager.NoticeType.Info);
                 Managers.Phone.ClosePhone();
                 break;
             case "MessageCheck":

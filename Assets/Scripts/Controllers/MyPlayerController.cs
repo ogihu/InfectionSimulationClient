@@ -89,7 +89,7 @@ public class MyPlayerController : PlayerController
         if (Managers.Quiz.quizUI != null)
             return false;
 
-        if(Managers.Scenario.WearUI != null)
+        if(Managers.Scenario.State_Image)
             return false;
 
         if (Managers.Item.IsInventoryOpen)

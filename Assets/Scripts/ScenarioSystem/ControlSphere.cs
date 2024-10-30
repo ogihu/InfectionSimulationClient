@@ -31,6 +31,10 @@ public class ControlSphere : MonoBehaviour
 
     private void OnDisable()
     {
-        Managers.UI.DestroyUI(_popup);
+        if (_popup == null)
+            return;
+
+        if(_popup.activeSelf)
+            _popup.SetActive(false);
     }
 }

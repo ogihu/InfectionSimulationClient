@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
-    int layerMask;
-
-    private void Start()
+    private void Awake()
     {
-        layerMask = 1 << LayerMask.NameToLayer("MyPlayer");
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != layerMask)
-            return;
-
-        
+        if (LayerMask.LayerToName(other.gameObject.layer) == "MyPlayer")
+        {
+            Managers.Scenario.UpdateMyPlace(gameObject.name);
+        }
     }
 }

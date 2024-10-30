@@ -2,7 +2,7 @@
   "엠폭스": [
     {
       "Progress": 0,
-      "Place": null,
+      "Place": "관찰구역",
       "Position": "응급센터 간호사1",
       "Item": null,
       "Action": "Tell",
@@ -242,7 +242,7 @@
     },
     {
       "Progress": 16,
-      "Place": null,
+      "Place": "관찰구역",
       "Position": "응급의학과 의사",
       "Item": null,
       "Action": "Tell",
@@ -362,7 +362,7 @@
     },
     {
       "Progress": 24,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "Tell",
@@ -377,7 +377,7 @@
     },
     {
       "Progress": 25,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "Tell",
@@ -392,7 +392,7 @@
     },
     {
       "Progress": 26,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "Tell",
@@ -407,7 +407,7 @@
     },
     {
       "Progress": 27,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "Tell",
@@ -422,7 +422,7 @@
     },
     {
       "Progress": 28,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "Tell",
@@ -437,7 +437,7 @@
     },
     {
       "Progress": 29,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
       "Action": "Tell",
@@ -452,7 +452,7 @@
     },
     {
       "Progress": 30,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
       "Action": "Tell",
@@ -467,7 +467,7 @@
     },
     {
       "Progress": 31,
-      "Place": null,
+      "Place": "스테이션",
       "Position": "응급의학과 의사",
       "Item": null,
       "Action": "EMRWrite",
@@ -632,7 +632,7 @@
     },
     {
       "Progress": 42,
-      "Place": null,
+      "Place": "스테이션",
       "Position": "감염관리팀 간호사",
       "Item": null,
       "Action": "EMRRead",
@@ -692,7 +692,7 @@
     },
     {
       "Progress": 46,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "Tell",
@@ -707,7 +707,7 @@
     },
     {
       "Progress": 47,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "Tell",
@@ -722,7 +722,7 @@
     },
     {
       "Progress": 48,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
       "Action": "Use",
@@ -992,7 +992,7 @@
     },
     {
       "Progress": 66,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
       "Action": "Tell",
@@ -1007,7 +1007,7 @@
     },
     {
       "Progress": 67,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
       "Action": "Tell",
@@ -1022,7 +1022,7 @@
     },
     {
       "Progress": 68,
-      "Place": null,
+      "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
       "Action": "X-Ray",

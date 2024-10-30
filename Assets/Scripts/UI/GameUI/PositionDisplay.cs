@@ -27,6 +27,9 @@ public class PositionDisplay : FloatingUI
 
         if (_canvas != null)
         {
+            if (Camera.main == null)
+                return;
+
             int distance = (int)(Camera.main.transform.position - transform.position).magnitude;
             if (distance == 0)
                 _canvas.sortingOrder = 0;

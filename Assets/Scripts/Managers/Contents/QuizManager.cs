@@ -1,9 +1,7 @@
-using Ricimi;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow;
 
 public class QuizManager
 {
@@ -12,11 +10,16 @@ public class QuizManager
     GameObject quizUI_Answer;
     GameObject TopRightUI;
     bool Passcheck = false;
+    bool QuizAppear = false; 
+    float timer;
+    GameObject RightPanel;
+    GameObject WrongPanel;
 
     void init()
     {
         quizUI_Answer = Util.FindChildByName(quizUI, "Answer");
     }
+
     public IEnumerator QuizUI(int number)
     {
        
@@ -27,7 +30,6 @@ public class QuizManager
         yield return Managers.Instance.StartCoroutine(QuizCheck());
     }
     
-    bool QuizApear = false;
     IEnumerator ShowQuizWithCountdown()
     {
         int i = 0;
@@ -45,12 +47,12 @@ public class QuizManager
             yield return new WaitForSeconds(1f); // 1초 대기
         }
         Managers.UI.DestroyUI(popup);
-        while(!QuizApear)
+        while(!QuizAppear)
         {
             quizUI = Managers.UI.CreateUI("QUIZUI");
-            QuizApear = true;
+            QuizAppear = true;
         }
-        if (QuizApear)
+        if (QuizAppear)
         {
             if (quizUI == null)
                 Debug.Log("퀴즈 UI를 찾을 수 없습니다");
@@ -72,6 +74,7 @@ public class QuizManager
         }
 
     }
+
     IEnumerator QuizCheck()
     {
         while (!Passcheck)
@@ -80,14 +83,13 @@ public class QuizManager
         }
     }
 
-    float timer;
-    GameObject RightPanel;  
-    GameObject WrongPanel;
     public IEnumerator AnswerButtonCheck()
     {
         timer = 0;
+
         if (RightPanel == null)
             RightPanel = Util.FindChildByName(quizUI, "RightPanel");
+
         RightPanel.SetActive(true);
         //Managers.UI.CreateSystemPopup("WarningPopup", "정답입니다.");
         yield return new WaitForSeconds(2f);
@@ -107,6 +109,7 @@ public class QuizManager
 
         WrongPanel.SetActive(false);
     }
+
     //정상화
     void NormalizationestroyUI()
     {
@@ -115,5 +118,17 @@ public class QuizManager
         Cursor.visible = false;  // 마우스 포인터를 숨김
         Managers.UI.DestroyUI(quizUI);
         Managers.Scenario.CompleteCount++;
+    }
+
+    public void Clear()
+    {
+        quizUI = null;
+        popup = null;
+        quizUI_Answer = null;
+        TopRightUI = null;
+        Passcheck = false;
+        QuizAppear = false;
+        RightPanel = null;
+        WrongPanel = null;
     }
 }

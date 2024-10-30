@@ -65,4 +65,9 @@ public class BubbleManager
         cb.normalColor = _normalColor;
         button.colors = cb;
     }
+
+    public void Clear()
+    {
+        SelectedChat = null;
+    }
 }

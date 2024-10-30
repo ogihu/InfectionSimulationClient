@@ -88,9 +88,14 @@ public class MyPlayerController : PlayerController
     {
         if (Managers.Quiz.quizUI != null)
             return false;
+
         if(Managers.Scenario.WearUI != null)
             return false;
+
         if (Managers.Item.IsInventoryOpen)
+            return false;
+
+        if (Managers.EMR.DoingEMR)
             return false;
 
         if (State == CreatureState.Idle || State == CreatureState.Run)
@@ -124,7 +129,19 @@ public class MyPlayerController : PlayerController
             {
                 if (_interactionObject.name == "EMRPC")
                 {
-                    Managers.Scenario.MyAction = "EMRWrite";
+                    if(Managers.Scenario.CurrentScenarioInfo != null)
+                    {
+                        if(Managers.Scenario.CurrentScenarioInfo.Action == "EMRWrite")
+                        {
+                            Managers.EMR.OpenEMRWrite();
+                        }
+                        else  if (Managers.Scenario.CurrentScenarioInfo.Action == "EMRRead")
+                        {
+                            Managers.EMR.OpenEMRRead();
+                        }
+                        return;
+                    }
+                    Managers.UI.CreateSystemPopup("WarningPopup", "<color=#ff0000>현재 사용할 수 없는 기능입니다.</color=#ff0000>");
                 }
                 else if (_interactionObject.name == "ScenarioX-ray")
                 {
@@ -134,15 +151,6 @@ public class MyPlayerController : PlayerController
                 {
                     GetItem();  // 아이템 상호작용
                 }
-            }
-
-            // 추가된 조건: 시나리오 액션이 EMRWrite 또는 EMRRead이고 플레이어 위치가 맞는지 확인
-            if ((Managers.Scenario.CurrentScenarioInfo.Action == "EMRWrite" ||
-                 Managers.Scenario.CurrentScenarioInfo.Action == "EMRRead") &&
-                Managers.Scenario.CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position)
-            {
-                // 시나리오 액션 수행
-                Managers.Scenario.MyAction = Managers.Scenario.CurrentScenarioInfo.Action;
             }
         }
 
@@ -172,23 +180,6 @@ public class MyPlayerController : PlayerController
             {
                 if (State == CreatureState.Idle || State == CreatureState.Setting)
                     Managers.UI.OpenOrCloseSetting();
-            }
-        }
-
-        //청소
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            if (State == CreatureState.Idle)
-            {
-                Managers.Scenario.MyAction = "Clean";
-                State = CreatureState.Clean;
-            }
-        }
-        else if (Input.GetKeyUp(KeyCode.L))
-        {
-            if (State == CreatureState.Clean)
-            {
-                State = CreatureState.Idle;
             }
         }
 

@@ -31,11 +31,15 @@ public class KeywordManager
     {
         _panel.ResetUIs();
         Managers.UI.DestroyUI(_panel.gameObject);
+        _panel = null;
         Managers.Object.MyPlayer.State = CreatureState.Idle;
     }
 
     public void CheckRemainKeywords()
     {
+        if (_panel == null)
+            return;
+
         if (!_panel.CheckRemainKeywords())
             return;
 
@@ -47,5 +51,10 @@ public class KeywordManager
         Managers.Network.Send(talkPacket);
 
         CloseGUIKeyword();
+    }
+
+    public void Clear()
+    {
+        _panel = null;
     }
 }

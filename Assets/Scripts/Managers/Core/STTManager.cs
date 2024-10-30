@@ -144,4 +144,16 @@ public class STTManager
     {
         SpeechBuffer = null;
     }
+
+    public void Clear()
+    {
+        _sttstreamingtext = null;
+        _googlespeechobj = null;
+        _speechBuffer = null;
+        _mySpeech = null;
+        _openSpeech = null;
+        _closeSpeech = null;
+        _isClosed = true;
+        _textAnim = null;
+    }
 }

@@ -7,7 +7,7 @@ public class BlankUI : MonoBehaviour
 {
     public Image targetImage;
     private Color originalColor;
-    public string Answer { get; set; }
+    public string Answer;
     Coroutine _co;
 
     void Awake()

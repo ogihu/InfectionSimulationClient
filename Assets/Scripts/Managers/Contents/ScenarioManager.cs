@@ -17,6 +17,9 @@ public class ScenarioManager
     public int Progress { get; set; }
     public string Item { get; set; }
 
+    int _score = 100;
+    int _faultCount = 0;
+
     public Dictionary<string, NPCController> NPCs = new Dictionary<string, NPCController>();
 
     GameObject _realtimeSTT;
@@ -283,7 +286,7 @@ public class ScenarioManager
         switch (scenarioName)
         {
             case "엠폭스":
-                NPCs["환자"].GetComponent<NavMeshAgent>().enabled = false; 
+                NPCs["환자"].GetComponent<NavMeshAgent>().enabled = false;
                 NPCs["환자"].FreezePosition();
 
                 //환자를 침대 자식오브젝트로 설정, 환자를 침대에 눕힘
@@ -310,103 +313,108 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
-                //환자 음압격리실로 이송
-                //{
-                //    NPCs["보안요원1"].Use("Mask");
-                //    NPCs["보안요원2"].Use("Mask");
-                //    NPCs["미화1"].Use("Mask");
-                //    NPCs["미화2"].Use("Mask");
+                #region 환자 격리실 이송
+                {
+                    NPCs["보안요원1"].Use("Mask");
+                    NPCs["보안요원2"].Use("Mask");
+                    NPCs["미화1"].Use("Mask");
+                    NPCs["미화2"].Use("Mask");
 
-                //    Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원1"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원2"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원3"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원4"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원1"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원2"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원3"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원4"], "ProtectedGear");
 
-                //    NPCs["이송요원"].Teleport(WaitingArea);
-                //    NPCs["보안요원1"].Teleport(WaitingArea);
-                //    NPCs["보안요원2"].Teleport(WaitingArea);
-                //    NPCs["보안요원3"].Teleport(WaitingArea);
-                //    NPCs["보안요원4"].Teleport(WaitingArea);
+                    NPCs["이송요원"].Teleport(WaitingArea);
+                    NPCs["보안요원1"].Teleport(WaitingArea);
+                    NPCs["보안요원2"].Teleport(WaitingArea);
+                    NPCs["보안요원3"].Teleport(WaitingArea);
+                    NPCs["보안요원4"].Teleport(WaitingArea);
 
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
 
-                //    NPCs["보안요원1"].Teleport(Entrance);
-                //    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(BlockingPoint4));
-                //    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetForward(-Vector3.right));
-                //    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoSetState(CreatureState.Blocking));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["보안요원2"].Teleport(Entrance);
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint3));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    NPCs["보안요원2"].Teleport(Entrance);
-                //    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint3));
-                //    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
-                //    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetState(CreatureState.Blocking));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["보안요원3"].Teleport(Entrance);
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoGoDestination(BlockingPoint2));
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    NPCs["보안요원3"].Teleport(Entrance);
-                //    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoGoDestination(BlockingPoint2));
-                //    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetForward(-Vector3.right));
-                //    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetState(CreatureState.Blocking));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["보안요원4"].Teleport(Entrance);
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoGoDestination(BlockingPoint1));
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    NPCs["보안요원4"].Teleport(Entrance);
-                //    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoGoDestination(BlockingPoint1));
-                //    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetForward(-Vector3.right));
-                //    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetState(CreatureState.Blocking));
-                //    yield return new WaitForSeconds(1.0f);
+                    yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint3).magnitude < 1);
 
-                //    yield return new WaitUntil(() => (NPCs["보안요원1"].transform.position - BlockingPoint4).magnitude < 1);
+                    NPCs["보안요원1"].Teleport(Entrance);
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(MovePosition));
+                    yield return new WaitForSeconds(3.0f);
 
-                //    NPCs["이송요원"].Teleport(Entrance);
-                //    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
+                    NPCs["이송요원"].Teleport(Entrance);
+                    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
 
-                //    yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 0.3f);
+                    yield return new WaitUntil(() => (NPCs["보안요원1"].transform.position - MovePosition).magnitude < 0.3f);
 
-                //    GameObject bed = GameObject.Find("move_bed");
-                //    bed.transform.SetParent(NPCs["이송요원"].transform);
-                //    NPCs["이송요원"].transform.GetChild(1).localPosition = new Vector3(0, 0, 1.2f);
-                //    NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90, 0);
-                //    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea, CreatureState.Push));
-                //    NPCs["이송요원"].ChangeSpeed(2f);
-                //    GameObject go1 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
-                //    GameObject go2 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
-                //    GameObject go3 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원3"].transform);
-                //    GameObject go4 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원4"].transform);
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(IsolationArea));
+                    NPCs["보안요원1"].ChangeSpeed(2f);
 
-                //    NPCs["미화1"].Teleport(Entrance);
-                //    NPCs["미화1"].AddOrder(NPCs["미화1"].CoGoDestination(OABed));
-                //    NPCs["미화1"].AddOrder(NPCs["미화1"].CoUse("WetMop"));
-                //    yield return new WaitForSeconds(1.0f);
+                    yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 0.3f);
 
-                //    NPCs["미화2"].Teleport(Entrance);
-                //    NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(OATable));
-                //    NPCs["미화2"].AddOrder(NPCs["미화2"].CoUse("TissueBox", () => NPCs["미화2"].SetForward(NPCs["미화2"].transform.forward)));
-                //    yield return new WaitForSeconds(1.0f);
+                    GameObject bed = GameObject.Find("move_bed");
+                    bed.transform.SetParent(NPCs["이송요원"].transform);
+                    NPCs["이송요원"].transform.GetChild(1).localPosition = new Vector3(0, 0, 1.2f);
+                    NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90, 0);
+                    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea, CreatureState.Push));
+                    NPCs["이송요원"].ChangeSpeed(2f);
+                    GameObject go1 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
+                    GameObject go2 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
+                    GameObject go3 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원3"].transform);
+                    GameObject go4 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원4"].transform);
+                    yield return new WaitForSeconds(1.0f);
 
-                //    yield return new WaitUntil(() => NPCs["이송요원"].Place == "음압격리실");
+                    NPCs["미화1"].Teleport(Entrance);
+                    NPCs["미화1"].AddOrder(NPCs["미화1"].CoGoDestination(OABed));
+                    NPCs["미화1"].AddOrder(NPCs["미화1"].CoUse("WetMop"));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    //이송된 환자 음압격리실에 세팅
-                //    NPCs["환자"].SetState(CreatureState.LyingIdle);
-                //    bed.transform.SetParent(null);
-                //    bed.transform.position = Define.IABed;
-                //    bed.transform.eulerAngles = new Vector3(0, 90, 0);
+                    NPCs["미화2"].Teleport(Entrance);
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(OATable));
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoUse("TissueBox", () => NPCs["미화2"].SetForward(NPCs["미화2"].transform.forward)));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    //환자 이송이 끝나면 모든 NPC 상태 초기화, 출입구로 이동 후 퇴장 (환자 제외)
-                //    NPCs["이송요원"].ResetSpeed();
-                //    StopAllNPC(NPCs["환자"]);
-                //    SetStateAllNPC(CreatureState.Idle, NPCs["환자"]);
-                //    MoveAllNPC(Entrance, NPCs["환자"]);
-                //    WarpAllNPC(WaitingArea, NPCs["환자"]);
+                    yield return new WaitUntil(() => NPCs["이송요원"].Place == "음압격리실");
 
-                //    Managers.Resource.Destroy(go1);
-                //    Managers.Resource.Destroy(go2);
-                //    Managers.Resource.Destroy(go3);
-                //    Managers.Resource.Destroy(go4);
-                //}
+                    //이송된 환자 음압격리실에 세팅
+                    NPCs["환자"].SetState(CreatureState.LyingIdle);
+                    bed.transform.SetParent(null);
+                    bed.transform.position = Define.IABed;
+                    bed.transform.eulerAngles = new Vector3(0, 90, 0);
+
+                    //환자 이송이 끝나면 모든 NPC 상태 초기화, 출입구로 이동 후 퇴장 (환자 제외)
+                    NPCs["이송요원"].ResetSpeed();
+                    NPCs["보안요원1"].ResetSpeed();
+                    StopAllNPC(NPCs["환자"]);
+                    SetStateAllNPC(CreatureState.Idle, NPCs["환자"]);
+                    MoveAllNPC(Entrance, NPCs["환자"]);
+                    WarpAllNPC(WaitingArea, NPCs["환자"]);
+
+                    Managers.Resource.Destroy(go1);
+                    Managers.Resource.Destroy(go2);
+                    Managers.Resource.Destroy(go3);
+                    Managers.Resource.Destroy(go4);
+                }
+                #endregion
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));
@@ -463,6 +471,25 @@ public class ScenarioManager
 
         UpdateScenarioAssist("시나리오를 완료하셨습니다.");
         Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 완료하셨습니다.");
+
+        yield return new WaitForSeconds(3.0f);
+
+        string poisition = Managers.Object.MyPlayer.Position;
+        int score = _score;
+        int faultCount = _faultCount;
+
+        Managers.Object.Clear();
+
+        Managers.Scene.LoadSceneWait(Scene.Login);
+        Managers.Scene.AddWaitEvent(() =>
+        {
+            C_EndGame endPacket = new C_EndGame();
+            endPacket.Position = poisition;
+            endPacket.FinalScore = score;
+            endPacket.FaultCount = faultCount;
+            Managers.Network.Send(endPacket);
+            Managers.Network.WaitingUI = Managers.UI.CreateUI("WaitingUI");
+        });
     }
 
     #endregion
@@ -767,5 +794,25 @@ public class ScenarioManager
         int[] showYudoLineProgress = { 20, 25, 38, 51 };
 
         return Array.Exists(showYudoLineProgress, p => p == progress);
+    }
+
+    public void Clear()
+    {
+        CompleteCount = 0;
+        ScenarioName = null;
+        Progress = 0;
+        Item = null;
+        _score = 100;
+        _faultCount = 0;
+        NPCs.Clear();
+        _realtimeSTT = null;
+        _scenarioAssist = null;
+        _scenarioHint = false;
+        _checkComplete = false;
+        Reset();
+        _doingScenario = false;
+        _routine = null;
+        PopupConfirm = 0;
+        CurrentScenarioInfo = null;
     }
 }

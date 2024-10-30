@@ -16,6 +16,8 @@ public class Managers : MonoBehaviour
     BubbleManager _bubble = new BubbleManager();
     KeywordManager _keyword = new KeywordManager();
     QuizManager _quiz = new QuizManager();
+    EMRManager _emr = new EMRManager();
+
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
     public static ScenarioManager Scenario { get { return Instance._scenario; } }
@@ -24,6 +26,7 @@ public class Managers : MonoBehaviour
     public static BubbleManager Bubble { get { return Instance._bubble; } }
     public static KeywordManager Keyword { get { return Instance._keyword; } }
     public static QuizManager Quiz { get {   return Instance._quiz; } }
+    public static EMRManager EMR { get { return Instance._emr; } }
     #endregion
 
     #region Core
@@ -91,7 +94,16 @@ public class Managers : MonoBehaviour
 
     public static void Clear()
     {
-        Scene.Clear();
         Pool.Clear();
+        Bubble.Clear();
+        Item.Clear();
+        Keyword.Clear();
+        Object.Clear();
+        Phone.Clear();
+        Quiz.Clear();
+        Scenario.Clear();
+        Setting.Clear();
+        STT.Clear();
+        UI.Clear();
     }
 }

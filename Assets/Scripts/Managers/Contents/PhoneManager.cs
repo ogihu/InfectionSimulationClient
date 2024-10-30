@@ -33,4 +33,9 @@ public class PhoneManager
         Managers.UI.DestroyUI(Device.gameObject);
         Managers.Object.MyPlayer.State = CreatureState.Idle;
     }
+
+    public void Clear()
+    {
+        _device = null;
+    }
 }

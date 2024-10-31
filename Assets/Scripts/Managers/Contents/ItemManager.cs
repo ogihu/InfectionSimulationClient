@@ -119,6 +119,12 @@ public class ItemManager
         SelectedItem = null;
         Inventory.ChangeItemText("");
         Managers.UI.CreateSystemPopup("WarningPopup", $"{Define.ItemInfoDict[item.ItemData.Name].Name}을 사용하였습니다.", UIManager.NoticeType.Info);
+
+        if(selectedItem as ImmediatelyUsingItem)
+        {
+            Managers.Resource.Destroy(item.Object);
+            item.Object = null;
+        }
     }
 
     public void StartCombineItem()
@@ -189,6 +195,7 @@ public class ItemManager
         }
 
         ForceUnUseItem(item);
+        Managers.Scenario.MyAction = "UnUse";
         Managers.UI.CreateSystemPopup("WarningPopup", $"{Define.ItemInfoDict[item.ItemData.Name].Name}을 해제하였습니다", UIManager.NoticeType.Info);
     }
 
@@ -214,7 +221,6 @@ public class ItemManager
         }
         SelectedItem = null;
         Managers.Scenario.Item = item.ItemData.Name;
-        Managers.Scenario.MyAction = "UnUse";
     }
 
     public void DropItem(ItemInfo item)

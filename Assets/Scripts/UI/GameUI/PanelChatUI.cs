@@ -60,13 +60,13 @@ public class PanelChatUI : FloatingUI
     {
         if (_target == null)
         {
-            Debug.LogError("There is no target to chase, Check the target of this object");
+            Debug.LogWarning("There is no target to chase, Check the target of this object");
             return;
         }
 
         if (_canvas == null)
         {
-            Debug.LogError("There is no Canvas attached to this object, Check the Canvas component");
+            Debug.LogWarning("There is no Canvas attached to this object, Check the Canvas component");
             return;
         }
 

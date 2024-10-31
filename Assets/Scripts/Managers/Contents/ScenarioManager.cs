@@ -356,6 +356,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(14));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
                 #region 환자 격리실 이송
                 {
                     NPCs["보안요원1"].Use("Mask");
@@ -458,23 +459,22 @@ public class ScenarioManager
                     Managers.Resource.Destroy(go4);
                 }
                 #endregion
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(20));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(21));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(22));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(23));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(24));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(25));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(26));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "아니요. 딱히 없었어요.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(27));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(28));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "아니요. 딱히 없었어요.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(29));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(30));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(31));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(32));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(33));
@@ -489,10 +489,10 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(42));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(43));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(44));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(45));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(46));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(47));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(48));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(49));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(50));
@@ -507,8 +507,23 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(59));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(60));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(61));
-                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(62));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(63));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(64));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(65));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(66));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(67));
+                Managers.UI.ChangeChatBubble(NPCs["환자"].transform, "이감염 001218년생 입니다.");
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(68));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(69));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(70));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(71));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(72));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(73));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(74));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(75));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(76));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(77));
                 break;
         }
 
@@ -875,7 +890,7 @@ public class ScenarioManager
 
     bool ShouldShowYudoLine(int progress)
     {
-        int[] showYudoLineProgress = { 20, 25, 38, 51 };
+        int[] showYudoLineProgress = { 24, 29, 46, 66 };
 
         return Array.Exists(showYudoLineProgress, p => p == progress);
     }

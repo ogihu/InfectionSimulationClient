@@ -110,10 +110,10 @@ RectTransform:
   - {fileID: 8837972974492781934}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1480.886, y: 1080}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4802466248587175485
 MonoBehaviour:
@@ -190,7 +190,7 @@ RectTransform:
   m_GameObject: {fileID: 3982201901483854414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6105138535642931765}
@@ -358,7 +358,7 @@ RectTransform:
   m_GameObject: {fileID: 4610395211699178105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3472356121017895622}
@@ -366,7 +366,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.0043793, y: -46.003}
-  m_SizeDelta: {x: 164.13, y: 141.14}
+  m_SizeDelta: {x: 1400, y: 980}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8149408301499261428
 CanvasRenderer:
@@ -548,8 +548,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: NOTICE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 672baec5a3f7b4d329bf5b4052d5109b, type: 2}
-  m_sharedMaterial: {fileID: 4707819496639375797, guid: 672baec5a3f7b4d329bf5b4052d5109b,
+  m_fontAsset: {fileID: 11400000, guid: a7ca2896f05f242a28ccfcc12bf1a33b, type: 2}
+  m_sharedMaterial: {fileID: 2031128046728852764, guid: a7ca2896f05f242a28ccfcc12bf1a33b,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -707,12 +707,12 @@ PrefabInstance:
     - target: {fileID: 7880043429840621289, guid: f6f729c66bf722c4ea9c7fa510aa5725,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 174
+      value: -45
       objectReference: {fileID: 0}
     - target: {fileID: 7880043429840621289, guid: f6f729c66bf722c4ea9c7fa510aa5725,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -45
+      value: -42
       objectReference: {fileID: 0}
     - target: {fileID: 7880043429840621289, guid: f6f729c66bf722c4ea9c7fa510aa5725,
         type: 3}

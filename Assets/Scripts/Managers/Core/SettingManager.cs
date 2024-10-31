@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class SettingManager
 {
+
     #region Sound
 
     float bgmVol;

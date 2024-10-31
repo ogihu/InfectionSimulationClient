@@ -43,7 +43,6 @@ public class MyPlayerController : PlayerController
         _coSendPacket = StartCoroutine(CoSyncUpdate());
         _layerMask = 1 << LayerMask.NameToLayer("Interaction");
         Managers.Setting.SceneStartMicCheck();
-        Managers.Setting.MicCheckUI.SetActive(false);
     }
 
     protected override void UpdateController()

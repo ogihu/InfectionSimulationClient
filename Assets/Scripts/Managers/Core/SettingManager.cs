@@ -41,9 +41,6 @@ public class SettingManager
 
     public GameObject MicCheckUI;
     public bool PlayerUsingMic;
-    public bool startcheck = false;
-    UnityEngine.SceneManagement.Scene scene;
-    string str = "Game";
 
     void init()
     {
@@ -56,10 +53,11 @@ public class SettingManager
     {
         if(MicCheckUI == null)
             init();
-        if (scene.Equals(str) && startcheck)
-            return;
 
-       scene = SceneManager.GetActiveScene();
+        if(Managers.Scenario.CurrentScenarioInfo != null&& Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
+            MicCheckUI.SetActive(true);
+        else
+            MicCheckUI.SetActive(false);
 
         if (!UsingMic)
             ChangeMicStateFalse();
@@ -69,12 +67,16 @@ public class SettingManager
 
     public void ChangeMicStateFalse()
     {
-        Managers.STT.MySpeech.SetActive(false);
         if (!Managers.Scenario._doingScenario)
+        {
+            Managers.STT.MySpeech.SetActive(false);
             return;
-        if(MicCheckUI == null)
-             init();
+        }
+        MicCheckUI.SetActive(false);
+        Managers.STT.MySpeech.SetActive(false);
+
         MicCheckUI.GetComponent<TMP_Text>().text = "키워드를 알맞은 칸에 넣으세요";
+
         if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
             MicCheckUI.SetActive(true);  
         else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
@@ -93,15 +95,7 @@ public class SettingManager
             init();
         Managers.STT.MySpeech.SetActive(true);
 
-        MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요";
-        //if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
-        //    MicCheckUI.SetActive(true);
-        //else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
-        //{
-        //    MicCheckUI.SetActive(false);
-        //    Managers.STT.MySpeech.SetActive(false);
-        //}
-            
+        MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요";   
     }
 
     public void Init()

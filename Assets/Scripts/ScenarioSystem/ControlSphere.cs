@@ -26,7 +26,7 @@ public class ControlSphere : MonoBehaviour
             return;
 
         if (_popup != null)
-            _popup.GetComponent<SystemPopup>().AutoDestroy(0);
+            _popup.SetActive(false);
     }
 
     private void OnDisable()

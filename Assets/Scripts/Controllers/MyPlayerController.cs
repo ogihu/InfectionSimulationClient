@@ -203,6 +203,7 @@ public class MyPlayerController : PlayerController
         {
             if (!Managers.Scenario._doingScenario)
                 return;
+
             if (Managers.Scenario.CurrentScenarioInfo != null)
             {
                 if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
@@ -211,6 +212,9 @@ public class MyPlayerController : PlayerController
                     return;
                 }
             }
+
+            if (!Managers.Scenario.CheckPlace())
+                return;
 
             if (State == CreatureState.Idle)
             {

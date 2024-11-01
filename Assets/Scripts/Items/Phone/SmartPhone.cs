@@ -83,9 +83,12 @@ public class SmartPhone : MonoBehaviour
 
                 if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Call"))
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.", UIManager.NoticeType.None);
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 현재 사용할 수 없습니다.", UIManager.NoticeType.None);
                     return;
                 }
+
+                if (!Managers.Scenario.CheckPlace())
+                    return;
 
                 Managers.Scenario.MyAction = funcName;
                 _functions.SetActive(false);
@@ -102,9 +105,12 @@ public class SmartPhone : MonoBehaviour
 
                 if (!(Managers.Scenario.CurrentScenarioInfo.Action == "Messenger"))
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 필요한 상황에만 사용할 수 있습니다.", UIManager.NoticeType.Warning);
+                    Managers.UI.CreateSystemPopup("WarningPopup", "해당 기능은 현재 사용할 수 없습니다.", UIManager.NoticeType.None);
                     return;
                 }
+
+                if (!Managers.Scenario.CheckPlace())
+                    return;
 
                 Managers.Scenario.MyAction = funcName;
                 Managers.UI.CreateSystemPopup("WarningPopup", "신속대응팀을 활성화 하였습니다.", UIManager.NoticeType.Info);
@@ -129,7 +135,15 @@ public class SmartPhone : MonoBehaviour
     public void FuncConfirm()
     {
         Managers.Scenario.Targets.Clear();
+
         _targetToggle.ForEach((x) => { if (x.isOn == true) { Managers.Scenario.Targets.Add(x.gameObject.name); } });
+
+        if (!Managers.Scenario.CheckTarget())
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "대상이 올바르지 않습니다.", UIManager.NoticeType.Warning);
+            Reset();
+            return;
+        }
 
         switch (Managers.Scenario.MyAction)
         {

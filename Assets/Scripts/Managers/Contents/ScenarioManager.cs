@@ -742,7 +742,7 @@ public class ScenarioManager
         return true;
     }
 
-    bool CheckTarget()
+    public bool CheckTarget()
     {
         if (Targets.Count < CurrentScenarioInfo.Targets.Count)
             return false;
@@ -768,15 +768,14 @@ public class ScenarioManager
         if (string.IsNullOrEmpty(CurrentScenarioInfo.Place))
             return true;
 
-        //장비 착용과 관련된 시나리오가 아니면 통과
-        if(!(CurrentScenarioInfo.Action == "Equip" || CurrentScenarioInfo.Action == "UnEquip"))
-            return true;
-
         //시나리오 진행 장소가 정해져있는 경우, 현재 내가 해당 장소에 있는지 확인
         if (CurrentScenarioInfo.Place == Managers.Object.MyPlayer.Place)
             return true;
         else
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", $"{CurrentScenarioInfo.Place}에서 시나리오를 수행하세요.", UIManager.NoticeType.Warning);
             return false;
+        }
     }
 
     public float CheckKeywords(ref string message)

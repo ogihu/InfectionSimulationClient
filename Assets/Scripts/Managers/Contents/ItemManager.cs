@@ -190,7 +190,6 @@ public class ItemManager
         //시나리오 상 정해진 위치에서 탈의를 해야 할 경우
         if (!Managers.Scenario.CheckPlace())
         {
-            Managers.UI.CreateSystemPopup("WarningPopup", "올바른 장소에서 장비를 해제하세요.", UIManager.NoticeType.Warning);
             return;
         }
 
@@ -247,7 +246,6 @@ public class ItemManager
 
         if (!Managers.Scenario.CheckPlace())
         {
-            Debug.Log("올바른 장소에서 버리세요.");
             return;
         }
 

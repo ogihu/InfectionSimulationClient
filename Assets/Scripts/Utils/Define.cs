@@ -109,6 +109,8 @@ public class Define
 
     #endregion
 
+    #region PointMapping
+
     public static readonly Vector3 Entrance = new Vector3(-6.5f, 0, 17.5f);
     public static int WaitingCount = 0;
     public static readonly Vector3 WaitingArea = new Vector3(-35, 0, 15);
@@ -128,6 +130,8 @@ public class Define
     public static readonly Vector3 BlockingPoint3 = new Vector3(-1, 0, -22);
     public static readonly Vector3 BlockingPoint4 = new Vector3(12, 0, -26.5f);
 
+    #endregion
+
     public static readonly string[] PhoneAddress =
     {
         "응급센터",
@@ -142,6 +146,57 @@ public class Define
         "원무팀",
         "진단검사의학팀"
     };
+
+    #region VoiceMapping
+
+    public static string ChangeText(string main)
+    {
+        foreach (var mapping in STTMapping)
+        {
+            main = main.Replace(mapping.Key, mapping.Value);
+        }
+
+        return main;
+    }
+
+    public static readonly Dictionary<string, string> STTMapping = new Dictionary<string, string>()
+    {
+        {"음악", "음압"},
+        {"경리실", "격리실"},
+        {"경비실", "격리실"},
+        {"m폭스", "엠폭스"},
+        {"mpox", "엠폭스"},
+        {"20만", "의심환자"},
+        {"신환자", "의심환자"},
+        {"확진다", "확진자"},
+        {"music", "유지"},
+        {"여보", "여부"},
+        {"석적", "접촉"},
+        {"확진한다", "확진환자"},
+        {"접속", "접촉"},
+        {"가면", "감염"},
+        {"전사", "전파"},
+        {"잠바", "전파"},
+        {"보고를 착용", "보호구를 착용"},
+        {"박진", "확진"},
+        {"유심론자", "의심환자"},
+        {"사정", "4종"},
+        {"보고서", "보호구"},
+        {"소포", "수포"},
+        {"관리 팀", "관리팀"},
+        {"사전", "4종"},
+        {"보고", "보호구"},
+        {"위신", "의심"},
+        {"혼자", "환자"},
+        {"4동", "4종"},
+        {"사종", "4종"},
+        {"20년", "의심환자"},
+        {"홍제", "통제"},
+        {"1층", "의심"},
+        {"20", "의심"}
+    };
+
+    #endregion
 
     #region Informations
 

@@ -26,7 +26,6 @@ public class AccumulateText : MonoBehaviour
     [Tooltip("How similar must the user's transcription be to trigger a match?")]
     public float SimilarityThreshold;
 
-
     public void AddInterimTranscription(string interimTranscription)
     {
         _interimText = _accumulatedText == "" ? interimTranscription : " " + interimTranscription;
@@ -52,10 +51,12 @@ public class AccumulateText : MonoBehaviour
         _canvasRect = _text.canvas.GetComponent<RectTransform>();
     }
     public bool Stoptext = false;
+
     private void SetText()
     {
         if (Stoptext)
             return;
+
         float textHeight = LayoutUtility.GetPreferredHeight(_text.rectTransform);
         float parentHeight = _canvasRect.rect.height;
         if (textHeight > parentHeight)
@@ -68,9 +69,10 @@ public class AccumulateText : MonoBehaviour
             _text.text = _accumulatedText + _interimText;
         }
         
+        _text.text = Define.ChangeText(_text.text);
     }
 
-    public  void FinalEvaluate()
+    public void FinalEvaluate()
     {
         FinalEvaluate(_text.text);
     }

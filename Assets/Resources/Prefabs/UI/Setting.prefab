@@ -934,6 +934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 182984585473400832}
   - component: {fileID: 3164327685070048564}
+  - component: {fileID: 6443985235567045712}
   m_Layer: 5
   m_Name: Slider - Gradient - Blue (1)
   m_TagString: Untagged
@@ -1012,7 +1013,31 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6443985235567045712}
+        m_TargetAssemblyTypeName: BGMSlider, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6443985235567045712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467299776858507616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4b9a67b6e1ee6489261425eda90b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1677587767030029217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1463,7 +1488,7 @@ RectTransform:
   - {fileID: 5903374432168646780}
   - {fileID: 453143923480214801}
   - {fileID: 7604824597065801551}
-  - {fileID: 2619248717351019937}
+  - {fileID: 7358493537957705534}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2250,6 +2275,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5028504443253351498}
   - component: {fileID: 7830408346285738366}
+  - component: {fileID: 8882429460972570858}
   m_Layer: 5
   m_Name: Slider - Gradient - Red
   m_TagString: Untagged
@@ -2328,7 +2354,31 @@ MonoBehaviour:
   m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8882429460972570858}
+        m_TargetAssemblyTypeName: SFXSlider, Assembly-CSharp
+        m_MethodName: OnValueChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8882429460972570858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5989265217215532330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e38a730d396e249b79cbd5c817b4b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6276716676619423600
 GameObject:
   m_ObjectHideFlags: 0
@@ -4592,9 +4642,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fc6e0c7d579f4f4fb5fddeccaacaa1e, type: 3}
---- !u!224 &2619248717351019937 stripped
+--- !u!224 &7358493537957705534 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5821913430551262659, guid: 3fc6e0c7d579f4f4fb5fddeccaacaa1e,
+  m_CorrespondingSourceObject: {fileID: 1336576631220103004, guid: 3fc6e0c7d579f4f4fb5fddeccaacaa1e,
     type: 3}
   m_PrefabInstance: {fileID: 8400031065024991330}
   m_PrefabAsset: {fileID: 0}

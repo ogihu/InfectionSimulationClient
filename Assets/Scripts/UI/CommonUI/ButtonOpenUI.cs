@@ -17,7 +17,13 @@ public class ButtonOpenUI : ButtonUI
             return;
         }
 
-        if(Managers.Object.MyPlayer.IsCanActive())
+        if(Managers.Scene.CurrentScene is LoginScene)
+        {
             Managers.UI.CreateUI(uiName);
+        }
+
+        if(Managers.Scene.CurrentScene is GameScene)
+            if(Managers.Object.MyPlayer.IsCanActive())
+                Managers.UI.CreateUI(uiName);
     }
 }

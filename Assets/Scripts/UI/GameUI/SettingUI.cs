@@ -6,7 +6,8 @@ public class Setting : MonoBehaviour
 {
     private void OnEnable()
     {
-        Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Setting;
+        if (Managers.Object.MyPlayer != null)
+            Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Setting;
     }
 
     private void OnDisable()

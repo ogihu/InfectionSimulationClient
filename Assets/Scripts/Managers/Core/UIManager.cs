@@ -205,6 +205,7 @@ public class UIManager
 
         //추가
         BaseController bc = host.GetComponent<BaseController>();
+
         if(bc != null)
             Managers.TTS.Speaking(host, message);
     }

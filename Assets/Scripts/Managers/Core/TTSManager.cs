@@ -54,7 +54,7 @@ public class TTSManager
         AudioClip audioClip = AudioClip.Create("audioContent", f.Length, 1, 24000, false);
         audioClip.SetData(f, 0);
 
-        audioSource.PlayOneShot(audioClip);
+        Managers.Sound.Play(audioSource, audioClip);
     }
 
     public static float[] ConvertByteToFloat(byte[] array)

@@ -144,30 +144,10 @@ public class Syringe : UsingItem
                             // 시나리오 정보가 유효할 때
                             if (Managers.Scenario.CurrentScenarioInfo != null)
                             {
-
-                                //clickTime += Time.deltaTime;
-
-                                //// 3초 이상 클릭 유지시
-                                //if (clickTime >= holdDuration)
-                                //{
-                                //    Managers.Scenario.MyAction = "Use";
-                                //    if (obj.name != "AccuratePoint")
-                                //        Debug.Log("다른게 들어감");
-
-                                //    Managers.Scenario.Targets.Add("AccuratePoint");
-                                //    Mycharacter.State = CreatureState.Idle;
-                                //    check = true;  // check를 true로 설정하여 완료
-                                //}
                                 Mycharacter.State = CreatureState.Syringe;
                                
                                 StartCoroutine(CoDelayIdle(3.0f));
-                                
-
                             }
-                            //else if (clickTime < holdDuration)
-                            //{
-                            //    Managers.UI.CreateSystemPopup("WarningPopup", "3초가 지나야 합니다.");
-                            //}
                         }
                         else if (!Managers.Item.IsInventoryOpen)
                         {
@@ -175,15 +155,6 @@ public class Syringe : UsingItem
                         }
                     }
                 }
-                // 마우스 버튼을 떼면 상태를 Idle로 복구
-                //else if (Input.GetMouseButtonUp(0))
-                //{
-                //    if (Mycharacter.State == CreatureState.Syringe)
-                //    {
-                //        Mycharacter.State = CreatureState.Idle;
-                //        clickTime = 0f; // 클릭 시간 초기화
-                //    }
-                //}
             }
             // 다음 프레임까지 대기
             yield return null;

@@ -15,5 +15,10 @@ public class Map : MonoBehaviour
         {
             Managers.Scenario.UpdateMyPlace(gameObject.name);
         }
+
+        if(other.gameObject.GetComponent<BaseController>() != null)
+        {
+            other.gameObject.GetComponent<BaseController>().Place = gameObject.name;
+        }
     }
 }

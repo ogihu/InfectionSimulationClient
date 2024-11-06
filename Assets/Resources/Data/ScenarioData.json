@@ -1169,6 +1169,21 @@
       "Confirm": null,
       "Question": null,
       "Answers": null
+    },
+    {
+      "Progress": 78,
+      "Place": null,
+      "Position": "영상의학팀 방사선사",
+      "Item": "Swab",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
     }
   ]
 }

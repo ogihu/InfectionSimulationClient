@@ -467,21 +467,6 @@
     },
     {
       "Progress": 31,
-      "Place": "스테이션",
-      "Position": "응급의학과 의사",
-      "Item": null,
-      "Action": "EMRWrite",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "EMR을 통해 법정감염병 신고서를 작성하세요/",
-      "Hint": "관찰구역에서 EMR 법정감염병 신고서를 작성하세요",
-      "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?",
-      "Question": null,
-      "Answers": null
-    },
-    {
-      "Progress": 32,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Glove",
@@ -496,7 +481,7 @@
       "Answers": null
     },
     {
-      "Progress": 33,
+      "Progress": 32,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -511,7 +496,7 @@
       "Answers": null
     },
     {
-      "Progress": 34,
+      "Progress": 33,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ProtectedGear",
@@ -526,7 +511,7 @@
       "Answers": null
     },
     {
-      "Progress": 35,
+      "Progress": 34,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -541,7 +526,7 @@
       "Answers": null
     },
     {
-      "Progress": 36,
+      "Progress": 35,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Goggle",
@@ -556,7 +541,7 @@
       "Answers": null
     },
     {
-      "Progress": 37,
+      "Progress": 36,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -571,7 +556,7 @@
       "Answers": null
     },
     {
-      "Progress": 38,
+      "Progress": 37,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Mask",
@@ -586,7 +571,7 @@
       "Answers": null
     },
     {
-      "Progress": 39,
+      "Progress": 38,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -601,7 +586,7 @@
       "Answers": null
     },
     {
-      "Progress": 40,
+      "Progress": 39,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -612,6 +597,21 @@
       "DetailHint": null,
       "Hint": null,
       "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 40,
+      "Place": "스테이션",
+      "Position": "응급의학과 의사",
+      "Item": null,
+      "Action": "EMRWrite",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "EMR을 통해 법정감염병 신고서를 작성하세요/",
+      "Hint": "관찰구역에서 EMR 법정감염병 신고서를 작성하세요",
+      "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?",
       "Question": null,
       "Answers": null
     },

@@ -185,7 +185,7 @@ public class ScenarioManager
         for (int i = 3; i > 0; i--)
         {
             if (popup == null)
-                yield return null;
+                yield break;
             popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
             popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 개인보호구 "+a+"안내 이미지가 제공됩니다.";
             yield return new WaitForSeconds(1f); // 1초 대기

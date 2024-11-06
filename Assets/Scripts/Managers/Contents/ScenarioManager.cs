@@ -525,30 +525,47 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(76));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(77));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(78));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(79));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(80));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(81));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(82));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(83));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(84));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(85));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(86));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(87));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(88));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(89));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(90));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(91));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(92));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(92));
+
+
                 break;
         }
 
         #endregion
 
-        //UpdateScenarioAssist("시나리오를 완료하셨습니다.");
-        //Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 완료하셨습니다.", UIManager.NoticeType.None);
+        UpdateScenarioAssist("시나리오를 완료하셨습니다.");
+        Managers.UI.CreateSystemPopup("PopupNotice", $"{scenarioName} 시나리오를 완료하셨습니다.", UIManager.NoticeType.None);
 
-        //yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(3.0f);
 
-        //string position = Managers.Object.MyPlayer.Position;
-        //int score = Score;
+        string position = Managers.Object.MyPlayer.Position;
+        int score = Score;
 
-        //Managers.Object.Clear();
+        Managers.Object.Clear();
 
-        //Managers.Scene.LoadSceneWait(Scene.Login);
-        //Managers.Scene.AddWaitEvent(() =>
-        //{
-        //    C_EndGame endPacket = new C_EndGame();
-        //    endPacket.Position = position;
-        //    endPacket.FinalScore = score;
-        //    Managers.Network.Send(endPacket);
-        //    Managers.Network.WaitingUI = Managers.UI.CreateUI("WaitingUI");
-        //});
+        Managers.Scene.LoadSceneWait(Scene.Login);
+        Managers.Scene.AddWaitEvent(() =>
+        {
+            C_EndGame endPacket = new C_EndGame();
+            endPacket.Position = position;
+            endPacket.FinalScore = score;
+            Managers.Network.Send(endPacket);
+            Managers.Network.WaitingUI = Managers.UI.CreateUI("WaitingUI");
+        });
     }
 
     #endregion

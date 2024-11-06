@@ -22,15 +22,14 @@ public class QuizManager
 
     public IEnumerator QuizUI(int number)
     {
-       
-        
+        QuizAppear = false;
         Util.FindChildByName(Managers.Scenario.ScenarioAssist, "TurnNotice").GetComponent<TMP_Text>().text = Managers.Scenario.CurrentScenarioInfo.Hint;
         Managers.Instance.StartCoroutine(ShowQuizWithCountdown());
         
         yield return Managers.Instance.StartCoroutine(QuizCheck());
     }
     
-    IEnumerator ShowQuizWithCountdown()
+    IEnumerator ShowQuizWithCountdown() 
     {
         int i = 0;
         popup = Managers.UI.CreateUI("PopupNotice"); // 퀴즈 안내 문구
@@ -41,7 +40,7 @@ public class QuizManager
         for (i = 3; i > 0; i--)
         {
             if (popup == null)
-                yield return null;
+                yield break;
             popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
             popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString()+ "초 뒤에 돌발 퀴즈가 주어집니다.";
             yield return new WaitForSeconds(1f); // 1초 대기
@@ -51,7 +50,7 @@ public class QuizManager
         {
             quizUI = Managers.UI.CreateUI("QUIZUI");
             QuizAppear = true;
-        }
+        }   
         if (QuizAppear)
         {
             if (quizUI == null)
@@ -61,12 +60,12 @@ public class QuizManager
             Util.FindChildByName(quizUI, "Quest").GetComponent<TMP_Text>().text = Managers.Scenario.CurrentScenarioInfo.Question;
             for (i = 0; i < 4; i++)
             {
+                quizUI_Answer.transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = Managers.Scenario.CurrentScenarioInfo.Answers[i];
                 if (Managers.Scenario.CurrentScenarioInfo.Answers[i] == Managers.Scenario.CurrentScenarioInfo.Targets[0])
                 {
                     quizUI_Answer.transform.GetChild(i).gameObject.AddComponent<QuizAnswerButton>();
                     continue;
                 }
-                quizUI_Answer.transform.GetChild(i).GetChild(0).GetComponent<TMP_Text>().text = Managers.Scenario.CurrentScenarioInfo.Answers[i];
                 quizUI_Answer.transform.GetChild(i).gameObject.AddComponent<QuizWorongButton>();
             }
             Cursor.lockState = CursorLockMode.None;

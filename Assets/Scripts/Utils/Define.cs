@@ -257,7 +257,7 @@ public class Define
         {"Glove", new ItemInfo("장갑", "감염 예방과 위생 관리를 위해 의료진과 환자 간의 직접적인 접촉을 차단하는 보호 장비")},
         {"Handwash", new ItemInfo("손소독제", "피부 살균, 소독의 목적으로 사용하는 소모품")},
         {"Syringe",new ItemInfo("주사기","약액(주사약)을 생물체의 체내에 주사하는 의료 기기") },
-        {"Swab",new ItemInfo("의료용 면봉","의료 현장에서 사용하는 면봉으로 병원체와 미생물 의 채취, 상처의 소독 등에 사용") }
+        {"DrySwab",new ItemInfo("의료용 면봉","의료 현장에서 사용하는 면봉으로 병원체와 미생물 의 채취, 상처의 소독 등에 사용") }
     };
 
     public static readonly Dictionary<char, char> KtoE = new Dictionary<char, char>()

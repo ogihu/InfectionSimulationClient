@@ -138,6 +138,10 @@ public class MyPlayerController : PlayerController
                         {
                             Managers.EMR.OpenEMRRead();
                         }
+                        else if(Managers.Scenario.CurrentScenarioInfo.Action == "SCRFWrite")
+                        {
+                            Managers.Scenario.MyAction = "SCRFWrite";
+                        }
                         return;
                     }
                     Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);

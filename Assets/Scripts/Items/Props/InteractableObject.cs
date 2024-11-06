@@ -35,6 +35,8 @@ public class InteractableObject : MonoBehaviour
             _interactionKey.SetDescription("EMR 법정감염병 신고서 작성");
         else if (Managers.Scenario.CurrentScenarioInfo.Action == "EMRRead")
             _interactionKey.SetDescription("EMR 법정감염병 신고서 확인 및 신고 진행");
+        else if (Managers.Scenario.CurrentScenarioInfo.Action == "SCRFWrite")
+            _interactionKey.SetDescription("엠폭스 검체의뢰서 작성");
         else
             _interactionKey.SetDescription("");
     }

@@ -101,7 +101,9 @@ public class DataManager
                             split[1] = split[1].Replace(keyword, $"<color=#00ff00>{keyword}</color>");
                         }
                     }
-                    scenarioInfo.DetailHint += split[1];
+
+                    if(split.Length > 1 )
+                        scenarioInfo.DetailHint += split[1];
                 }
 
                 if (scenarioList.Targets != null)

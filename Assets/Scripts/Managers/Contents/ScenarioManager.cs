@@ -89,6 +89,8 @@ public class ScenarioManager
     public bool PassSpeech { get; set; }
     public List<string> Targets { get; set; } = new List<string>();
 
+    public List<string> TakedLesion { get; set; } = new List<string>();
+
     #endregion
 
     private bool _checkComplete;    //이미 Complete 패킷을 보냈는지 확인, 서버에서 시나리오는 진행시키면 (NextProcess 패킷을 받으면) false로 전환해야 함.
@@ -303,6 +305,10 @@ public class ScenarioManager
                     yield return Managers.Instance.StartCoroutine(CoScenarioStep(progress));
                     yield break;
                 }
+            }
+            else
+            {
+                Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과했습니다.", UIManager.NoticeType.Info);
             }
         }
         else
@@ -539,8 +545,6 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(90));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(91));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(92));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(92));
-
 
                 break;
         }
@@ -932,5 +936,6 @@ public class ScenarioManager
         _routine = null;
         PopupConfirm = 0;
         CurrentScenarioInfo = null;
+        TakedLesion.Clear();
     }
 }

@@ -223,6 +223,20 @@ public class ItemManager
         Managers.Scenario.Item = item.ItemData.Name;
     }
 
+    public void ForceDropItem(ItemInfo item)
+    {
+        ForceUnUseItem(item);
+        ItemList.Remove(item);
+
+        if(Inventory != null)
+        {
+            Inventory.UpdateItemList();
+            Inventory.ChangeItemText("");
+        }
+
+        SelectedItem = null;
+    }
+
     public void DropItem(ItemInfo item)
     {
         if (item == null)

@@ -46,6 +46,7 @@ public class QuizManager
             yield return new WaitForSeconds(1f); // 1초 대기
         }
         Managers.UI.DestroyUI(popup);
+
         while(!QuizAppear)
         {
             quizUI = Managers.UI.CreateUI("QUIZUI");

@@ -610,7 +610,7 @@
       "STTKeywords": null,
       "Targets": null,
       "DetailHint": "EMR을 통해 법정감염병 신고서를 작성하세요/",
-      "Hint": "관찰구역에서 EMR 법정감염병 신고서를 작성하세요",
+      "Hint": "스테이션에서 EMR 법정감염병 신고서를 작성하세요",
       "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?",
       "Question": null,
       "Answers": null
@@ -1173,10 +1173,6 @@
     {
       "Progress": 78,
       "Place": null,
-<<<<<<< Updated upstream
-      "Position": "영상의학팀 방사선사",
-      "Item": "Swab",
-=======
       "Position": "감염병대응센터 주무관",
       "Item": null,
       "Action": "Call",
@@ -1254,8 +1250,82 @@
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
->>>>>>> Stashed changes
       "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
+      "Hint": "손 위생을 시행하세요.",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 84,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": "ProtectedGear",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n가운을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 85,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": "Mask",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 86,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": "Goggle",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n고글을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 87,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": "Glove",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 88,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": null,
+      "Action": "EquipImage",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
@@ -1264,8 +1334,6 @@
       "Confirm": null,
       "Question": null,
       "Answers": null
-<<<<<<< Updated upstream
-=======
     },
     {
       "Progress": 89,
@@ -1284,14 +1352,14 @@
     },
     {
       "Progress": 90,
-      "Place": "음압격리실",
+      "Place": null,
       "Position": "응급의학과 의사",
       "Item": "DrySwab",
       "Action": "Use",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": "환자",
-      "DetailHint": "I를 눌러 인벤토리를 열고 DrySwab을 사용해 엠폭스 검체를 채취하세요./",
+      "DetailHint": "I를 눌러 인벤토리를 열고 DrySwab을 사용해 엠폭스 검체를 채취하세요1./",
       "Hint": "엠폭스 검체를 채취하세요.",
       "Confirm": null,
       "Question": null,
@@ -1299,14 +1367,14 @@
     },
     {
       "Progress": 91,
-      "Place": "음압격리실",
+      "Place": null,
       "Position": "응급의학과 의사",
       "Item": "DrySwab",
       "Action": "Use",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": "환자",
-      "DetailHint": "I를 눌러 인벤토리를 열고 DrySwab을 사용해 엠폭스 검체를 채취하세요./",
+      "DetailHint": "I를 눌러 인벤토리를 열고 DrySwab을 사용해 엠폭스 검체를 채취하세요2./",
       "Hint": "엠폭스 검체를 채취하세요.",
       "Confirm": null,
       "Question": null,
@@ -1326,7 +1394,6 @@
       "Confirm": null,
       "Question": "엠폭스 검체를 채취한 2개의 스왑을 어떻게 수집해야 하는지 선택하세요.",
       "Answers": "동일 VTM 배지에 수집,서로 다른 VTM 배지에 수집,스왑을 멸균백에 수집,스왑을 보관하지 않고 즉시 분석에 사용"
->>>>>>> Stashed changes
     }
   ]
 }

@@ -1542,31 +1542,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: NoDoorMap
       objectReference: {fileID: 0}
-    - target: {fileID: 2976523837043703904, guid: f617b5858cd036e4a82367565da1b8a5,
-        type: 3}
-      propertyPath: m_Name
-      value: DrySwab
-      objectReference: {fileID: 0}
-    - target: {fileID: 5461520614767477379, guid: f617b5858cd036e4a82367565da1b8a5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.2889996
-      objectReference: {fileID: 0}
-    - target: {fileID: 5461520614767477379, guid: f617b5858cd036e4a82367565da1b8a5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1.7010002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7174855353635535200, guid: f617b5858cd036e4a82367565da1b8a5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -16.178
-      objectReference: {fileID: 0}
-    - target: {fileID: 7174855353635535200, guid: f617b5858cd036e4a82367565da1b8a5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 41.22
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

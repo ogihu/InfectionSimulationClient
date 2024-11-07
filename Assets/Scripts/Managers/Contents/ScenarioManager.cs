@@ -88,6 +88,7 @@ public class ScenarioManager
     public string MyAction { get; set; }
     public bool PassSpeech { get; set; }
     public List<string> Targets { get; set; } = new List<string>();
+    public List<string> TakedLesion { get; set; } = new List<string>();
 
     #endregion
 
@@ -270,7 +271,6 @@ public class ScenarioManager
             if (CurrentScenarioInfo.Action == "Quiz")
             {
                 Managers.Instance.StartCoroutine(Managers.Quiz.CoQuizCount(3));
-                //Managers.Instance.StartCoroutine((Managers.Quiz.QuizUI(progress)));
             }
             else if(CurrentScenarioInfo.Action == "LinkQuiz")
             {
@@ -282,13 +282,6 @@ public class ScenarioManager
 
             Managers.Instance.StartCoroutine(CoCheckAction());  
             yield return new WaitUntil(() => CompleteCount >= 1);
-
-            //if (Managers.Quiz.popup != null)
-            //    Managers.UI.DestroyUI(Managers.Quiz.popup);
-            //if (Managers.Quiz.quizUI != null)
-            //    Managers.UI.DestroyUI(Managers.Quiz.quizUI);
-            //if (popup != null)
-            //    Managers.UI.DestroyUI(popup);
 
 
             if (CurrentScenarioInfo.Confirm != null)
@@ -948,5 +941,6 @@ public class ScenarioManager
         _routine = null;
         PopupConfirm = 0;
         CurrentScenarioInfo = null;
+        TakedLesion.Clear();
     }
 }

@@ -547,7 +547,6 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(94));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(95));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(96));
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(97));
                 break;
         }
 

@@ -9,6 +9,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using static Define;
+using static Google.Cloud.Speech.V1.LanguageCodes;
 
 public class ScenarioManager
 {
@@ -163,6 +164,10 @@ public class ScenarioManager
     public GameObject WearUI1 = null;
     public GameObject WearUI2 = null;
     //public bool UIClose = false;
+
+    public GameObject SpecimeCollection1 = null;
+    public GameObject SpecimeCollection2 = null;
+
     GameObject popup = null;
     bool UIChckStart = true;
     public bool State_Image = false;
@@ -185,7 +190,7 @@ public class ScenarioManager
         for (int i = 3; i > 0; i--)
         {
             if (popup == null)
-                yield return null;
+                yield break;
             popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
             popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 개인보호구 "+a+"안내 이미지가 제공됩니다.";
             yield return new WaitForSeconds(1f); // 1초 대기
@@ -205,6 +210,7 @@ public class ScenarioManager
             UIChckStart = false;
             m = 10;
         }
+
         Cursor_activation(true);
         for (int i = 0; i < m; i++)
         {
@@ -226,13 +232,55 @@ public class ScenarioManager
         CompleteCount++;
     }
 
+    IEnumerator SpecimeCollectionUICheck()
+    {
+        // 카운트다운 메시지 표시
+        popup = Managers.UI.CreateUI("PopupNotice");
+        PassUICheck = false;
+
+        for (int i = 3; i > 0; i--)
+        {
+            if (popup == null)
+                yield return null;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 검체 채취 이미지가 제공됩니다.";
+            yield return new WaitForSeconds(1f);
+        }
+        Managers.UI.DestroyUI(popup);
+        State_Image = true;
+        SpecimeCollection1 = Managers.UI.CreateUI("SpecimeCollection1");
+        SpecimeCollection2 = Managers.UI.CreateUI("SpecimeCollection2");
+        UIChckStart = false;
+        SpecimeCollection2.SetActive(false);
+        for (int i = 0; i < 20; i++)
+        {
+            if ((CurrentScenarioInfo.Action == "SCImage" && i == 10) || SpecimeCollection1 == null)
+            {
+                Managers.UI.DestroyUI(SpecimeCollection1);
+                SpecimeCollection2.SetActive(true);
+            }
+            if (SpecimeCollection1 == null || SpecimeCollection2 == null)
+                yield return null;
+            yield return new WaitForSeconds(1f);
+        }
+        // UI 소멸 및 시나리오 완료 처리
+       
+        if (SpecimeCollection1 != null)
+            Managers.UI.DestroyUI(SpecimeCollection1);
+        if (SpecimeCollection2 != null)
+            Managers.UI.DestroyUI(SpecimeCollection2);
+        State_Image = false;
+        CompleteCount++;
+
+    }
+
     IEnumerator UIcheck()
     {
         while (!PassUICheck)
         {
-            if(!UIChckStart)
+            if (!UIChckStart)
             {
-                if (WearUI1 == null && WearUI2 == null)
+                if (WearUI1 == null && WearUI2 == null && SpecimeCollection1 == null && SpecimeCollection2 == null)
                 {
                     Managers.Instance.StopCoroutine(PassUI);
                     Managers.Object.MyPlayer.GetComponent<MyPlayerController>().enabled = true;
@@ -241,7 +289,6 @@ public class ScenarioManager
                     CompleteCount++;
                     PassUI = null;
                 }
-                
             }
             yield return null;
         }
@@ -256,6 +303,14 @@ public class ScenarioManager
 
     }
 
+    IEnumerator SpecimeCollectionUI()
+    {
+        UIChckStart = true;
+        PassUICheck = false;
+        PassUI = Managers.Instance.StartCoroutine(SpecimeCollectionUICheck());
+        yield return Managers.Instance.StartCoroutine(UIcheck());
+    }
+
     #endregion
 
     IEnumerator CoScenarioStep(int progress)
@@ -267,11 +322,23 @@ public class ScenarioManager
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");
 
-            if (CurrentScenarioInfo.Action == "Quiz")
-                Managers.Instance.StartCoroutine((Managers.Quiz.QuizUI(progress)));
 
-            if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")
+            
+           if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")
+            {
                 Managers.Instance.StartCoroutine(WearingUI());
+            }
+           if (CurrentScenarioInfo.Action == "Quiz")
+            {
+                Managers.Instance.StartCoroutine((Managers.Quiz.QuizUI(progress)));
+            }
+            if (CurrentScenarioInfo.Action == "SCImage")
+            {
+                Managers.Instance.StartCoroutine(SpecimeCollectionUI());
+            }
+
+
+
 
             Managers.Instance.StartCoroutine(CoCheckAction());  
             yield return new WaitUntil(() => CompleteCount >= 1);
@@ -313,6 +380,9 @@ public class ScenarioManager
 
         yield return new WaitUntil(() => Progress == progress);
     }
+
+
+
 
     IEnumerator CoScenario(string scenarioName)
     {
@@ -524,6 +594,28 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(75));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(76));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(77));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(78));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(79));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(80));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(81));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(82));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(83));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(84));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(85));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(86));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(87));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(88));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(89));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(90));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(91));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(92));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(93));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(94));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(95));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(96));
+
+
+
                 break;
         }
 

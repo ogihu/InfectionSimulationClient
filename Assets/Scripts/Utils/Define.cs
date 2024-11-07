@@ -144,7 +144,8 @@ public class Define
         "보안팀",
         "미화팀",
         "원무팀",
-        "진단검사의학팀"
+        "진단검사의학팀",
+        "아산충무병원"
     };
 
     #region VoiceMapping

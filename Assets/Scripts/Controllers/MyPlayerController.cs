@@ -85,7 +85,7 @@ public class MyPlayerController : PlayerController
 
     public bool IsCanActive()
     {
-        if (Managers.Quiz.quizUI != null)
+        if (Managers.Quiz.QuizUI != null)
             return false;
 
         if(Managers.Scenario.State_Image)

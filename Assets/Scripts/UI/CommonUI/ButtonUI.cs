@@ -7,10 +7,12 @@ using UnityEngine.UI;
 public class ButtonUI : MonoBehaviour
 {
     Action _action;
+    protected Button _button;
 
     protected virtual void Awake()
     {
-        GetComponent<Button>().onClick.AddListener(OnClicked);
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(OnClicked);
     }
 
     protected virtual void OnClicked()

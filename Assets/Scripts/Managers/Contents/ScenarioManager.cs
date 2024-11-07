@@ -171,6 +171,8 @@ public class ScenarioManager
     GameObject popup = null;
     bool UIChckStart = true;
     public bool State_Image = false;
+    public GameObject SpecimeCollection1 = null;
+    public GameObject SpecimeCollection2 = null;
 
     void Cursor_activation(bool check = false)
     {
@@ -210,8 +212,12 @@ public class ScenarioManager
             UIChckStart = false;
             m = 10;
         }
+<<<<<<< Updated upstream
 
         Cursor_activation(true);
+=======
+        State_Image = true;
+>>>>>>> Stashed changes
         for (int i = 0; i < m; i++)
         {
             if ((CurrentScenarioInfo.Action == "EquipImage" && i == 10) || WearUI1 == null)
@@ -220,12 +226,12 @@ public class ScenarioManager
                 WearUI2.SetActive(true);
             }
             if (WearUI1 == null || WearUI2 == null)
-                yield return null;
+                yield break;
             yield return new WaitForSeconds(1f);
         }
 
-        Cursor_activation();
-        if(WearUI1 != null)
+        State_Image = false;
+        if (WearUI1 != null)
             Managers.UI.DestroyUI(WearUI1);
         if(WearUI2 != null)
             Managers.UI.DestroyUI(WearUI2);
@@ -280,7 +286,11 @@ public class ScenarioManager
         {
             if (!UIChckStart)
             {
+<<<<<<< Updated upstream
                 if (WearUI1 == null && WearUI2 == null && SpecimeCollection1 == null && SpecimeCollection2 == null)
+=======
+                if ((WearUI1 == null && WearUI2 == null )&&(SpecimeCollection1 == null && SpecimeCollection2 == null))
+>>>>>>> Stashed changes
                 {
                     Managers.Instance.StopCoroutine(PassUI);
                     Managers.Object.MyPlayer.GetComponent<MyPlayerController>().enabled = true;
@@ -293,7 +303,46 @@ public class ScenarioManager
             yield return null;
         }
     }
+    IEnumerator SpecimeCollectionUICheck()
+    {
+        // 카운트다운 메시지 표시
+        popup = Managers.UI.CreateUI("PopupNotice");
+        PassUICheck = false;
 
+        for (int i = 3; i > 0; i--)
+        {
+            if (popup == null)
+                yield break;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 검체 채취 이미지가 제공됩니다.";
+            yield return new WaitForSeconds(1f);
+        }
+        Managers.UI.DestroyUI(popup);
+        State_Image = true;
+        SpecimeCollection1 = Managers.UI.CreateUI("SpecimeCollection1");
+        SpecimeCollection2 = Managers.UI.CreateUI("SpecimeCollection2");
+        UIChckStart = false;
+        SpecimeCollection2.SetActive(false);
+        for (int i = 0; i < 20; i++)
+        {
+            if ((CurrentScenarioInfo.Action == "SCImage" && i == 10) || SpecimeCollection1 == null)
+            {
+                Managers.UI.DestroyUI(SpecimeCollection1);
+                SpecimeCollection2.SetActive(true);
+            }
+            if (SpecimeCollection1 == null || SpecimeCollection2 == null)
+                yield break;
+            yield return new WaitForSeconds(1f);
+        }
+        // UI 소멸 및 시나리오 완료 처리
+        if (SpecimeCollection1 != null)
+            Managers.UI.DestroyUI(SpecimeCollection1);
+        if (SpecimeCollection2 != null)
+            Managers.UI.DestroyUI(SpecimeCollection2);
+        State_Image = false;
+        CompleteCount++;
+
+    }
     IEnumerator WearingUI()
     {
         UIChckStart = true;
@@ -302,7 +351,10 @@ public class ScenarioManager
         yield return Managers.Instance.StartCoroutine(UIcheck());
 
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     IEnumerator SpecimeCollectionUI()
     {
         UIChckStart = true;
@@ -310,7 +362,10 @@ public class ScenarioManager
         PassUI = Managers.Instance.StartCoroutine(SpecimeCollectionUICheck());
         yield return Managers.Instance.StartCoroutine(UIcheck());
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     #endregion
 
     IEnumerator CoScenarioStep(int progress)
@@ -337,6 +392,7 @@ public class ScenarioManager
                 Managers.Instance.StartCoroutine(SpecimeCollectionUI());
             }
 
+<<<<<<< Updated upstream
 
 
 
@@ -350,6 +406,20 @@ public class ScenarioManager
             if (popup != null)
                 Managers.UI.DestroyUI(popup);
 
+=======
+            if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")
+            {
+                Managers.Instance.StartCoroutine(WearingUI());
+            }
+                
+            if (CurrentScenarioInfo.Action == "SCImage")
+            {
+                Managers.Instance.StartCoroutine(SpecimeCollectionUI());
+            }
+            Managers.Instance.StartCoroutine(CoCheckAction());  
+            yield return new WaitUntil(() => CompleteCount >= 1);
+
+>>>>>>> Stashed changes
 
             if (CurrentScenarioInfo.Confirm != null)
             {

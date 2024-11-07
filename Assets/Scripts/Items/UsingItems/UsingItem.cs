@@ -9,4 +9,5 @@ public class UsingItem : Item
         character.State = Google.Protobuf.Protocol.CreatureState.Idle;
         base.UnUse(character);
     }
+
 }

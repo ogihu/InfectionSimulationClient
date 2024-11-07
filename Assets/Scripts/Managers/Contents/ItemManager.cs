@@ -89,7 +89,7 @@ public class ItemManager
             Managers.UI.CreateSystemPopup("WarningPopup", "현재 필요한 아이템이 아닙니다.", UIManager.NoticeType.Warning);
             return;
         }
-
+        
         item.Object = Managers.Resource.Instantiate(item.ItemData.Prefab);
         Item selectedItem = item.Object.GetComponent<Item>();
 
@@ -107,7 +107,7 @@ public class ItemManager
 
         if(!(selectedItem as ImmediatelyUsingItem))
             item.Using = true;
-
+ 
         selectedItem.ItemInfo = item;
         C_Equip equipPacket = new C_Equip();
         equipPacket.ItemName = item.ItemData.Name;
@@ -221,6 +221,20 @@ public class ItemManager
         }
         SelectedItem = null;
         Managers.Scenario.Item = item.ItemData.Name;
+    }
+
+    public void ForceDropItem(ItemInfo item)
+    {
+        ForceUnUseItem(item);
+        ItemList.Remove(item);
+
+        if(Inventory != null)
+        {
+            Inventory.UpdateItemList();
+            Inventory.ChangeItemText("");
+        }
+
+        SelectedItem = null;
     }
 
     public void DropItem(ItemInfo item)

@@ -1375,7 +1375,7 @@
       "STTKeywords": null,
       "Targets": "환자",
       "DetailHint": "I를 눌러 인벤토리를 열고 DrySwab을 사용해 엠폭스 검체를 채취하세요./",
-      "Hint": "엠폭스 검체를 채취하세요.",
+      "Hint": "다른 병변에서 엠폭스 검체를 채취하세요.",
       "Confirm": null,
       "Question": null,
       "Answers": null
@@ -1427,7 +1427,7 @@
     },
     {
       "Progress": 95,
-      "Place": "음압격리실",
+      "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
       "Action": "LinkQuiz",

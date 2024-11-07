@@ -9,6 +9,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using static Define;
+using static Google.Cloud.Speech.V1.LanguageCodes;
 
 public class ScenarioManager
 {
@@ -88,7 +89,6 @@ public class ScenarioManager
     public string MyAction { get; set; }
     public bool PassSpeech { get; set; }
     public List<string> Targets { get; set; } = new List<string>();
-    public List<string> TakedLesion { get; set; } = new List<string>();
 
     #endregion
 
@@ -159,14 +159,20 @@ public class ScenarioManager
     }
 
     #region 시나리오 보호구 UI 띄우는 코드
-
     public bool PassUICheck;
     Coroutine PassUI;
     public GameObject WearUI1 = null;
     public GameObject WearUI2 = null;
+    //public bool UIClose = false;
+
+    public GameObject SpecimeCollection1 = null;
+    public GameObject SpecimeCollection2 = null;
+
     GameObject popup = null;
     bool UIChckStart = true;
     public bool State_Image = false;
+    public GameObject SpecimeCollection1 = null;
+    public GameObject SpecimeCollection2 = null;
 
     void Cursor_activation(bool check = false)
     {
@@ -186,7 +192,7 @@ public class ScenarioManager
         for (int i = 3; i > 0; i--)
         {
             if (popup == null)
-                yield return null;
+                yield break;
             popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
             popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 개인보호구 "+a+"안내 이미지가 제공됩니다.";
             yield return new WaitForSeconds(1f); // 1초 대기
@@ -206,7 +212,12 @@ public class ScenarioManager
             UIChckStart = false;
             m = 10;
         }
+<<<<<<< Updated upstream
+
         Cursor_activation(true);
+=======
+        State_Image = true;
+>>>>>>> Stashed changes
         for (int i = 0; i < m; i++)
         {
             if ((CurrentScenarioInfo.Action == "EquipImage" && i == 10) || WearUI1 == null)
@@ -215,25 +226,71 @@ public class ScenarioManager
                 WearUI2.SetActive(true);
             }
             if (WearUI1 == null || WearUI2 == null)
-                yield return null;
+                yield break;
             yield return new WaitForSeconds(1f);
         }
 
-        Cursor_activation();
-        if(WearUI1 != null)
+        State_Image = false;
+        if (WearUI1 != null)
             Managers.UI.DestroyUI(WearUI1);
         if(WearUI2 != null)
             Managers.UI.DestroyUI(WearUI2);
         CompleteCount++;
     }
 
+    IEnumerator SpecimeCollectionUICheck()
+    {
+        // 카운트다운 메시지 표시
+        popup = Managers.UI.CreateUI("PopupNotice");
+        PassUICheck = false;
+
+        for (int i = 3; i > 0; i--)
+        {
+            if (popup == null)
+                yield return null;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 검체 채취 이미지가 제공됩니다.";
+            yield return new WaitForSeconds(1f);
+        }
+        Managers.UI.DestroyUI(popup);
+        State_Image = true;
+        SpecimeCollection1 = Managers.UI.CreateUI("SpecimeCollection1");
+        SpecimeCollection2 = Managers.UI.CreateUI("SpecimeCollection2");
+        UIChckStart = false;
+        SpecimeCollection2.SetActive(false);
+        for (int i = 0; i < 20; i++)
+        {
+            if ((CurrentScenarioInfo.Action == "SCImage" && i == 10) || SpecimeCollection1 == null)
+            {
+                Managers.UI.DestroyUI(SpecimeCollection1);
+                SpecimeCollection2.SetActive(true);
+            }
+            if (SpecimeCollection1 == null || SpecimeCollection2 == null)
+                yield return null;
+            yield return new WaitForSeconds(1f);
+        }
+        // UI 소멸 및 시나리오 완료 처리
+       
+        if (SpecimeCollection1 != null)
+            Managers.UI.DestroyUI(SpecimeCollection1);
+        if (SpecimeCollection2 != null)
+            Managers.UI.DestroyUI(SpecimeCollection2);
+        State_Image = false;
+        CompleteCount++;
+
+    }
+
     IEnumerator UIcheck()
     {
         while (!PassUICheck)
         {
-            if(!UIChckStart)
+            if (!UIChckStart)
             {
-                if (WearUI1 == null && WearUI2 == null)
+<<<<<<< Updated upstream
+                if (WearUI1 == null && WearUI2 == null && SpecimeCollection1 == null && SpecimeCollection2 == null)
+=======
+                if ((WearUI1 == null && WearUI2 == null )&&(SpecimeCollection1 == null && SpecimeCollection2 == null))
+>>>>>>> Stashed changes
                 {
                     Managers.Instance.StopCoroutine(PassUI);
                     Managers.Object.MyPlayer.GetComponent<MyPlayerController>().enabled = true;
@@ -242,12 +299,50 @@ public class ScenarioManager
                     CompleteCount++;
                     PassUI = null;
                 }
-                
             }
             yield return null;
         }
     }
+    IEnumerator SpecimeCollectionUICheck()
+    {
+        // 카운트다운 메시지 표시
+        popup = Managers.UI.CreateUI("PopupNotice");
+        PassUICheck = false;
 
+        for (int i = 3; i > 0; i--)
+        {
+            if (popup == null)
+                yield break;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 검체 채취 이미지가 제공됩니다.";
+            yield return new WaitForSeconds(1f);
+        }
+        Managers.UI.DestroyUI(popup);
+        State_Image = true;
+        SpecimeCollection1 = Managers.UI.CreateUI("SpecimeCollection1");
+        SpecimeCollection2 = Managers.UI.CreateUI("SpecimeCollection2");
+        UIChckStart = false;
+        SpecimeCollection2.SetActive(false);
+        for (int i = 0; i < 20; i++)
+        {
+            if ((CurrentScenarioInfo.Action == "SCImage" && i == 10) || SpecimeCollection1 == null)
+            {
+                Managers.UI.DestroyUI(SpecimeCollection1);
+                SpecimeCollection2.SetActive(true);
+            }
+            if (SpecimeCollection1 == null || SpecimeCollection2 == null)
+                yield break;
+            yield return new WaitForSeconds(1f);
+        }
+        // UI 소멸 및 시나리오 완료 처리
+        if (SpecimeCollection1 != null)
+            Managers.UI.DestroyUI(SpecimeCollection1);
+        if (SpecimeCollection2 != null)
+            Managers.UI.DestroyUI(SpecimeCollection2);
+        State_Image = false;
+        CompleteCount++;
+
+    }
     IEnumerator WearingUI()
     {
         UIChckStart = true;
@@ -256,7 +351,21 @@ public class ScenarioManager
         yield return Managers.Instance.StartCoroutine(UIcheck());
 
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
+    IEnumerator SpecimeCollectionUI()
+    {
+        UIChckStart = true;
+        PassUICheck = false;
+        PassUI = Managers.Instance.StartCoroutine(SpecimeCollectionUICheck());
+        yield return Managers.Instance.StartCoroutine(UIcheck());
+    }
+<<<<<<< Updated upstream
+
+=======
+>>>>>>> Stashed changes
     #endregion
 
     IEnumerator CoScenarioStep(int progress)
@@ -268,21 +377,49 @@ public class ScenarioManager
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");
 
-            if (CurrentScenarioInfo.Action == "Quiz")
+
+            
+           if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")
             {
-                Managers.Instance.StartCoroutine(Managers.Quiz.CoQuizCount(3));
+                Managers.Instance.StartCoroutine(WearingUI());
             }
-            else if(CurrentScenarioInfo.Action == "LinkQuiz")
+           if (CurrentScenarioInfo.Action == "Quiz")
             {
-                Managers.Instance.StartCoroutine(Managers.Quiz.CoQuizCount(3, QuizManager.QuizType.Link));
+                Managers.Instance.StartCoroutine((Managers.Quiz.QuizUI(progress)));
+            }
+            if (CurrentScenarioInfo.Action == "SCImage")
+            {
+                Managers.Instance.StartCoroutine(SpecimeCollectionUI());
             }
 
-            if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")
-                Managers.Instance.StartCoroutine(WearingUI());
+<<<<<<< Updated upstream
+
+
 
             Managers.Instance.StartCoroutine(CoCheckAction());  
             yield return new WaitUntil(() => CompleteCount >= 1);
 
+            if (Managers.Quiz.popup != null)
+                Managers.UI.DestroyUI(Managers.Quiz.popup);
+            if (Managers.Quiz.quizUI != null)
+                Managers.UI.DestroyUI(Managers.Quiz.quizUI);
+            if (popup != null)
+                Managers.UI.DestroyUI(popup);
+
+=======
+            if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")
+            {
+                Managers.Instance.StartCoroutine(WearingUI());
+            }
+                
+            if (CurrentScenarioInfo.Action == "SCImage")
+            {
+                Managers.Instance.StartCoroutine(SpecimeCollectionUI());
+            }
+            Managers.Instance.StartCoroutine(CoCheckAction());  
+            yield return new WaitUntil(() => CompleteCount >= 1);
+
+>>>>>>> Stashed changes
 
             if (CurrentScenarioInfo.Confirm != null)
             {
@@ -304,10 +441,6 @@ public class ScenarioManager
                     yield break;
                 }
             }
-            else
-            {
-                Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과했습니다.", UIManager.NoticeType.Info);
-            }
         }
         else
         {
@@ -317,6 +450,9 @@ public class ScenarioManager
 
         yield return new WaitUntil(() => Progress == progress);
     }
+
+
+
 
     IEnumerator CoScenario(string scenarioName)
     {
@@ -362,106 +498,106 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
                 #region 환자 격리실 이송
-                //{
-                //    NPCs["보안요원1"].Use("Mask");
-                //    NPCs["보안요원2"].Use("Mask");
-                //    NPCs["미화1"].Use("Mask");
-                //    NPCs["미화2"].Use("Mask");
+                {
+                    NPCs["보안요원1"].Use("Mask");
+                    NPCs["보안요원2"].Use("Mask");
+                    NPCs["미화1"].Use("Mask");
+                    NPCs["미화2"].Use("Mask");
 
-                //    Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원1"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원2"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원3"], "ProtectedGear");
-                //    Managers.Object.ChangeModel(NPCs["보안요원4"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원1"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원2"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원3"], "ProtectedGear");
+                    Managers.Object.ChangeModel(NPCs["보안요원4"], "ProtectedGear");
 
-                //    NPCs["이송요원"].Teleport(WaitingArea);
-                //    NPCs["보안요원1"].Teleport(WaitingArea);
-                //    NPCs["보안요원2"].Teleport(WaitingArea);
-                //    NPCs["보안요원3"].Teleport(WaitingArea);
-                //    NPCs["보안요원4"].Teleport(WaitingArea);
+                    NPCs["이송요원"].Teleport(WaitingArea);
+                    NPCs["보안요원1"].Teleport(WaitingArea);
+                    NPCs["보안요원2"].Teleport(WaitingArea);
+                    NPCs["보안요원3"].Teleport(WaitingArea);
+                    NPCs["보안요원4"].Teleport(WaitingArea);
 
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
-                //    Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요");
 
-                //    NPCs["보안요원2"].Teleport(Entrance);
-                //    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint3));
-                //    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
-                //    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetState(CreatureState.Blocking));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["보안요원2"].Teleport(Entrance);
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint3));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    NPCs["보안요원3"].Teleport(Entrance);
-                //    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoGoDestination(BlockingPoint2));
-                //    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetForward(-Vector3.right));
-                //    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetState(CreatureState.Blocking));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["보안요원3"].Teleport(Entrance);
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoGoDestination(BlockingPoint2));
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원3"].AddOrder(NPCs["보안요원3"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    NPCs["보안요원4"].Teleport(Entrance);
-                //    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoGoDestination(BlockingPoint1));
-                //    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetForward(-Vector3.right));
-                //    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetState(CreatureState.Blocking));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["보안요원4"].Teleport(Entrance);
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoGoDestination(BlockingPoint1));
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetForward(-Vector3.right));
+                    NPCs["보안요원4"].AddOrder(NPCs["보안요원4"].CoSetState(CreatureState.Blocking));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint3).magnitude < 1);
+                    yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint3).magnitude < 1);
 
-                //    NPCs["보안요원1"].Teleport(Entrance);
-                //    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(MovePosition));
-                //    yield return new WaitForSeconds(3.0f);
+                    NPCs["보안요원1"].Teleport(Entrance);
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(MovePosition));
+                    yield return new WaitForSeconds(3.0f);
 
-                //    NPCs["이송요원"].Teleport(Entrance);
-                //    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
+                    NPCs["이송요원"].Teleport(Entrance);
+                    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(MovePosition));
 
-                //    yield return new WaitUntil(() => (NPCs["보안요원1"].transform.position - MovePosition).magnitude < 0.3f);
+                    yield return new WaitUntil(() => (NPCs["보안요원1"].transform.position - MovePosition).magnitude < 0.3f);
 
-                //    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(IsolationArea));
-                //    NPCs["보안요원1"].ChangeSpeed(2f);
+                    NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(IsolationArea));
+                    NPCs["보안요원1"].ChangeSpeed(2f);
 
-                //    yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 0.3f);
+                    yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - MovePosition).magnitude < 0.3f);
 
-                //    GameObject bed = GameObject.Find("move_bed");
-                //    bed.transform.SetParent(NPCs["이송요원"].transform);
-                //    NPCs["이송요원"].transform.GetChild(1).localPosition = new Vector3(0, 0, 1.2f);
-                //    NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90, 0);
-                //    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea, CreatureState.Push));
-                //    NPCs["이송요원"].ChangeSpeed(2f);
-                //    GameObject go1 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
-                //    GameObject go2 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
-                //    GameObject go3 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원3"].transform);
-                //    GameObject go4 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원4"].transform);
-                //    yield return new WaitForSeconds(1.0f);
+                    GameObject bed = GameObject.Find("move_bed");
+                    bed.transform.SetParent(NPCs["이송요원"].transform);
+                    NPCs["이송요원"].transform.GetChild(1).localPosition = new Vector3(0, 0, 1.2f);
+                    NPCs["이송요원"].transform.GetChild(1).localEulerAngles = new Vector3(0, -90, 0);
+                    NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination_Animation(IsolationArea, CreatureState.Push));
+                    NPCs["이송요원"].ChangeSpeed(2f);
+                    GameObject go1 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원1"].transform);
+                    GameObject go2 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
+                    GameObject go3 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원3"].transform);
+                    GameObject go4 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원4"].transform);
+                    yield return new WaitForSeconds(1.0f);
 
-                //    NPCs["미화1"].Teleport(Entrance);
-                //    NPCs["미화1"].AddOrder(NPCs["미화1"].CoGoDestination(OABed));
-                //    NPCs["미화1"].AddOrder(NPCs["미화1"].CoUse("WetMop"));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["미화1"].Teleport(Entrance);
+                    NPCs["미화1"].AddOrder(NPCs["미화1"].CoGoDestination(OABed));
+                    NPCs["미화1"].AddOrder(NPCs["미화1"].CoUse("WetMop"));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    NPCs["미화2"].Teleport(Entrance);
-                //    NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(OATable));
-                //    NPCs["미화2"].AddOrder(NPCs["미화2"].CoUse("TissueBox", () => NPCs["미화2"].SetForward(NPCs["미화2"].transform.forward)));
-                //    yield return new WaitForSeconds(1.0f);
+                    NPCs["미화2"].Teleport(Entrance);
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(OATable));
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoUse("TissueBox", () => NPCs["미화2"].SetForward(NPCs["미화2"].transform.forward)));
+                    yield return new WaitForSeconds(1.0f);
 
-                //    yield return new WaitUntil(() => NPCs["이송요원"].Place == "음압격리실");
+                    yield return new WaitUntil(() => NPCs["이송요원"].Place == "음압격리실");
 
-                //    //이송된 환자 음압격리실에 세팅
-                //    NPCs["환자"].SetState(CreatureState.LyingIdle);
-                //    bed.transform.SetParent(null);
-                //    bed.transform.position = Define.IABed;
-                //    bed.transform.eulerAngles = new Vector3(0, 90, 0);
+                    //이송된 환자 음압격리실에 세팅
+                    NPCs["환자"].SetState(CreatureState.LyingIdle);
+                    bed.transform.SetParent(null);
+                    bed.transform.position = Define.IABed;
+                    bed.transform.eulerAngles = new Vector3(0, 90, 0);
 
-                //    //환자 이송이 끝나면 모든 NPC 상태 초기화, 출입구로 이동 후 퇴장 (환자 제외)
-                //    NPCs["이송요원"].ResetSpeed();
-                //    NPCs["보안요원1"].ResetSpeed();
-                //    StopAllNPC(NPCs["환자"]);
-                //    SetStateAllNPC(CreatureState.Idle, NPCs["환자"]);
-                //    MoveAllNPC(Entrance, NPCs["환자"]);
-                //    WarpAllNPC(WaitingArea, NPCs["환자"]);
+                    //환자 이송이 끝나면 모든 NPC 상태 초기화, 출입구로 이동 후 퇴장 (환자 제외)
+                    NPCs["이송요원"].ResetSpeed();
+                    NPCs["보안요원1"].ResetSpeed();
+                    StopAllNPC(NPCs["환자"]);
+                    SetStateAllNPC(CreatureState.Idle, NPCs["환자"]);
+                    MoveAllNPC(Entrance, NPCs["환자"]);
+                    WarpAllNPC(WaitingArea, NPCs["환자"]);
 
-                //    Managers.Resource.Destroy(go1);
-                //    Managers.Resource.Destroy(go2);
-                //    Managers.Resource.Destroy(go3);
-                //    Managers.Resource.Destroy(go4);
-                //}
+                    Managers.Resource.Destroy(go1);
+                    Managers.Resource.Destroy(go2);
+                    Managers.Resource.Destroy(go3);
+                    Managers.Resource.Destroy(go4);
+                }
                 #endregion
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));
@@ -547,6 +683,9 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(94));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(95));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(96));
+
+
+
                 break;
         }
 
@@ -629,14 +768,11 @@ public class ScenarioManager
         }
 
         // 특정 Progress 값에서만 YudoLine을 활성화
-        if(CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position)
+        if (ShouldShowYudoLine(Progress))
         {
-            if (ShouldShowYudoLine(Progress))
+            if (GameScene.YudoLine != null)
             {
-                if (GameScene.YudoLine != null)
-                {
-                    GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
-                }
+                GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
             }
         }
 
@@ -755,9 +891,7 @@ public class ScenarioManager
         }
 
         if (!(CurrentScenarioInfo.Action == "Tell" || CurrentScenarioInfo.Action == "Call"))
-        {
             return true;
-        }
 
         if (!PassSpeech)
         {
@@ -766,6 +900,7 @@ public class ScenarioManager
             return false;
         }
 
+        Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과하셨습니다.", UIManager.NoticeType.Info);
         return true;
     }
 
@@ -941,6 +1076,5 @@ public class ScenarioManager
         _routine = null;
         PopupConfirm = 0;
         CurrentScenarioInfo = null;
-        TakedLesion.Clear();
     }
 }

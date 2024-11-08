@@ -69,6 +69,20 @@ public class Util
         return null;
     }
 
+    public static GameObject FindParentByName(GameObject go, string name)
+    {
+        if (go == null)
+            return null;
+
+        if (go.transform.parent == null)
+            return null;
+
+        if (go.name == name)
+            return go;
+
+        return FindParentByName(go.transform.parent.gameObject, name);
+    }
+
     public static Material[] AddMaterial(Material[] materials, Material materialToAdd)
     {
         Material[] newMaterials = new Material[materials.Length + 1];

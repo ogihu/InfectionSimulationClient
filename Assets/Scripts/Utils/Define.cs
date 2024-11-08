@@ -145,7 +145,8 @@ public class Define
         "미화팀",
         "원무팀",
         "진단검사의학팀",
-        "아산충무병원"
+        "아산충무병원",
+        "의심환자"
     };
 
     #region VoiceMapping

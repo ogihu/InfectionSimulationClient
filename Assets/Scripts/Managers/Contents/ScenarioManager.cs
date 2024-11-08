@@ -9,6 +9,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 using static Define;
+using static Google.Cloud.Speech.V1.LanguageCodes;
 
 public class ScenarioManager
 {
@@ -159,11 +160,15 @@ public class ScenarioManager
     }
 
     #region 시나리오 보호구 UI 띄우는 코드
-
     public bool PassUICheck;
     Coroutine PassUI;
     public GameObject WearUI1 = null;
     public GameObject WearUI2 = null;
+    //public bool UIClose = false;
+
+    public GameObject SpecimeCollection1 = null;
+    public GameObject SpecimeCollection2 = null;
+
     GameObject popup = null;
     bool UIChckStart = true;
     public bool State_Image = false;
@@ -186,7 +191,7 @@ public class ScenarioManager
         for (int i = 3; i > 0; i--)
         {
             if (popup == null)
-                yield return null;
+                yield break;
             popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
             popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 개인보호구 "+a+"안내 이미지가 제공됩니다.";
             yield return new WaitForSeconds(1f); // 1초 대기
@@ -206,7 +211,9 @@ public class ScenarioManager
             UIChckStart = false;
             m = 10;
         }
+
         Cursor_activation(true);
+        State_Image = true;
         for (int i = 0; i < m; i++)
         {
             if ((CurrentScenarioInfo.Action == "EquipImage" && i == 10) || WearUI1 == null)
@@ -215,12 +222,12 @@ public class ScenarioManager
                 WearUI2.SetActive(true);
             }
             if (WearUI1 == null || WearUI2 == null)
-                yield return null;
+                yield break;
             yield return new WaitForSeconds(1f);
         }
 
-        Cursor_activation();
-        if(WearUI1 != null)
+        State_Image = false;
+        if (WearUI1 != null)
             Managers.UI.DestroyUI(WearUI1);
         if(WearUI2 != null)
             Managers.UI.DestroyUI(WearUI2);
@@ -231,9 +238,10 @@ public class ScenarioManager
     {
         while (!PassUICheck)
         {
-            if(!UIChckStart)
+            if (!UIChckStart)
             {
-                if (WearUI1 == null && WearUI2 == null)
+                if ((WearUI1 == null && WearUI2 == null )&&(SpecimeCollection1 == null && SpecimeCollection2 == null))
+
                 {
                     Managers.Instance.StopCoroutine(PassUI);
                     Managers.Object.MyPlayer.GetComponent<MyPlayerController>().enabled = true;
@@ -242,12 +250,50 @@ public class ScenarioManager
                     CompleteCount++;
                     PassUI = null;
                 }
-                
             }
             yield return null;
         }
     }
+    IEnumerator SpecimeCollectionUICheck()
+    {
+        // 카운트다운 메시지 표시
+        popup = Managers.UI.CreateUI("PopupNotice");
+        PassUICheck = false;
 
+        for (int i = 3; i > 0; i--)
+        {
+            if (popup == null)
+                yield break;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;
+            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤, 검체 채취 이미지가 제공됩니다.";
+            yield return new WaitForSeconds(1f);
+        }
+        Managers.UI.DestroyUI(popup);
+        State_Image = true;
+        SpecimeCollection1 = Managers.UI.CreateUI("SpecimeCollection1");
+        SpecimeCollection2 = Managers.UI.CreateUI("SpecimeCollection2");
+        UIChckStart = false;
+        SpecimeCollection2.SetActive(false);
+        for (int i = 0; i < 20; i++)
+        {
+            if ((CurrentScenarioInfo.Action == "SCImage" && i == 10) || SpecimeCollection1 == null)
+            {
+                Managers.UI.DestroyUI(SpecimeCollection1);
+                SpecimeCollection2.SetActive(true);
+            }
+            if (SpecimeCollection1 == null || SpecimeCollection2 == null)
+                yield break;
+            yield return new WaitForSeconds(1f);
+        }
+        // UI 소멸 및 시나리오 완료 처리
+        if (SpecimeCollection1 != null)
+            Managers.UI.DestroyUI(SpecimeCollection1);
+        if (SpecimeCollection2 != null)
+            Managers.UI.DestroyUI(SpecimeCollection2);
+        State_Image = false;
+        CompleteCount++;
+
+    }
     IEnumerator WearingUI()
     {
         UIChckStart = true;
@@ -256,7 +302,13 @@ public class ScenarioManager
         yield return Managers.Instance.StartCoroutine(UIcheck());
 
     }
-
+    IEnumerator SpecimeCollectionUI()
+    {
+        UIChckStart = true;
+        PassUICheck = false;
+        PassUI = Managers.Instance.StartCoroutine(SpecimeCollectionUICheck());
+        yield return Managers.Instance.StartCoroutine(UIcheck());
+    }
     #endregion
 
     IEnumerator CoScenarioStep(int progress)
@@ -272,7 +324,7 @@ public class ScenarioManager
             {
                 Managers.Instance.StartCoroutine(Managers.Quiz.CoQuizCount(3));
             }
-            else if(CurrentScenarioInfo.Action == "LinkQuiz")
+            else if (CurrentScenarioInfo.Action == "LinkQuiz")
             {
                 Managers.Instance.StartCoroutine(Managers.Quiz.CoQuizCount(3, QuizManager.QuizType.Link));
             }
@@ -280,7 +332,11 @@ public class ScenarioManager
             if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")
                 Managers.Instance.StartCoroutine(WearingUI());
 
-            Managers.Instance.StartCoroutine(CoCheckAction());  
+            if (CurrentScenarioInfo.Action == "SCImage")
+            {
+                Managers.Instance.StartCoroutine(SpecimeCollectionUI());
+            }
+            Managers.Instance.StartCoroutine(CoCheckAction());
             yield return new WaitUntil(() => CompleteCount >= 1);
 
 
@@ -291,12 +347,12 @@ public class ScenarioManager
 
                 yield return new WaitUntil(() => PopupConfirm != 0);
 
-                if(PopupConfirm == 1)
+                if (PopupConfirm == 1)
                 {
                     PopupConfirm = 0;
                     Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과했습니다.", UIManager.NoticeType.Info);
                 }
-                else if(PopupConfirm == 2)
+                else if (PopupConfirm == 2)
                 {
                     PopupConfirm = 0;
                     CompleteCount = 0;
@@ -317,6 +373,10 @@ public class ScenarioManager
 
         yield return new WaitUntil(() => Progress == progress);
     }
+
+
+
+
 
     IEnumerator CoScenario(string scenarioName)
     {
@@ -547,6 +607,9 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(94));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(95));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(96));
+
+
+
                 break;
         }
 
@@ -629,14 +692,11 @@ public class ScenarioManager
         }
 
         // 특정 Progress 값에서만 YudoLine을 활성화
-        if(CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position)
+        if (ShouldShowYudoLine(Progress))
         {
-            if (ShouldShowYudoLine(Progress))
+            if (GameScene.YudoLine != null)
             {
-                if (GameScene.YudoLine != null)
-                {
-                    GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
-                }
+                GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
             }
         }
 
@@ -755,9 +815,7 @@ public class ScenarioManager
         }
 
         if (!(CurrentScenarioInfo.Action == "Tell" || CurrentScenarioInfo.Action == "Call"))
-        {
             return true;
-        }
 
         if (!PassSpeech)
         {
@@ -766,6 +824,7 @@ public class ScenarioManager
             return false;
         }
 
+        Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과하셨습니다.", UIManager.NoticeType.Info);
         return true;
     }
 
@@ -941,6 +1000,5 @@ public class ScenarioManager
         _routine = null;
         PopupConfirm = 0;
         CurrentScenarioInfo = null;
-        TakedLesion.Clear();
     }
 }

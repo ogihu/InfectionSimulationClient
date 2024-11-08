@@ -20,6 +20,7 @@ public class Syringe : UsingItem
     private float clickTime = 0f;
     GameObject Point;
     List<GameObject> points = new List<GameObject>();
+
     public override void Init()
     {
         base.Init();
@@ -50,7 +51,8 @@ public class Syringe : UsingItem
             Point = Managers.Scenario.NPCs["환자"].transform.GetChild(1).gameObject;
             Point.SetActive(true);
             Point.transform.localScale = new Vector3(0.0764116f, 0.009552589f, 0.07533843f);
-            Transform point = Point.transform.GetChild(0); points.Add(point.gameObject);
+            Transform point = Point.transform.GetChild(0);
+            points.Add(point.gameObject);
             point.SetParent(Util.FindChildByName(Managers.Scenario.NPCs["환자"].gameObject, "basic_rig R Forearm").transform, false);
             point.transform.localPosition = new Vector3(-0.0261f, -0.0131f, -0.0409f);
             point.transform.localRotation = Quaternion.Euler(83.043f, -0.499f, -0.359f);
@@ -85,7 +87,6 @@ public class Syringe : UsingItem
             point.transform.localPosition = new Vector3(0.0195f, 0.0195f, 0.0005f);
             point.transform.localRotation = Quaternion.Euler(21.205f, 47.349f, 14.175f);
             point.transform.localScale = new Vector3(0.0764116f, 0.01577159f, 0.07533843f);
-
         }
 
         if (parent == null)
@@ -174,7 +175,8 @@ public class Syringe : UsingItem
         
         for (int i = 0; i < points.Count; i++)
             points[i].SetActive(false);
-        Managers.Item.ForceUnUseItem(ItemInfo);
+
+        Managers.Item.ForceDropItem(ItemInfo);
         Managers.Scenario.MyAction = "Use";
         check = true;  // check를 true로 설정하여 완료
         if(Managers.Item.IsInventoryOpen == true)

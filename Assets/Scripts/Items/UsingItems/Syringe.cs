@@ -111,10 +111,11 @@ public class Syringe : UsingItem
         }
 
         Managers.UI.DestroyUI(noticeUI);
-        Managers.Scenario.Targets.Add("환자");
 
-        Managers.Item.ForceDropItem(ItemInfo);
+        Managers.Item.DropItem(ItemInfo);
         Managers.Scenario.MyAction = "Use";
+        Managers.Scenario.Item = "Syringe";
+        Managers.Scenario.Targets.Add("환자");
 
         if (Managers.Item.IsInventoryOpen == true)
         {

@@ -132,7 +132,7 @@ public class DrySwab : UsingItem
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Managers.Scenario.State_Image = false;
-        Managers.Item.ForceDropItem(ItemInfo);
+        Managers.Item.DropItem(ItemInfo);
         Managers.Scenario.MyAction = "Use";
         Managers.Scenario.Item = "DrySwab";
         Managers.Scenario.Targets.Add("환자");

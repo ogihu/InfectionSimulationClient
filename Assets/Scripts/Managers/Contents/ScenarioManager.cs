@@ -877,7 +877,7 @@ public class ScenarioManager
             if (message.Contains(keyword))
             {
                 count += 1;
-                message = message.Replace(keyword, $"<color=#00ff00>{keyword}</color>");
+                message = message.Replace(keyword, $"<color=#0000ff>{keyword}</color>");
             }
             else
             {

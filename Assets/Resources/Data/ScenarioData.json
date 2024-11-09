@@ -1412,21 +1412,96 @@
     },
     {
       "Progress": 94,
-      "Place": "음압격리실",
+      "Place": null,
       "Position": "응급센터 간호사2",
-      "Item": "Syringe",
+      "Item": "Handwash",
       "Action": "Use",
       "Sentence": null,
       "STTKeywords": null,
-      "Targets": "환자",
-      "DetailHint": "환자에게서 혈액 검체채취를 진행하세요./",
-      "Hint": "환자에게서 혈액 검체채취를 진행하세요.",
+      "Targets": null,
+      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
+      "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
       "Answers": null
     },
     {
       "Progress": 95,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "ProtectedGear",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n가운을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 96,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Mask",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n마스크를 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 97,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Goggle",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n고글을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 98,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Glove",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 착용하세요./\n\n장갑을 착용하세요.",
+      "Hint": "4종 보호구를 착용하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 99,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": null,
+      "Action": "EquipImage",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 100,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -1441,7 +1516,22 @@
       "Answers": null
     },
     {
-      "Progress": 96,
+      "Progress": 101,
+      "Place": "음압격리실",
+      "Position": "응급센터 간호사2",
+      "Item": "Syringe",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": "환자",
+      "DetailHint": "환자에게서 혈액 검체채취를 진행하세요./",
+      "Hint": "환자에게서 혈액 검체채취를 진행하세요.",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 102,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -1456,7 +1546,7 @@
       "Answers": "바코드 부착 후 3중 포장,장갑 착용,50배 희석 락스로 검체 용기 소독,진단검사의학팀(외부위탁)으로 검체 전달"
     },
     {
-      "Progress": 97,
+      "Progress": 103,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1471,7 +1561,7 @@
       "Answers": null
     },
     {
-      "Progress": 98,
+      "Progress": 104,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1486,7 +1576,7 @@
       "Answers": null
     },
     {
-      "Progress": 99,
+      "Progress": 105,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1501,7 +1591,7 @@
       "Answers": null
     },
     {
-      "Progress": 100,
+      "Progress": 106,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1516,7 +1606,7 @@
       "Answers": null
     },
     {
-      "Progress": 101,
+      "Progress": 107,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1531,7 +1621,7 @@
       "Answers": null
     },
     {
-      "Progress": 102,
+      "Progress": 108,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1546,7 +1636,7 @@
       "Answers": null
     },
     {
-      "Progress": 103,
+      "Progress": 109,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1561,7 +1651,7 @@
       "Answers": null
     },
     {
-      "Progress": 104,
+      "Progress": 110,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1576,7 +1666,7 @@
       "Answers": null
     },
     {
-      "Progress": 105,
+      "Progress": 111,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1591,7 +1681,7 @@
       "Answers": null
     },
     {
-      "Progress": 106,
+      "Progress": 112,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1606,7 +1696,7 @@
       "Answers": null
     },
     {
-      "Progress": 107,
+      "Progress": 113,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1621,7 +1711,7 @@
       "Answers": null
     },
     {
-      "Progress": 108,
+      "Progress": 114,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,

@@ -114,6 +114,7 @@ public class DrySwab : UsingItem
             }
         }
     }
+
     public void CancelUse()
     {
         if (noticeUI != null)

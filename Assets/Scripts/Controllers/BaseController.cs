@@ -350,6 +350,8 @@ public class BaseController : MonoBehaviour
             case CreatureState.Blocking:
                 return "Blocking";
 
+            case CreatureState.DrySwab:
+                return "DrySwab";
             default:
                 return "idle";
         }

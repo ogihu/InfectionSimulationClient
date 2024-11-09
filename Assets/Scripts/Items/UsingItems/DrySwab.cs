@@ -34,9 +34,19 @@ public class DrySwab : UsingItem
 
     public override bool Use(BaseController character)
     {
+<<<<<<< Updated upstream
         if (Managers.Object.MyPlayer != character)
             return true;
 
+=======
+        gameObject.transform.SetParent(Util.FindChildByName(character.gameObject, "basic_rig L Hand").transform, false);
+
+
+        if (Managers.Object.MyPlayer != character)
+            return true;
+
+
+>>>>>>> Stashed changes
         Managers.Item.SelectedItem.Using = true;
         _choosingPatient = true;
         noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
@@ -108,12 +118,48 @@ public class DrySwab : UsingItem
             }
         }
     }
+<<<<<<< Updated upstream
 
     public void CancelUse()
     {
         if(noticeUI != null)
             Managers.UI.DestroyUI(noticeUI);
 
+=======
+    IEnumerator CoDelayIdle(float time)
+    {
+        // 캐릭터 상태를 DrySwab로 설정하여 애니메이션을 트리거
+        Managers.Object.MyPlayer.State = CreatureState.DrySwab;
+
+        yield return new WaitForSeconds(time);
+
+        Renderer renderer = patient?.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.materials = baseMat;
+        }
+
+        Managers.UI.DestroyUI(noticeUI);
+        Managers.Scenario.Targets.Add("환자");
+
+        Managers.Item.ForceDropItem(ItemInfo);
+        Managers.Scenario.MyAction = "Use";
+
+        if (Managers.Item.IsInventoryOpen)
+        {
+            Managers.Item.OpenOrCloseInventory();
+        }
+
+        // 캐릭터 상태를 Idle로 설정하여 애니메이션을 종료
+        Managers.Object.MyPlayer.State = CreatureState.Idle;
+    }
+
+    public void CancelUse()
+    {
+        if (noticeUI != null)
+            Managers.UI.DestroyUI(noticeUI);
+
+>>>>>>> Stashed changes
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Managers.Scenario.State_Image = false;
         Managers.Item.ForceUnUseItem(ItemInfo);

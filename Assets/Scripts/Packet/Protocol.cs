@@ -169,6 +169,7 @@ namespace Google.Protobuf.Protocol {
     [pbr::OriginalName("SYRINGE")] Syringe = 14,
     [pbr::OriginalName("BLOCKING")] Blocking = 15,
     [pbr::OriginalName("EMR")] Emr = 16,
+    [pbr::OriginalName("DRYSWAB")] DrySwab = 17,
   }
 
   public enum PlayerServerState {

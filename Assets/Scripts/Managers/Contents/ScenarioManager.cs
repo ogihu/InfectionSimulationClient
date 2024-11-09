@@ -164,7 +164,6 @@ public class ScenarioManager
     Coroutine PassUI;
     public GameObject WearUI1 = null;
     public GameObject WearUI2 = null;
-    //public bool UIClose = false;
 
     public GameObject SpecimeCollection1 = null;
     public GameObject SpecimeCollection2 = null;
@@ -214,15 +213,21 @@ public class ScenarioManager
 
         Cursor_activation(true);
         State_Image = true;
+        int k = 0;
         for (int i = 0; i < m; i++)
         {
-            if ((CurrentScenarioInfo.Action == "EquipImage" && i == 10) || WearUI1 == null)
+            if ((CurrentScenarioInfo.Action == "EquipImage" && i == 10) || WearUI1 == null )
             {
-                Managers.UI.DestroyUI(WearUI1);
-                WearUI2.SetActive(true);
+                if( k == 0 )
+                {
+                    i = 10;
+                    k = 1;
+                    Managers.UI.DestroyUI(WearUI1);
+                    WearUI2.SetActive(true);
+                }
             }
-            if (WearUI1 == null || WearUI2 == null)
-                yield break;
+            if (WearUI1 == null && WearUI2 == null)
+                break;
             yield return new WaitForSeconds(1f);
         }
 
@@ -274,15 +279,22 @@ public class ScenarioManager
         SpecimeCollection2 = Managers.UI.CreateUI("SpecimeCollection2");
         UIChckStart = false;
         SpecimeCollection2.SetActive(false);
+
+        int k = 0;
         for (int i = 0; i < 20; i++)
         {
             if ((CurrentScenarioInfo.Action == "SCImage" && i == 10) || SpecimeCollection1 == null)
             {
-                Managers.UI.DestroyUI(SpecimeCollection1);
-                SpecimeCollection2.SetActive(true);
+                if (k == 1)
+                {
+                    k = 1;
+                    i = 10;
+                    Managers.UI.DestroyUI(SpecimeCollection1);
+                    SpecimeCollection2.SetActive(true);
+                }
             }
-            if (SpecimeCollection1 == null || SpecimeCollection2 == null)
-                yield break;
+            if (SpecimeCollection1 == null && SpecimeCollection2 == null)
+                break;
             yield return new WaitForSeconds(1f);
         }
         // UI 소멸 및 시나리오 완료 처리
@@ -625,6 +637,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(112));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(113));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(114));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(115));
 
                 break;
         }

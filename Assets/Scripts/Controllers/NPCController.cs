@@ -187,7 +187,7 @@ public class NPCController : CreatureController
     public void UnUse(string equipment)
     {
         if (Items.ContainsKey(equipment))
-            Items[equipment].GetComponent<Equipment>().UnUse(this);
+            Items[equipment].GetComponent<Equipment>().UnUse();
     }
 
     public void SetState(CreatureState state)

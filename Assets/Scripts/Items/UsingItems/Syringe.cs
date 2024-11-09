@@ -35,12 +35,12 @@ public class Syringe : UsingItem
         gameObject.transform.localRotation = Quaternion.Euler(-0.215f, 133.05f, -82.805f);
         gameObject.transform.localScale = new Vector3(0.8333f, 0.8333f, 0.8333f);
 
-        if (Managers.Object.MyPlayer != character)
-            return true;
-
-        Managers.Item.SelectedItem.Using = true;
-        _choosingPatient = true;
-        noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
+        if (Managers.Object.MyPlayer == character)
+        {
+            Managers.Item.SelectedItem.Using = true;
+            _choosingPatient = true;
+            noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
+        }
 
         return base.Use(character);
     }
@@ -112,7 +112,7 @@ public class Syringe : UsingItem
 
         Managers.UI.DestroyUI(noticeUI);
 
-        Managers.Item.DropItem(ItemInfo);
+        Managers.Item.ForceDropItem(ItemInfo);
         Managers.Scenario.MyAction = "Use";
         Managers.Scenario.Item = "Syringe";
         Managers.Scenario.Targets.Add("환자");

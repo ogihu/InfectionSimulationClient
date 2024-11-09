@@ -35,9 +35,9 @@ public class TissueBox : UsingItem
         return base.Use(character);
     }
 
-    public override void UnUse(BaseController character)
+    public override void UnUse()
     {
         Managers.Resource.Destroy(_tissue);
-        base.UnUse(character);
+        base.UnUse();
     }
 }

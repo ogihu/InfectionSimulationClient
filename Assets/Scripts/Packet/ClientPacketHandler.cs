@@ -101,9 +101,10 @@ class PacketHandler
         if (bc == null)
             return;
 
-        Equipment eqm = bc.Items[unEquipPacket.ItemName].GetComponent<Equipment>();
+        Item eqm = bc.Items[unEquipPacket.ItemName].GetComponent<Item>();
+
         if (eqm != null)
-            eqm.UnUse(bc);
+            eqm.UnUse();
     }
 
     public static void S_EquipHandler(PacketSession session, IMessage packet)

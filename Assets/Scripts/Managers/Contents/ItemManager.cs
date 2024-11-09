@@ -195,10 +195,6 @@ public class ItemManager
 
         ForceUnUseItem(item);
 
-        C_UnEquip unEquipPacket = new C_UnEquip();
-        unEquipPacket.ItemName = item.ItemData.Name;
-        Managers.Network.Send(unEquipPacket);
-
         Managers.Scenario.MyAction = "UnUse";
         Managers.UI.CreateSystemPopup("WarningPopup", $"{Define.ItemInfoDict[item.ItemData.Name].Name}을 해제하였습니다", UIManager.NoticeType.Info);
     }
@@ -211,7 +207,7 @@ public class ItemManager
     {
         Item selectedItem = item.Object.GetComponent<Item>();
 
-        selectedItem.UnUse(Managers.Object.MyPlayer);
+        selectedItem.UnUse();
         item.Object = null;
         item.Using = false;
         if(Inventory != null)
@@ -219,6 +215,7 @@ public class ItemManager
             Inventory.UpdateItemList();
             Inventory.ChangeItemText("");
         }
+
         SelectedItem = null;
         Managers.Scenario.Item = item.ItemData.Name;
     }
@@ -227,13 +224,6 @@ public class ItemManager
     {
         ForceUnUseItem(item);
         ItemList.Remove(item);
-
-        if(Inventory != null)
-        {
-            Inventory.UpdateItemList();
-            Inventory.ChangeItemText("");
-        }
-
         SelectedItem = null;
     }
 

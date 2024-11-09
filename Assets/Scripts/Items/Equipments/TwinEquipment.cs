@@ -26,11 +26,11 @@ public class TwinEquipment : Equipment
         return base.Use(character);
     }
 
-    public override void UnUse(BaseController character)
+    public override void UnUse()
     {
         Managers.Resource.Destroy(_leftEquipment);
         Managers.Resource.Destroy(_rightEquipment);
 
-        base.UnUse(character);
+        base.UnUse();
     }
 }

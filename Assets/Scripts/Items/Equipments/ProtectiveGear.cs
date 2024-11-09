@@ -11,8 +11,8 @@ public class ProtectiveGear : Equipment
         return base.Use(character);
     }
 
-    public override void UnUse(BaseController character)
+    public override void UnUse()
     {
-        base.UnUse(character);
+        base.UnUse();
     }
 }

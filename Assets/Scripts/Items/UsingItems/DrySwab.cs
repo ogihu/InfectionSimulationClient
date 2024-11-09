@@ -37,14 +37,12 @@ public class DrySwab : UsingItem
     {
         gameObject.transform.SetParent(Util.FindChildByName(character.gameObject, "basic_rig L Hand").transform, false);
 
-
-        if (Managers.Object.MyPlayer != character)
-            return true;
-
-
-        Managers.Item.SelectedItem.Using = true;
-        _choosingPatient = true;
-        noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
+        if (Managers.Object.MyPlayer == character)
+        {
+            Managers.Item.SelectedItem.Using = true;
+            _choosingPatient = true;
+            noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
+        }
 
         return base.Use(character);
     }
@@ -132,7 +130,7 @@ public class DrySwab : UsingItem
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         Managers.Scenario.State_Image = false;
-        Managers.Item.DropItem(ItemInfo);
+        Managers.Item.ForceDropItem(ItemInfo);
         Managers.Scenario.MyAction = "Use";
         Managers.Scenario.Item = "DrySwab";
         Managers.Scenario.Targets.Add("환자");

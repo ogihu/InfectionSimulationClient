@@ -1,11 +1,10 @@
-using Google.Protobuf.Protocol;
 using Ricimi;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using static Google.Cloud.Speech.V1.LanguageCodes;
 
@@ -14,44 +13,113 @@ public class DrySwab : UsingItem
     Texture2D cursorTexture;  // 사용할 커서 이미지
     GameObject popup;
     GameObject lesion;
-    GameObject obj;
-    public bool check = false;
+
+    GameObject patient;
+    float raycastDistance = 3f;
+    int _layerPoint;
+    bool _choosingPatient = false;
+    bool _used = false;
+    GameObject noticeUI;
+
+    Material[] baseMat;
+    Material[] outlineMat;
+
+    public override void Init()
+    {
+        base.Init();
+        _layerPoint = 1 << LayerMask.NameToLayer("Patient");
+        outlineMat = Resources.LoadAll<Material>("Materials/Characters/환자/Outline");
+        cursorTexture = Resources.Load<Texture2D>("Sprites/itemIcons/Use_DrySwab");
+    }
 
     public override bool Use(BaseController character)
     {
-        check = false;
-        cursorTexture = Resources.Load<Texture2D>("Sprites/itemIcons/Use_DrySwab");
-        StartCoroutine(StartChecking());
+        if (Managers.Object.MyPlayer != character)
+            return true;
+
+        Managers.Item.SelectedItem.Using = true;
+        _choosingPatient = true;
+        noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
+
         return base.Use(character);
     }
 
-    IEnumerator StartChecking()
+    private void Update()
     {
-        int i = 0;
-        popup = Managers.UI.CreateUI("PopupNotice");
-
-        //@@@@@@@@@@이 부분 환자 클릭하면 면봉 사용 UI 표시되게 해야함. 혈액채취 부분도 마찬가지@@@@@@@@@@
-        StartCoroutine(StartChecking());
-        //카운트다운 시작
-        for (i = 3; i > 0; i--)
+        if (_choosingPatient)
         {
-            if (popup == null)
-                Debug.Log("이거 안됨");
-            popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
-            popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤에 병변 이미지가 주어집니다.";
-            yield return new WaitForSeconds(1f); // 1초 대기
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(ray, out hitInfo, raycastDistance, _layerPoint))
+            {
+                patient = Util.FindParentByName(hitInfo.transform.gameObject, "환자");
+
+                Renderer renderer = patient.GetComponent<Renderer>();
+
+                if (baseMat == null)
+                {
+                    baseMat = renderer.materials.ToArray();
+                }
+
+                if (renderer != null)
+                {
+                    renderer.materials = outlineMat;
+                }
+            }
+            else
+            {
+                if (patient != null)
+                {
+                    Renderer renderer = patient.GetComponent<Renderer>();
+
+                    if (renderer != null)
+                    {
+                        renderer.materials = baseMat;
+                    }
+
+                    patient = null;
+                }
+            }
+
+            if (patient != null && _used == false)
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    _choosingPatient = false;
+                    _used = true;
+                    Managers.UI.DestroyUI(noticeUI);
+
+                    Managers.Scenario.State_Image = true;
+                    lesion = Managers.UI.CreateUI("LesionUI");
+                    lesion.GetComponent<LesionUI>().Swab = this;
+
+                    Vector2 hotSpot = new Vector2(0, cursorTexture.height);
+                    Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.ForceSoftware);
+
+                    Renderer renderer = patient.GetComponent<Renderer>();
+
+                    if (renderer != null)
+                    {
+                        renderer.materials = baseMat;
+                    }
+                }
+            }
         }
-        Managers.UI.DestroyUI(popup);
+    }
 
-        Managers.Scenario.State_Image = true;
-        lesion = Managers.UI.CreateUI("LesionUI");
-        lesion.GetComponent<LesionUI>().Swab = this;
+    public void CancelUse()
+    {
+        if(noticeUI != null)
+            Managers.UI.DestroyUI(noticeUI);
 
-        //면봉 상태(애니메이션)
-        //Mycharacter.State = CreatureState.Syringe;
-
-        Vector2 hotSpot = new Vector2(0, cursorTexture.height);
-        Cursor.SetCursor(cursorTexture, hotSpot, CursorMode.ForceSoftware);
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        Managers.Scenario.State_Image = false;
+        Managers.Item.ForceUnUseItem(ItemInfo);
+        Managers.Scenario.MyAction = "";
+        Managers.Scenario.Item = "";
+        Managers.Resource.Destroy(this.gameObject);
     }
 
     public void CompleteLesion()
@@ -62,51 +130,5 @@ public class DrySwab : UsingItem
         Managers.Scenario.MyAction = "Use";
         Managers.Scenario.Item = "DrySwab";
         Managers.Scenario.Targets.Add("환자");
-    }
-    IEnumerator PassCheck()
-    {
-        // 면봉 캐릭터 손에 부여
-        while (!check)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                // 바라보는 대상 확인
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.forward, out hit))
-                {
-                    // 바라보는 대상의 이름이 "환자"일 경우
-                    if (hit.transform.gameObject.name == "환자")
-                    {
-                        obj = hit.transform.gameObject;
-                    }
-                }
-                else
-                {
-                    if (obj != null)
-                    {
-                        obj = null;
-                    }
-                }
-                // 시나리오 액션이 "Use"일 때
-                if (Managers.Scenario.CurrentScenarioInfo.Action == "Use")
-                {
-                    // 올바른 오브젝트 클릭 체크
-                    if (obj != null && obj.transform.gameObject.name == "환자")
-                    {
-                        // 시나리오 정보가 유효할 때
-                        if (Managers.Scenario.CurrentScenarioInfo != null)
-                        {
-                            check = true; 
-                        }
-                    }
-                    else if (!Managers.Item.IsInventoryOpen)
-                    {
-                        Managers.UI.CreateSystemPopup("WarningPopup", "올바른 곳에 사용하세요.", UIManager.NoticeType.Warning);
-                    }
-                }
-            }
-            // 다음 프레임까지 대기
-            yield return null;
-        }
     }
 }

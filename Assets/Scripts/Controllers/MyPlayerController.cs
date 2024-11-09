@@ -286,7 +286,6 @@ public class MyPlayerController : PlayerController
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
-
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, raycastDistance, _layerMask))
         {

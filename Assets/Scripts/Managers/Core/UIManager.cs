@@ -206,8 +206,9 @@ public class UIManager
         //추가
         BaseController bc = host.GetComponent<BaseController>();
 
-        if(bc != null)
-            Managers.TTS.Speaking(host, message);
+        //TODO : 나중에 주석 풀어야 됨
+        //if(bc != null)
+            //Managers.TTS.Speaking(host, message);
     }
 
     public IEnumerator DestroyAfter(GameObject go, float time)

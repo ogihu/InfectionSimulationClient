@@ -285,7 +285,7 @@ public class ScenarioManager
         {
             if ((CurrentScenarioInfo.Action == "SCImage" && i == 10) || SpecimeCollection1 == null)
             {
-                if (k == 1)
+                if (k == 0)
                 {
                     k = 1;
                     i = 10;

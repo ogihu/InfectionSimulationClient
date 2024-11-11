@@ -702,15 +702,15 @@ public class ScenarioManager
                     NPCs["미화1"].AddOrder(NPCs["미화1"].CoUse("WetMop"));
                     yield return new WaitForSeconds(1.0f);
 
-                    NPCs["미화1"].Teleport(Entrance);
-                    NPCs["미화1"].AddOrder(NPCs["미화2"].CoGoDestination(BeforeIsolationArea));
-                    NPCs["미화1"].AddOrder(NPCs["미화2"].CoUse("WetMop"));
+                    NPCs["미화2"].Teleport(Entrance);
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(BeforeIsolationArea));
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoUse("WetMop"));
                     yield return new WaitForSeconds(5.0f);
 
                     NPCs["미화1"].AddOrder(NPCs["미화1"].CoGoDestination(IsolationAreaEntrancePoint));
-                    NPCs["미화1"].AddOrder(NPCs["미화2"].CoGoDestination(IsolationAreaEntrancePoint));
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(IsolationAreaEntrancePoint));
                     NPCs["미화1"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
-                    NPCs["미화1"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
+                    NPCs["미화2"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
                 }
                 #endregion
                 break;

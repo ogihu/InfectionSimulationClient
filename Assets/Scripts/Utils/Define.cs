@@ -111,24 +111,32 @@ public class Define
 
     #region PointMapping
 
+    //응급센터 메인 입구 위치
     public static readonly Vector3 Entrance = new Vector3(-6.5f, 0, 17.5f);
-    public static int WaitingCount = 0;
+    //NPC들 시나리오 대기 위치
     public static readonly Vector3 WaitingArea = new Vector3(-35, 0, 15);
-    public static readonly Vector3 ObservationArea = new Vector3(11.5f, 0, 0);
+    public static int WaitingCount = 0;
+    //음압격리실 위치
     public static readonly Vector3 IsolationArea = new Vector3(21, 0, -47.4f);
-    public static readonly Vector3 EntranceControlPoint = new Vector3(0, 0, 17);
-    public static readonly Vector3 OAControlPoint = new Vector3(10, 0, 0);
-    public static readonly Vector3 Station = new Vector3(-12, 0, -9);
+    public static readonly Vector3 BeforeIsolationArea = new Vector3(24.4f, 0, -34.7f);
+    //환자 침대에 눕는 위치
     public static readonly Vector3 Patientlying = new Vector3(0.02f, 0.26f, 0.02f);
-    public static readonly Vector3 Entrance1 = new Vector3(-5, 0, 18);
+    //관찰구역 환자 침대 이송 시작하는 위치
     public static readonly Vector3 MovePosition = new Vector3(9.6f, 0, 2.32f);
+    //미화 요원 소독 테이블 위치
     public static readonly Vector3 OATable = new Vector3(7, 0, 5);
+    //관찰구역, 음압격리실 침대 위치
     public static readonly Vector3 OABed = new Vector3(9.5f, 0, 4);
     public static readonly Vector3 IABed = new Vector3(21, 0, -45);
+    //보안요원들 통제 포인트
     public static readonly Vector3 BlockingPoint1 = new Vector3(-1, 0, 0);
     public static readonly Vector3 BlockingPoint2 = new Vector3(-1, 0, -11);
     public static readonly Vector3 BlockingPoint3 = new Vector3(-1, 0, -22);
     public static readonly Vector3 BlockingPoint4 = new Vector3(12, 0, -26.5f);
+    //음압격리실 환자 침대 이송 시작하는 위치
+    public static readonly Vector3 MovePosition2 = new Vector3(21.1f, 0, -43.7f);
+    //음압격리실 외부 통로 위치
+    public static readonly Vector3 IsolationAreaEntrancePoint = new Vector3(26.5f, 0, -29.5f);
 
     #endregion
 

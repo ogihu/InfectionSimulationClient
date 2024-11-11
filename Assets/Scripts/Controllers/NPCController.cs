@@ -105,8 +105,10 @@ public class NPCController : CreatureController
     public IEnumerator CoUse(string itemName, Action action = null)
     {
         Use(itemName);
+
         if (action != null)
             action.Invoke();
+
         StopOrder();
         yield break;
     }

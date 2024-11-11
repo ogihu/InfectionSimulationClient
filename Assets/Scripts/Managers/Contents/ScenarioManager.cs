@@ -711,6 +711,8 @@ public class ScenarioManager
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(IsolationAreaEntrancePoint));
                     NPCs["미화1"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
+
+                    yield return new WaitUntil(() => (NPCs["미화1"].Place == "대기장소") && (NPCs["미화2"].Place == "대기장소"));
                 }
                 #endregion
                 break;

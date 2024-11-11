@@ -705,11 +705,13 @@ public class ScenarioManager
                     NPCs["미화2"].Teleport(Entrance);
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(BeforeIsolationArea));
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoUse("WetMop"));
+
+                    yield return new WaitUntil(() => (NPCs["미화1"].Place == "음압격리실") && (NPCs["미화2"].Place == "전실"));
                     yield return new WaitForSeconds(5.0f);
 
                     NPCs["미화1"].AddOrder(NPCs["미화1"].CoGoDestination(IsolationAreaEntrancePoint));
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(IsolationAreaEntrancePoint));
-                    NPCs["미화1"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
+                    NPCs["미화1"].AddOrder(NPCs["미화1"].CoTeleport(WaitingArea));
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
 
                     yield return new WaitUntil(() => (NPCs["미화1"].Place == "대기장소") && (NPCs["미화2"].Place == "대기장소"));

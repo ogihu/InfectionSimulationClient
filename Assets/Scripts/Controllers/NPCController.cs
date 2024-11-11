@@ -72,6 +72,7 @@ public class NPCController : CreatureController
         yield return new WaitUntil(() => _agent.remainingDistance <= _agent.stoppingDistance);
         _agent.velocity = Vector3.zero;
         StopOrder();
+        State = CreatureState.Idle;
     }
 
     public IEnumerator CoGoDestination_Animation(Vector3 point, CreatureState animation)
@@ -155,7 +156,6 @@ public class NPCController : CreatureController
         StopCoroutine(_order);
         _order = null;
         _target = null;
-        SetState(CreatureState.Idle);
     }
 
     void SetDestination(Vector3 point)

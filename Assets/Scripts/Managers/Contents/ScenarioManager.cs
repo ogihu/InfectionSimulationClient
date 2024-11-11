@@ -682,8 +682,6 @@ public class ScenarioManager
                     yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - IsolationAreaEntrancePoint).magnitude < 0.3f);
 
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoTeleport(WaitingArea));
-                    NPCs["환자"].SetState(CreatureState.LyingIdle);
-                    bed.transform.SetParent(null);
 
                     //환자 이송이 끝나면 모든 NPC 상태 초기화, 출입구로 이동 후 퇴장 (환자 제외)
                     NPCs["이송요원"].ResetSpeed();

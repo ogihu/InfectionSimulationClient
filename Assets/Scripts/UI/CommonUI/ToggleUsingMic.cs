@@ -27,6 +27,7 @@ public class ToggleUsingMic : MonoBehaviour
         if(microphoneDevices.Length == 0)
         {
             value = false;
+            toggle.isOn = value;
         }
         // 전달된 value를 사용하여 설정 값 변경
         Managers.Setting.UsingMic = value;

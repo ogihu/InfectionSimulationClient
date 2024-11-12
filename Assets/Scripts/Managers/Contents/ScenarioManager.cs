@@ -132,7 +132,7 @@ public class ScenarioManager
 
         ObjectIndicator = Managers.Resource.Load<GameObject>("Prefabs/System/ObjectIndicator");
     }
-
+    
     public void Reset()
     {
         PassSpeech = false;
@@ -337,14 +337,17 @@ public class ScenarioManager
     #endregion
 
     IEnumerator CoScenarioStep(int progress)
-    {
-        UpdateMyPlace();
+    { 
+        UpdateMyPlace(); 
         Managers.STT.STTStreamingText.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
         Managers.Setting.SceneStartMicCheck();
+
         UpdateObjectIndicator(CurrentScenarioInfo.ObjectIndicator);
+
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");
+            Managers.Object.MyPlayer.Arrow_Deactivate.init();
 
             if (CurrentScenarioInfo.Action == "Quiz")
             {

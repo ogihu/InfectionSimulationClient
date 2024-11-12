@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
 
     public virtual bool Use(BaseController character)
     {
-        if(gameObject.tag == "FaceEquipment")
+        if(gameObject.tag == "FaceEquipment" && character as MyPlayerController)
         {
             gameObject.layer = LayerMask.NameToLayer("FaceEquipment");
         }

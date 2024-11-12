@@ -1393,9 +1393,9 @@ MonoBehaviour:
   m_fontSize: 0.2
   m_fontSizeBase: 0.2
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 0.15
-  m_fontSizeMax: 0.3
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 0.1
+  m_fontSizeMax: 0.2
   m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512

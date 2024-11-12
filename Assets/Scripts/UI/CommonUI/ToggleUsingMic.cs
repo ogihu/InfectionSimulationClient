@@ -23,6 +23,11 @@ public class ToggleUsingMic : MonoBehaviour
     // Toggle 값이 변경될 때 호출되는 메서드
     void OnToggleValueChanged(bool value)
     {
+        string[] microphoneDevices = Microphone.devices;
+        if(microphoneDevices.Length == 0)
+        {
+            value = false;
+        }
         // 전달된 value를 사용하여 설정 값 변경
         Managers.Setting.UsingMic = value;
 

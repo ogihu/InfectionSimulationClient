@@ -29,7 +29,7 @@ public class MyPlayerController : PlayerController
     [SerializeField] private float _syncTimer = 0.2f;
     [SerializeField] float _camRotationSpeed;
     [SerializeField] float raycastDistance = 2f;
-    public Arrow_Deactivate Arrow_Deactivate;
+    public Navigation Navigation;
     public CameraArm _cameraArm;
     float mouseX = 0f;
     Coroutine _coSendPacket;
@@ -39,9 +39,9 @@ public class MyPlayerController : PlayerController
     {
         base.Awake();
         GameObject cameraArm = Managers.Resource.Instantiate("System/CameraArm", this.gameObject.transform);
-         GameObject Arrow = Managers.Resource.Instantiate($"Items/Arrow_Deactivate", this.gameObject.transform);
+        GameObject navigation = Managers.Resource.Instantiate($"Items/Navigation", this.gameObject.transform);
         _cameraArm = cameraArm.GetComponent<CameraArm>();
-        Arrow_Deactivate = Arrow.GetComponent<Arrow_Deactivate>();
+        Navigation = navigation.GetComponent<Navigation>();
         _coSendPacket = StartCoroutine(CoSyncUpdate());
         _layerMask = 1 << LayerMask.NameToLayer("Interaction");
         Managers.Setting.SceneStartMicCheck();

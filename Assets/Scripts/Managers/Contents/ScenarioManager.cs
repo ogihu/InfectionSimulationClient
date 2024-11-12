@@ -74,6 +74,8 @@ public class ScenarioManager
     }
     string _place;
 
+    public Navigation Navigation { get; set; }
+
     public void ScenarioAssist_HintActive()
     {
         if (_scenarioHint)
@@ -347,7 +349,6 @@ public class ScenarioManager
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");
-            Managers.Object.MyPlayer.Arrow_Deactivate.init();
 
             if (CurrentScenarioInfo.Action == "Quiz")
             {
@@ -859,6 +860,8 @@ public class ScenarioManager
                     if(CurrentScenarioInfo.Place != newPlace)
                     {
                         MyPlace.GetComponent<TMP_Text>().text = $"<color=#ff0000>{newPlace}</color>";
+                        Navigation.gameObject.SetActive(true);
+                        Navigation.SetDestination(CurrentScenarioInfo.Place);
                         return;
                     }
                 }
@@ -867,6 +870,7 @@ public class ScenarioManager
 
         //그 외에는 검은색으로 표시
         MyPlace.GetComponent<TMP_Text>().text = $"<color=#000000>{newPlace}</color>";
+        Navigation.gameObject.SetActive(false);
     }
 
     void UpdateObjectIndicator(List<string> objects)
@@ -1162,5 +1166,6 @@ public class ScenarioManager
         InteractableObjectsList.Clear();
         ObjectIndicators.Clear();
         Define.WaitingCount = 0;
+        Navigation = null;
     }
 }

@@ -377,6 +377,10 @@ public class ScenarioManager
                 Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 통과했습니다.", UIManager.NoticeType.Info);
             }
         }
+        else if (CurrentScenarioInfo.Position == "NPC")
+        {
+            UpdateScenarioAssist("NPC가 시나리오를 진행 중 입니다...");
+        }
         else
         {
             UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
@@ -433,6 +437,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(15));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(16));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(17));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 #region 환자 격리실 이송
                 {
                     NPCs["보안요원1"].Use("Mask");
@@ -535,7 +540,6 @@ public class ScenarioManager
                     Managers.Resource.Destroy(go4);
                 }
                 #endregion
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(18));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(19));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(20));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(21));
@@ -637,6 +641,9 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(112));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(113));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(114));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(115));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(116));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(117));
                 #region 환자 타병원 전원
                 {
                     NPCs["이송요원"].Teleport(WaitingArea);
@@ -694,7 +701,9 @@ public class ScenarioManager
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoTeleport(WaitingArea));
                 }
                 #endregion
-                yield return Managers.Instance.StartCoroutine(CoScenarioStep(115));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(118));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(119));
+                yield return Managers.Instance.StartCoroutine(CoScenarioStep(120));
                 #region 음압격리실 소독
                 {
                     NPCs["미화1"].Teleport(Entrance);

@@ -246,7 +246,7 @@
       "Position": "응급의학과 의사",
       "Item": null,
       "Action": "Tell",
-      "Sentence": "담당의사 박보검 입니다.\r\n이감염님 엠폭스 확진자 [밀접접촉자]로 의심되는 상태로 [격리진행] 예정입니다.\r\n[보건소]에 사실확인 요청 중이며 결과에 따라 [격리해제]될 수 있습니다.\r\n[이송직원] 통해서 [격리병실]로 안내 도와드리겠습니다",
+      "Sentence": "담당의사 박보검 입니다.\n이감염님 엠폭스 확진자 [밀접접촉자]로 의심되는 상태로 [격리진행] 예정입니다.\n[보건소]에 사실확인 요청 중이며 결과에 따라 [격리해제]될 수 있습니다.\n[이송직원] 통해서 [격리병실]로 안내 도와드리겠습니다",
       "STTKeywords": "엠폭스,확진자,접촉자,격리,진행,보건소,사실,확인,요청,결과,격리,해제",
       "Targets": null,
       "DetailHint": "관찰구역에서 환자에게 다음과 같이 안내하세요./\n\n담당의사 박보검 입니다.\n이감염님 엠폭스 확진자 밀접접촉자로 의심되는 상태로 격리진행 예정입니다.\n보건소에 사실확인 요청 중이며 결과에 따라 격리해제될 수 있습니다.\n이송직원 통해서 격리병실로 안내 도와드리겠습니다",
@@ -257,6 +257,36 @@
     },
     {
       "Progress": 17,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 18,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 19,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -271,7 +301,7 @@
       "Answers": null
     },
     {
-      "Progress": 18,
+      "Progress": 20,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -286,7 +316,7 @@
       "Answers": null
     },
     {
-      "Progress": 19,
+      "Progress": 21,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "ProtectedGear",
@@ -301,7 +331,7 @@
       "Answers": null
     },
     {
-      "Progress": 20,
+      "Progress": 22,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Mask",
@@ -316,7 +346,7 @@
       "Answers": null
     },
     {
-      "Progress": 21,
+      "Progress": 23,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Goggle",
@@ -331,7 +361,7 @@
       "Answers": null
     },
     {
-      "Progress": 22,
+      "Progress": 24,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Glove",
@@ -346,7 +376,7 @@
       "Answers": null
     },
     {
-      "Progress": 23,
+      "Progress": 25,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -361,7 +391,7 @@
       "Answers": null
     },
     {
-      "Progress": 24,
+      "Progress": 26,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -376,7 +406,7 @@
       "Answers": null
     },
     {
-      "Progress": 25,
+      "Progress": 27,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -391,7 +421,7 @@
       "Answers": null
     },
     {
-      "Progress": 26,
+      "Progress": 28,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -406,7 +436,7 @@
       "Answers": null
     },
     {
-      "Progress": 27,
+      "Progress": 29,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -421,7 +451,7 @@
       "Answers": null
     },
     {
-      "Progress": 28,
+      "Progress": 30,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -436,7 +466,7 @@
       "Answers": null
     },
     {
-      "Progress": 29,
+      "Progress": 31,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -451,7 +481,7 @@
       "Answers": null
     },
     {
-      "Progress": 30,
+      "Progress": 32,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -466,7 +496,7 @@
       "Answers": null
     },
     {
-      "Progress": 31,
+      "Progress": 33,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Glove",
@@ -475,36 +505,6 @@
       "STTKeywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
-      "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null,
-      "Question": null,
-      "Answers": null
-    },
-    {
-      "Progress": 32,
-      "Place": null,
-      "Position": "응급의학과 의사",
-      "Item": "Handwash",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
-      "Hint": "손 위생을 시행하세요.",
-      "Confirm": null,
-      "Question": null,
-      "Answers": null
-    },
-    {
-      "Progress": 33,
-      "Place": null,
-      "Position": "응급의학과 의사",
-      "Item": "ProtectedGear",
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -529,12 +529,12 @@
       "Progress": 35,
       "Place": null,
       "Position": "응급의학과 의사",
-      "Item": "Goggle",
+      "Item": "ProtectedGear",
       "Action": "UnUse",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -559,12 +559,12 @@
       "Progress": 37,
       "Place": null,
       "Position": "응급의학과 의사",
-      "Item": "Mask",
+      "Item": "Goggle",
       "Action": "UnUse",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -579,6 +579,36 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
+      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
+      "Hint": "손 위생을 시행하세요.",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 39,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": "Mask",
+      "Action": "UnUse",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
+      "Hint": "4종 보호구를 해제하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 40,
+      "Place": null,
+      "Position": "응급의학과 의사",
+      "Item": "Handwash",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
       "DetailHint": "손 위생을 청결하게 유지하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 청결하게 유지하세요",
       "Confirm": null,
@@ -586,7 +616,7 @@
       "Answers": null
     },
     {
-      "Progress": 39,
+      "Progress": 41,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -601,7 +631,7 @@
       "Answers": null
     },
     {
-      "Progress": 40,
+      "Progress": 42,
       "Place": "스테이션",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -616,7 +646,7 @@
       "Answers": null
     },
     {
-      "Progress": 41,
+      "Progress": 43,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -631,7 +661,7 @@
       "Answers": null
     },
     {
-      "Progress": 42,
+      "Progress": 44,
       "Place": "스테이션",
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -646,7 +676,7 @@
       "Answers": null
     },
     {
-      "Progress": 43,
+      "Progress": 45,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -661,7 +691,7 @@
       "Answers": null
     },
     {
-      "Progress": 44,
+      "Progress": 46,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -676,7 +706,7 @@
       "Answers": null
     },
     {
-      "Progress": 45,
+      "Progress": 47,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -691,7 +721,7 @@
       "Answers": null
     },
     {
-      "Progress": 46,
+      "Progress": 48,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -706,7 +736,7 @@
       "Answers": "시트르산,헤파린,EDTA,플루오라이드"
     },
     {
-      "Progress": 47,
+      "Progress": 49,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Glove",
@@ -715,36 +745,6 @@
       "STTKeywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
-      "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null,
-      "Question": null,
-      "Answers": null
-    },
-    {
-      "Progress": 48,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "Handwash",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
-      "Hint": "손 위생을 시행하세요.",
-      "Confirm": null,
-      "Question": null,
-      "Answers": null
-    },
-    {
-      "Progress": 49,
-      "Place": null,
-      "Position": "응급센터 간호사2",
-      "Item": "ProtectedGear",
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -769,12 +769,12 @@
       "Progress": 51,
       "Place": null,
       "Position": "응급센터 간호사2",
-      "Item": "Goggle",
+      "Item": "ProtectedGear",
       "Action": "UnUse",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -799,12 +799,12 @@
       "Progress": 53,
       "Place": null,
       "Position": "응급센터 간호사2",
-      "Item": "Mask",
+      "Item": "Goggle",
       "Action": "UnUse",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -819,6 +819,36 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
+      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
+      "Hint": "손 위생을 시행하세요.",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 55,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Mask",
+      "Action": "UnUse",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
+      "Hint": "4종 보호구를 해제하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 56,
+      "Place": null,
+      "Position": "응급센터 간호사2",
+      "Item": "Handwash",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
       "DetailHint": "손 위생을 청결하게 유지하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 청결하게 유지하세요",
       "Confirm": null,
@@ -826,7 +856,7 @@
       "Answers": null
     },
     {
-      "Progress": 55,
+      "Progress": 57,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -841,7 +871,7 @@
       "Answers": null
     },
     {
-      "Progress": 56,
+      "Progress": 58,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -856,7 +886,7 @@
       "Answers": null
     },
     {
-      "Progress": 57,
+      "Progress": 59,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Handwash",
@@ -871,7 +901,7 @@
       "Answers": null
     },
     {
-      "Progress": 58,
+      "Progress": 60,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "ProtectedGear",
@@ -886,7 +916,7 @@
       "Answers": null
     },
     {
-      "Progress": 59,
+      "Progress": 61,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Mask",
@@ -901,7 +931,7 @@
       "Answers": null
     },
     {
-      "Progress": 60,
+      "Progress": 62,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Goggle",
@@ -916,7 +946,7 @@
       "Answers": null
     },
     {
-      "Progress": 61,
+      "Progress": 63,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
@@ -931,7 +961,7 @@
       "Answers": null
     },
     {
-      "Progress": 62,
+      "Progress": 64,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -946,7 +976,7 @@
       "Answers": null
     },
     {
-      "Progress": 63,
+      "Progress": 65,
       "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -961,7 +991,7 @@
       "Answers": null
     },
     {
-      "Progress": 64,
+      "Progress": 66,
       "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -976,7 +1006,7 @@
       "Answers": null
     },
     {
-      "Progress": 65,
+      "Progress": 67,
       "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -991,7 +1021,7 @@
       "Answers": null
     },
     {
-      "Progress": 66,
+      "Progress": 68,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
@@ -1000,36 +1030,6 @@
       "STTKeywords": null,
       "Targets": null,
       "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n장갑을 해제하세요.",
-      "Hint": "4종 보호구를 해제하세요",
-      "Confirm": null,
-      "Question": null,
-      "Answers": null
-    },
-    {
-      "Progress": 67,
-      "Place": null,
-      "Position": "영상의학팀 방사선사",
-      "Item": "Handwash",
-      "Action": "Use",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
-      "Hint": "손 위생을 시행하세요.",
-      "Confirm": null,
-      "Question": null,
-      "Answers": null
-    },
-    {
-      "Progress": 68,
-      "Place": null,
-      "Position": "영상의학팀 방사선사",
-      "Item": "ProtectedGear",
-      "Action": "UnUse",
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -1054,12 +1054,12 @@
       "Progress": 70,
       "Place": null,
       "Position": "영상의학팀 방사선사",
-      "Item": "Goggle",
+      "Item": "ProtectedGear",
       "Action": "UnUse",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n가운을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -1084,12 +1084,12 @@
       "Progress": 72,
       "Place": null,
       "Position": "영상의학팀 방사선사",
-      "Item": "Mask",
+      "Item": "Goggle",
       "Action": "UnUse",
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
-      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n고글을 해제하세요.",
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
@@ -1104,6 +1104,36 @@
       "Sentence": null,
       "STTKeywords": null,
       "Targets": null,
+      "DetailHint": "손 위생을 시행하세요./\n\n손소독제를 사용하세요.",
+      "Hint": "손 위생을 시행하세요.",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 74,
+      "Place": null,
+      "Position": "영상의학팀 방사선사",
+      "Item": "Mask",
+      "Action": "UnUse",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": "순서를 준수하여 4종 보호구를 해제하세요./\n\n마스크를 해제하세요.",
+      "Hint": "4종 보호구를 해제하세요",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 75,
+      "Place": null,
+      "Position": "영상의학팀 방사선사",
+      "Item": "Handwash",
+      "Action": "Use",
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
       "DetailHint": "손 위생을 청결하게 유지하세요./\n\n손소독제를 사용하세요.",
       "Hint": "손 위생을 청결하게 유지하세요",
       "Confirm": null,
@@ -1111,7 +1141,7 @@
       "Answers": null
     },
     {
-      "Progress": 74,
+      "Progress": 76,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -1126,7 +1156,7 @@
       "Answers": null
     },
     {
-      "Progress": 75,
+      "Progress": 77,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1141,7 +1171,7 @@
       "Answers": null
     },
     {
-      "Progress": 76,
+      "Progress": 78,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1156,7 +1186,7 @@
       "Answers": null
     },
     {
-      "Progress": 77,
+      "Progress": 79,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1171,7 +1201,7 @@
       "Answers": null
     },
     {
-      "Progress": 78,
+      "Progress": 80,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1186,7 +1216,7 @@
       "Answers": null
     },
     {
-      "Progress": 79,
+      "Progress": 81,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1201,7 +1231,7 @@
       "Answers": null
     },
     {
-      "Progress": 80,
+      "Progress": 82,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1216,7 +1246,7 @@
       "Answers": null
     },
     {
-      "Progress": 81,
+      "Progress": 83,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1231,7 +1261,7 @@
       "Answers": null
     },
     {
-      "Progress": 82,
+      "Progress": 84,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1246,7 +1276,7 @@
       "Answers": null
     },
     {
-      "Progress": 83,
+      "Progress": 85,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -1261,7 +1291,7 @@
       "Answers": null
     },
     {
-      "Progress": 84,
+      "Progress": 86,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ProtectedGear",
@@ -1276,7 +1306,7 @@
       "Answers": null
     },
     {
-      "Progress": 85,
+      "Progress": 87,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Mask",
@@ -1291,7 +1321,7 @@
       "Answers": null
     },
     {
-      "Progress": 86,
+      "Progress": 88,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Goggle",
@@ -1306,7 +1336,7 @@
       "Answers": null
     },
     {
-      "Progress": 87,
+      "Progress": 89,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Glove",
@@ -1321,7 +1351,7 @@
       "Answers": null
     },
     {
-      "Progress": 88,
+      "Progress": 90,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1336,7 +1366,7 @@
       "Answers": null
     },
     {
-      "Progress": 89,
+      "Progress": 91,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1351,7 +1381,7 @@
       "Answers": "환부 주변 소독 및 건조,채취 도구로 검체 수집,검체를 수송 배지에 넣기,검체 라벨 부착"
     },
     {
-      "Progress": 90,
+      "Progress": 92,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": "DrySwab",
@@ -1366,7 +1396,7 @@
       "Answers": null
     },
     {
-      "Progress": 91,
+      "Progress": 93,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": "DrySwab",
@@ -1381,7 +1411,7 @@
       "Answers": null
     },
     {
-      "Progress": 92,
+      "Progress": 94,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1396,7 +1426,7 @@
       "Answers": "동일 VTM 배지에 수집,서로 다른 VTM 배지에 수집,스왑을 멸균백에 수집,스왑을 보관하지 않고 즉시 분석에 사용"
     },
     {
-      "Progress": 93,
+      "Progress": 95,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1411,7 +1441,7 @@
       "Answers": null
     },
     {
-      "Progress": 94,
+      "Progress": 96,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -1426,7 +1456,7 @@
       "Answers": null
     },
     {
-      "Progress": 95,
+      "Progress": 97,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "ProtectedGear",
@@ -1441,7 +1471,7 @@
       "Answers": null
     },
     {
-      "Progress": 96,
+      "Progress": 98,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Mask",
@@ -1456,7 +1486,7 @@
       "Answers": null
     },
     {
-      "Progress": 97,
+      "Progress": 99,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Goggle",
@@ -1471,7 +1501,7 @@
       "Answers": null
     },
     {
-      "Progress": 98,
+      "Progress": 100,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Glove",
@@ -1486,7 +1516,7 @@
       "Answers": null
     },
     {
-      "Progress": 99,
+      "Progress": 101,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -1501,7 +1531,7 @@
       "Answers": null
     },
     {
-      "Progress": 100,
+      "Progress": 102,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -1516,7 +1546,7 @@
       "Answers": null
     },
     {
-      "Progress": 101,
+      "Progress": 103,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -1531,7 +1561,7 @@
       "Answers": null
     },
     {
-      "Progress": 102,
+      "Progress": 104,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -1546,7 +1576,7 @@
       "Answers": "바코드 부착 후 3중 포장,장갑 착용,50배 희석 락스로 검체 용기 소독,진단검사의학팀(외부위탁)으로 검체 전달"
     },
     {
-      "Progress": 103,
+      "Progress": 105,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1561,7 +1591,7 @@
       "Answers": null
     },
     {
-      "Progress": 104,
+      "Progress": 106,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1576,7 +1606,7 @@
       "Answers": null
     },
     {
-      "Progress": 105,
+      "Progress": 107,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1591,7 +1621,7 @@
       "Answers": null
     },
     {
-      "Progress": 106,
+      "Progress": 108,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1606,7 +1636,7 @@
       "Answers": null
     },
     {
-      "Progress": 107,
+      "Progress": 109,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1621,7 +1651,7 @@
       "Answers": null
     },
     {
-      "Progress": 108,
+      "Progress": 110,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1636,7 +1666,7 @@
       "Answers": null
     },
     {
-      "Progress": 109,
+      "Progress": 111,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1651,7 +1681,7 @@
       "Answers": null
     },
     {
-      "Progress": 110,
+      "Progress": 112,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1666,7 +1696,7 @@
       "Answers": null
     },
     {
-      "Progress": 111,
+      "Progress": 113,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1681,7 +1711,7 @@
       "Answers": null
     },
     {
-      "Progress": 112,
+      "Progress": 114,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1696,7 +1726,7 @@
       "Answers": null
     },
     {
-      "Progress": 113,
+      "Progress": 115,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1711,7 +1741,37 @@
       "Answers": null
     },
     {
-      "Progress": 114,
+      "Progress": 116,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 117,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 118,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1721,6 +1781,36 @@
       "Targets": "미화팀",
       "DetailHint": "P를 눌러 미화팀에 연락해 읍압격리실 환경소독을 요청하세요./\n\n성인 응급의료센터입니다.\r\n지금 음압격리실에 엠폭스 의심환자가 퇴실하였으니 환경소독 부탁드립니다.",
       "Hint": "미화팀에 환경소독을 요청하세요.",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 119,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null
+    },
+    {
+      "Progress": 120,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
       "Confirm": null,
       "Question": null,
       "Answers": null

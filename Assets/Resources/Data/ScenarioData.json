@@ -13,7 +13,8 @@
       "Hint": "관찰구역에서 상황을 확인하고 알맞게 대응하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 1,
@@ -28,7 +29,8 @@
       "Hint": "응급의학과 의사에게 상황을 공유하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 2,
@@ -43,7 +45,8 @@
       "Hint": "격리결정을 내리세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 3,
@@ -58,7 +61,8 @@
       "Hint": "감염관리실에 연락하여 상황을 공유하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 4,
@@ -73,7 +77,8 @@
       "Hint": "응급센터에게 연락하여 상황 대응 안내를 해주세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 5,
@@ -88,7 +93,8 @@
       "Hint": "감염재난신속대응팀 카카오톡을 활성화하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 6,
@@ -103,7 +109,8 @@
       "Hint": "감염재난대책본부에 연락하여 상황을 보고하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 7,
@@ -118,7 +125,8 @@
       "Hint": "이송팀에 연락하여 이송을 부탁하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 8,
@@ -133,7 +141,8 @@
       "Hint": "보안팀에 연락하여 동선 통제를 부탁하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 9,
@@ -148,7 +157,8 @@
       "Hint": "미화팀에 연락하여 환경 소독을 부탁하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 10,
@@ -163,7 +173,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Handwash"
     },
     {
       "Progress": 11,
@@ -178,7 +189,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "ProtectedGear"
     },
     {
       "Progress": 12,
@@ -193,7 +205,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Mask"
     },
     {
       "Progress": 13,
@@ -208,7 +221,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Goggle"
     },
     {
       "Progress": 14,
@@ -223,7 +237,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Glove"
     },
     {
       "Progress": 15,
@@ -238,7 +253,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 16,
@@ -253,7 +269,8 @@
       "Hint": "관찰구역의 환자에게 격리 예정임을 안내하세요",
       "Confirm": "환자를 이송하시겠습니까?",
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 17,
@@ -268,7 +285,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 18,
@@ -283,7 +301,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 19,
@@ -298,7 +317,8 @@
       "Hint": "감염병대응센터(보건소)에 연락하여 확진 사실 여부를 확인하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 20,
@@ -313,7 +333,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Handwash"
     },
     {
       "Progress": 21,
@@ -328,7 +349,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "ProtectedGear"
     },
     {
       "Progress": 22,
@@ -343,7 +365,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Mask"
     },
     {
       "Progress": 23,
@@ -358,7 +381,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Goggle"
     },
     {
       "Progress": 24,
@@ -373,7 +397,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Glove"
     },
     {
       "Progress": 25,
@@ -388,7 +413,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 26,
@@ -403,7 +429,8 @@
       "Hint": "음압격리실에서 환자를 확인하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 27,
@@ -418,7 +445,8 @@
       "Hint": "환자에게 입원안내를 하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 28,
@@ -433,7 +461,8 @@
       "Hint": "환자에게 CCTV 설치 동의를 받고 입원 교육을 실시하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 29,
@@ -448,7 +477,8 @@
       "Hint": "간호사정을 실시하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 30,
@@ -463,7 +493,8 @@
       "Hint": "의심환자의 피부 사정을 자세히 파악하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 31,
@@ -478,7 +509,8 @@
       "Hint": "음압격리실에서 환자를 확인하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 32,
@@ -493,7 +525,8 @@
       "Hint": "의심환자에게 처방을 내리세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 33,
@@ -508,7 +541,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 34,
@@ -523,7 +557,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 35,
@@ -538,7 +573,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 36,
@@ -553,7 +589,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 37,
@@ -568,7 +605,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 38,
@@ -583,7 +621,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 39,
@@ -598,7 +637,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 40,
@@ -613,7 +653,8 @@
       "Hint": "손 위생을 청결하게 유지하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 41,
@@ -628,7 +669,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 42,
@@ -643,7 +685,8 @@
       "Hint": "스테이션에서 EMR 법정감염병 신고서를 작성하세요",
       "Confirm": "EMR 법정감염병 신고서를 작성하시겠습니까?",
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "PC"
     },
     {
       "Progress": 43,
@@ -658,7 +701,8 @@
       "Hint": "감염관리팀에 연락하여 엠폭스 검체채취 가능 여부 확인을 요청하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 44,
@@ -673,7 +717,8 @@
       "Hint": "관찰구역에서 EMR 법정감염병 신고서를 확인하고 신고하세요.",
       "Confirm": "신고를 진행하시겠습니까?",
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "PC"
     },
     {
       "Progress": 45,
@@ -688,7 +733,8 @@
       "Hint": "음압격리실에서 환자를 확인하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 46,
@@ -703,7 +749,8 @@
       "Hint": "환자에게 채혈과 엑스레이 촬영 예정을 안내하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 47,
@@ -718,7 +765,8 @@
       "Hint": "채혈을 진행하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Syringe"
     },
     {
       "Progress": 48,
@@ -733,7 +781,8 @@
       "Hint": "퀴즈를 해결하세요.",
       "Confirm": null,
       "Question": "CBC(총혈구검사)시에 사용되는 항응고제를 선택하세요.",
-      "Answers": "시트르산,헤파린,EDTA,플루오라이드"
+      "Answers": "시트르산,헤파린,EDTA,플루오라이드",
+      "ObjectIndicator": null
     },
     {
       "Progress": 49,
@@ -748,7 +797,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 50,
@@ -763,7 +813,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 51,
@@ -778,7 +829,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 52,
@@ -793,7 +845,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 53,
@@ -808,7 +861,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 54,
@@ -823,7 +877,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 55,
@@ -838,7 +893,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 56,
@@ -853,7 +909,8 @@
       "Hint": "손 위생을 청결하게 유지하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 57,
@@ -868,7 +925,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 58,
@@ -883,7 +941,8 @@
       "Hint": "영상의학팀에 X-Ray 검사를 요청하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 59,
@@ -898,7 +957,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Handwash"
     },
     {
       "Progress": 60,
@@ -913,7 +973,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "ProtectedGear"
     },
     {
       "Progress": 61,
@@ -928,7 +989,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Mask"
     },
     {
       "Progress": 62,
@@ -943,7 +1005,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Goggle"
     },
     {
       "Progress": 63,
@@ -958,7 +1021,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Glove"
     },
     {
       "Progress": 64,
@@ -973,7 +1037,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 65,
@@ -988,7 +1053,8 @@
       "Hint": "음압격리실에서 환자를 확인하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 66,
@@ -1003,7 +1069,8 @@
       "Hint": "환자에게 X-Ray 촬영을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 67,
@@ -1018,7 +1085,8 @@
       "Hint": "X-Ray 촬영을 진행하세요.",
       "Confirm": "X-Ray 촬영을 하시겠습니까?",
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "X-Ray"
     },
     {
       "Progress": 68,
@@ -1033,7 +1101,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 69,
@@ -1048,7 +1117,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 70,
@@ -1063,7 +1133,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 71,
@@ -1078,7 +1149,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 72,
@@ -1093,7 +1165,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 73,
@@ -1108,7 +1181,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 74,
@@ -1123,7 +1197,8 @@
       "Hint": "4종 보호구를 해제하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 75,
@@ -1138,7 +1213,8 @@
       "Hint": "손 위생을 청결하게 유지하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 76,
@@ -1153,7 +1229,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 77,
@@ -1168,7 +1245,8 @@
       "Hint": "의심환자 접촉자 분류 안내 후 역학조사를 위한 개인정보를 요청하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 78,
@@ -1183,7 +1261,8 @@
       "Hint": "환자 개인정보를 공유 후 검체채취 여부 확인을 요청하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 79,
@@ -1198,7 +1277,8 @@
       "Hint": "검체채취 여부 확인 과정을 안내하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 80,
@@ -1213,7 +1293,8 @@
       "Hint": "엠폭스 검체채취 시행 사실을 안내하고, 접촉자 조사를 요청하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 81,
@@ -1228,7 +1309,8 @@
       "Hint": "응급의학과에 검체채취 여부를 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 82,
@@ -1243,11 +1325,12 @@
       "Hint": "감염관리팀에 전원 확인을 요청하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 83,
-      "Place": null,
+      "Place": "스테이션",
       "Position": "응급의학과 의사",
       "Item": null,
       "Action": "SCRFWrite",
@@ -1258,7 +1341,8 @@
       "Hint": "스테이션에서 엠폭스 검체의뢰서를 작성하세요.",
       "Confirm": "엠폭스 검체의뢰서를 작성하시겠습니까?",
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "PC"
     },
     {
       "Progress": 84,
@@ -1273,7 +1357,8 @@
       "Hint": "진단검사의학팀에 검체채취 예정임을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 85,
@@ -1288,7 +1373,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Handwash"
     },
     {
       "Progress": 86,
@@ -1303,7 +1389,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "ProtectedGear"
     },
     {
       "Progress": 87,
@@ -1318,7 +1405,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Mask"
     },
     {
       "Progress": 88,
@@ -1333,7 +1421,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Goggle"
     },
     {
       "Progress": 89,
@@ -1348,7 +1437,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Glove"
     },
     {
       "Progress": 90,
@@ -1363,7 +1453,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 91,
@@ -1378,7 +1469,8 @@
       "Hint": "퀴즈를 해결하세요.",
       "Confirm": null,
       "Question": "엠폭스 검체채취시, 가장 먼저 시행해야하는 것을 선택하세요.",
-      "Answers": "환부 주변 소독 및 건조,채취 도구로 검체 수집,검체를 수송 배지에 넣기,검체 라벨 부착"
+      "Answers": "환부 주변 소독 및 건조,채취 도구로 검체 수집,검체를 수송 배지에 넣기,검체 라벨 부착",
+      "ObjectIndicator": null
     },
     {
       "Progress": 92,
@@ -1393,7 +1485,8 @@
       "Hint": "음압격리실에서 의심환자의 엠폭스 검체를 채취하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "DrySwab"
     },
     {
       "Progress": 93,
@@ -1408,7 +1501,8 @@
       "Hint": "다른 병변에서 엠폭스 검체를 채취하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "DrySwab"
     },
     {
       "Progress": 94,
@@ -1423,7 +1517,8 @@
       "Hint": "퀴즈를 해결하세요.",
       "Confirm": null,
       "Question": "엠폭스 검체를 채취한 2개의 스왑을 어떻게 수집해야 하는지 선택하세요.",
-      "Answers": "동일 VTM 배지에 수집,서로 다른 VTM 배지에 수집,스왑을 멸균백에 수집,스왑을 보관하지 않고 즉시 분석에 사용"
+      "Answers": "동일 VTM 배지에 수집,서로 다른 VTM 배지에 수집,스왑을 멸균백에 수집,스왑을 보관하지 않고 즉시 분석에 사용",
+      "ObjectIndicator": null
     },
     {
       "Progress": 95,
@@ -1438,7 +1533,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 96,
@@ -1453,7 +1549,8 @@
       "Hint": "손 위생을 시행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Handwash"
     },
     {
       "Progress": 97,
@@ -1468,7 +1565,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "ProtectedGear"
     },
     {
       "Progress": 98,
@@ -1483,7 +1581,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Mask"
     },
     {
       "Progress": 99,
@@ -1498,7 +1597,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Goggle"
     },
     {
       "Progress": 100,
@@ -1513,7 +1613,8 @@
       "Hint": "4종 보호구를 착용하세요",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Glove"
     },
     {
       "Progress": 101,
@@ -1528,7 +1629,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 102,
@@ -1543,7 +1645,8 @@
       "Hint": "음압격리실에서 환자의 혈액 검체채취를 진행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Syringe"
     },
     {
       "Progress": 103,
@@ -1558,7 +1661,8 @@
       "Hint": "한 번 더 혈액 검체채취를 진행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": "Syringe"
     },
     {
       "Progress": 104,
@@ -1573,7 +1677,8 @@
       "Hint": "퀴즈를 해결하세요.",
       "Confirm": null,
       "Question": "엠폭스, 혈액 검체 처리 과정을 올바른 순서대로 선택하세요.",
-      "Answers": "바코드 부착 후 3중 포장,장갑 착용,50배 희석 락스로 검체 용기 소독,진단검사의학팀(외부위탁)으로 검체 전달"
+      "Answers": "바코드 부착 후 3중 포장,장갑 착용,50배 희석 락스로 검체 용기 소독,진단검사의학팀(외부위탁)으로 검체 전달",
+      "ObjectIndicator": null
     },
     {
       "Progress": 105,
@@ -1588,7 +1693,8 @@
       "Hint": "진단검사의학팀에 검체의뢰를 요청하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 106,
@@ -1603,7 +1709,8 @@
       "Hint": "환자에게 병상 확보 중임을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 107,
@@ -1618,7 +1725,8 @@
       "Hint": "감염관리팀에 전원 가능 안내를 진행하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 108,
@@ -1633,7 +1741,8 @@
       "Hint": "감염병대응센터에 이송 방법을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 109,
@@ -1648,7 +1757,8 @@
       "Hint": "감염관리팀에 이송 진행 예정을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 110,
@@ -1663,7 +1773,8 @@
       "Hint": "응급센터에 격리병상 이송 예정을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 111,
@@ -1678,7 +1789,8 @@
       "Hint": "아산충무병원에 이송 예정을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 112,
@@ -1693,7 +1805,8 @@
       "Hint": "의심환자에게 연락해 전원 예정을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 113,
@@ -1708,7 +1821,8 @@
       "Hint": "응급센터에 이송 도착을 안내하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 114,
@@ -1723,7 +1837,8 @@
       "Hint": "이송팀에 의심환자 이송을 요청하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 115,
@@ -1738,7 +1853,8 @@
       "Hint": "보안팀에 이송경로 통제를 요청하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 116,
@@ -1753,7 +1869,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 117,
@@ -1768,7 +1885,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 118,
@@ -1783,7 +1901,8 @@
       "Hint": "미화팀에 환경소독을 요청하세요.",
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 119,
@@ -1798,7 +1917,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     },
     {
       "Progress": 120,
@@ -1813,7 +1933,8 @@
       "Hint": null,
       "Confirm": null,
       "Question": null,
-      "Answers": null
+      "Answers": null,
+      "ObjectIndicator": null
     }
   ]
 }

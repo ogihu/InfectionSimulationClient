@@ -146,7 +146,7 @@ public class MyPlayerController : PlayerController
                     }
                     Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);
                 }
-                else if (_interactionObject.name == "ScenarioX-ray")
+                else if (_interactionObject.name == "X-Ray")
                 {
                     Managers.Scenario.MyAction = "X-Ray";
                 }

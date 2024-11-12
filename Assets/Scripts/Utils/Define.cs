@@ -225,6 +225,7 @@ public class Define
         public string Confirm { get; set; }
         public string Question { get; set; }
         public string Answers { get; set; }
+        public string ObjectIndicator { get; set; }
     }
 
     public class ScenarioInfo
@@ -244,6 +245,7 @@ public class Define
         public string Confirm { get; set; }
         public string Question { get; set; }
         public List<string> Answers { get; set; } = new List<string>();
+        public List<string> ObjectIndicator { get; set; } = new List<string>();
     }
 
     public class ItemInfo

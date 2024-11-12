@@ -54,6 +54,10 @@ public class ScenarioManager
         }
     }
 
+    List<GameObject> InteractableObjectsList = new List<GameObject>();
+    List<GameObject> ObjectIndicators = new List<GameObject>();
+    GameObject ObjectIndicator { get; set; }
+
     GameObject _myPlace;
     public GameObject MyPlace
     {
@@ -118,6 +122,15 @@ public class ScenarioManager
         bool securityOfficer4Added = AddNPC("보안요원4", WaitingArea);
         bool cleaner1Added = AddNPC("미화1", WaitingArea);
         bool cleaner2Added = AddNPC("미화2", WaitingArea);
+
+        GameObject objects = GameObject.Find("InteractableObjects");
+        int childCount = objects.transform.childCount;
+        for(int i = 0; i < childCount; i++)
+        {
+            InteractableObjectsList.Add(objects.transform.GetChild(i).gameObject);
+        }
+
+        ObjectIndicator = Managers.Resource.Load<GameObject>("Prefabs/System/ObjectIndicator");
     }
 
     public void Reset()
@@ -328,6 +341,7 @@ public class ScenarioManager
         UpdateMyPlace();
         Managers.STT.STTStreamingText.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
         Managers.Setting.SceneStartMicCheck();
+        UpdateObjectIndicator(CurrentScenarioInfo.ObjectIndicator);
         if (Managers.Object.MyPlayer.Position == CurrentScenarioInfo.Position)
         {
             UpdateScenarioAssist($"{CurrentScenarioInfo.Hint}");
@@ -389,10 +403,6 @@ public class ScenarioManager
 
         yield return new WaitUntil(() => Progress == progress);
     }
-
-
-
-
 
     IEnumerator CoScenario(string scenarioName)
     {
@@ -800,7 +810,6 @@ public class ScenarioManager
         if (CurrentScenarioInfo == null)
             return;
 
-
         // 애초에 YudoLine을 비활성화 상태로 유지
         if (GameScene.YudoLine != null)
         {
@@ -852,6 +861,34 @@ public class ScenarioManager
 
         //그 외에는 검은색으로 표시
         MyPlace.GetComponent<TMP_Text>().text = $"<color=#000000>{newPlace}</color>";
+    }
+
+    void UpdateObjectIndicator(List<string> objects)
+    {
+        foreach(var obj in ObjectIndicators)
+        {
+            Managers.Resource.Destroy(obj);
+        }
+        ObjectIndicators.Clear();
+
+        if (CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
+            return;
+
+        if (objects.Count <= 0)
+            return;
+
+        foreach(string name in objects)
+        {
+            foreach(var obj in InteractableObjectsList)
+            {
+                if(obj.name == name)
+                {
+                    GameObject indicator = Managers.Resource.Instantiate(ObjectIndicator);
+                    indicator.transform.parent = obj.transform;
+                    ObjectIndicators.Add(indicator);
+                }
+            }
+        }
     }
 
     #endregion

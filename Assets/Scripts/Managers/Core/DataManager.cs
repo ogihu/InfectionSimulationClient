@@ -89,6 +89,15 @@ public class DataManager
                     }
                 }
 
+                if (!string.IsNullOrEmpty(scenarioList.ObjectIndicator))
+                {
+                    string[] Split = scenarioList.ObjectIndicator.Split(',');
+                    foreach (string obj in Split)
+                    {
+                        scenarioInfo.ObjectIndicator.Add(obj);
+                    }
+                }
+
                 if (!string.IsNullOrEmpty(scenarioList.DetailHint))
                 {
                     string newSpeech = scenarioList.DetailHint;

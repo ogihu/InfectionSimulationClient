@@ -780,6 +780,9 @@ public class ScenarioManager
     //서버로부터 다음 시나리오 진행도를 받으면, 시나리오 상황 업데이트 및 변수 초기화 등 실행
     public void NextProgress(int progress)
     {
+        if (CurrentScenarioInfo == null)
+            return;
+
         if (progress == Progress)
             return;
 
@@ -1153,5 +1156,8 @@ public class ScenarioManager
         _routine = null;
         PopupConfirm = 0;
         CurrentScenarioInfo = null;
+        InteractableObjectsList.Clear();
+        ObjectIndicators.Clear();
+        Define.WaitingCount = 0;
     }
 }

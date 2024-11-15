@@ -177,6 +177,7 @@ public class MyPlayerController : PlayerController
                 return;
             else
                 Managers.STT.ChangeSpeechState();
+            //Managers.STT.ChangeSpeechState();
         }
 
         //팝업 닫기 or 설정 열기/닫기

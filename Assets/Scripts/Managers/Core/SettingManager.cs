@@ -72,15 +72,19 @@ public class SettingManager
             Managers.STT.MySpeech.SetActive(false);
             return;
         }
+
         MicCheckUI.SetActive(false);
-        Managers.STT.MySpeech.SetActive(false);
+        Managers.STT.MySpeech.SetActive(true);
 
         MicCheckUI.GetComponent<TMP_Text>().text = "키워드를 알맞은 칸에 넣으세요";
 
-        if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
+        if ((!MicCheckUI.activeSelf) && Managers.Scenario.CurrentScenarioInfo.Action == "Tell" && Managers.Scenario.CurrentScenarioInfo.Position==Managers.Object.MyPlayer.Position)
             MicCheckUI.SetActive(true);  
-        else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
+
+        else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell" && Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
             MicCheckUI.SetActive(false);
+
+        
     }
 
     public void ChangeMicStateTrue()

@@ -216,4 +216,14 @@ class PacketHandler
         if (Managers.Network.WaitingUI != null)
             Managers.UI.DestroyUI(Managers.Network.WaitingUI);
     }
+
+    public static void S_PlayerRankHandler(PacketSession session, IMessage packet)
+    {
+        S_PlayerRank rankPacket = (S_PlayerRank)packet;
+
+        Managers.UI.CreateUI("RankingUI").GetComponent<RankingUI>().SetRanks(rankPacket);
+
+        if (Managers.Network.WaitingUI != null)
+            Managers.UI.DestroyUI(Managers.Network.WaitingUI);
+    }
 }

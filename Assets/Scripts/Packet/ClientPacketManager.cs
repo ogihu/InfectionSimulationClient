@@ -50,7 +50,9 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SLogin, MakePacket<S_Login>);
 		_handler.Add((ushort)MsgId.SLogin, PacketHandler.S_LoginHandler);		
 		_onRecv.Add((ushort)MsgId.SRank, MakePacket<S_Rank>);
-		_handler.Add((ushort)MsgId.SRank, PacketHandler.S_RankHandler);
+		_handler.Add((ushort)MsgId.SRank, PacketHandler.S_RankHandler);		
+		_onRecv.Add((ushort)MsgId.SPlayerRank, MakePacket<S_PlayerRank>);
+		_handler.Add((ushort)MsgId.SPlayerRank, PacketHandler.S_PlayerRankHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

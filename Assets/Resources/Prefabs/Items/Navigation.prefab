@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 941d6eea63d9b463889b7a8c7736bc34, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83c4252c97d8e4daeba99d69cfa5cb32, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3570489182058330541}
@@ -152,4 +152,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919df4448a1f17e48a310c027fe77cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Scenario_Place: {x: 0, y: 0, z: 0}
+  TargetPosition: {x: 0, y: 0, z: 0}

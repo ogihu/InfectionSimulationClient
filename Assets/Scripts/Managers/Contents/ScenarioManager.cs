@@ -817,20 +817,20 @@ public class ScenarioManager
         if (CurrentScenarioInfo == null)
             return;
 
-        // 애초에 YudoLine을 비활성화 상태로 유지
-        if (GameScene.YudoLine != null)
-        {
-            GameScene.YudoLine.SetActive(false);  // Progress 상관없이 기본적으로 비활성화
-        }
+        //// 애초에 YudoLine을 비활성화 상태로 유지
+        //if (GameScene.YudoLine != null)
+        //{
+        //    GameScene.YudoLine.SetActive(false);  // Progress 상관없이 기본적으로 비활성화
+        //}
 
-        // 특정 Progress 값에서만 YudoLine을 활성화
-        if (ShouldShowYudoLine(Progress))
-        {
-            if (GameScene.YudoLine != null)
-            {
-                GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
-            }
-        }
+        //// 특정 Progress 값에서만 YudoLine을 활성화
+        //if (ShouldShowYudoLine(Progress))
+        //{
+        //    if (GameScene.YudoLine != null)
+        //    {
+        //        GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
+        //    }
+        //}
 
         Util.FindChildByName(Hint, "HintSpeech").GetComponent<TMP_Text>().text = CurrentScenarioInfo.DetailHint;
     }

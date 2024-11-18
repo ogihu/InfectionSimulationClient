@@ -76,8 +76,7 @@ namespace GoogleCloudStreamingSpeechToText
         public void StartListening()
         {
             Managers.Object.MyPlayer.State = CreatureState.Conversation;
-            TextUI.GetComponent<AccumulateText>().Stoptext = false;
-            if (TextUI.GetComponent<AccumulateText>().score < TextUI.GetComponent<AccumulateText>().SimilarityThreshold )
+            if (TextUI.GetComponent<AccumulateText>().score < TextUI.GetComponent<AccumulateText>().SimilarityThreshold || TextUI.GetComponent<AccumulateText>().Stoptext == true)
             {
                 TextUI.GetComponent<AccumulateText>()._text.text = "";
                 TextUI.GetComponent<AccumulateText>()._accumulatedText = "";
@@ -87,12 +86,15 @@ namespace GoogleCloudStreamingSpeechToText
             {
                 return;
             }
+            TextUI.GetComponent<AccumulateText>().Stoptext = false;
             TalkCheck = true;
+            Managers.Setting.UseCheckMic(true);
             StartCoroutine(nameof(RequestMicrophoneAuthorizationAndStartListening));
         }
 
         public async void StopListening()
         {
+            Managers.Setting.UseCheckMic(false);
             Managers.Object.MyPlayer.State = CreatureState.Idle;
             TextUI.GetComponent<AccumulateText>().Stoptext = true;
             if (!_initialized || _cancellationTokenSource == null)

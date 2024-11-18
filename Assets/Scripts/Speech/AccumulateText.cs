@@ -62,14 +62,14 @@ public class AccumulateText : MonoBehaviour
         if (textHeight > parentHeight)
         {
             _accumulatedText = "";
-            _text.text = _interimText.Trim();
+            Managers.STT.UpdateMySpeech(_interimText.Trim());
         }
         else
         {
-            _text.text = _accumulatedText + _interimText;
+            Managers.STT.UpdateMySpeech(_accumulatedText + _interimText);
         }
-        
-        _text.text = Define.ChangeText(_text.text);
+
+        Managers.STT.UpdateMySpeech(Define.ChangeText(_text.text));
     }
 
     public void FinalEvaluate()
@@ -99,7 +99,7 @@ public class AccumulateText : MonoBehaviour
         }
 
         Debug.Log(transcription);
-        _text.text = transcription;
+        Managers.STT.UpdateMySpeech(Define.ChangeText(transcription));
 
         if (!string.IsNullOrEmpty(content))
         {

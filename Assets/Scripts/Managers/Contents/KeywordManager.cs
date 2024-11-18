@@ -50,8 +50,7 @@ public class KeywordManager
         talkPacket.TTSSelf = true;
         Managers.Network.Send(talkPacket);
 
-        Managers.STT.STTStreamingText._text.text = talkPacket.Message;
-        Managers.STT.OpenMySpeech();
+        Managers.STT.UpdateMySpeech(talkPacket.Message);
 
         CloseGUIKeyword();
     }

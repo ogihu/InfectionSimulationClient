@@ -22,7 +22,6 @@ public class STTManager
 
             return _sttstreamingtext;
         }
-
     }
     private StreamingRecognizer _googlespeechobj;
     public StreamingRecognizer GoogleSpeechObj
@@ -102,9 +101,12 @@ public class STTManager
             return;
 
         if (reset)
+        {
             ResetBuffer();
+            STTStreamingText._text.text = "";
+        }
 
-        _speechBuffer = message;
+        STTStreamingText._text.text = message;
 
         ChangeSpeechState(false);
 

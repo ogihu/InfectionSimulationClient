@@ -40,7 +40,6 @@ public class SettingManager
     public string SelectedMic { get; set; }
 
     public GameObject MicCheckUI;
-    public bool PlayerUsingMic;
 
     void init()
     {
@@ -107,25 +106,22 @@ public class SettingManager
         BGMVol = 1f;
         SFXVol = 1f;
         UsingMic = false;
-        PlayerUsingMic = false;
     }
 
-    public void UseCheckMic()
+    public void UseCheckMic(bool usingMic)
     {
         if(MicCheckUI == null)
         {
             MicCheckUI = GameObject.Find("CheckInferencing");
         }
 
-        if(PlayerUsingMic)
+        if(!usingMic)
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요.";
-            PlayerUsingMic = false;
         }
         else
         {
             MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 중단하세요.";
-            PlayerUsingMic = true;
         }
     }
 

@@ -53,7 +53,14 @@ public class SettingManager
         if(MicCheckUI == null)
             init();
 
-        if(Managers.Scenario.CurrentScenarioInfo != null&& Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
+        if(Managers.Scenario.CurrentScenarioInfo == null)
+        {
+            MicCheckUI.SetActive(true);
+            MicCheckUI.GetComponent<TMP_Text>().text = "를 눌러 시나리오를 시작하세요.";
+            return;
+        }
+
+        if(Managers.Scenario.CurrentScenarioInfo != null && Managers.Scenario.CurrentScenarioInfo.Action == "Tell")
             MicCheckUI.SetActive(true);
         else
             MicCheckUI.SetActive(false);

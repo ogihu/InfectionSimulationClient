@@ -204,6 +204,14 @@ class PacketHandler
                 // 로비로 이동
                 Managers.Scene.LoadScene(Define.Scene.Lobby);
                 break;
+            case LoginState.AlreadyStart:
+                // 이미 훈련 시작됨
+                warningUI.GetComponent<WarningUI>().SetText("이미 훈련이 시작되었습니다.");
+                break;
+            case LoginState.LoginError:
+                // 로그인 중 오류 발생
+                warningUI.GetComponent<WarningUI>().SetText("오류가 발생하였습니다.\n잠시 후 다시 시도해주세요.");
+                break;
         }
     }
 

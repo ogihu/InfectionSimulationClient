@@ -210,7 +210,10 @@ public class MyPlayerController : PlayerController
         if (Input.GetKeyDown(KeyCode.T))
         {
             if (!Managers.Scenario._doingScenario)
+            {
+                Managers.Scenario.SendScenarioInfo("엠폭스");
                 return;
+            }
 
             if (Managers.Scenario.CurrentScenarioInfo != null)
             {

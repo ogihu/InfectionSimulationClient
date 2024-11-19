@@ -11,9 +11,5 @@ public class ScenarioTest : MonoBehaviour
 
     void GetStartButton()
     {
-        if (Input.GetKeyDown(KeyCode.PageUp))
-        {
-            Managers.Scenario.SendScenarioInfo("엠폭스");
-        }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameScene : BaseScene
 {
-    public static GameObject YudoLine;
+    //public static GameObject YudoLine;
 
     protected override void Init()
     {
@@ -13,8 +13,8 @@ public class GameScene : BaseScene
 
         Application.runInBackground = true;
 
-        YudoLine = GameObject.Find("YudoLine");
-        YudoLine.SetActive(false);
+        //YudoLine = GameObject.Find("YudoLine");
+        //YudoLine.SetActive(false);
     }
 
     public override void Clear()

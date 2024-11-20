@@ -75,7 +75,9 @@ namespace GoogleCloudStreamingSpeechToText
 
         public void StartListening()
         {
-            Managers.Object.MyPlayer.State = CreatureState.Conversation;
+            if(Managers.Object.MyPlayer.State != CreatureState.UsingPhone)
+                Managers.Object.MyPlayer.State = CreatureState.Conversation;
+
             if (TextUI.GetComponent<AccumulateText>().score < TextUI.GetComponent<AccumulateText>().SimilarityThreshold || TextUI.GetComponent<AccumulateText>().Stoptext == true)
             {
                 TextUI.GetComponent<AccumulateText>()._text.text = "";

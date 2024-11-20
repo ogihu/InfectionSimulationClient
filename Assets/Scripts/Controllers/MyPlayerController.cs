@@ -206,6 +206,11 @@ public class MyPlayerController : PlayerController
                     return;
                 }
 
+                if(Items.ContainsKey("Syringe") || Items.ContainsKey("DrySwab"))
+                {
+                    return;
+                }
+
                 Managers.Phone.OpenPhone();
             }
             else if (State == CreatureState.UsingPhone)

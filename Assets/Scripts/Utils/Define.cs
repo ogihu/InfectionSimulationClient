@@ -161,12 +161,20 @@ public class Define
 
     public static string ChangeText(string main)
     {
-        foreach (var mapping in STTMapping)
+        // main을 공백으로 나눠 단어별로 split 배열에 저장합니다.
+        string[] split = main.Split(' ');
+
+        // 각 단어를 순회하며 STTMapping에서 해당 단어가 존재하는지 확인 후 교체합니다.
+        for (int i = 0; i < split.Length; i++)
         {
-            main = main.Replace(mapping.Key, mapping.Value);
+            if (STTMapping.ContainsKey(split[i]))
+            {
+                split[i] = STTMapping[split[i]];
+            }
         }
 
-        return main;
+        // 교체된 단어들을 다시 공백으로 연결하여 문자열을 만듭니다.
+        return string.Join(" ", split);
     }
 
     public static readonly Dictionary<string, string> STTMapping = new Dictionary<string, string>()

@@ -89,8 +89,6 @@ public class SettingManager
 
         else if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell" && Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
             MicCheckUI.SetActive(false);
-
-        
     }
 
     public void ChangeMicStateTrue()
@@ -103,8 +101,10 @@ public class SettingManager
             
         if (MicCheckUI == null)
             init();
+
         Managers.STT.MySpeech.SetActive(true);
 
+        Managers.STT.SetMic();
         MicCheckUI.GetComponent<TMP_Text>().text = "키를 눌러 녹음을 시작하세요";   
     }
 

@@ -95,6 +95,11 @@ public class STTManager
 
     Coroutine _textAnim;
 
+    public void SetMic()
+    {
+        GoogleSpeechObj.Init();
+    }
+
     public void UpdateMySpeech(string message, bool reset = true)
     {
         if (message == null)

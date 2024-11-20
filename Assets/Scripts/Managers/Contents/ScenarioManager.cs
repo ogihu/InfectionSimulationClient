@@ -751,7 +751,7 @@ public class ScenarioManager
         yield return new WaitForSeconds(3.0f);
 
         string position = Managers.Object.MyPlayer.Position;
-        int score = Score;
+        int score = Score <= 0 ? 0 : Score;
 
         Managers.Object.Clear();
 

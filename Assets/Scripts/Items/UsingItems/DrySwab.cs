@@ -35,6 +35,11 @@ public class DrySwab : UsingItem
 
     public override bool Use(BaseController character)
     {
+        if (!base.Use(character))
+        {
+            return false;
+        }
+
         gameObject.transform.SetParent(Util.FindChildByName(character.gameObject, "basic_rig L Hand").transform, false);
 
         if (Managers.Object.MyPlayer == character)
@@ -44,7 +49,7 @@ public class DrySwab : UsingItem
             noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
         }
 
-        return base.Use(character);
+        return true
     }
 
     private void Update()

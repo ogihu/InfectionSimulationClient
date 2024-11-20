@@ -174,6 +174,11 @@ public class MyPlayerController : PlayerController
             if (State == CreatureState.UsingPhone)
                 return;
 
+            if (Items.ContainsKey("Syringe") || Items.ContainsKey("DrySwab"))
+            {
+                return;
+            }
+
             Managers.Item.OpenOrCloseInventory();
         }
 

@@ -664,8 +664,8 @@ public class ScenarioManager
                     NPCs["보안요원1"].Teleport(WaitingArea);
                     NPCs["보안요원2"].Teleport(WaitingArea);
 
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "신종감염병 의심환자 이송중으로 잠시 이동동선 통제가 있을 예정이니 환자 및 보호자분들의 양해 부탁드립니다.");
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "신종감염병 의심환자 이송중으로 잠시 이동동선 통제가 있을 예정이니 환자 및 보호자분들의 양해 부탁드립니다.");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "신종감염병 의심환자 이송중으로\n잠시 이동동선 통제가 있을 예정이니\n환자 및 보호자분들의 양해 부탁드립니다.");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "신종감염병 의심환자 이송중으로\n잠시 이동동선 통제가 있을 예정이니\n환자 및 보호자분들의 양해 부탁드립니다.");
 
                     NPCs["보안요원2"].Teleport(Entrance);
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint4));
@@ -816,21 +816,6 @@ public class ScenarioManager
 
         if (CurrentScenarioInfo == null)
             return;
-
-        //// 애초에 YudoLine을 비활성화 상태로 유지
-        //if (GameScene.YudoLine != null)
-        //{
-        //    GameScene.YudoLine.SetActive(false);  // Progress 상관없이 기본적으로 비활성화
-        //}
-
-        //// 특정 Progress 값에서만 YudoLine을 활성화
-        //if (ShouldShowYudoLine(Progress))
-        //{
-        //    if (GameScene.YudoLine != null)
-        //    {
-        //        GameScene.YudoLine.SetActive(true);  // 특정 Progress에서만 활성화
-        //    }
-        //}
 
         Util.FindChildByName(Hint, "HintSpeech").GetComponent<TMP_Text>().text = CurrentScenarioInfo.DetailHint;
     }

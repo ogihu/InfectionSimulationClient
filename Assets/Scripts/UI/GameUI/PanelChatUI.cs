@@ -111,7 +111,7 @@ public class PanelChatUI : FloatingUI
         {
             if (!string.IsNullOrEmpty(message))
             {
-                MessageBuffer.AddRange(SplitStringByLength(message, 54));
+                MessageBuffer.AddRange(SplitStringByLength(message, 60));
             }
         }
     }

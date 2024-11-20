@@ -26,7 +26,7 @@ public class MyPlayerController : PlayerController
         }
     }
 
-    [SerializeField] private float _syncTimer = 0.2f;
+    [SerializeField] private float _syncTimer = 0.1f;
     [SerializeField] float _camRotationSpeed;
     [SerializeField] float raycastDistance = 2f;
     public Navigation Navigation;
@@ -35,6 +35,9 @@ public class MyPlayerController : PlayerController
     Coroutine _coSendPacket;
     public GameObject _interactionObject;
     int _layerMask;
+
+    WaitForSeconds _waitSyncTimer;
+
     public override void Awake()
     {
         base.Awake();
@@ -45,7 +48,7 @@ public class MyPlayerController : PlayerController
         _coSendPacket = StartCoroutine(CoSyncUpdate());
         _layerMask = 1 << LayerMask.NameToLayer("Interaction");
         Managers.Setting.SceneStartMicCheck();
-       
+        _waitSyncTimer = new WaitForSeconds(_syncTimer);
     }
 
     protected override void UpdateController()
@@ -395,6 +398,14 @@ public class MyPlayerController : PlayerController
     {
         if (_syncUpdated)
         {
+            if (transform.position.y < -5)
+            {
+                transform.position = Vector3.zero;
+                PosInfo.PosX = transform.position.x;
+                PosInfo.PosY = transform.position.y;
+                PosInfo.PosZ = transform.position.z;
+            }
+
             C_Sync syncPacket = new C_Sync();
             syncPacket.PosInfo = PosInfo;
             Managers.Network.Send(syncPacket);
@@ -424,7 +435,7 @@ public class MyPlayerController : PlayerController
         while (true)
         {
             CheckUpdatedFlag();
-            yield return new WaitForSeconds(_syncTimer);
+            yield return _waitSyncTimer;
         }
     }
 }

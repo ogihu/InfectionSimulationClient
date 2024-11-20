@@ -21,11 +21,11 @@ public class AIStateCheck : MonoBehaviour
 
     void Update()
     {
-        if (_isInferencing != Managers.STT.GoogleSpeechObj.TalkCheck)
-        {
-            _isInferencing = Managers.STT.GoogleSpeechObj.TalkCheck;
-            ChangeState(_isInferencing);
-        }
+        //if (_isInferencing != Managers.STT.GoogleSpeechObj.TalkCheck)
+        //{
+        //    _isInferencing = Managers.STT.GoogleSpeechObj.TalkCheck;
+        //    ChangeState(_isInferencing);
+        //}
     }
 
     public void ChangeState(bool tasking)

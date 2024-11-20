@@ -89,6 +89,7 @@ namespace GoogleCloudStreamingSpeechToText
             TextUI.GetComponent<AccumulateText>().Stoptext = false;
             TalkCheck = true;
             Managers.Setting.UseCheckMic(true);
+            Managers.STT.MySpeech.GetComponent<AIStateCheck>().ChangeState(true);
             StartCoroutine(nameof(RequestMicrophoneAuthorizationAndStartListening));
         }
 
@@ -97,6 +98,7 @@ namespace GoogleCloudStreamingSpeechToText
             Managers.Setting.UseCheckMic(false);
             Managers.Object.MyPlayer.State = CreatureState.Idle;
             TextUI.GetComponent<AccumulateText>().Stoptext = true;
+            Managers.STT.MySpeech.GetComponent<AIStateCheck>().ChangeState(false);
             if (!_initialized || _cancellationTokenSource == null)
             {
                 return;

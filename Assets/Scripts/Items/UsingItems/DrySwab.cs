@@ -49,7 +49,7 @@ public class DrySwab : UsingItem
             noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
         }
 
-        return true
+        return true;
     }
 
     private void Update()

@@ -171,6 +171,9 @@ public class MyPlayerController : PlayerController
         //인벤토리 열기/닫기
         if (Input.GetKeyDown(KeyCode.I))
         {
+            if (State == CreatureState.UsingPhone)
+                return;
+
             Managers.Item.OpenOrCloseInventory();
         }
 

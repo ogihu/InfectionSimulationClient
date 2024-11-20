@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 2339752469141682200}
   - component: {fileID: 4771848678874152494}
   - component: {fileID: 2496227042374582412}
+  - component: {fileID: 7755983751737170226}
   m_Layer: 5
   m_Name: MessagePopup
   m_TagString: Untagged
@@ -222,6 +223,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba564c34f170a034fb51020f6c708688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7755983751737170226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591048153784610267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f2b495dd195e7341ba4c3c2b3663680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3561783949741463852

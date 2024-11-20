@@ -31,6 +31,11 @@ public class PhoneManager
     public void ClosePhone()
     {
         Managers.UI.DestroyUI(Device.gameObject);
+        if(ButtonMessage.Message != null)
+        {
+            Managers.UI.DestroyUI(ButtonMessage.Message);
+            ButtonMessage.Message = null;
+        }
         Managers.Object.MyPlayer.State = CreatureState.Idle;
     }
 

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ButtonMessage : ButtonUI
 {
     Message _info;
+    public static GameObject Message;
 
     public void Init(Message info)
     {
@@ -18,8 +19,11 @@ public class ButtonMessage : ButtonUI
     {
         base.OnClicked();
         
-        GameObject go = Managers.UI.CreateUI("MessagePopup");
-        go.transform.GetChild(0).GetComponent<TMP_Text>().text = $"From. {_info.Sender}\n\n{_info.Content}";
+        if(Message == null)
+        {
+            Message = Managers.UI.CreateUI("MessagePopup");
+        }
+        Message.transform.GetChild(0).GetComponent<TMP_Text>().text = $"From. {_info.Sender}\n\n{_info.Content}";
     }
 
     private void OnDisable()

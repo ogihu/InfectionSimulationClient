@@ -79,6 +79,9 @@ public class SettingManager
             return;
         }
 
+        if (Managers.Scenario.CurrentScenarioInfo == null)
+            return;
+
         MicCheckUI.SetActive(false);
         Managers.STT.MySpeech.SetActive(true);
 
@@ -98,7 +101,10 @@ public class SettingManager
             Managers.STT.MySpeech.SetActive(false);
             return;
         }
-            
+
+        if (Managers.Scenario.CurrentScenarioInfo == null)
+            return;
+
         if (MicCheckUI == null)
             init();
 

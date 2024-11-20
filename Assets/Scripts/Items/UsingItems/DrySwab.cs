@@ -46,7 +46,6 @@ public class DrySwab : UsingItem
         {
             Managers.Item.SelectedItem.Using = true;
             _choosingPatient = true;
-            Managers.Item.CloseInventory();
             noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
         }
 

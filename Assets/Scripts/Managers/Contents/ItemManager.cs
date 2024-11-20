@@ -125,6 +125,11 @@ public class ItemManager
             Managers.Resource.Destroy(item.Object);
             item.Object = null;
         }
+
+        if(selectedItem as Syringe || selectedItem as DrySwab)
+        {
+            Managers.Item.CloseInventory();
+        }
     }
 
     public void StartCombineItem()

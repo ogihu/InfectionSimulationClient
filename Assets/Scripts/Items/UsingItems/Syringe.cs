@@ -29,6 +29,11 @@ public class Syringe : UsingItem
 
     public override bool Use(BaseController character)
     {
+        if (!base.Use(character))
+        {
+            return false;
+        }
+
         // 주사기 오브젝트를 손에 붙임
         gameObject.transform.SetParent(Util.FindChildByName(character.gameObject, "basic_rig L Hand").transform, false);
         gameObject.transform.localPosition = new Vector3(-0.0985f, 0.0297f, -0.0181f);
@@ -42,7 +47,7 @@ public class Syringe : UsingItem
             noticeUI = Managers.UI.CreateUI("ItemTargetNotice");
         }
 
-        return base.Use(character);
+        return true;
     }
 
     private void Update()

@@ -141,8 +141,18 @@ namespace GoogleCloudStreamingSpeechToText
 
         private void Awake()
         {
-            string credentialsPath = Path.Combine(Application.streamingAssetsPath, CredentialFileName);
             
+
+            //if (startOnAwake)
+            //{
+            //    StartListening();
+            //}
+        }
+
+        public void Init()
+        {
+            string credentialsPath = Path.Combine(Application.streamingAssetsPath, CredentialFileName);
+
             if (!File.Exists(credentialsPath))
             {
                 Debug.LogError("Could not find StreamingAssets/gcp_credentials.json. Please create a Google service account key for a Google Cloud Platform project with the Speech-to-Text API enabled, then download that key as a JSON file and save it as StreamingAssets/gcp_credentials.json in this project. For more info on creating a service account key, see Google's documentation: https://cloud.google.com/speech-to-text/docs/quickstart-client-libraries#before-you-begin");
@@ -170,11 +180,6 @@ namespace GoogleCloudStreamingSpeechToText
             }
 
             _initialized = true;
-
-            //if (startOnAwake)
-            //{
-            //    StartListening();
-            //}
         }
 
         private void OnDestroy()

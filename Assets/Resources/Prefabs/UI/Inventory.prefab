@@ -829,7 +829,6 @@ GameObject:
   - component: {fileID: 4708121002004545839}
   - component: {fileID: 1695656771745403404}
   - component: {fileID: 4003115295339251305}
-  - component: {fileID: 2199440835757049081}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -883,19 +882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41623a979e4c44143b3b17246971d2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2199440835757049081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790984318134342415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c2e5580886343041a5e74b1712b0682, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsUsing: 0
 --- !u!1 &1298926986249191760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3203,12 +3189,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
+  m_fontSize: 30
   m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 20
-  m_fontSizeMax: 40
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512

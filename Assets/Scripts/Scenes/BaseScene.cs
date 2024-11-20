@@ -17,7 +17,8 @@ public abstract class BaseScene : MonoBehaviour
         if (obj == null)
             Managers.Resource.Instantiate("UI/EventSystem").name = "@EventSystem";
 
-        Screen.SetResolution(1920, 1080, false);
+        Screen.fullScreenMode = FullScreenMode.FullScreenWindow;
+        Screen.SetResolution(1920, 1080, true);
     }
 
     public virtual void Clear()

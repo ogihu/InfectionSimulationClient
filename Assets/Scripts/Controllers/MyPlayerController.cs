@@ -201,6 +201,11 @@ public class MyPlayerController : PlayerController
         {
             if (State == CreatureState.Idle)
             {
+                if (Managers.Item.IsInventoryOpen)
+                {
+                    return;
+                }
+
                 Managers.Phone.OpenPhone();
             }
             else if (State == CreatureState.UsingPhone)

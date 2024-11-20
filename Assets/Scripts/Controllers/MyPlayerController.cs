@@ -218,6 +218,12 @@ public class MyPlayerController : PlayerController
                 return;
             }
 
+            if (Managers.Scenario.CurrentScenarioInfo == null)
+            {
+                Managers.UI.CreateSystemPopup("WarningPopup", "시나리오가 시작되지 않았습니다.", UIManager.NoticeType.None);
+                return;
+            }
+
             if (Managers.Scenario.CurrentScenarioInfo != null)
             {
                 if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")

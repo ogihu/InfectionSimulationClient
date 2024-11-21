@@ -1524,10 +1524,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2127723228171718769, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: f1f9808f8429a4340a5f87f8955bcd58,
+        type: 2}
     - target: {fileID: 2932432835326537239, guid: f617b5858cd036e4a82367565da1b8a5,
         type: 3}
       propertyPath: m_Name
       value: NoDoorMap
+      objectReference: {fileID: 0}
+    - target: {fileID: 3396373644589039887, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3784717391966031765, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118539389223163251, guid: f617b5858cd036e4a82367565da1b8a5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

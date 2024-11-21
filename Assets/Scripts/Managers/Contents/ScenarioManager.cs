@@ -1049,6 +1049,7 @@ public class ScenarioManager
         nc.Teleport(spawnPoint);
 
         NPCs.Add(nc.Position, nc);
+        Managers.Object.Characters.Add(position, nc);
 
         return true;
     }

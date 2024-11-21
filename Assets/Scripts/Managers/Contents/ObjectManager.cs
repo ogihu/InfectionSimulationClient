@@ -9,6 +9,7 @@ public class ObjectManager
 	public MyPlayerController MyPlayer { get; set; }
 
 	Dictionary<int, GameObject> _objects = new Dictionary<int, GameObject>();
+	public Dictionary<string, BaseController> Characters = new Dictionary<string, BaseController>();
 
 	public static GameObjectType GetObjectTypeById(int id)
 	{
@@ -85,6 +86,9 @@ public class ObjectManager
 				MyPlayer.MoveInfo = info.MoveInfo;
 				MyPlayer.PosInfo = info.PosInfo;
 				MyPlayer.ImmediateSync();
+
+				Characters.Add(MyPlayer.Position, MyPlayer);
+
 				Managers.Scenario.UpdateScenarioAssist("시나리오 시작을 기다리는 중 입니다...", MyPlayer.UserInfo.Position);
 			}
 			else
@@ -99,6 +103,8 @@ public class ObjectManager
 				pc.MoveInfo = info.MoveInfo;
 				pc.PosInfo = info.PosInfo;
 				pc.ImmediateSync();
+
+				Characters.Add(pc.Position, pc);
 			}
 		}
 	}
@@ -129,6 +135,7 @@ public class ObjectManager
 		}
 
 		_objects.Clear();
+		Characters.Clear();
 		MyPlayer = null;
 	}
 

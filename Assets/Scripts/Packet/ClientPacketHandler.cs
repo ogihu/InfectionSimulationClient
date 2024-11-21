@@ -212,6 +212,10 @@ class PacketHandler
                 // 로그인 중 오류 발생
                 warningUI.GetComponent<WarningUI>().SetText("오류가 발생하였습니다.\n잠시 후 다시 시도해주세요.");
                 break;
+            case LoginState.DuplicationPosition:
+                // 중복되는 역할
+                warningUI.GetComponent<WarningUI>().SetText("중복되는 역할입니다.");
+                break;
         }
     }
 

@@ -136,7 +136,10 @@ public class Define
     //음압격리실 환자 침대 이송 시작하는 위치
     public static readonly Vector3 MovePosition2 = new Vector3(21.1f, 0, -43.7f);
     //음압격리실 외부 통로 위치
-    public static readonly Vector3 IsolationAreaEntrancePoint = new Vector3(26.5f, 0, -29.5f);
+    public static readonly Vector3 IAInsideEntrancePoint = new Vector3(26.5f, 0, -27f);
+    public static readonly Vector3 IAOutsideEntrancePoint = new Vector3(35.67f, 0, -27f);
+    public static readonly Vector3 EmergencyAgentWaitingPoint = new Vector3(33.07f, 0, -29.13f);
+    public static readonly Vector3 ChangeBedPoint = new Vector3(28.46f, 0, -27.07f);
 
     #endregion
 

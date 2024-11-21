@@ -105,7 +105,7 @@ public class PanelChatUI : FloatingUI
         if (string.IsNullOrEmpty(chat))
             return;
 
-        string[] chatSplit = chat.Split(new[] { ".\n" }, System.StringSplitOptions.None);
+        string[] chatSplit = chat.Split(new[] { "\n" }, System.StringSplitOptions.None);
 
         foreach (var message in chatSplit)
         {

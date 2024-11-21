@@ -206,7 +206,7 @@ public class NPCController : CreatureController
     {
         if(point == Define.WaitingArea)
         {
-            Pos = new Vector3(point.x, point.y, point.z - (3 * Define.WaitingCount++));
+            Pos = new Vector3(point.x, point.y, point.z - (1.5f * Define.WaitingCount++));
         }
         else
         {

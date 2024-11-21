@@ -83,6 +83,36 @@ public class Util
         return FindParentByName(go.transform.parent.gameObject, name);
     }
 
+    public static List<T> FindComponentInRange<T>(GameObject center, float radius, LayerMask exceptionLayer) where T : Component
+    {
+        if (center == null)
+        {
+            Debug.LogError("Various center didn't assinged.");
+            return null;
+        }
+
+        LayerMask layerMask = ~exceptionLayer;
+        
+        // 현재 오브젝트의 위치를 기준으로 반경 내에 있는 Collider들 가져옴
+        Collider[] hitColliders = Physics.OverlapSphere(center.transform.position, radius, layerMask);
+        List<T> result = new List<T>();
+
+        // Collider들 중에서 원하는 컴포넌트를 가진 오브젝트를 찾음
+        foreach (Collider collider in hitColliders)
+        {
+            T component = collider.GetComponent<T>();
+            if (component != null)
+            {
+                result.Add(component);
+            }
+        }
+
+        if (result.Count == 0)
+            return null;
+
+        return result;
+    }
+
     public static Material[] AddMaterial(Material[] materials, Material materialToAdd)
     {
         Material[] newMaterials = new Material[materials.Length + 1];

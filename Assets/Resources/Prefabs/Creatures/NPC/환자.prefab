@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 7006431472112077684}
   - component: {fileID: 1711248379432863536}
   - component: {fileID: 2110317526994608746}
+  - component: {fileID: -8405443238238397955}
   m_Layer: 9
   m_Name: "\uD658\uC790"
   m_TagString: Untagged
@@ -726,6 +727,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!65 &-8405443238238397955
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325286682253398469}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.589026, y: 1.0617852, z: 0.5074982}
+  m_Center: {x: -0.000000111111575, y: 0.49346992, z: 0.039092723}
 --- !u!1 &5434655670871247909
 GameObject:
   m_ObjectHideFlags: 0

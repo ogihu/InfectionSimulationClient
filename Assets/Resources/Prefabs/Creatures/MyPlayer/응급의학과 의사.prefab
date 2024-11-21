@@ -972,6 +972,7 @@ MonoBehaviour:
   _syncTimer: 0.3
   _camRotationSpeed: 6
   raycastDistance: 2
+  Navigation: {fileID: 0}
   _cameraArm: {fileID: 0}
   _interactionObject: {fileID: 0}
 --- !u!82 &2677265941901766202

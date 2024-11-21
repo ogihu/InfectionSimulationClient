@@ -230,6 +230,8 @@ public class MyPlayerController : PlayerController
         //대화하기 or 키워드
         if (Input.GetKeyDown(KeyCode.T))
         {
+            #region 시나리오 시작 전
+
             if (!Managers.Scenario._doingScenario)
             {
                 Managers.Scenario.SendScenarioInfo("엠폭스");
@@ -251,12 +253,41 @@ public class MyPlayerController : PlayerController
                 }
             }
 
+            #endregion
+
             if (!Managers.Scenario.CheckPlace())
                 return;
 
             if (State == CreatureState.Idle)
             {
+                List<BaseController> nearChar = new List<BaseController>();
+                nearChar = Util.FindComponentInRange<BaseController>(gameObject, 6, LayerMask.NameToLayer("Default"));
+
+                if(nearChar == null)
+                {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.Warning);
+                    return;
+                }
+
+                bool isNear = false;
+
+                foreach(var character in nearChar)
+                {
+                    if (Managers.Scenario.CurrentScenarioInfo.Targets.Contains(character.Position))
+                    {
+                        isNear = true;
+                        break;
+                    }
+                }
+
+                if (!isNear)
+                {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.Warning);
+                    return;
+                }
+
                 Managers.Scenario.MyAction = "Tell";
+
                 if (Managers.Setting.UsingMic)
                 {
                     Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StartListening();

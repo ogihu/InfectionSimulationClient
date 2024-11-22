@@ -290,6 +290,23 @@
       "RestrictedArea": null
     },
     {
+      "Progress": 17,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
+      "Confirm": null,
+      "Question": null,
+      "Answers": null,
+      "ObjectIndicator": null,
+      "RestrictedArea": null
+    },
+    {
       "Progress": 18,
       "Place": null,
       "Position": "NPC",
@@ -309,23 +326,6 @@
     {
       "Progress": 19,
       "Place": null,
-      "Position": "NPC",
-      "Item": null,
-      "Action": null,
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": null,
-      "Hint": null,
-      "Confirm": null,
-      "Question": null,
-      "Answers": null,
-      "ObjectIndicator": null,
-      "RestrictedArea": null
-    },
-    {
-      "Progress": 20,
-      "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
       "Action": "Call",
@@ -341,7 +341,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 21,
+      "Progress": 20,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -358,7 +358,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 22,
+      "Progress": 21,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "ProtectedGear",
@@ -375,7 +375,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 23,
+      "Progress": 22,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Mask",
@@ -392,7 +392,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 24,
+      "Progress": 23,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Goggle",
@@ -409,7 +409,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 25,
+      "Progress": 24,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Glove",
@@ -426,7 +426,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 26,
+      "Progress": 25,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -443,7 +443,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 27,
+      "Progress": 26,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -460,7 +460,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 28,
+      "Progress": 27,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -477,7 +477,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 29,
+      "Progress": 28,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -494,7 +494,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 30,
+      "Progress": 29,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -511,7 +511,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 31,
+      "Progress": 30,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -528,7 +528,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 32,
+      "Progress": 31,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -545,7 +545,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 33,
+      "Progress": 32,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -562,7 +562,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 34,
+      "Progress": 33,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "Glove",
@@ -579,7 +579,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 35,
+      "Progress": 34,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -596,7 +596,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 36,
+      "Progress": 35,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "ProtectedGear",
@@ -613,7 +613,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 37,
+      "Progress": 36,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -630,7 +630,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 38,
+      "Progress": 37,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "Goggle",
@@ -647,7 +647,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 39,
+      "Progress": 38,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -664,7 +664,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 40,
+      "Progress": 39,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "Mask",
@@ -681,7 +681,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 41,
+      "Progress": 40,
       "Place": "전실",
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -698,7 +698,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 42,
+      "Progress": 41,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -715,7 +715,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 43,
+      "Progress": 42,
       "Place": "스테이션",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -732,7 +732,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 44,
+      "Progress": 43,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -749,7 +749,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 45,
+      "Progress": 44,
       "Place": "스테이션",
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -766,7 +766,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 46,
+      "Progress": 45,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -783,7 +783,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 47,
+      "Progress": 46,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -800,7 +800,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 48,
+      "Progress": 47,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -817,7 +817,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 49,
+      "Progress": 48,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -834,7 +834,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 50,
+      "Progress": 49,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Glove",
@@ -851,7 +851,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 51,
+      "Progress": 50,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -868,7 +868,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 52,
+      "Progress": 51,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "ProtectedGear",
@@ -885,7 +885,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 53,
+      "Progress": 52,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -902,7 +902,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 54,
+      "Progress": 53,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Goggle",
@@ -919,7 +919,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 55,
+      "Progress": 54,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -936,7 +936,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 56,
+      "Progress": 55,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Mask",
@@ -953,7 +953,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 57,
+      "Progress": 56,
       "Place": "전실",
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -970,7 +970,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 58,
+      "Progress": 57,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -987,7 +987,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 59,
+      "Progress": 58,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1004,7 +1004,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 60,
+      "Progress": 59,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Handwash",
@@ -1021,7 +1021,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 61,
+      "Progress": 60,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "ProtectedGear",
@@ -1038,7 +1038,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 62,
+      "Progress": 61,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Mask",
@@ -1055,7 +1055,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 63,
+      "Progress": 62,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Goggle",
@@ -1072,7 +1072,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 64,
+      "Progress": 63,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
@@ -1089,7 +1089,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 65,
+      "Progress": 64,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -1106,7 +1106,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 66,
+      "Progress": 65,
       "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -1123,7 +1123,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 67,
+      "Progress": 66,
       "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -1140,7 +1140,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 68,
+      "Progress": 67,
       "Place": "음압격리실",
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -1157,7 +1157,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 69,
+      "Progress": 68,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Glove",
@@ -1174,7 +1174,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 70,
+      "Progress": 69,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Handwash",
@@ -1191,7 +1191,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 71,
+      "Progress": 70,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "ProtectedGear",
@@ -1208,7 +1208,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 72,
+      "Progress": 71,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Handwash",
@@ -1225,7 +1225,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 73,
+      "Progress": 72,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Goggle",
@@ -1242,7 +1242,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 74,
+      "Progress": 73,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Handwash",
@@ -1259,7 +1259,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 75,
+      "Progress": 74,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Mask",
@@ -1276,7 +1276,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 76,
+      "Progress": 75,
       "Place": "전실",
       "Position": "영상의학팀 방사선사",
       "Item": "Handwash",
@@ -1293,7 +1293,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 77,
+      "Progress": 76,
       "Place": null,
       "Position": "영상의학팀 방사선사",
       "Item": null,
@@ -1310,7 +1310,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 78,
+      "Progress": 77,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1327,7 +1327,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 79,
+      "Progress": 78,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1344,7 +1344,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 80,
+      "Progress": 79,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1361,7 +1361,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 81,
+      "Progress": 80,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1378,7 +1378,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 82,
+      "Progress": 81,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1395,7 +1395,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 83,
+      "Progress": 82,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1412,7 +1412,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 84,
+      "Progress": 83,
       "Place": "스테이션",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1429,7 +1429,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 85,
+      "Progress": 84,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1446,7 +1446,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 86,
+      "Progress": 85,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Handwash",
@@ -1463,7 +1463,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 87,
+      "Progress": 86,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "ProtectedGear",
@@ -1480,7 +1480,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 88,
+      "Progress": 87,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Mask",
@@ -1497,7 +1497,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 89,
+      "Progress": 88,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Goggle",
@@ -1514,7 +1514,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 90,
+      "Progress": 89,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": "Glove",
@@ -1531,7 +1531,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 91,
+      "Progress": 90,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1548,7 +1548,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 92,
+      "Progress": 91,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1565,7 +1565,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 93,
+      "Progress": 92,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": "DrySwab",
@@ -1582,7 +1582,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 94,
+      "Progress": 93,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": "DrySwab",
@@ -1599,7 +1599,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 95,
+      "Progress": 94,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1616,7 +1616,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 96,
+      "Progress": 95,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1633,7 +1633,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 97,
+      "Progress": 96,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Handwash",
@@ -1650,7 +1650,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 98,
+      "Progress": 97,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "ProtectedGear",
@@ -1667,7 +1667,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 99,
+      "Progress": 98,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Mask",
@@ -1684,7 +1684,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 100,
+      "Progress": 99,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Goggle",
@@ -1701,7 +1701,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 101,
+      "Progress": 100,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": "Glove",
@@ -1718,7 +1718,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 102,
+      "Progress": 101,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -1735,7 +1735,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 103,
+      "Progress": 102,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -1752,7 +1752,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 104,
+      "Progress": 103,
       "Place": "음압격리실",
       "Position": "응급센터 간호사2",
       "Item": "Syringe",
@@ -1769,7 +1769,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 105,
+      "Progress": 104,
       "Place": null,
       "Position": "응급센터 간호사2",
       "Item": null,
@@ -1786,7 +1786,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 106,
+      "Progress": 105,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1803,7 +1803,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 107,
+      "Progress": 106,
       "Place": "음압격리실",
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1820,7 +1820,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 108,
+      "Progress": 107,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1837,7 +1837,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 109,
+      "Progress": 108,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1854,7 +1854,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 110,
+      "Progress": 109,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1871,7 +1871,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 111,
+      "Progress": 110,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1888,7 +1888,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 112,
+      "Progress": 111,
       "Place": null,
       "Position": "감염관리팀 간호사",
       "Item": null,
@@ -1905,7 +1905,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 113,
+      "Progress": 112,
       "Place": null,
       "Position": "응급의학과 의사",
       "Item": null,
@@ -1922,7 +1922,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 114,
+      "Progress": 113,
       "Place": null,
       "Position": "감염병대응센터 주무관",
       "Item": null,
@@ -1939,7 +1939,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 115,
+      "Progress": 114,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1956,7 +1956,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 116,
+      "Progress": 115,
       "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
@@ -1966,6 +1966,23 @@
       "Targets": "보안팀",
       "DetailHint": "P를 눌러 보안팀에 연락해 이송경로 통제를 요청하세요./\n\n엠폭스 의심환자를 보건소 앰뷸런스를 이용하여 국가지정병원으로 전원위하여 이송 준비중에 있습니다.\r\n이송통로 통제 부탁드립니다.",
       "Hint": "보안팀에 이송경로 통제를 요청하세요.",
+      "Confirm": null,
+      "Question": null,
+      "Answers": null,
+      "ObjectIndicator": null,
+      "RestrictedArea": null
+    },
+    {
+      "Progress": 116,
+      "Place": null,
+      "Position": "NPC",
+      "Item": null,
+      "Action": null,
+      "Sentence": null,
+      "STTKeywords": null,
+      "Targets": null,
+      "DetailHint": null,
+      "Hint": null,
       "Confirm": null,
       "Question": null,
       "Answers": null,
@@ -1992,23 +2009,6 @@
     {
       "Progress": 118,
       "Place": null,
-      "Position": "NPC",
-      "Item": null,
-      "Action": null,
-      "Sentence": null,
-      "STTKeywords": null,
-      "Targets": null,
-      "DetailHint": null,
-      "Hint": null,
-      "Confirm": null,
-      "Question": null,
-      "Answers": null,
-      "ObjectIndicator": null,
-      "RestrictedArea": null
-    },
-    {
-      "Progress": 119,
-      "Place": null,
       "Position": "응급센터 간호사1",
       "Item": null,
       "Action": "Call",
@@ -2024,7 +2024,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 120,
+      "Progress": 119,
       "Place": null,
       "Position": "NPC",
       "Item": null,
@@ -2041,7 +2041,7 @@
       "RestrictedArea": null
     },
     {
-      "Progress": 121,
+      "Progress": 120,
       "Place": null,
       "Position": "NPC",
       "Item": null,

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine. UI;
 
 public class Util
 {
@@ -127,5 +128,53 @@ public class Util
         materialList.Remove(materialToRemove);
         return materialList.ToArray();
     }
+    public static IEnumerator FadeOutImage(Image image, float duration)
+    {
+        if (image == null)
+        {
+            Debug.LogError("Image is null!");
+            yield break;
+        }
 
+        Color color = image.color;
+        float startAlpha = color.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Lerp(startAlpha, 0f, elapsedTime / duration);
+            image.color = color;
+            yield return null;
+        }
+
+        // Ensure the alpha is set to 0
+        color.a = 0f;
+        image.color = color;
+    }
+
+    public static IEnumerator FadeOutCoverImages(Transform coverImagesParent, float fadeDuration)
+    {
+        if (coverImagesParent == null)
+        {
+            Debug.LogError("CoverImagesParent is null!");
+            yield break;
+        }
+
+        int childCount = coverImagesParent.childCount;
+
+        for (int i = 0; i < childCount; i++)
+        {
+            Image imageComponent = coverImagesParent.GetChild(i).GetComponent<Image>();
+            if (imageComponent != null)
+            {
+                // 투명도 점차 감소
+                yield return FadeOutImage(imageComponent, fadeDuration);
+            }
+
+            // 투명화가 완료되면 비활성화
+            coverImagesParent.GetChild(i).gameObject.SetActive(false);
+        }
+    }
 }
+

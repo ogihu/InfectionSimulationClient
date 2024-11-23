@@ -214,7 +214,15 @@ public class ScenarioManager
         if (CurrentScenarioInfo.Action == "EquipImage")
         {
             WearUI1 = Managers.UI.CreateUI("WearingWay");
-            WearUI2 = Managers.UI.CreateUI("Final_Wearing_Image");
+            if (WearUI1 != null)
+            {
+                Transform coverImagesParent = WearUI1.transform.Find("CoverImage");
+                if (coverImagesParent != null)
+                {
+                    yield return Util.FadeOutCoverImages(coverImagesParent, 2f); 
+                }
+            }
+                WearUI2 = Managers.UI.CreateUI("Final_Wearing_Image");
             UIChckStart = false;
             WearUI2.SetActive(false);
             m = 20;
@@ -222,6 +230,14 @@ public class ScenarioManager
         else if (CurrentScenarioInfo.Action == "UnEquipImage")
         {
             WearUI1 = Managers.UI.CreateUI("LayOutWay");
+            if (WearUI1 != null)
+            {
+                Transform coverImagesParent = WearUI1.transform.Find("CoverImage");
+                if (coverImagesParent != null)
+                {
+                    yield return Util.FadeOutCoverImages(coverImagesParent, 2f); 
+                }
+            }
             UIChckStart = false;
             m = 10;
         }

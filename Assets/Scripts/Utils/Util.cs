@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine. UI;
 
 public class Util
 {
@@ -93,11 +94,11 @@ public class Util
 
         LayerMask layerMask = ~exceptionLayer;
         
-        // 현재 오브젝트의 위치를 기준으로 반경 내에 있는 Collider들 가져옴
+        
         Collider[] hitColliders = Physics.OverlapSphere(center.transform.position, radius, layerMask);
         List<T> result = new List<T>();
 
-        // Collider들 중에서 원하는 컴포넌트를 가진 오브젝트를 찾음
+        
         foreach (Collider collider in hitColliders)
         {
             T component = collider.GetComponent<T>();
@@ -127,5 +128,52 @@ public class Util
         materialList.Remove(materialToRemove);
         return materialList.ToArray();
     }
+    public static IEnumerator FadeOutImage(Image image, float duration)
+    {
+        if (image == null)
+        {
+            Debug.LogError("Image is null!");
+            yield break;
+        }
 
+        Color color = image.color;
+        float startAlpha = color.a;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            color.a = Mathf.Lerp(startAlpha, 0f, elapsedTime / duration);
+            image.color = color;
+            yield return null;
+        }
+
+        color.a = 0f;
+        image.color = color;
+    }
+
+    public static IEnumerator FadeOutCoverImages(Transform coverImagesParent, float fadeDuration)
+    {
+        if (coverImagesParent == null)
+        {
+            Debug.LogError("CoverImagesParent is null!");
+            yield break;
+        }
+
+        int childCount = coverImagesParent.childCount;
+
+        for (int i = 0; i < childCount; i++)
+        {
+            Image imageComponent = coverImagesParent.GetChild(i).GetComponent<Image>();
+            if (imageComponent != null)
+            {
+                
+                yield return FadeOutImage(imageComponent, fadeDuration);
+            }
+
+            
+            coverImagesParent.GetChild(i).gameObject.SetActive(false);
+        }
+    }
 }
+

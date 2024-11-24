@@ -1146,28 +1146,6 @@ public class ScenarioManager
         return true;
     }
 
-    bool AddPlayerNPC(string position)
-    {
-        GameObject go = Managers.Resource.Instantiate($"Creatures/PlayerNPC/{position}");
-
-        if (go == null)
-        {
-            Debug.LogError($"Can't find {position} PlayerNPC prefab");
-            return false;
-        }
-
-        PlayerNPCController nc = go.GetComponent<PlayerNPCController>();
-        nc.Position = position;
-        PlayerNPCs.Add(nc.Position, nc);
-        Managers.Object.Characters.Add(position, nc);
-        nc.GenerateNumber = PlayerNPCs.Count - 1;
-        nc.WaitingPoint = new Vector3(PlayerNPCSpawnPoint.x, PlayerNPCSpawnPoint.y, PlayerNPCSpawnPoint.z + -3 * nc.GenerateNumber);
-        
-        nc.Teleport(nc.WaitingPoint);
-
-        return true;
-    }
-
     void ClearNPCBubble()
     {
         foreach (var npc in NPCs.Values)

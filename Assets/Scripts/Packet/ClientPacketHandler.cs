@@ -65,7 +65,7 @@ class PacketHandler
     {
         S_StartScenario scenarioPacket = (S_StartScenario)packet;
 
-        Managers.Scenario.StartScenario(scenarioPacket.ScenarioName);
+        Managers.Scenario.StartScenario(scenarioPacket.ScenarioName, scenarioPacket);
     }
     
     public static void S_TalkHandler(PacketSession session, IMessage packet)

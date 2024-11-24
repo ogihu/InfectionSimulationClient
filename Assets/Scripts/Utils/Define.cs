@@ -140,6 +140,8 @@ public class Define
     public static readonly Vector3 IAOutsideEntrancePoint = new Vector3(35.67f, 0, -27f);
     public static readonly Vector3 EmergencyAgentWaitingPoint = new Vector3(33.07f, 0, -29.13f);
     public static readonly Vector3 ChangeBedPoint = new Vector3(28.46f, 0, -27.07f);
+    //PlayerNPC 스폰 위치
+    public static readonly Vector3 PlayerNPCSpawnPoint = new Vector3(-12.6f, 0, 2);
 
     #endregion
 

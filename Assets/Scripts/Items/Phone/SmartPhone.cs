@@ -150,9 +150,9 @@ public class SmartPhone : MonoBehaviour
             case "Call":
                 if (Managers.Setting.UsingMic)
                 {
-                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._text.text = "";
-                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._accumulatedText = "";
-                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._interimText = "";
+                    Managers.STT.GoogleSpeechObj.GetComponent<CustomStreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._text.text = "";
+                    Managers.STT.GoogleSpeechObj.GetComponent<CustomStreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._accumulatedText = "";
+                    Managers.STT.GoogleSpeechObj.GetComponent<CustomStreamingRecognizer>().TextUI.GetComponent<AccumulateText>()._interimText = "";
                     Managers.STT.GoogleSpeechObj.StartListening();
                     _functions.SetActive(false);
                     _targets.SetActive(false);
@@ -187,7 +187,7 @@ public class SmartPhone : MonoBehaviour
     {
         _isCalling = false;
         Managers.STT.GoogleSpeechObj.StopListening();
-        Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
+        Managers.STT.GoogleSpeechObj.GetComponent<CustomStreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
         Managers.Phone.ClosePhone();
     }
 

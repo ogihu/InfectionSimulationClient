@@ -246,6 +246,12 @@ public class MyPlayerController : PlayerController
 
             if (Managers.Scenario.CurrentScenarioInfo != null)
             {
+                if(Managers.Scenario.CurrentScenarioInfo.Position != Position)
+                {
+                    Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);
+                    return;
+                }
+
                 if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
                 {
                     Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);
@@ -261,11 +267,12 @@ public class MyPlayerController : PlayerController
             if (State == CreatureState.Idle)
             {
                 List<BaseController> nearChar = new List<BaseController>();
-                nearChar = Util.FindComponentInRange<BaseController>(gameObject, 6, LayerMask.NameToLayer("Default"));
+                LayerMask ignoreLayers = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("NPC"));
+                nearChar = Util.FindComponentInRange<BaseController>(gameObject, 7, ignoreLayers);
 
                 if(nearChar == null)
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.Warning);
+                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.None);
                     return;
                 }
 
@@ -282,15 +289,16 @@ public class MyPlayerController : PlayerController
 
                 if (!isNear)
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.Warning);
+                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.None);
                     return;
                 }
 
                 Managers.Scenario.MyAction = "Tell";
+                Managers.Scenario.Targets.Add(Managers.Scenario.CurrentScenarioInfo.Targets[0]);
 
                 if (Managers.Setting.UsingMic)
                 {
-                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StartListening();
+                    Managers.STT.GoogleSpeechObj.GetComponent<CustomStreamingRecognizer>().StartListening();
                 }
                 else
                 {
@@ -301,8 +309,8 @@ public class MyPlayerController : PlayerController
             {
                 if (Managers.Setting.UsingMic)
                 {
-                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().StopListening();
-                    Managers.STT.GoogleSpeechObj.GetComponent<StreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
+                    Managers.STT.GoogleSpeechObj.GetComponent<CustomStreamingRecognizer>().StopListening();
+                    Managers.STT.GoogleSpeechObj.GetComponent<CustomStreamingRecognizer>().TextUI.GetComponent<AccumulateText>().FinalEvaluate();
                 }
                 else
                 {
@@ -493,4 +501,12 @@ public class MyPlayerController : PlayerController
             yield return _waitSyncTimer;
         }
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red; // Gizmo의 색상을 설정합니다.
+        Gizmos.DrawWireSphere(transform.position, 6); // 감지 반경을 그립니다.
+    }
+#endif
 }

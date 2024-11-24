@@ -132,8 +132,8 @@ public class AccumulateText : MonoBehaviour
         {
             CurCommand.keywords = Managers.Scenario.CurrentScenarioInfo.STTKeywords;
             CurCommand.thenDo = ThenDo;
-            StreamingRecognizer.needKeyword.Clear();
-            StreamingRecognizer.needKeyword.AddRange(CurCommand.keywords);
+            CustomStreamingRecognizer.needKeyword.Clear();
+            CustomStreamingRecognizer.needKeyword.AddRange(CurCommand.keywords);
         }
     }
     

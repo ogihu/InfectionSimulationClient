@@ -20,10 +20,10 @@ using TMPro;
 namespace GoogleCloudStreamingSpeechToText
 {
     [Serializable]
-    public class TranscriptionEvent : UnityEvent<string> { }
+    public class CustomTranscriptionEvent : UnityEvent<string> { }
     
     [RequireComponent(typeof(AudioSource))]
-    public class StreamingRecognizer : MonoBehaviour
+    public class CustomStreamingRecognizer : MonoBehaviour
     {
         public string microphoneName
         {
@@ -48,8 +48,8 @@ namespace GoogleCloudStreamingSpeechToText
         public bool enableDebugLogging = false;
         public UnityEvent onStartListening;
         public UnityEvent onStopListening;
-        public TranscriptionEvent onFinalResult = new TranscriptionEvent();
-        public TranscriptionEvent onInterimResult = new TranscriptionEvent();
+        public CustomTranscriptionEvent onFinalResult = new CustomTranscriptionEvent();
+        public CustomTranscriptionEvent onInterimResult = new CustomTranscriptionEvent();
         public bool TalkCheck = false;
         private bool _initialized = false;
         private bool _listening = false;

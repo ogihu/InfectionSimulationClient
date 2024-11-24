@@ -84,7 +84,7 @@ public class Util
         return FindParentByName(go.transform.parent.gameObject, name);
     }
 
-    public static List<T> FindComponentInRange<T>(GameObject center, float radius, LayerMask exceptionLayer) where T : Component
+    public static List<T> FindComponentInRange<T>(GameObject center, float radius, LayerMask layer) where T : Component
     {
         if (center == null)
         {
@@ -92,7 +92,7 @@ public class Util
             return null;
         }
 
-        LayerMask layerMask = ~exceptionLayer;
+        LayerMask layerMask = layer;
         
         
         Collider[] hitColliders = Physics.OverlapSphere(center.transform.position, radius, layerMask);

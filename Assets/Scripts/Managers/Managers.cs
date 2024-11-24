@@ -17,6 +17,7 @@ public class Managers : MonoBehaviour
     KeywordManager _keyword = new KeywordManager();
     QuizManager _quiz = new QuizManager();
     EMRManager _emr = new EMRManager();
+    MapManager _map = new MapManager();
 
     public static ObjectManager Object { get { return Instance._obj; } }
     public static NetworkManager Network { get { return Instance._network; } }
@@ -27,6 +28,7 @@ public class Managers : MonoBehaviour
     public static KeywordManager Keyword { get { return Instance._keyword; } }
     public static QuizManager Quiz { get {   return Instance._quiz; } }
     public static EMRManager EMR { get { return Instance._emr; } }
+    public static MapManager Map { get { return Instance._map; } }
     #endregion
 
     #region Core
@@ -80,6 +82,7 @@ public class Managers : MonoBehaviour
             _instance._data.Init();
             _instance._sound.Init();
             _instance._setting.Init();
+            _instance._tts.Init();
 
             try
             {
@@ -105,5 +108,6 @@ public class Managers : MonoBehaviour
         Setting.Clear();
         STT.Clear();
         UI.Clear();
+        Map.Clear();
     }
 }

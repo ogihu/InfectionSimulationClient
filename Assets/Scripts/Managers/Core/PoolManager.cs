@@ -38,7 +38,7 @@ public class PoolManager
             if (poolable == null)
                 return;
 
-            poolable.transform.parent = Root;
+            poolable.transform.SetParent(Root, false);
             
             if(poolable.gameObject.layer != LayerMask.NameToLayer("UI"))
             {
@@ -66,7 +66,7 @@ public class PoolManager
             if (parent == null)
                 poolable.transform.parent = Managers.Scene.CurrentScene.transform;
 
-            poolable.transform.parent = parent;
+            poolable.transform.SetParent(parent, false);
             poolable.IsUsing = true;
 
             return poolable;

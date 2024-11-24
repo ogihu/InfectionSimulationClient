@@ -7,21 +7,18 @@ using UnityEngine;
 
 public class LoginUI : MonoBehaviour
 {
-    TMP_Dropdown inputPosition;
     TMP_InputField inputId;
     TMP_InputField inputPw;
 
     private void Awake()
     {
-        inputPosition = Util.FindChildByName(gameObject, "SelectPosition").GetComponent<TMP_Dropdown>();
         inputId = Util.FindChildByName(gameObject, "InputId").GetComponent<TMP_InputField>();
         inputPw = Util.FindChildByName(gameObject, "InputPassword").GetComponent<TMP_InputField>();
     }
 
     bool CheckEmptyField()
     {
-        if (string.IsNullOrEmpty(inputPosition.options[inputPosition.value].text) ||
-            string.IsNullOrEmpty(inputId.text) || string.IsNullOrEmpty(inputPw.text))
+        if (string.IsNullOrEmpty(inputId.text) || string.IsNullOrEmpty(inputPw.text))
         {
             return false;
         }
@@ -43,7 +40,6 @@ public class LoginUI : MonoBehaviour
         C_Login loginPacket = new C_Login();
         loginPacket.AccountId = inputId.text;
         loginPacket.AccountPw = inputPw.text;
-        loginPacket.Position = inputPosition.options[inputPosition.value].text;
 
         Managers.Network.Send(loginPacket);
     }

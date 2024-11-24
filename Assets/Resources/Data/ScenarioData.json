@@ -286,7 +286,7 @@
       "Confirm": "환자를 이송하시겠습니까?",
       "Question": null,
       "Answers": null,
-      "ObjectIndicator": null,
+       "ObjectIndicator": null,
       "RestrictedArea": null
     },
     {

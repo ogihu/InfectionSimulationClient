@@ -158,10 +158,9 @@ public class ScenarioManager
 
     #region 시나리오 패킷 관련 기능
 
-    public void SendScenarioInfo(string scenarioName)
+    public void SendScenarioInfo()
     {
         C_StartScenario scenarioPacket = new C_StartScenario();
-        scenarioPacket.ScenarioName = scenarioName;
         Managers.Network.Send(scenarioPacket);
     }
 
@@ -831,7 +830,7 @@ public class ScenarioManager
 
         Managers.Object.Clear();
 
-        Managers.Scene.LoadSceneWait(Scene.Login);
+        Managers.Scene.LoadSceneWait(Define.Scene.Lobby);
         Managers.Scene.AddWaitEvent(() =>
         {
             C_EndGame endPacket = new C_EndGame();
@@ -1147,6 +1146,28 @@ public class ScenarioManager
         return true;
     }
 
+    bool AddPlayerNPC(string position)
+    {
+        GameObject go = Managers.Resource.Instantiate($"Creatures/PlayerNPC/{position}");
+
+        if (go == null)
+        {
+            Debug.LogError($"Can't find {position} PlayerNPC prefab");
+            return false;
+        }
+
+        PlayerNPCController nc = go.GetComponent<PlayerNPCController>();
+        nc.Position = position;
+        PlayerNPCs.Add(nc.Position, nc);
+        Managers.Object.Characters.Add(position, nc);
+        nc.GenerateNumber = PlayerNPCs.Count - 1;
+        nc.WaitingPoint = new Vector3(PlayerNPCSpawnPoint.x, PlayerNPCSpawnPoint.y, PlayerNPCSpawnPoint.z + -3 * nc.GenerateNumber);
+        
+        nc.Teleport(nc.WaitingPoint);
+
+        return true;
+    }
+
     void ClearNPCBubble()
     {
         foreach (var npc in NPCs.Values)
@@ -1224,7 +1245,6 @@ public class ScenarioManager
 
         return true;
     }
-
     public void CheckPlayerNPCComplete()
     {
         if (PlayerNPCs.Count <= 0)

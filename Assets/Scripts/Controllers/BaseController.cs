@@ -160,7 +160,7 @@ public class BaseController : MonoBehaviour
     protected Vector3 _destPos = Vector3.zero;
     [Tooltip("MyPlayer는 적용되지 않음")]
     [SerializeField] protected float _rotationSpeed = 8f;
-    public string Place { get; set; }
+    public virtual string Place { get; set; }
     protected GameObject _usingItem;
     Coroutine _coSync;
     public GameObject _positionDisplay;
@@ -301,7 +301,12 @@ public class BaseController : MonoBehaviour
         ActiveObjectOnState();
     }
 
-    private string GetAnimationByState(CreatureState state)
+    /// <summary>
+    /// state에 재생되는 애니메이션 클립의 이름 반환
+    /// </summary>
+    /// <param name="state"></param>
+    /// <returns></returns>
+    protected string GetAnimationByState(CreatureState state)
     {
         switch (state)
         {
@@ -309,31 +314,31 @@ public class BaseController : MonoBehaviour
             case CreatureState.Setting:
             case CreatureState.UsingInventory:
             case CreatureState.Emr:
-                return "idle";
+                return "Idle";
 
             case CreatureState.Run:
-                return "run";
+                return "Run";
 
             case CreatureState.Conversation:
-                return "conversation";
+                return "Conversation";
 
             case CreatureState.UsingPhone:
-                return "using-phone";
+                return "UsingPhone";
 
             case CreatureState.Clean:
-                return "clean";
+                return "Clean";
 
             case CreatureState.PickUp:
-                return "pickup";
+                return "PickUp";
 
             case CreatureState.Push:
-                return "push";
+                return "Push";
 
             case CreatureState.Sit:
-                return "sit";
+                return "Sit";
 
             case CreatureState.Typing:
-                return "typing";
+                return "Typing";
 
             case CreatureState.SweepingFloor:
                 return "SweepingFloor";
@@ -353,8 +358,48 @@ public class BaseController : MonoBehaviour
             case CreatureState.DrySwab:
                 return "DrySwab";
             default:
-                return "idle";
+                return "Idle";
         }
+    }
+
+    /// <summary>
+    /// clipName의 애니메이션 클립을 찾아 반환
+    /// </summary>
+    /// <param name="clipName"></param>
+    /// <returns></returns>
+    protected AnimationClip GetAnimationClipByName(string clipName)
+    {
+        if(_animator == null || _animator.runtimeAnimatorController == null)
+        {
+            _animator = GetComponent<Animator>();
+        }
+
+        AnimationClip[] clips = _animator.runtimeAnimatorController.animationClips;
+        foreach(var clip in clips)
+        {
+            if(clip.name == clipName)
+            {
+                return clip;
+            }
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// state일 때의 애니메이션 클립의 재생시간을 반환(loop일 경우 고정 반환)
+    /// </summary>
+    /// <param name="state"></param>
+    /// <returns></returns>
+    protected float GetAnimationDelayTime(CreatureState state)
+    {
+        string clipName = GetAnimationByState(state);
+        AnimationClip clip = GetAnimationClipByName(clipName);
+
+        if (clip.isLooping)
+            return 5.0f;
+        else
+            return clip.length;
     }
 
     void ActiveObjectOnState()

@@ -13,6 +13,7 @@ public class GameScene : BaseScene
 
         Application.runInBackground = true;
         Managers.STT.MySpeech.SetActive(false);
+        Managers.Map.Init();
         //YudoLine = GameObject.Find("YudoLine");
         //YudoLine.SetActive(false);
     }

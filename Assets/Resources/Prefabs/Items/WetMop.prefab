@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2423345302778137778}
   - component: {fileID: 4765027399989395429}
   - component: {fileID: 4271684843095723836}
-  - component: {fileID: 5006210116278472462}
   - component: {fileID: 6384076810713593288}
   m_Layer: 0
   m_Name: WetMop
@@ -85,28 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5006210116278472462
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8440443835662015760}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1060831144557085061, guid: 19a9a3f728a673442ae745c2b0e65dd9, type: 3}
 --- !u!114 &6384076810713593288
 MonoBehaviour:
   m_ObjectHideFlags: 0

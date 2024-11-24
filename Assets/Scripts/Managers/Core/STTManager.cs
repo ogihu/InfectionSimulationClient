@@ -16,22 +16,22 @@ public class STTManager
                 GameObject go = GameObject.Find("GoogleCloudSpeechListener");
                 if (go == null)
                     go = Managers.Resource.Instantiate("Prefabs/STT/GoogleCloudSpeechListener.prefab");
-                StreamingRecognizer streamingRecognizer = go.GetComponent<StreamingRecognizer>();
+                CustomStreamingRecognizer streamingRecognizer = go.GetComponent<CustomStreamingRecognizer>();
                 _sttstreamingtext = streamingRecognizer.TextUI.GetComponent<AccumulateText>();
             }
 
             return _sttstreamingtext;
         }
     }
-    private StreamingRecognizer _googlespeechobj;
-    public StreamingRecognizer GoogleSpeechObj
+    private CustomStreamingRecognizer _googlespeechobj;
+    public CustomStreamingRecognizer GoogleSpeechObj
     {
         get
         {
             if (_googlespeechobj == null)
             {
                 GameObject go = GameObject.Find("GoogleCloudSpeechListener");
-                _googlespeechobj = go.GetComponent<StreamingRecognizer>();
+                _googlespeechobj = go.GetComponent<CustomStreamingRecognizer>();
             }
             return _googlespeechobj;
         }
@@ -92,8 +92,6 @@ public class STTManager
     }
 
     bool _isClosed = true;
-
-    Coroutine _textAnim;
 
     public void SetMic()
     {
@@ -161,6 +159,5 @@ public class STTManager
         _openSpeech = null;
         _closeSpeech = null;
         _isClosed = true;
-        _textAnim = null;
     }
 }

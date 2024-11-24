@@ -8,10 +8,10 @@ using UnityEngine.AI;
 
 public class NPCController : CreatureController
 {
-    NavMeshAgent _agent;
-    Transform _target;
-    Coroutine _order;
-    Queue<IEnumerator> _orderQueue = new Queue<IEnumerator>();
+    protected NavMeshAgent _agent;
+    protected Transform _target;
+    protected Coroutine _order;
+    protected Queue<IEnumerator> _orderQueue = new Queue<IEnumerator>();
 
     public override void Awake()
     {
@@ -36,25 +36,25 @@ public class NPCController : CreatureController
             return;
         }
 
-        if (_agent.velocity != Vector3.zero)
-        {
-            State = CreatureState.Run;
-            return;
-        }
+        //if (_agent.velocity != Vector3.zero)
+        //{
+        //    State = CreatureState.Run;
+        //    return;
+        //}
     }
 
     protected override void UpdateRotation()
     {
-        if (State != CreatureState.Idle)
-            return;
+        //if (State != CreatureState.Idle)
+        //    return;
 
-        if (Managers.Object.MyPlayer == null)
-            return;
+        //if (Managers.Object.MyPlayer == null)
+        //    return;
 
-        Vector3 dir = Managers.Object.MyPlayer.transform.position - transform.position;
+        //Vector3 dir = Managers.Object.MyPlayer.transform.position - transform.position;
 
-        Quaternion targetRotation = Quaternion.LookRotation(dir);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
+        //Quaternion targetRotation = Quaternion.LookRotation(dir);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * _rotationSpeed);
     }
 
     public void AddOrder(IEnumerator enumerator)          
@@ -158,7 +158,7 @@ public class NPCController : CreatureController
         _target = null;
     }
 
-    void SetDestination(Vector3 point)
+    protected void SetDestination(Vector3 point)
     {
         Pos = point;
         _agent.SetDestination(Pos);
@@ -234,7 +234,7 @@ public class NPCController : CreatureController
 
     public void ResetSpeed()
     {
-        ChangeSpeed(4);
+        ChangeSpeed(6);
     }
 
     public void ChangeSpeed(float value)

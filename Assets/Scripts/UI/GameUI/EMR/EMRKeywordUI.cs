@@ -52,7 +52,6 @@ public class EMRKeywordUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, I
         List<RaycastResult> raycastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pointerData, raycastResults);
 
-        GameObject target;
         // Raycast 결과 중에 BlankUI 이름을 가진 오브젝트가 있는지 확인
         foreach (var result in raycastResults)
         {

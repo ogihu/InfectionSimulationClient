@@ -31,10 +31,10 @@ public class Item : MonoBehaviour
 
     public virtual void UnUse()
     {
-        if (_owner == Managers.Object.MyPlayer && Managers.Object.MyPlayer.Items.ContainsKey(ItemInfo.ItemData.Name))
+        if (_owner == Managers.Object.MyPlayer && Managers.Object.MyPlayer.Items.ContainsKey(gameObject.name))
         {
             C_UnEquip unEquipPacket = new C_UnEquip();
-            unEquipPacket.ItemName = ItemInfo.ItemData.Name;
+            unEquipPacket.ItemName = gameObject.name;
             Managers.Network.Send(unEquipPacket);
         }
 

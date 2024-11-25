@@ -511,12 +511,6 @@ public class ScenarioManager
                     NPCs["미화1"].Use("Mask");
                     NPCs["미화2"].Use("Mask");
 
-                    //Managers.Object.ChangeModel(NPCs["이송요원"], "ProtectedGear");
-                    //Managers.Object.ChangeModel(NPCs["보안요원1"], "ProtectedGear");
-                    //Managers.Object.ChangeModel(NPCs["보안요원2"], "ProtectedGear");
-                    //Managers.Object.ChangeModel(NPCs["보안요원3"], "ProtectedGear");
-                    //Managers.Object.ChangeModel(NPCs["보안요원4"], "ProtectedGear");
-
                     NPCs["이송요원"].Teleport(WaitingArea);
                     NPCs["보안요원1"].Teleport(WaitingArea);
                     NPCs["보안요원2"].Teleport(WaitingArea);
@@ -547,6 +541,8 @@ public class ScenarioManager
                     yield return new WaitForSeconds(1.0f);
 
                     yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint3).magnitude < 1);
+
+                    GameObject restrictedArea = Managers.Resource.Instantiate("System/OAToIACollider");
 
                     NPCs["보안요원1"].Teleport(Entrance);
                     NPCs["보안요원1"].AddOrder(NPCs["보안요원1"].CoGoDestination(MovePosition));
@@ -604,6 +600,7 @@ public class ScenarioManager
                     Managers.Resource.Destroy(go2);
                     Managers.Resource.Destroy(go3);
                     Managers.Resource.Destroy(go4);
+                    Managers.Resource.Destroy(restrictedArea);
                 }
                 #endregion
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(28));
@@ -750,6 +747,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(164));
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(165));
                 #region 환자 타병원 전원
+                GameObject restrictedArea2;
                 {
                     NPCs["이송요원"].Teleport(WaitingArea);
                     NPCs["보안요원2"].Teleport(WaitingArea);
@@ -767,6 +765,8 @@ public class ScenarioManager
                     NPCs["이송요원"].Teleport(Entrance);
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(IsolationArea));
 
+                    yield return new WaitUntil(() => (NPCs["보안요원2"].transform.position - BlockingPoint4).magnitude < 0.3f);
+                    restrictedArea2 = Managers.Resource.Instantiate("System/IAToOutCollider");
                     yield return new WaitUntil(() => (NPCs["이송요원"].transform.position - IsolationArea).magnitude < 0.3f);
 
                     GameObject bed = GameObject.Find("move_bed");
@@ -813,6 +813,7 @@ public class ScenarioManager
 
                     yield return new WaitUntil(() => (NPCs["미화1"].Place == "대기장소") && (NPCs["미화2"].Place == "대기장소"));
                 }
+                Managers.Resource.Destroy(restrictedArea2);
                 #endregion
 
                 break;

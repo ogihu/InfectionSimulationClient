@@ -475,6 +475,16 @@ public class PlayerNPCController : NPCController
                 yield return CoGoObject(info);
                 yield return CoChangeStateAndWait(info);
                 break;
+            case "MPX_Clothing":
+                yield return CoGoPlace(info.Place);
+                yield return CoEquipProtects();
+                yield return CoChangeStateAndWait(info);
+                break;
+            case "MPX_LayOff":
+                yield return CoGoPlace(info.Place);
+                yield return CoUnEquipProtects();
+                yield return CoChangeStateAndWait(info);
+                break;
             default:
                 yield return CoGoPlace(info.Place);
                 yield return CoChangeStateAndWait(info);

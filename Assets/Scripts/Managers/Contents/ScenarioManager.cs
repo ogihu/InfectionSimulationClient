@@ -368,6 +368,9 @@ public class ScenarioManager
 
     IEnumerator CoScenarioStep(int progress)
     {
+        Managers.Keyword.CanOpen = true;
+        Managers.Keyword.CanClose = true;
+
         AllPlayerNPCCompleted = false;
         if (PlayerNPCs.Count > 0)
         {

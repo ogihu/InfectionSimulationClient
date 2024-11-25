@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BACK
+  m_text: LOG OUT
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd, type: 2}
   m_sharedMaterial: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,

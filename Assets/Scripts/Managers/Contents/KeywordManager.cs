@@ -6,6 +6,8 @@ using UnityEngine;
 public class KeywordManager
 {
     GUIKeywordPanel _panel;
+    public bool CanClose = true;
+    public bool CanOpen = true;
 
     public void OpenGUIKeyword()
     {
@@ -18,6 +20,12 @@ public class KeywordManager
         if (Managers.Scenario.CurrentScenarioInfo.Position != Managers.Object.MyPlayer.Position)
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "시나리오를 수행할 차례가 아닙니다.", UIManager.NoticeType.None);
+            return;
+        }
+
+        if(CanOpen == false)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "이미 수행하셨습니다. 잠시만 기다려주세요.", UIManager.NoticeType.None);
             return;
         }
 
@@ -45,8 +53,6 @@ public class KeywordManager
         if (!_panel.CheckRemainKeywords())
             return;
 
-        Managers.Scenario.PassSpeech = true;
-
         C_Talk talkPacket = new C_Talk();
         talkPacket.Message = Managers.Scenario.CurrentScenarioInfo.OriginalSentence;
         talkPacket.TTSSelf = false;
@@ -56,7 +62,8 @@ public class KeywordManager
         Managers.STT.UpdateMySpeech(talkPacket.Message);
 
         GameObject effectUI = Managers.UI.CreateUI("EffectUI");
-
+        CanClose = false;
+        CanOpen = false;
         Managers.Instance.StartCoroutine(CoCloseGUIKeywordAfterDelay(3f, effectUI));
     }
 
@@ -64,6 +71,8 @@ public class KeywordManager
     {
         yield return new WaitForSeconds(delay); 
         CloseGUIKeyword();
+        Managers.Scenario.PassSpeech = true;
+        CanClose = true;
         Managers.UI.DestroyUI(go);
     }
 

@@ -162,6 +162,11 @@ public class Define
         "의심환자"
     };
 
+    public static readonly string[] Diseases =
+    {
+        "엠폭스"
+    };
+
     #region VoiceMapping
 
     public static string ChangeText(string main)
@@ -316,7 +321,8 @@ public class Define
         Unknown,
         Game,
         Lobby,
-        Login
+        Login,
+        Room
     }
 
     public enum PlayerState

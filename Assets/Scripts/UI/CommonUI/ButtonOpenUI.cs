@@ -17,9 +17,10 @@ public class ButtonOpenUI : ButtonUI
             return;
         }
 
-        if(Managers.Scene.CurrentScene is LoginScene)
+        if(Managers.Scene.CurrentScene is LoginScene || Managers.Scene.CurrentScene is LobbyScene || Managers.Scene.CurrentScene is RoomScene)
         {
             Managers.UI.CreateUI(uiName);
+            return;
         }
 
         if(Managers.Scene.CurrentScene is GameScene)

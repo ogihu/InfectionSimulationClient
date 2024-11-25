@@ -1,7 +1,10 @@
+using Google.Protobuf.Protocol;
 using UnityEngine;
 
 public class LobbyScene : BaseScene
 {
+    public LobbyUI LobbyUI { get; set; }
+
     protected override void Init()
     {
         base.Init();
@@ -9,10 +12,15 @@ public class LobbyScene : BaseScene
         SceneType = Define.Scene.Lobby;
 
         Application.runInBackground = true;
+
+        LobbyUI = GameObject.Find("LobbyUI").GetComponent<LobbyUI>();
+
+        C_RequestRoomList requestPacket = new C_RequestRoomList();
+        Managers.Network.Send(requestPacket);
     }
 
     public override void Clear()
     {
-
+        LobbyUI = null;
     }
 }

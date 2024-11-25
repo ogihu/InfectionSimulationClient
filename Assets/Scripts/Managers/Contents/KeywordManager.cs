@@ -6,6 +6,8 @@ using UnityEngine;
 public class KeywordManager
 {
     GUIKeywordPanel _panel;
+    public bool CanClose = true;
+    public bool CanOpen = true;
 
     public void OpenGUIKeyword()
     {
@@ -21,11 +23,18 @@ public class KeywordManager
             return;
         }
 
+        if(CanOpen == false)
+        {
+            Managers.UI.CreateSystemPopup("WarningPopup", "이미 수행하셨습니다. 잠시만 기다려주세요.", UIManager.NoticeType.None);
+            return;
+        }
+
         GameObject go = Managers.UI.CreateUI("GUIKeyword/GUIKeywordPanel");
         go.GetComponent<GUIKeywordPanel>().UpdateUI();
         _panel = go.GetComponent<GUIKeywordPanel>();
         Managers.Object.MyPlayer.State = CreatureState.Conversation;
     }
+
 
     public void CloseGUIKeyword()
     {
@@ -35,6 +44,7 @@ public class KeywordManager
         Managers.Object.MyPlayer.State = CreatureState.Idle;
     }
 
+
     public void CheckRemainKeywords()
     {
         if (_panel == null)
@@ -43,16 +53,26 @@ public class KeywordManager
         if (!_panel.CheckRemainKeywords())
             return;
 
-        Managers.Scenario.PassSpeech = true;
-
         C_Talk talkPacket = new C_Talk();
         talkPacket.Message = Managers.Scenario.CurrentScenarioInfo.OriginalSentence;
         talkPacket.TTSSelf = true;
         Managers.Network.Send(talkPacket);
 
+        Managers.Scenario.PassSpeech = true;
         Managers.STT.UpdateMySpeech(talkPacket.Message);
 
+        GameObject effectUI = Managers.UI.CreateUI("EffectUI");
+        CanClose = false;
+        CanOpen = false;
+        Managers.Instance.StartCoroutine(CoCloseGUIKeywordAfterDelay(3f, effectUI));
+    }
+
+    private IEnumerator CoCloseGUIKeywordAfterDelay(float delay, GameObject go)
+    {
+        yield return new WaitForSeconds(delay); 
         CloseGUIKeyword();
+        CanClose = true;
+        Managers.UI.DestroyUI(go);
     }
 
     public void Clear()

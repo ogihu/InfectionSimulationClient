@@ -2,7 +2,6 @@ using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering;
 using static Define;
 
 public class PlayerNPCController : NPCController
@@ -474,6 +473,16 @@ public class PlayerNPCController : NPCController
             case "X-Ray":
                 yield return CoGoPlace(info.Place);
                 yield return CoGoObject(info);
+                yield return CoChangeStateAndWait(info);
+                break;
+            case "MPX_Clothing":
+                yield return CoGoPlace(info.Place);
+                yield return CoEquipProtects();
+                yield return CoChangeStateAndWait(info);
+                break;
+            case "MPX_LayOff":
+                yield return CoGoPlace(info.Place);
+                yield return CoUnEquipProtects();
                 yield return CoChangeStateAndWait(info);
                 break;
             default:

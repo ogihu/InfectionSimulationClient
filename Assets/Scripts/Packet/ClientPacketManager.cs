@@ -52,7 +52,17 @@ class PacketManager
 		_onRecv.Add((ushort)MsgId.SRank, MakePacket<S_Rank>);
 		_handler.Add((ushort)MsgId.SRank, PacketHandler.S_RankHandler);		
 		_onRecv.Add((ushort)MsgId.SPlayerRank, MakePacket<S_PlayerRank>);
-		_handler.Add((ushort)MsgId.SPlayerRank, PacketHandler.S_PlayerRankHandler);
+		_handler.Add((ushort)MsgId.SPlayerRank, PacketHandler.S_PlayerRankHandler);		
+		_onRecv.Add((ushort)MsgId.SRoomList, MakePacket<S_RoomList>);
+		_handler.Add((ushort)MsgId.SRoomList, PacketHandler.S_RoomListHandler);		
+		_onRecv.Add((ushort)MsgId.SMakeRoom, MakePacket<S_MakeRoom>);
+		_handler.Add((ushort)MsgId.SMakeRoom, PacketHandler.S_MakeRoomHandler);		
+		_onRecv.Add((ushort)MsgId.SEnterRoom, MakePacket<S_EnterRoom>);
+		_handler.Add((ushort)MsgId.SEnterRoom, PacketHandler.S_EnterRoomHandler);		
+		_onRecv.Add((ushort)MsgId.SMakerExit, MakePacket<S_MakerExit>);
+		_handler.Add((ushort)MsgId.SMakerExit, PacketHandler.S_MakerExitHandler);		
+		_onRecv.Add((ushort)MsgId.SUpdateRoomInfo, MakePacket<S_UpdateRoomInfo>);
+		_handler.Add((ushort)MsgId.SUpdateRoomInfo, PacketHandler.S_UpdateRoomInfoHandler);
 	}
 
 	public void OnRecvPacket(PacketSession session, ArraySegment<byte> buffer)

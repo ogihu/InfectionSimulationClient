@@ -27,6 +27,7 @@ public class KeywordManager
         Managers.Object.MyPlayer.State = CreatureState.Conversation;
     }
 
+
     public void CloseGUIKeyword()
     {
         _panel.ResetUIs();
@@ -34,6 +35,7 @@ public class KeywordManager
         _panel = null;
         Managers.Object.MyPlayer.State = CreatureState.Idle;
     }
+
 
     public void CheckRemainKeywords()
     {
@@ -52,7 +54,16 @@ public class KeywordManager
 
         Managers.STT.UpdateMySpeech(talkPacket.Message);
 
+        GameObject effectUI = Managers.UI.CreateUI("EffectUI");
+
+        Managers.Instance.StartCoroutine(CoCloseGUIKeywordAfterDelay(3f, effectUI));
+    }
+
+    private IEnumerator CoCloseGUIKeywordAfterDelay(float delay, GameObject go)
+    {
+        yield return new WaitForSeconds(delay); 
         CloseGUIKeyword();
+        Managers.UI.DestroyUI(go);
     }
 
     public void Clear()

@@ -9,14 +9,13 @@ public class InputPasswordButton : ButtonUI
     protected override void Awake()
     {
         base.Awake();
-
-        _parent = Util.FindParentByName(gameObject, "InputRoomPassword").GetComponent<InputRoomPassword>();
     }
 
     protected override void OnClicked()
     {
         base.OnClicked();
 
+        _parent = Util.FindParentByName(gameObject, "InputRoomPassword").GetComponent<InputRoomPassword>();
         _parent.JoinRoom();
     }
 }

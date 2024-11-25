@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 
-public class FourProtects : Item
+public class FourProtects : Equipment
 {
     Item _glove;
     Item _goggle;

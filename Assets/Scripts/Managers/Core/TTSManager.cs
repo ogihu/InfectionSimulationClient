@@ -37,7 +37,7 @@ public class TTSManager
         }
 
         bool isPlayerNPC = false;
-        if (host.GetComponent<PlayerNPCController>() != null)
+        if (host.GetComponent<PlayerNPCController>() != null || host.GetComponent<MyPlayerController>() != null)
         {
             Managers.Scenario.TTSPlaying = true;
             ttsAudios.Add(audioSource);

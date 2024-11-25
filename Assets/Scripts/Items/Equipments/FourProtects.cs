@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class FourProtects : Item
 {
@@ -17,7 +18,7 @@ public class FourProtects : Item
         _glove = Managers.Resource.Instantiate("Items/Glove").GetComponent<Item>();
         _goggle = Managers.Resource.Instantiate("Items/Goggle").GetComponent<Item>();
         _mask = Managers.Resource.Instantiate("Items/Mask").GetComponent<Item>();
-        _protectedGear = Managers.Resource.Instantiate("Items/ProectedGear").GetComponent<Item>();
+        _protectedGear = Managers.Resource.Instantiate("Items/ProtectedGear").GetComponent<Item>();
 
         _glove.Use(character);
         _goggle.Use(character);

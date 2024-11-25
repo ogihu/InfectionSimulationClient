@@ -397,7 +397,7 @@ public class BaseController : MonoBehaviour
         AnimationClip clip = GetAnimationClipByName(clipName);
 
         if (clip.isLooping)
-            return 5.0f;
+            return 2.0f;
         else
             return clip.length;
     }

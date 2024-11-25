@@ -19,7 +19,8 @@ public class ButtonUI : MonoBehaviour
     {
         if(_action != null)
             _action.Invoke();
-        //버튼 눌렀을 때 필요한 이벤트(ex. 사운드)
+
+        Managers.Sound.Play("ButtonClick");
     }
 
     public virtual void SetEvent(Action action)

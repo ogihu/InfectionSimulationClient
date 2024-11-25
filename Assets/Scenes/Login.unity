@@ -1018,61 +1018,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3101920762054028762, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd,
-        type: 2}
-    - target: {fileID: 3101920762054028762, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
-        type: 2}
-    - target: {fileID: 3101920762054028762, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5837480004337594119, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd,
-        type: 2}
-    - target: {fileID: 5837480004337594119, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
-        type: 2}
-    - target: {fileID: 5837480004337594119, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6727206028279303415, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd,
-        type: 2}
-    - target: {fileID: 6727206028279303415, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
-        type: 2}
-    - target: {fileID: 6727206028279303415, guid: 046bc67e91168e445b50e79c3e61aa39,
-        type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8961197542666474868, guid: 046bc67e91168e445b50e79c3e61aa39,
         type: 3}
       propertyPath: m_Name
       value: MenuUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 8961197542666474868, guid: 046bc67e91168e445b50e79c3e61aa39,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1086,5 +1040,5 @@ SceneRoots:
   - {fileID: 1175378098}
   - {fileID: 535009249}
   - {fileID: 1665955395}
-  - {fileID: 870210672}
   - {fileID: 1007799776}
+  - {fileID: 870210672}

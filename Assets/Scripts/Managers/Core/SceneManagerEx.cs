@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,13 +12,13 @@ public class SceneManagerEx
 
     public void LoadScene(Define.Scene type)
     {
-        Managers.Clear();
+        Clear();
         SceneManager.LoadScene(GetSceneName(type));
     }
 
     public void LoadSceneWait(Define.Scene type)
     {
-        Managers.Clear();
+        Clear();
         asyncOperation = SceneManager.LoadSceneAsync(GetSceneName(type));
         asyncOperation.completed += (AsyncOperation obj) => OnLoadSceneCompleted(obj);
     }

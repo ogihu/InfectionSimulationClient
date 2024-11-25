@@ -234,7 +234,7 @@ public class MyPlayerController : PlayerController
 
             if (!Managers.Scenario._doingScenario)
             {
-                Managers.Scenario.SendScenarioInfo("엠폭스");
+                Managers.Scenario.SendScenarioInfo();
                 return;
             }
 

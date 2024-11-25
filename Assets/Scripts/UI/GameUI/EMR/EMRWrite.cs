@@ -13,6 +13,7 @@ public class EMRWrite : MonoBehaviour
         if (_rightCount >= 6)
         {
             GameObject effectUI = Managers.UI.CreateUI("EffectUI");
+            Managers.EMR.CanClose = false;
             Managers.Instance.StartCoroutine(CoCloseEMRAfterDelay(3f, effectUI));
         }
     }
@@ -21,6 +22,7 @@ public class EMRWrite : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
+        Managers.EMR.CanClose = true;
         Managers.EMR.CloseEMR();
         Managers.Scenario.MyAction = "EMRWrite";
 

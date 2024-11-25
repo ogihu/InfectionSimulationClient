@@ -5,6 +5,7 @@ using UnityEngine;
 public class EMRManager
 {
     GameObject EMR;
+    public bool CanClose = true;
 
     public bool DoingEMR => EMR != null;
 
@@ -21,6 +22,9 @@ public class EMRManager
     public void CloseEMR()
     {
         if (EMR == null)
+            return;
+
+        if (CanClose == false)
             return;
 
         if(EMR.name == "MpoxEMRRead")

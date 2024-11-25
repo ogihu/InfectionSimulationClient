@@ -47,9 +47,10 @@ public class KeywordManager
 
         C_Talk talkPacket = new C_Talk();
         talkPacket.Message = Managers.Scenario.CurrentScenarioInfo.OriginalSentence;
-        talkPacket.TTSSelf = true;
+        talkPacket.TTSSelf = false;
         Managers.Network.Send(talkPacket);
 
+        Managers.TTS.Speaking(Managers.Object.MyPlayer.transform, Managers.Scenario.CurrentScenarioInfo.OriginalSentence);
         Managers.STT.UpdateMySpeech(talkPacket.Message);
 
         CloseGUIKeyword();

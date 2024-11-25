@@ -10,8 +10,10 @@ public class MPX_Clothing_Panel : MonoBehaviour
 {
     public int checkingCount = 0;
     GameObject Order;
+    GameObject Order_view;
     FourProtects fourProtects;
     public GameObject child;
+    List<Vector2> list = new List<Vector2>();
 
     private void Awake()
     {
@@ -31,7 +33,8 @@ public class MPX_Clothing_Panel : MonoBehaviour
 
         child = Managers.UI.CreateUI(Managers.Scenario.CurrentScenarioInfo.Action, gameObject.transform);
         Managers.Quiz.MPX_Clothing_Panel_opencheck = true;
-        
+        RandomSlot();
+
     }
 
     public void CloseMPX_Panel()
@@ -72,7 +75,49 @@ public class MPX_Clothing_Panel : MonoBehaviour
             Managers.UI.CreateSystemPopup("WarningPopup", "틀렸습니다.", UIManager.NoticeType.Warning);
             child = Managers.UI.CreateUI(Managers.Scenario.CurrentScenarioInfo.Action,gameObject.transform);
             Destroy(gameObject.transform.GetChild(0).gameObject);
+            GameObject go = Util.FindChild(child, "Order_view");
+            RandomSlot(go);
         }
     }
 
+    public void RandomSlot(GameObject go = null)
+    {
+        if (go != null)
+            Order_view = go;
+
+        if(Order_view == null)
+            Order_view = Util.FindChild(gameObject.transform.GetChild(0).gameObject, "Order_view");
+
+        if(list !=null)
+            list.Clear();
+
+        for(int i = 0; i < Order_view.transform.childCount; i++)
+        {
+            list.Add(Order_view.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition);
+        }
+
+        ShuffleList(list);
+
+        for(int i =0; i< Order_view.transform.childCount;i++)
+        {
+            Order_view.transform.GetChild(i).GetComponent<RectTransform>().anchoredPosition = list[i];
+            Order_view.transform.GetChild(i).GetComponent<MPX_Clothing_Slot>().originalPosition = list[i];
+        }
+    }
+
+    /// <summary>
+    /// Fisher-Yates 알고리즘
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="list"></param>
+    void ShuffleList<T>(List<T>  list)
+    {
+        for (int i = 0; i < list.Count; i++)
+        {
+            int randomIndex = Random.Range(0, list.Count); // UnityEngine.Random 사용
+            T temp = list[i];
+            list[i] = list[randomIndex];
+            list[randomIndex] = temp;
+        }
+    }
 }

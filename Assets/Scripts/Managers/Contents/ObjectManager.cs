@@ -116,6 +116,10 @@ public class ObjectManager
 			return;
 
 		_objects.Remove(id);
+		if (Characters.TryGetValue(go.GetComponent<BaseController>().Position, out BaseController bc))
+		{
+
+		}
 		Managers.Resource.Destroy(go);
 	}
 
@@ -129,9 +133,12 @@ public class ObjectManager
 	public void Clear()
 	{
 		foreach (GameObject obj in _objects.Values)
-		{
-			obj.GetComponent<PlayerController>().Clear();
-			Managers.Resource.Destroy(obj);
+		{ 
+			if(obj != null)
+			{
+                obj.GetComponent<PlayerController>().Clear();
+                Managers.Resource.Destroy(obj);
+            }
 		}
 
 		_objects.Clear();

@@ -45,9 +45,21 @@ public class QuizManager
     public void Clear()
     {
         if (QuizUI != null)
+        {
             Managers.Resource.Destroy(QuizUI.gameObject);
+            QuizUI = null;
+        }
 
         if (popup != null)
+        {
             Managers.Resource.Destroy(popup);
+            popup = null;
+        }
+
+        if (MPX_Clothing_Panel != null)
+        {
+            Managers.Resource.Destroy(MPX_Clothing_Panel);
+            MPX_Clothing_Panel = null;
+        }
     }
 }

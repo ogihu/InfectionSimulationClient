@@ -21,6 +21,7 @@ public class MPX_Clothing_Panel : MonoBehaviour
         Order = Util.FindChild(gameObject.transform.GetChild(0).gameObject, "Order");
         fourProtects = Managers.Resource.Instantiate($"Items/FourProtects").GetComponent< FourProtects>();
         Managers.Quiz.MPX_Clothing_Panel_opencheck = true;
+        RandomSlot();
     }
 
     public void Open_MPX_Panel()
@@ -34,7 +35,6 @@ public class MPX_Clothing_Panel : MonoBehaviour
         child = Managers.UI.CreateUI(Managers.Scenario.CurrentScenarioInfo.Action, gameObject.transform);
         Managers.Quiz.MPX_Clothing_Panel_opencheck = true;
         RandomSlot();
-
     }
 
     public void CloseMPX_Panel()

@@ -172,6 +172,8 @@ public class BaseController : MonoBehaviour
     Transform _rightHand;
     Transform _leftHand;
 
+
+
     #endregion
 
     public virtual void CopyTo(BaseController target)

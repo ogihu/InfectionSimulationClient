@@ -95,6 +95,13 @@ public class SettingManager
         if (Managers.Scenario.CurrentScenarioInfo == null)
             return;
 
+        if (Managers.Quiz.MPX_Clothing_Panel != null)
+        {
+            if(Managers.Quiz.MPX_Clothing_Panel.GetComponent<MPX_Clothing_Panel>().child != null)
+                return;
+        }
+            
+
         MicCheckUI.SetActive(false);
         Managers.STT.MySpeech.SetActive(true);
 

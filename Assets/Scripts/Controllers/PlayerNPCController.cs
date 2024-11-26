@@ -91,7 +91,8 @@ public class PlayerNPCController : NPCController
         }
 
         _agent.stoppingDistance = 4f;
-        BaseController target = Managers.Object.Characters[info.Targets[0]];
+        if (!Managers.Object.Characters.TryGetValue(info.Targets[0], out var target))
+            yield break;
         SetDestination(target.transform.position);
 
         if (_agent.isStopped == true)
@@ -108,7 +109,10 @@ public class PlayerNPCController : NPCController
 
         _agent.velocity = Vector3.zero;
         State = CreatureState.Idle;
-        yield return StartCoroutine(CoLookTarget(target.transform.position));
+
+        if(target != null)
+            yield return StartCoroutine(CoLookTarget(target.transform.position));
+
         yield break;
     }
 

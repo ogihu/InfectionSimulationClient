@@ -107,6 +107,7 @@ public class ScenarioManager
     public Coroutine _routine;
     public bool _doingScenario = false;
     public int PopupConfirm { get; set; }   //평상시에는 0, CheckPopup에서 확인을 선택했으면 1, 취소를 선택했으면 2
+    IEnumerator _scenarioCoroutine;
 
     public ScenarioInfo CurrentScenarioInfo { get; set; }
 
@@ -182,7 +183,8 @@ public class ScenarioManager
         if(_doingScenario == false)
         {
             _doingScenario = true;
-            Managers.Instance.StartCoroutine(CoScenario(scenarioName, packet));
+            _scenarioCoroutine = CoScenario(scenarioName, packet);
+            Managers.Instance.StartCoroutine(_scenarioCoroutine);
         }
     }
 
@@ -1232,5 +1234,10 @@ public class ScenarioManager
         Define.WaitingCount = 0;
         Navigation = null;
         PlayerNPCs.Clear();
+        if(_scenarioCoroutine != null)
+        {
+            Managers.Instance.StopCoroutine(_scenarioCoroutine);
+            _scenarioCoroutine = null;
+        }
     }
 }

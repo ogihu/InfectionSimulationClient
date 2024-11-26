@@ -36,4 +36,13 @@ public class SystemPopup : MonoBehaviour
         yield return new WaitForSeconds(time);
         gameObject.SetActive(false);
     }
+
+    private void OnDestroy()
+    {
+        if(_co != null)
+        {
+            StopCoroutine(_co);
+            _co = null;
+        }
+    }
 }

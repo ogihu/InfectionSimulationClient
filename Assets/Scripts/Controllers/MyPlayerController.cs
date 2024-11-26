@@ -179,6 +179,9 @@ public class MyPlayerController : PlayerController
             if (Managers.Scenario.PassUICheck == false)
                 return;
 
+            if (Managers.Quiz.MPX_Clothing_Panel_opencheck == true)
+                return;
+
             if (Items.ContainsKey("Syringe") || Items.ContainsKey("DrySwab"))
             {
                 return;
@@ -206,6 +209,9 @@ public class MyPlayerController : PlayerController
                     if (Managers.Scenario.PassUICheck == false)
                         return;
 
+                    if (Managers.Quiz.MPX_Clothing_Panel_opencheck == true)
+                        return;
+
                     Managers.UI.OpenOrCloseSetting();
                 }
             }
@@ -221,8 +227,10 @@ public class MyPlayerController : PlayerController
                     return;
                 }
 
-
                 if (Managers.Scenario.PassUICheck == false)
+                    return;
+
+                if (Managers.Quiz.MPX_Clothing_Panel_opencheck == true)
                     return;
 
                 if (Items.ContainsKey("Syringe") || Items.ContainsKey("DrySwab"))

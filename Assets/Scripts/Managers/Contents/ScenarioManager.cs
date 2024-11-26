@@ -231,7 +231,7 @@ public class ScenarioManager
                 Transform coverImagesParent = WearUI1.transform.Find("CoverImage");
                 if (coverImagesParent != null)
                 {
-                    yield return Util.FadeOutCoverImages(coverImagesParent, 2f); 
+                    yield return Util.FadeOutCoverImages(coverImagesParent, 1f); 
                 }
             }
                 WearUI2 = Managers.UI.CreateUI("Final_Wearing_Image");
@@ -247,7 +247,7 @@ public class ScenarioManager
                 Transform coverImagesParent = WearUI1.transform.Find("CoverImage");
                 if (coverImagesParent != null)
                 {
-                    yield return Util.FadeOutCoverImages(coverImagesParent, 2f); 
+                    yield return Util.FadeOutCoverImages(coverImagesParent, 1f); 
                 }
             }
             UIChckStart = false;

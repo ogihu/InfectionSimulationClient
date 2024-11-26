@@ -1214,6 +1214,7 @@ public class ScenarioManager
 
     public void Clear()
     {
+        TTSPlaying = false;
         CompleteCount = 0;
         ScenarioName = null;
         Progress = 0;

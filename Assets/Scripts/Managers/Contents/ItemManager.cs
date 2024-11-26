@@ -114,9 +114,6 @@ public class ItemManager
             item.Using = true;
  
         selectedItem.ItemInfo = item;
-        C_Equip equipPacket = new C_Equip();
-        equipPacket.ItemName = item.ItemData.Name;
-        Managers.Network.Send(equipPacket);
 
         Inventory.UpdateItemList();
         Managers.Scenario.MyAction = "Use";

@@ -2,6 +2,7 @@ using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Item : MonoBehaviour
 {
@@ -25,7 +26,16 @@ public class Item : MonoBehaviour
         {
             gameObject.layer = character.gameObject.layer;
         }
+
         _owner = character;
+
+        if (_owner == Managers.Object.MyPlayer && !Managers.Object.MyPlayer.Items.ContainsKey(gameObject.name))
+        {
+            C_Equip equipPacket = new C_Equip();
+            equipPacket.ItemName = gameObject.name;
+            Managers.Network.Send(equipPacket);
+        }
+
         return character.UseItem(this.gameObject);
     }
 

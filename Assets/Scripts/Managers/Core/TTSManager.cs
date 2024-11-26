@@ -47,11 +47,8 @@ public class TTSManager
             
         SetVoice();
         tts.input.text = message;
-
-        // 비동기적으로 음성 생성
-        IEnumerator enumerator = CreateAudioCoroutine(audioSource, isPlayerNPC);
-        ttsOrders.Add(enumerator);
-        Managers.Instance.StartCoroutine(enumerator);
+        
+        Managers.Instance.StartCoroutine(CreateAudioCoroutine(audioSource, isPlayerNPC));
     }
 
     private void LoadApiKey()
@@ -101,7 +98,7 @@ public class TTSManager
 
     private IEnumerator CreateAudioCoroutine(AudioSource audioSource, bool isPlayerNPC)
     {
-        yield return Managers.Instance.StartCoroutine(TextToSpeechPostCoroutine(tts, (responseStr) =>
+        IEnumerator enumerator = TextToSpeechPostCoroutine(tts, (responseStr) =>
         {
             if (string.IsNullOrEmpty(responseStr))
             {
@@ -132,7 +129,11 @@ public class TTSManager
 
             if (isPlayerNPC)
                 Managers.Instance.StartCoroutine(WaitForAudioToEnd(audioSource));
-        }));
+        });
+
+        ttsOrders.Add(enumerator);
+        yield return Managers.Instance.StartCoroutine(enumerator);
+        ttsOrders.Remove(enumerator);
     }
 
     private IEnumerator WaitForAudioToEnd(AudioSource audioSource)

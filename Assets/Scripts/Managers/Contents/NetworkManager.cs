@@ -20,12 +20,12 @@ public class NetworkManager
 	{
 		// DNS (Domain Name System)
 		string host = Dns.GetHostName();
-		IPHostEntry ipHost = Dns.GetHostEntry(host);
+		//IPHostEntry ipHost = Dns.GetHostEntry(host);
 
 		//#if UNITY_EDITOR
 		//		IPHostEntry ipHost = Dns.GetHostEntry(host);
 		//#else
-		//IPHostEntry ipHost = Dns.GetHostEntry("220.69.209.153");
+		IPHostEntry ipHost = Dns.GetHostEntry("220.69.209.153");
 		//#endif
 		//IPHostEntry ipHost = Dns.GetHostEntry("DDuKi.iptime.org");
 		//IPHostEntry ipHost = Dns.GetHostEntry("CGlabHospital.iptime.org");

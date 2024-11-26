@@ -1362,7 +1362,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBB50\uB77C\uACE0 \uD588\uB294\uC9C0 \uD45C\uC2DC"
+  m_text: "\uB300\uD654 \uD45C\uC2DC"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd, type: 2}
   m_sharedMaterial: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 25
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

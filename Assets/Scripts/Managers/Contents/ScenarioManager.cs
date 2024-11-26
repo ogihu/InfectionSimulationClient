@@ -450,7 +450,14 @@ public class ScenarioManager
         }
         else
         {
-            UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
+            if(Managers.Object.Characters.TryGetValue(CurrentScenarioInfo.Position, out BaseController bc))
+            {
+                if(bc.gameObject.layer == LayerMask.NameToLayer("NPC"))
+                    UpdateScenarioAssist(CurrentScenarioInfo.Position + " NPC가 시나리오를 진행 중 입니다...");
+                else
+                    UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
+            }
+            
         }
 
         yield return _coPlayerNPC;

@@ -172,7 +172,7 @@ public class BaseController : MonoBehaviour
     Transform _rightHand;
     Transform _leftHand;
 
-
+    GameObject _bubble;
 
     #endregion
 
@@ -197,7 +197,7 @@ public class BaseController : MonoBehaviour
         _leftHand = Util.FindChildByName(this.gameObject, "L_hand_grap_point").transform;
         _rightHand = Util.FindChildByName(this.gameObject, "R_hand_grap_point").transform;
 
-        Managers.UI.CreateChatBubble(this.transform);
+        _bubble = Managers.UI.CreateChatBubble(this.transform);
     }
 
     public virtual void Start()
@@ -506,5 +506,11 @@ public class BaseController : MonoBehaviour
         Managers.UI.DestroyUI(_positionDisplay);
         _positionDisplay = null;
         Items.Clear();
+    }
+
+    private void OnDisable()
+    {
+        if (_bubble != null)
+            Managers.UI.DestroyUI(_bubble);
     }
 }

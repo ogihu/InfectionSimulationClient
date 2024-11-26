@@ -116,6 +116,10 @@ public class ObjectManager
 			return;
 
 		_objects.Remove(id);
+		if (Characters.TryGetValue(go.GetComponent<BaseController>().Position, out BaseController bc))
+		{
+
+		}
 		Managers.Resource.Destroy(go);
 	}
 

@@ -8,6 +8,17 @@ public class Setting : MonoBehaviour
     {
         if (Managers.Object.MyPlayer != null)
             Managers.Object.MyPlayer.State = Google.Protobuf.Protocol.CreatureState.Setting;
+
+        if(Managers.Scene.CurrentScene as GameScene)
+        {
+            GameObject lobbyButton = Util.FindChildByName(gameObject, "BackToLobbyButton");
+            lobbyButton.SetActive(true);
+        }
+        else
+        {
+            GameObject lobbyButton = Util.FindChildByName(gameObject, "BackToLobbyButton");
+            lobbyButton.SetActive(false);
+        }
     }
 
     private void OnDisable()

@@ -10,7 +10,7 @@ public class MPX_Clothing_Slot : MPX_Clothing_Panel , IBeginDragHandler, IEndDra
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
     private Transform originalParent;
-    private Vector2 originalPosition;
+    public Vector2 originalPosition;
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();

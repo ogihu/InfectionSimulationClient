@@ -300,31 +300,34 @@ public class MyPlayerController : PlayerController
 
             if (State == CreatureState.Idle)
             {
-                List<BaseController> nearChar = new List<BaseController>();
-                LayerMask ignoreLayers = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("NPC"));
-                nearChar = Util.FindComponentInRange<BaseController>(gameObject, 7, ignoreLayers);
-
-                if(nearChar == null)
+                if (Managers.Object.Characters.ContainsKey(Managers.Scenario.CurrentScenarioInfo.Targets[0]))
                 {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.None);
-                    return;
-                }
+                    List<BaseController> nearChar = new List<BaseController>();
+                    LayerMask ignoreLayers = (1 << LayerMask.NameToLayer("Player")) | (1 << LayerMask.NameToLayer("NPC"));
+                    nearChar = Util.FindComponentInRange<BaseController>(gameObject, 7, ignoreLayers);
 
-                bool isNear = false;
-
-                foreach(var character in nearChar)
-                {
-                    if (Managers.Scenario.CurrentScenarioInfo.Targets.Contains(character.Position))
+                    if (nearChar == null)
                     {
-                        isNear = true;
-                        break;
+                        Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.None);
+                        return;
                     }
-                }
 
-                if (!isNear)
-                {
-                    Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.None);
-                    return;
+                    bool isNear = false;
+
+                    foreach (var character in nearChar)
+                    {
+                        if (Managers.Scenario.CurrentScenarioInfo.Targets.Contains(character.Position))
+                        {
+                            isNear = true;
+                            break;
+                        }
+                    }
+
+                    if (!isNear)
+                    {
+                        Managers.UI.CreateSystemPopup("WarningPopup", "대화 대상과의 거리가 너무 멉니다.", UIManager.NoticeType.None);
+                        return;
+                    }
                 }
 
                 Managers.Scenario.MyAction = "Tell";

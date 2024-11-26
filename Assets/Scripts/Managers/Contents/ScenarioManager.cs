@@ -459,7 +459,10 @@ public class ScenarioManager
                 else
                     UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
             }
-            
+            else
+            {
+                UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
+            }
         }
 
         yield return _coPlayerNPC;

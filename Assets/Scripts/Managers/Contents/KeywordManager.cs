@@ -58,7 +58,6 @@ public class KeywordManager
         talkPacket.TTSSelf = true;
         Managers.Network.Send(talkPacket);
 
-        Managers.Scenario.PassSpeech = true;
         Managers.STT.UpdateMySpeech(talkPacket.Message);
 
         GameObject effectUI = Managers.UI.CreateUI("EffectUI");
@@ -71,6 +70,7 @@ public class KeywordManager
     {
         yield return new WaitForSeconds(delay); 
         CloseGUIKeyword();
+        Managers.Scenario.PassSpeech = true;
         CanClose = true;
         Managers.UI.DestroyUI(go);
     }

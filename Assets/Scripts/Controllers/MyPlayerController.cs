@@ -35,7 +35,6 @@ public class MyPlayerController : PlayerController
     Coroutine _coSendPacket;
     public GameObject _interactionObject;
     int _layerMask;
-
     WaitForSeconds _waitSyncTimer;
 
     public override void Awake()
@@ -69,7 +68,7 @@ public class MyPlayerController : PlayerController
 
     protected override void UpdateRotation()
     {
-        if (!IsCanActive() || Managers.Item.IsInventoryOpen)
+        if (!IsCanActive() || Managers.Item.IsInventoryOpen || !Managers.Scenario.PassUICheck)
             return;
 
         Quaternion currentRotation = this.transform.localRotation;
@@ -100,6 +99,9 @@ public class MyPlayerController : PlayerController
         if (Managers.Item.IsInventoryOpen)
             return false;
 
+        if (Managers.Quiz.MPX_Clothing_Panel_opencheck)
+            return false;
+
         if (Managers.EMR.DoingEMR)
             return false;
 
@@ -111,7 +113,7 @@ public class MyPlayerController : PlayerController
 
     void GetKeyInput()
     {
-        if (IsCanActive())
+        if (IsCanActive() && Managers.Scenario.PassUICheck)
         {
             int lastValue = InputBit;
             InputBit = Managers.Input.SetKeyInput(KeyCode.W, InputBit);
@@ -244,7 +246,7 @@ public class MyPlayerController : PlayerController
         {
             #region 시나리오 시작 전
 
-            if (!Managers.Scenario._doingScenario)
+            if (!Managers.Scenario._doingScenario)  
             {
                 Managers.Scenario.SendScenarioInfo();
                 return;
@@ -263,8 +265,8 @@ public class MyPlayerController : PlayerController
                     Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);
                     return;
                 }
-
-                if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell")
+               
+                if (Managers.Scenario.CurrentScenarioInfo.Action != "Tell" && (Managers.Scenario.CurrentScenarioInfo.Action != "MPX_Clothing" && Managers.Scenario.CurrentScenarioInfo.Action != "MPX_LayOff"))
                 {
                     Managers.UI.CreateSystemPopup("WarningPopup", "현재 사용할 수 없는 기능입니다.", UIManager.NoticeType.None);
                     return;
@@ -272,6 +274,26 @@ public class MyPlayerController : PlayerController
             }
 
             #endregion
+            
+            if (Managers.Scenario.CurrentScenarioInfo.Action == "MPX_Clothing" || Managers.Scenario.CurrentScenarioInfo.Action == "MPX_LayOff")
+            {
+                if ((Managers.Object.MyPlayer.Place == Managers.Scenario.CurrentScenarioInfo.Place )||(Managers.Scenario.CurrentScenarioInfo.Place == null))
+                {
+                    if (Managers.Quiz.MPX_Clothing_Panel == null)
+                    {
+                        Managers.Quiz.MPX_Clothing_Panel = Managers.UI.CreateUI("MPX_Clothing_Panel");
+                        return;
+                    }
+
+                    else if (Managers.Quiz.MPX_Clothing_Panel.GetComponent<MPX_Clothing_Panel>().child != null)
+                        return;
+
+                    if (Managers.Quiz.MPX_Clothing_Panel.GetComponent<MPX_Clothing_Panel>().child == null)
+                        Managers.Quiz.MPX_Clothing_Panel.GetComponent<MPX_Clothing_Panel>().Open_MPX_Panel();
+
+                    return;
+                }
+            }
 
             if (!Managers.Scenario.CheckPlace())
                 return;
@@ -316,6 +338,7 @@ public class MyPlayerController : PlayerController
                 {
                     Managers.Keyword.OpenGUIKeyword();
                 }
+                
             }
             else if (State == CreatureState.Conversation)
             {

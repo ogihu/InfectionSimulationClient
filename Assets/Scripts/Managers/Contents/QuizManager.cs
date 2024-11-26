@@ -14,6 +14,8 @@ public class QuizManager
     public Quiz QuizUI;
     GameObject popup;
     WaitForSeconds _wait1sec = new WaitForSeconds(1);
+    public GameObject MPX_Clothing_Panel;
+    public bool MPX_Clothing_Panel_opencheck = false;
 
     public IEnumerator CoQuizCount(int count, QuizType type = QuizType.Normal)
     {

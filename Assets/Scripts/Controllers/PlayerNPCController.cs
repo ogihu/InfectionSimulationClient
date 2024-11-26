@@ -71,6 +71,7 @@ public class PlayerNPCController : NPCController
 
         _agent.velocity = Vector3.zero;
         State = CreatureState.Idle;
+        transform.rotation = Quaternion.LookRotation(Vector3.right);
 
         StopOrder();
         yield break;

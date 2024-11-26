@@ -1,5 +1,4 @@
 using Google.Protobuf.Protocol;
-using Ricimi;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -113,6 +112,7 @@ public class ScenarioManager
 
     void Init(string scenarioName, S_StartScenario packet)
     {
+        PassUICheck = true;
         ScenarioName = scenarioName;
         Progress = 0;
         CompleteCount = 0;
@@ -187,7 +187,7 @@ public class ScenarioManager
     }
 
     #region 시나리오 보호구 UI 띄우는 코드
-    public bool PassUICheck;
+    public bool PassUICheck = true;
     Coroutine PassUI;
     public GameObject WearUI1 = null;
     public GameObject WearUI2 = null;
@@ -371,15 +371,22 @@ public class ScenarioManager
         Managers.Keyword.CanOpen = true;
         Managers.Keyword.CanClose = true;
 
-        AllPlayerNPCCompleted = false;
-        if (PlayerNPCs.Count > 0)
+        if(PlayerNPCs.Count > 0)
         {
-            foreach (var npc in PlayerNPCs.Values)
+            AllPlayerNPCCompleted = false;
+            if (PlayerNPCs.Count > 0)
             {
-                npc.PassScenario = false;
+                foreach (var npc in PlayerNPCs.Values)
+                {
+                    npc.PassScenario = false;
+                }
             }
+            _coPlayerNPC = Managers.Instance.StartCoroutine(CoInitPlayerNPCs());
         }
-        _coPlayerNPC = Managers.Instance.StartCoroutine(CoInitPlayerNPCs());
+        else
+        {
+            AllPlayerNPCCompleted = true;
+        }
 
         UpdateMyPlace(); 
         Managers.STT.STTStreamingText.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);
@@ -407,7 +414,7 @@ public class ScenarioManager
             {
                 Managers.Instance.StartCoroutine(SpecimeCollectionUI());
             }
-
+            
             Managers.Instance.StartCoroutine(CoCheckAction());
             yield return new WaitUntil(() => CompleteCount >= 1);
 

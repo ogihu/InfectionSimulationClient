@@ -148,7 +148,7 @@ public class MyPlayerController : PlayerController
                         }
                         else if(Managers.Scenario.CurrentScenarioInfo.Action == "SCRFWrite")
                         {
-                            Managers.Scenario.MyAction = "SCRFWrite";
+                            Managers.EMR.OpenForm();
                         }
                         return;
                     }

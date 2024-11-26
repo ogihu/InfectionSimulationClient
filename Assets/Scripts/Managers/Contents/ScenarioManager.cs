@@ -231,7 +231,7 @@ public class ScenarioManager
                 Transform coverImagesParent = WearUI1.transform.Find("CoverImage");
                 if (coverImagesParent != null)
                 {
-                    yield return Util.FadeOutCoverImages(coverImagesParent, 2f); 
+                    yield return Util.FadeOutCoverImages(coverImagesParent, 1f); 
                 }
             }
                 WearUI2 = Managers.UI.CreateUI("Final_Wearing_Image");
@@ -247,7 +247,7 @@ public class ScenarioManager
                 Transform coverImagesParent = WearUI1.transform.Find("CoverImage");
                 if (coverImagesParent != null)
                 {
-                    yield return Util.FadeOutCoverImages(coverImagesParent, 2f); 
+                    yield return Util.FadeOutCoverImages(coverImagesParent, 1f); 
                 }
             }
             UIChckStart = false;
@@ -681,6 +681,7 @@ public class ScenarioManager
                 yield return Managers.Instance.StartCoroutine(CoScenarioStep(88));
                 #region 환자 타병원 전원
                 GameObject restrictedArea2;
+                GameObject sphere = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
                 {
                     NPCs["이송요원"].Teleport(WaitingArea);
                     NPCs["보안요원2"].Teleport(WaitingArea);
@@ -691,7 +692,6 @@ public class ScenarioManager
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint4));
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetForward(-Vector3.right));
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoSetState(CreatureState.Blocking));
-                    GameObject go2 = Managers.Resource.Instantiate("System/ControlSphere", NPCs["보안요원2"].transform);
 
                     yield return new WaitForSeconds(1.0f);
 
@@ -714,10 +714,6 @@ public class ScenarioManager
                     //환자 이송이 끝나면 모든 NPC 상태 초기화, 출입구로 이동 후 퇴장 (환자 제외)
                     NPCs["이송요원"].ResetSpeed();
 
-                    Managers.Resource.Destroy(go2);
-
-                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(IAOutsideEntrancePoint));
-                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoTeleport(WaitingArea));
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoGoDestination(IAOutsideEntrancePoint));
                     NPCs["이송요원"].AddOrder(NPCs["이송요원"].CoTeleport(WaitingArea));
                 }
@@ -743,7 +739,10 @@ public class ScenarioManager
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoGoDestination(IAOutsideEntrancePoint));
                     NPCs["미화1"].AddOrder(NPCs["미화1"].CoTeleport(WaitingArea));
                     NPCs["미화2"].AddOrder(NPCs["미화2"].CoTeleport(WaitingArea));
-
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(IAOutsideEntrancePoint));
+                    NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoTeleport(WaitingArea));
+                    Managers.Resource.Destroy(sphere);
+;
                     yield return new WaitUntil(() => (NPCs["미화1"].Place == "대기장소") && (NPCs["미화2"].Place == "대기장소"));
                 }
                 Managers.Resource.Destroy(restrictedArea2);

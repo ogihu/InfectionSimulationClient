@@ -274,7 +274,7 @@ class PacketHandler
                 break;
             case MakeRoomState.MakeRoomComplete:
                 Managers.Scene.LoadSceneWait(Define.Scene.Room);
-                Managers.Scene.AddWaitEvent(() => { GameObject.Find("StartButton").SetActive(true); });
+                Managers.Scene.AddWaitEvent(() => { GameObject.Find("StartButton").SetActive(true); GameObject.Find("NPCOption").SetActive(true); });
                 break;
         }
     }
@@ -317,7 +317,7 @@ class PacketHandler
                 break;
             case EnterRoomState.EnterRoomComplete:
                 Managers.Scene.LoadSceneWait(Define.Scene.Room);
-                Managers.Scene.AddWaitEvent(() => { GameObject.Find("StartButton").SetActive(false); });
+                Managers.Scene.AddWaitEvent(() => { GameObject.Find("StartButton").SetActive(false); GameObject.Find("NPCOption").SetActive(false); });
                 break;
         }
     }

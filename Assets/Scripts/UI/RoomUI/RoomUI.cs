@@ -2,16 +2,19 @@ using Google.Protobuf.Protocol;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoomUI : MonoBehaviour
 {
     Transform _changePositionGroup;
     List<ChangePositionButton> _buttons = new List<ChangePositionButton>();
+    Toggle _npcOption;
 
     private void Awake()
     {
         _changePositionGroup = Util.FindChildByName(gameObject, "ChangePositionGroup").GetComponent<Transform>();
-        
+        _npcOption = Util.FindChildByName(gameObject, "UsingNPC").GetComponent<Toggle>();
+
         for(int i = 0; i < _changePositionGroup.childCount; i++)
         {
             _buttons.Add(_changePositionGroup.GetChild(i).GetComponent<ChangePositionButton>());
@@ -22,6 +25,7 @@ public class RoomUI : MonoBehaviour
     public void SendStart()
     {
         C_StartSimulation startPacket = new C_StartSimulation();
+        startPacket.UsingNPC = _npcOption.isOn;
         Managers.Network.Send(startPacket);
     }
 

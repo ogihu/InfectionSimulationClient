@@ -35,12 +35,6 @@ public class NPCController : CreatureController
             _order = StartCoroutine(_orderQueue.Dequeue());
             return;
         }
-
-        //if (_agent.velocity != Vector3.zero)
-        //{
-        //    State = CreatureState.Run;
-        //    return;
-        //}
     }
 
     protected override void UpdateRotation()

@@ -211,7 +211,6 @@ public class BaseController : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
         UpdateController();

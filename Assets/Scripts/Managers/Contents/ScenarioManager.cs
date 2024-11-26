@@ -48,9 +48,6 @@ public class ScenarioManager
             if (_scenarioAssist == null)
                 _scenarioAssist = GameObject.Find("ScenarioAssist");
 
-            if (_scenarioAssist == null)
-                _scenarioAssist = Managers.UI.CreateUI("ScenarioAssist");
-
             return _scenarioAssist;
         }
     }

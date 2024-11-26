@@ -21,6 +21,7 @@ public class TTSManager
     private const string apiKeyFileName = "tts_api_key.json";
     SetTextToSpeech tts = new SetTextToSpeech();
     List<AudioSource> ttsAudios = new List<AudioSource>();
+    List<IEnumerator> ttsOrders = new List<IEnumerator>();
 
     public void Init()
     {
@@ -48,7 +49,9 @@ public class TTSManager
         tts.input.text = message;
 
         // 비동기적으로 음성 생성
-        Managers.Instance.StartCoroutine(CreateAudioCoroutine(audioSource, isPlayerNPC));
+        IEnumerator enumerator = CreateAudioCoroutine(audioSource, isPlayerNPC);
+        ttsOrders.Add(enumerator);
+        Managers.Instance.StartCoroutine(enumerator);
     }
 
     private void LoadApiKey()
@@ -176,6 +179,22 @@ public class TTSManager
                 callback?.Invoke(request.downloadHandler.text);
             }
         }
+    }
+
+    public void Clear()
+    {
+        if(ttsAudios.Count > 0)
+        {
+            ttsAudios.Clear();
+        }
+        if(ttsOrders.Count > 0)
+        {
+            foreach(var order in ttsOrders)
+            {
+                Managers.Instance.StopCoroutine(order);
+            }
+        }
+        ttsOrders.Clear();
     }
 }
 

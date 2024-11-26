@@ -1,5 +1,4 @@
 using Google.Protobuf.Protocol;
-using Ricimi;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -372,15 +371,22 @@ public class ScenarioManager
         Managers.Keyword.CanOpen = true;
         Managers.Keyword.CanClose = true;
 
-        AllPlayerNPCCompleted = false;
-        if (PlayerNPCs.Count > 0)
+        if(PlayerNPCs.Count > 0)
         {
-            foreach (var npc in PlayerNPCs.Values)
+            AllPlayerNPCCompleted = false;
+            if (PlayerNPCs.Count > 0)
             {
-                npc.PassScenario = false;
+                foreach (var npc in PlayerNPCs.Values)
+                {
+                    npc.PassScenario = false;
+                }
             }
+            _coPlayerNPC = Managers.Instance.StartCoroutine(CoInitPlayerNPCs());
         }
-        _coPlayerNPC = Managers.Instance.StartCoroutine(CoInitPlayerNPCs());
+        else
+        {
+            AllPlayerNPCCompleted = true;
+        }
 
         UpdateMyPlace(); 
         Managers.STT.STTStreamingText.RegisterCommand(CurrentScenarioInfo.DetailHint, CurrentScenarioInfo.Position == Managers.Object.MyPlayer.Position);

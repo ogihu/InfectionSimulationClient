@@ -26,6 +26,9 @@ public class RoomScene : BaseScene
 
         Application.runInBackground = true;
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         C_RequestRoomInfo requestPacket = new C_RequestRoomInfo();
         Managers.Network.Send(requestPacket);
     }

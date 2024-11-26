@@ -68,7 +68,7 @@ public class MyPlayerController : PlayerController
 
     protected override void UpdateRotation()
     {
-        if (!IsCanActive() || Managers.Item.IsInventoryOpen)
+        if (!IsCanActive() || Managers.Item.IsInventoryOpen || !Managers.Scenario.PassUICheck)
             return;
 
         Quaternion currentRotation = this.transform.localRotation;
@@ -96,9 +96,6 @@ public class MyPlayerController : PlayerController
         if(Managers.Scenario.State_Image)
             return false;
 
-        if (!Managers.Scenario.PassUICheck)
-            return false;
-
         if (Managers.Item.IsInventoryOpen)
             return false;
 
@@ -116,7 +113,7 @@ public class MyPlayerController : PlayerController
 
     void GetKeyInput()
     {
-        if (IsCanActive())
+        if (IsCanActive() && Managers.Scenario.PassUICheck)
         {
             int lastValue = InputBit;
             InputBit = Managers.Input.SetKeyInput(KeyCode.W, InputBit);

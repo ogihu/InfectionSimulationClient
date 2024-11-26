@@ -13,6 +13,9 @@ public class LobbyScene : BaseScene
 
         Application.runInBackground = true;
 
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         LobbyUI = GameObject.Find("LobbyUI").GetComponent<LobbyUI>();
 
         C_RequestRoomList requestPacket = new C_RequestRoomList();

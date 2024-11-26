@@ -695,7 +695,7 @@ public class ScenarioManager
                     NPCs["이송요원"].Teleport(WaitingArea);
                     NPCs["보안요원2"].Teleport(WaitingArea);
 
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "신종감염병 의심환자 이송중으로\n잠시 이동동선 통제가 있을 예정이니\n환자 및 보호자분들의 양해 부탁드립니다.");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "신종감염병 의심환자 이송중으로 잠시 이동동선 통제가 있을 예정이니 환자 및 보호자분들의 양해 부탁드립니다.");
 
                     NPCs["보안요원2"].Teleport(Entrance);
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint4));

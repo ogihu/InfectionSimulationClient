@@ -109,5 +109,6 @@ public class Managers : MonoBehaviour
         STT.Clear();
         UI.Clear();
         Map.Clear();
+        TTS.Clear();
     }
 }

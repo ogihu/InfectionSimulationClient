@@ -48,9 +48,6 @@ public class ScenarioManager
             if (_scenarioAssist == null)
                 _scenarioAssist = GameObject.Find("ScenarioAssist");
 
-            if (_scenarioAssist == null)
-                _scenarioAssist = Managers.UI.CreateUI("ScenarioAssist");
-
             return _scenarioAssist;
         }
     }
@@ -459,7 +456,10 @@ public class ScenarioManager
                 else
                     UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
             }
-            
+            else
+            {
+                UpdateScenarioAssist(CurrentScenarioInfo.Position + " 플레이어가 시나리오를 진행 중 입니다...");
+            }
         }
 
         yield return _coPlayerNPC;

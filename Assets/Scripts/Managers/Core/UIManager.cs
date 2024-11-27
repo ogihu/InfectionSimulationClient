@@ -196,7 +196,7 @@ public class UIManager
         DestroyUI(BubbleCache[owner]);
     }
 
-    public void ChangeChatBubble(Transform host, string message)
+    public void ChangeChatBubble(Transform host, string message, bool playTTS = true)
     {
         if (!BubbleCache[host].activeSelf)
             BubbleCache[host].SetActive(true);
@@ -207,7 +207,7 @@ public class UIManager
         BaseController bc = host.GetComponent<BaseController>();
 
         //TODO : 나중에 주석 풀어야 됨
-        if (bc != null)
+        if (bc != null && playTTS)
             Managers.TTS.Speaking(host, message);
     }
 

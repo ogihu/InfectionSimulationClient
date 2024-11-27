@@ -20,8 +20,21 @@ public class TTSManager
     string apiURL;
     private const string apiKeyFileName = "tts_api_key.json";
     SetTextToSpeech tts = new SetTextToSpeech();
-    List<AudioSource> ttsAudios = new List<AudioSource>();
-    List<IEnumerator> ttsOrders = new List<IEnumerator>();
+
+    public BaseController Speaker;
+    public bool SpeakerIsMe
+    {
+        get
+        {
+            if (Speaker == null)
+                return false;
+
+            if (Speaker == Managers.Object.MyPlayer)
+                return true;
+
+            return false;
+        }
+    }
 
     public void Init()
     {
@@ -37,18 +50,16 @@ public class TTSManager
             audioSource = host.gameObject.AddComponent<AudioSource>();
         }
 
-        bool isPlayerNPC = false;
-        if (host.GetComponent<PlayerNPCController>() != null)
+        if (host.GetComponent<BaseController>() != null)
         {
-            Managers.Scenario.TTSPlaying = true;
-            ttsAudios.Add(audioSource);
-            isPlayerNPC = true;
+            Speaker = host.GetComponent<BaseController>();
         }
             
         SetVoice();
         tts.input.text = message;
-        
-        Managers.Instance.StartCoroutine(CreateAudioCoroutine(audioSource, isPlayerNPC));
+        Managers.Scenario.TTSPlaying = true;
+
+        Managers.Instance.StartCoroutine(CreateAudioCoroutine(audioSource));
     }
 
     private void LoadApiKey()
@@ -96,7 +107,7 @@ public class TTSManager
         tts.audioConfig = sa;
     }
 
-    private IEnumerator CreateAudioCoroutine(AudioSource audioSource, bool isPlayerNPC)
+    private IEnumerator CreateAudioCoroutine(AudioSource audioSource)
     {
         IEnumerator enumerator = TextToSpeechPostCoroutine(tts, (responseStr) =>
         {
@@ -126,24 +137,18 @@ public class TTSManager
             }
 
             Managers.Sound.Play(audioSource, audioClip);
-
-            if (isPlayerNPC)
-                Managers.Instance.StartCoroutine(WaitForAudioToEnd(audioSource));
+            Managers.Instance.StartCoroutine(WaitForAudioToEnd(audioSource));
         });
 
-        ttsOrders.Add(enumerator);
         yield return Managers.Instance.StartCoroutine(enumerator);
-        ttsOrders.Remove(enumerator);
     }
 
     private IEnumerator WaitForAudioToEnd(AudioSource audioSource)
     {
         yield return new WaitUntil(() => !audioSource.isPlaying);
 
-        ttsAudios.Remove(audioSource);
-
-        if (ttsAudios.Count <= 0)
-            Managers.Scenario.TTSPlaying = false;
+        Managers.Scenario.TTSPlaying = false;
+        Speaker = null;
     }
 
     public static float[] ConvertByteToFloat(byte[] array)
@@ -184,18 +189,7 @@ public class TTSManager
 
     public void Clear()
     {
-        if(ttsAudios.Count > 0)
-        {
-            ttsAudios.Clear();
-        }
-        if(ttsOrders.Count > 0)
-        {
-            foreach(var order in ttsOrders)
-            {
-                Managers.Instance.StopCoroutine(order);
-            }
-        }
-        ttsOrders.Clear();
+        Speaker = null;
     }
 }
 

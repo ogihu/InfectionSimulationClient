@@ -138,7 +138,20 @@ public class MyPlayerController : PlayerController
                 {
                     if(Managers.Scenario.CurrentScenarioInfo != null)
                     {
-                        if(Managers.Scenario.CurrentScenarioInfo.Action == "EMRWrite")
+                        if (Managers.Scenario.TTSPlaying)
+                        {
+                            if (Managers.TTS.Speaker != null)
+                            {
+                                if (Managers.TTS.Speaker.gameObject.layer != LayerMask.NameToLayer("MyPlayer"))
+                                    Managers.UI.CreateSystemPopup("WarningPopup", "다른 캐릭터가 시나리오를 진행 중입니다.", UIManager.NoticeType.None);
+                                else
+                                    Managers.UI.CreateSystemPopup("WarningPopup", "캐릭터가 대화 중입니다.", UIManager.NoticeType.None);
+
+                                return;
+                            }
+                        }
+
+                        if (Managers.Scenario.CurrentScenarioInfo.Action == "EMRWrite")
                         {
                             Managers.EMR.OpenEMRWrite();
                         }
@@ -156,6 +169,19 @@ public class MyPlayerController : PlayerController
                 }
                 else if (_interactionObject.name == "X-Ray")
                 {
+                    if (Managers.Scenario.TTSPlaying)
+                    {
+                        if (Managers.TTS.Speaker != null)
+                        {
+                            if (Managers.TTS.Speaker.gameObject.layer != LayerMask.NameToLayer("MyPlayer"))
+                                Managers.UI.CreateSystemPopup("WarningPopup", "다른 캐릭터가 시나리오를 진행 중입니다.", UIManager.NoticeType.None);
+                            else
+                                Managers.UI.CreateSystemPopup("WarningPopup", "캐릭터가 대화 중입니다.", UIManager.NoticeType.None);
+
+                            return;
+                        }
+                    }
+
                     Managers.Scenario.MyAction = "X-Ray";
                 }
                 else if (State == CreatureState.Idle)
@@ -305,6 +331,19 @@ public class MyPlayerController : PlayerController
 
             if (!Managers.Scenario.CheckPlace())
                 return;
+
+            if (Managers.Scenario.TTSPlaying)
+            {
+                if (Managers.TTS.Speaker != null)
+                {
+                    if (Managers.TTS.Speaker.gameObject.layer != LayerMask.NameToLayer("MyPlayer")) 
+                        Managers.UI.CreateSystemPopup("WarningPopup", "다른 캐릭터가 시나리오를 진행 중입니다.", UIManager.NoticeType.None);
+                    else
+                        Managers.UI.CreateSystemPopup("WarningPopup", "캐릭터가 대화 중입니다.", UIManager.NoticeType.None);
+
+                    return;
+                }
+            }
 
             if (State == CreatureState.Idle)
             {

@@ -370,7 +370,21 @@ public class ScenarioManager
         Managers.Keyword.CanOpen = true;
         Managers.Keyword.CanClose = true;
 
-        if(PlayerNPCs.Count > 0)
+        if (TTSPlaying)
+        {
+            if (Managers.TTS.Speaker != null)
+            {
+                if (Managers.TTS.Speaker.gameObject.layer == LayerMask.NameToLayer("NPC"))
+                    UpdateScenarioAssist(Managers.TTS.Speaker.Position + " NPC가 시나리오를 진행 중 입니다...");
+                else if(Managers.TTS.Speaker.gameObject.layer == LayerMask.NameToLayer("Player"))
+                    UpdateScenarioAssist(Managers.TTS.Speaker.Position + " 플레이어가 시나리오를 진행 중 입니다...");
+                else if (Managers.TTS.Speaker.gameObject.layer == LayerMask.NameToLayer("MyPlayer"))
+                    UpdateScenarioAssist("캐릭터가 대화를 진행 중입니다...");
+            }
+        }
+        yield return new WaitUntil(() => !TTSPlaying);
+
+        if (PlayerNPCs.Count > 0)
         {
             AllPlayerNPCCompleted = false;
             if (PlayerNPCs.Count > 0)
@@ -464,6 +478,19 @@ public class ScenarioManager
 
         yield return _coPlayerNPC;
         yield return new WaitUntil(() => AllPlayerNPCCompleted);
+
+        if (TTSPlaying)
+        {
+            if (Managers.TTS.Speaker != null)
+            {
+                if (Managers.TTS.Speaker.gameObject.layer == LayerMask.NameToLayer("NPC"))
+                    UpdateScenarioAssist(Managers.TTS.Speaker.Position + " NPC가 시나리오를 진행 중 입니다...");
+                else if (Managers.TTS.Speaker.gameObject.layer == LayerMask.NameToLayer("Player"))
+                    UpdateScenarioAssist(Managers.TTS.Speaker.Position + " 플레이어가 시나리오를 진행 중 입니다...");
+                else if (Managers.TTS.Speaker.gameObject.layer == LayerMask.NameToLayer("MyPlayer"))
+                    UpdateScenarioAssist("캐릭터가 대화를 진행 중입니다...");
+            }
+        }
         yield return new WaitUntil(() => !TTSPlaying);
 
         SendComplete();
@@ -525,10 +552,10 @@ public class ScenarioManager
                     NPCs["보안요원3"].Teleport(WaitingArea);
                     NPCs["보안요원4"].Teleport(WaitingArea);
 
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요.");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원1"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요.", false);
                     Managers.UI.ChangeChatBubble(NPCs["보안요원2"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요.");
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요.");
-                    Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요.");
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원3"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요.", false);
+                    Managers.UI.ChangeChatBubble(NPCs["보안요원4"].transform, "격리 환자 이송 중입니다.\n통제에 따라주세요.", false);
 
                     NPCs["보안요원2"].Teleport(Entrance);
                     NPCs["보안요원2"].AddOrder(NPCs["보안요원2"].CoGoDestination(BlockingPoint3));

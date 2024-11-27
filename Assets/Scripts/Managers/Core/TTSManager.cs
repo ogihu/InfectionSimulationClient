@@ -43,6 +43,9 @@ public class TTSManager
 
     public void Speaking(Transform host, string message)
     {
+        if (host.GetComponent<BaseController>() == null)
+            return;
+
         AudioSource audioSource = host.GetComponent<AudioSource>();
 
         if (audioSource == null)
@@ -50,12 +53,9 @@ public class TTSManager
             audioSource = host.gameObject.AddComponent<AudioSource>();
         }
 
-        if (host.GetComponent<BaseController>() != null)
-        {
-            Speaker = host.GetComponent<BaseController>();
-        }
-            
-        SetVoice();
+        Speaker = host.GetComponent<BaseController>();
+        SetVoice(Speaker);
+
         tts.input.text = message;
         Managers.Scenario.TTSPlaying = true;
 
@@ -87,7 +87,7 @@ public class TTSManager
         Debug.Log("API URL loaded successfully.");
     }
 
-    void SetVoice()
+    void SetVoice(BaseController speaker)
     {
         SetInput si = new SetInput();
         si.text = "";
@@ -95,8 +95,37 @@ public class TTSManager
 
         SetVoice sv = new SetVoice();
         sv.languageCode = "ko-KR";
-        sv.name = "ko-KR-Wavenet-C";
-        sv.ssmlGender = "MALE";
+
+        switch (speaker.Position)
+        {
+            case "환자":
+                sv.name = "ko-KR-Wavenet-D";
+                sv.ssmlGender = "MALE";
+                break;
+            case "보안요원1":
+            case "보안요원2":
+            case "보안요원3":
+            case "보안요원4":
+            case "이송요원":
+            case "미화1":
+            case "미화2":
+            case "응급의학과 의사":
+                sv.name = "ko-KR-Wavenet-C";
+                sv.ssmlGender = "MALE";
+                break;
+            case "응급센터 간호사1":
+            case "응급센터 간호사2":
+            case "감염관리팀 간호사":
+                sv.name = "ko-KR-Wavenet-A";
+                sv.ssmlGender = "FEMALE";
+                break;
+            case "영상의학팀 방사선사":
+            case "감염병대응센터 주무관":
+                sv.name = "ko-KR-Wavenet-B";
+                sv.ssmlGender = "FEMALE";
+                break;
+        }
+        
         tts.voice = sv;
 
         SetAudioConfig sa = new SetAudioConfig();

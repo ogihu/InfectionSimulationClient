@@ -55,10 +55,11 @@ public class KeywordManager
 
         C_Talk talkPacket = new C_Talk();
         talkPacket.Message = Managers.Scenario.CurrentScenarioInfo.OriginalSentence;
-        talkPacket.TTSSelf = true;
+        talkPacket.TTSSelf = false;
         Managers.Network.Send(talkPacket);
 
         Managers.STT.UpdateMySpeech(talkPacket.Message);
+        Managers.TTS.Speaking(Managers.Object.MyPlayer.transform, Managers.Scenario.CurrentScenarioInfo.OriginalSentence);
 
         GameObject effectUI = Managers.UI.CreateUI("EffectUI");
         CanClose = false;
@@ -71,7 +72,6 @@ public class KeywordManager
         yield return new WaitForSeconds(delay); 
         CloseGUIKeyword();
         Managers.Scenario.PassSpeech = true;
-        CanClose = true;
         Managers.UI.DestroyUI(go);
     }
 

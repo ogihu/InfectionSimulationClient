@@ -20,8 +20,21 @@ public class TTSManager
     string apiURL;
     private const string apiKeyFileName = "tts_api_key.json";
     SetTextToSpeech tts = new SetTextToSpeech();
-    List<AudioSource> ttsAudios = new List<AudioSource>();
-    List<IEnumerator> ttsOrders = new List<IEnumerator>();
+
+    public BaseController Speaker;
+    public bool SpeakerIsMe
+    {
+        get
+        {
+            if (Speaker == null)
+                return false;
+
+            if (Speaker == Managers.Object.MyPlayer)
+                return true;
+
+            return false;
+        }
+    }
 
     public void Init()
     {
@@ -30,6 +43,9 @@ public class TTSManager
 
     public void Speaking(Transform host, string message)
     {
+        if (host.GetComponent<BaseController>() == null)
+            return;
+
         AudioSource audioSource = host.GetComponent<AudioSource>();
 
         if (audioSource == null)
@@ -37,18 +53,13 @@ public class TTSManager
             audioSource = host.gameObject.AddComponent<AudioSource>();
         }
 
-        bool isPlayerNPC = false;
-        if (host.GetComponent<PlayerNPCController>() != null)
-        {
-            Managers.Scenario.TTSPlaying = true;
-            ttsAudios.Add(audioSource);
-            isPlayerNPC = true;
-        }
-            
-        SetVoice();
+        Speaker = host.GetComponent<BaseController>();
+        SetVoice(Speaker);
+
         tts.input.text = message;
-        
-        Managers.Instance.StartCoroutine(CreateAudioCoroutine(audioSource, isPlayerNPC));
+        Managers.Scenario.TTSPlaying = true;
+
+        Managers.Instance.StartCoroutine(CreateAudioCoroutine(audioSource));
     }
 
     private void LoadApiKey()
@@ -76,7 +87,7 @@ public class TTSManager
         Debug.Log("API URL loaded successfully.");
     }
 
-    void SetVoice()
+    void SetVoice(BaseController speaker)
     {
         SetInput si = new SetInput();
         si.text = "";
@@ -84,8 +95,37 @@ public class TTSManager
 
         SetVoice sv = new SetVoice();
         sv.languageCode = "ko-KR";
-        sv.name = "ko-KR-Wavenet-C";
-        sv.ssmlGender = "MALE";
+
+        switch (speaker.Position)
+        {
+            case "환자":
+                sv.name = "ko-KR-Wavenet-D";
+                sv.ssmlGender = "MALE";
+                break;
+            case "보안요원1":
+            case "보안요원2":
+            case "보안요원3":
+            case "보안요원4":
+            case "이송요원":
+            case "미화1":
+            case "미화2":
+            case "응급의학과 의사":
+                sv.name = "ko-KR-Wavenet-C";
+                sv.ssmlGender = "MALE";
+                break;
+            case "응급센터 간호사1":
+            case "응급센터 간호사2":
+            case "감염관리팀 간호사":
+                sv.name = "ko-KR-Wavenet-A";
+                sv.ssmlGender = "FEMALE";
+                break;
+            case "영상의학팀 방사선사":
+            case "감염병대응센터 주무관":
+                sv.name = "ko-KR-Wavenet-B";
+                sv.ssmlGender = "FEMALE";
+                break;
+        }
+        
         tts.voice = sv;
 
         SetAudioConfig sa = new SetAudioConfig();
@@ -96,7 +136,7 @@ public class TTSManager
         tts.audioConfig = sa;
     }
 
-    private IEnumerator CreateAudioCoroutine(AudioSource audioSource, bool isPlayerNPC)
+    private IEnumerator CreateAudioCoroutine(AudioSource audioSource)
     {
         IEnumerator enumerator = TextToSpeechPostCoroutine(tts, (responseStr) =>
         {
@@ -126,24 +166,18 @@ public class TTSManager
             }
 
             Managers.Sound.Play(audioSource, audioClip);
-
-            if (isPlayerNPC)
-                Managers.Instance.StartCoroutine(WaitForAudioToEnd(audioSource));
+            Managers.Instance.StartCoroutine(WaitForAudioToEnd(audioSource));
         });
 
-        ttsOrders.Add(enumerator);
         yield return Managers.Instance.StartCoroutine(enumerator);
-        ttsOrders.Remove(enumerator);
     }
 
     private IEnumerator WaitForAudioToEnd(AudioSource audioSource)
     {
         yield return new WaitUntil(() => !audioSource.isPlaying);
 
-        ttsAudios.Remove(audioSource);
-
-        if (ttsAudios.Count <= 0)
-            Managers.Scenario.TTSPlaying = false;
+        Managers.Scenario.TTSPlaying = false;
+        Speaker = null;
     }
 
     public static float[] ConvertByteToFloat(byte[] array)
@@ -184,18 +218,7 @@ public class TTSManager
 
     public void Clear()
     {
-        if(ttsAudios.Count > 0)
-        {
-            ttsAudios.Clear();
-        }
-        if(ttsOrders.Count > 0)
-        {
-            foreach(var order in ttsOrders)
-            {
-                Managers.Instance.StopCoroutine(order);
-            }
-        }
-        ttsOrders.Clear();
+        Speaker = null;
     }
 }
 

@@ -7,24 +7,24 @@ using UnityEngine.UI;
 
 public class KeywordUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    LayoutElement _layoutElement;
-    RectTransform _rect;
-    bool _isSame;
+    protected LayoutElement _layoutElement;
+    protected RectTransform _rect;
+    protected bool _isSame;
 
-    void Awake()
+    protected virtual void Awake()
     {
         _layoutElement = GetComponent<LayoutElement>();
         _rect = GetComponent<RectTransform>();
         _isSame = false;
     }
 
-    void OnDisable()
+    protected virtual void OnDisable()
     {
         _layoutElement.ignoreLayout = false;
         _isSame = false;
     }
 
-    public void OnBeginDrag(PointerEventData eventData)
+    public virtual void OnBeginDrag(PointerEventData eventData)
     {
         if (_isSame)
             return;
@@ -32,7 +32,7 @@ public class KeywordUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
         _layoutElement.ignoreLayout = true;
     }
 
-    public void OnDrag(PointerEventData eventData)
+    public virtual void OnDrag(PointerEventData eventData)
     {
         if (_isSame)
             return;
@@ -40,7 +40,7 @@ public class KeywordUI : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDra
         _rect.position = eventData.position;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public virtual void OnEndDrag(PointerEventData eventData)
     {
         if (_isSame)
             return;

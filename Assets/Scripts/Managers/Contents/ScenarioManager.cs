@@ -784,6 +784,13 @@ public class ScenarioManager
                 Managers.Resource.Destroy(restrictedArea2);
                 #endregion
 
+                #region 소독 이미지 띄우기
+                ImageManager image = new ImageManager();
+                yield return Managers.Instance.StartCoroutine(image.ImageApear("Disinfection1","소독",true));
+                yield return Managers.Instance.StartCoroutine(image.ImageApear("Disinfection2"));
+                yield return Managers.Instance.StartCoroutine(image.ImageApear("Disinfection3"));
+                #endregion
+
                 break;
         }
 

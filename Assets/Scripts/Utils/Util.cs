@@ -57,18 +57,27 @@ public class Util
         if (go == null)
             return null;
 
-        for(int i = 0; i < go.transform.childCount; i++)
-        {
-            if(go.transform.GetChild(i).name == name)
-                return go.transform.GetChild(i).gameObject;
+        Queue<Transform> queue = new Queue<Transform>();
+        queue.Enqueue(go.transform);
 
-            GameObject goChild = FindChildByName(go.transform.GetChild(i).gameObject, name);
-            if (goChild != null)
-                return goChild;
+        while (queue.Count > 0)
+        {
+            Transform current = queue.Dequeue();
+
+            if (current.name == name)
+                return current.gameObject;
+
+            for (int i = 0; i < current.childCount; i++)
+            {
+                Transform child = current.GetChild(i);
+                if (child != null)
+                    queue.Enqueue(child);
+            }
         }
 
         return null;
     }
+
 
     public static GameObject FindParentByName(GameObject go, string name)
     {

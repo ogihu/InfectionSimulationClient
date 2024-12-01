@@ -21,7 +21,7 @@ public class EMRManager
 
     public void OpenForm()
     {
-        EMR = Managers.UI.CreateUI("RequestForm");
+        EMR = Managers.UI.CreateUI("MpoxRequestForm");
     }
 
     public void CloseEMR()
@@ -35,11 +35,6 @@ public class EMRManager
         if(EMR.name == "MpoxEMRRead")
         {
             Managers.Scenario.MyAction = "EMRRead";
-        }
-
-        if(EMR.name == "RequestForm")
-        {
-            Managers.Scenario.MyAction = "SCRFWrite";
         }
 
         Managers.UI.DestroyUI(EMR);

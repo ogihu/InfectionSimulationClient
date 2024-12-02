@@ -1,4 +1,4 @@
-﻿using Google.Protobuf;
+using Google.Protobuf;
 using System.Collections.Generic;
 
 public class PacketMessage

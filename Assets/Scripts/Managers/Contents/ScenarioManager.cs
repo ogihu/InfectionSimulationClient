@@ -1011,7 +1011,7 @@ public class ScenarioManager
         {
             if (Item != CurrentScenarioInfo.Item)
             {
-                Managers.UI.CreateSystemPopup("WarningPopup", "현재 상황에 알맞게 장비를 착용/해제 하지 않았습니다.", UIManager.NoticeType.Warning);
+                Managers.UI.CreateSystemPopup("WarningPopup", "현재 상황에 알맞게 장비를 착의/탈의 하지 않았습니다.", UIManager.NoticeType.Warning);
                 Reset();
                 return false;
             }

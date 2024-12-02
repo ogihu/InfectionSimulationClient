@@ -205,7 +205,7 @@ public class Define
         {"가면", "감염"},
         {"전사", "전파"},
         {"잠바", "전파"},
-        {"보고를 착용", "보호구를 착용"},
+        {"보고를 착의", "보호구를 착의"},
         {"박진", "확진"},
         {"유심론자", "의심환자"},
         {"사정", "4종"},
@@ -280,12 +280,12 @@ public class Define
 
     public static readonly Dictionary<string, ItemInfo> ItemInfoDict = new Dictionary<string, ItemInfo>()
     {
-        {"Mask", new ItemInfo("마스크", "먼지, 바이러스, 세균 등 공기 중의\n유해물질이나 감염으로부터 착용자를 보호")},
+        {"Mask", new ItemInfo("마스크", "먼지, 바이러스, 세균 등 공기 중의\n유해물질이나 감염으로부터 착의자를 보호")},
         {"ProtectedGear", new ItemInfo("방호복", "의료진을 감염성 물질로부터 보호하여 안전을 유지")},
         {"ShoeCover", new ItemInfo("덧신", "병원 내 감염 예방과 위생 유지, 환자 보호를 위해 사용")},
         {"Goggle", new ItemInfo("고글", "눈을 통한 감염을 방지하기 위해 착용하는 보호 장비")},
         {"Glove", new ItemInfo("장갑", "감염 예방과 위생 관리를 위해 의료진과\n환자 간의 직접적인 접촉을 차단하는 보호 장비")},
-        {"Handwash", new ItemInfo("손소독제", "피부 살균, 소독의 목적으로 사용")},
+        {"Handwash", new ItemInfo("손위생", "피부 살균, 소독의 목적으로 사용")},
         {"Syringe",new ItemInfo("주사기","약액(주사약)을 생물체의 체내에 주사하는 의료 기기") },
         {"DrySwab",new ItemInfo("의료용 면봉","의료 현장에서 사용하는 면봉으로\n병원체와 미생물 의 채취, 상처의 소독 등에 사용") }
     };

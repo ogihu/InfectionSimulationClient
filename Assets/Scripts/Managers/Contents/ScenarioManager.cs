@@ -222,6 +222,7 @@ public class ScenarioManager
             yield return new WaitForSeconds(1f); // 1초 대기
         }
         Managers.UI.DestroyUI(popup);
+        Cursor_activation(true);
         if (CurrentScenarioInfo.Action == "EquipImage")
         {
             WearUI1 = Managers.UI.CreateUI("WearingWay");
@@ -233,7 +234,7 @@ public class ScenarioManager
                     yield return Util.FadeOutCoverImages(coverImagesParent, 1f); 
                 }
             }
-                WearUI2 = Managers.UI.CreateUI("Final_Wearing_Image");
+            WearUI2 = Managers.UI.CreateUI("Final_Wearing_Image");
             UIChckStart = false;
             WearUI2.SetActive(false);
             m = 20;
@@ -253,19 +254,22 @@ public class ScenarioManager
             m = 10;
         }
 
-        Cursor_activation(true);
+
+
         State_Image = true;
         int k = 0;
         for (int i = 0; i < m; i++)
         {
-            if ((CurrentScenarioInfo.Action == "EquipImage" && i == 10) || WearUI1 == null )
+            if ((CurrentScenarioInfo.Action == "EquipImage" && i == 10) || WearUI1 == null)
             {
-                if( k == 0 )
+                if (k == 0)
                 {
                     i = 10;
+
                     k = 1;
                     Managers.UI.DestroyUI(WearUI1);
-                    WearUI2.SetActive(true);
+                    if(WearUI2 !=null)
+                        WearUI2.SetActive(true);
                 }
             }
             if (WearUI1 == null && WearUI2 == null)

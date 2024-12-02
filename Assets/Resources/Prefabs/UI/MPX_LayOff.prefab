@@ -708,6 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &1539956298760259374
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1457,6 +1458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &5241182028937559501
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1682,6 +1684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &1728497556472215451
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1787,6 +1790,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &480553587396215601
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1940,7 +1944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC190\uC18C\uB3C5\uC81C\n"
+  m_text: "\uC190\uC704\uC0DD\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd, type: 2}
   m_sharedMaterial: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
@@ -2867,6 +2871,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &2767489062784382648
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2972,6 +2977,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &6493849132883407182
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3859,6 +3865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &537683718521164000
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -4071,7 +4078,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC190\uC18C\uB3C5\uC81C\n"
+  m_text: "\uC190\uC704\uC0DD\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd, type: 2}
   m_sharedMaterial: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
@@ -4281,7 +4288,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC190\uC18C\uB3C5\uC81C\n"
+  m_text: "\uC190\uC704\uC0DD\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd, type: 2}
   m_sharedMaterial: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
@@ -4796,7 +4803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC190\uC18C\uB3C5\uC81C\n"
+  m_text: "\uC190\uC704\uC0DD\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd, type: 2}
   m_sharedMaterial: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
@@ -5034,6 +5041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &8713166798257897236
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5873,6 +5881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &7742153933821033830
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5950,7 +5959,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uBAA8 \uC790\n"
+  m_text: "\uD5E4\uC5B4\uCEA1"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: eba0f8b169cd61e489e1a4b761ee51fd, type: 2}
   m_sharedMaterial: {fileID: -207839246143158893, guid: eba0f8b169cd61e489e1a4b761ee51fd,
@@ -7560,6 +7569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &5126732587589264824
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -7665,6 +7675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   checkingCount: 0
   child: {fileID: 0}
+  originalPosition: {x: 0, y: 0}
 --- !u!225 &242157086654381276
 CanvasGroup:
   m_ObjectHideFlags: 0

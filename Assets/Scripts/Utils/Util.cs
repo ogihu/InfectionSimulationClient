@@ -151,14 +151,20 @@ public class Util
 
         while (elapsedTime < duration)
         {
+            if (image == null) // Null 체크 추가
+                yield break;
+
             elapsedTime += Time.deltaTime;
             color.a = Mathf.Lerp(startAlpha, 0f, elapsedTime / duration);
             image.color = color;
             yield return null;
         }
 
-        color.a = 0f;
-        image.color = color;
+        if (image != null) // Null 체크 추가
+        {
+            color.a = 0f;
+            image.color = color;
+        }
     }
 
     public static IEnumerator FadeOutCoverImages(Transform coverImagesParent, float fadeDuration)
@@ -170,19 +176,26 @@ public class Util
         }
 
         int childCount = coverImagesParent.childCount;
+        Image imageComponent = null;
 
         for (int i = 0; i < childCount; i++)
         {
-            Image imageComponent = coverImagesParent.GetChild(i).GetComponent<Image>();
+            if (coverImagesParent == null)
+                yield break;
+            imageComponent = coverImagesParent.GetChild(i).GetComponent<Image>();
+
+            if (imageComponent == null)
+                yield break;
+
             if (imageComponent != null)
             {
-                
-                yield return FadeOutImage(imageComponent, fadeDuration);
-            }
+                yield return Managers.Instance.StartCoroutine(FadeOutImage(imageComponent, fadeDuration));
+                if(imageComponent != null)
+                    coverImagesParent.GetChild(i).gameObject.SetActive(false);
 
-            
-            coverImagesParent.GetChild(i).gameObject.SetActive(false);
+            }  
         }
     }
+
 }
 

@@ -63,13 +63,13 @@ public class SettingManager
         if (Managers.Scenario.CurrentScenarioInfo.Action == "MPX_Clothing" && Managers.Scenario.CurrentScenarioInfo.Position==Managers.Object.MyPlayer.Position)
         {
             MicCheckUI.SetActive(true);
-            MicCheckUI.GetComponent<TMP_Text>().text = "를 눌러 보호구를 착용하세요";
+            MicCheckUI.GetComponent<TMP_Text>().text = "를 눌러 보호구를 착의하세요";
             return;
         }
         else if (Managers.Scenario.CurrentScenarioInfo.Action == "MPX_LayOff" && Managers.Scenario.CurrentScenarioInfo.Position==Managers.Object.MyPlayer.Position)
         {
             MicCheckUI.SetActive(true);
-            MicCheckUI.GetComponent<TMP_Text>().text = "를 눌러 보호구를 해제하세요";
+            MicCheckUI.GetComponent<TMP_Text>().text = "를 눌러 보호구를 탈의하세요";
             return;
         }
 

@@ -203,7 +203,7 @@ public class ItemManager
         ForceUnUseItem(item);
 
         Managers.Scenario.MyAction = "UnUse";
-        Managers.UI.CreateSystemPopup("WarningPopup", $"{Define.ItemInfoDict[item.ItemData.Name].Name}을 해제하였습니다", UIManager.NoticeType.Info);
+        Managers.UI.CreateSystemPopup("WarningPopup", $"{Define.ItemInfoDict[item.ItemData.Name].Name}을 탈의하였습니다", UIManager.NoticeType.Info);
     }
 
     /// <summary>

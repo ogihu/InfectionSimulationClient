@@ -17,7 +17,7 @@ public class BeforeIsolationWall : MonoBehaviour
         {
             if (pc is MyPlayerController mpc)
             {
-                Managers.UI.CreateSystemPopup("WarningPopup", "보호구를 착용하고 나갈 수 없습니다.", UIManager.NoticeType.Warning);
+                Managers.UI.CreateSystemPopup("WarningPopup", "보호구를 착의하고 나갈 수 없습니다.", UIManager.NoticeType.Warning);
             }
 
             pc.transform.position = warpPosition;

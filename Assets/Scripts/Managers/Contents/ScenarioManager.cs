@@ -421,7 +421,29 @@ public class ScenarioManager
             }
             else if (CurrentScenarioInfo.Action == "LinkQuiz")
             {
-                Managers.Instance.StartCoroutine(Managers.Quiz.CoQuizCount(3, QuizManager.QuizType.Link));
+                GameObject popup = null;
+                popup = Managers.UI.CreateUI("PopupNotice"); // 퀴즈 안내 문구
+
+                for (int i = 3; i > 0; i--)
+                {
+                    popup.transform.GetChild(0).GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Center;   //중앙정렬
+                    popup.transform.GetChild(0).GetComponent<TMP_Text>().text = i.ToString() + "초 뒤에 돌발 퀴즈가 주어집니다.";
+                    yield return new WaitForSeconds(1f);
+                }
+                if (Managers.Quiz.MPX_Clothing_Panel == null)
+                {
+                    Managers.Quiz.MPX_Clothing_Panel = Managers.UI.CreateUI("MPX_Clothing_Panel");
+                }
+
+                else if (Managers.Quiz.MPX_Clothing_Panel.GetComponent<MPX_Clothing_Panel>().child != null)
+                    yield return null;
+
+                if (Managers.Quiz.MPX_Clothing_Panel.GetComponent<MPX_Clothing_Panel>().child == null)
+                    Managers.Quiz.MPX_Clothing_Panel.GetComponent<MPX_Clothing_Panel>().Open_MPX_Panel();
+
+                yield return null;
+                Managers.UI.DestroyUI(popup);
+                
             }
 
             if (CurrentScenarioInfo.Action == "EquipImage" || CurrentScenarioInfo.Action == "UnEquipImage")

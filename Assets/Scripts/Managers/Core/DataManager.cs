@@ -32,6 +32,7 @@ public class DataManager
                 scenarioInfo.Confirm = scenarioList.Confirm;
                 scenarioInfo.Sentence = scenarioList.Sentence;
                 scenarioInfo.Question = scenarioList.Question;
+                scenarioInfo.QuizDescription = scenarioList.QuizDescription;
 
                 if (!string.IsNullOrEmpty(scenarioList.Sentence))
                 {

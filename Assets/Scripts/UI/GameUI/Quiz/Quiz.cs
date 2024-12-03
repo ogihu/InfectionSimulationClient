@@ -11,6 +11,7 @@ public class Quiz : MonoBehaviour
     protected GameObject _wrongPanel;
     protected GameObject _rightPanel;
     protected WaitForSeconds _wait2Sec;
+    GameObject _textArea;
 
     /// <summary>
     /// true일 때만 AnswerButton 선택 가능
@@ -43,6 +44,7 @@ public class Quiz : MonoBehaviour
 
         _wrongPanel = Util.FindChildByName(gameObject, "WrongPanel");
         _rightPanel = Util.FindChildByName(gameObject, "RightPanel");
+        _textArea = Util.FindChildByName(_rightPanel, "TextArea");
         _wait2Sec = new WaitForSeconds(2f);
 
         Init();
@@ -83,6 +85,14 @@ public class Quiz : MonoBehaviour
     public IEnumerator CoOnRight()
     {
         _rightPanel.SetActive(true);
+
+        if (string.IsNullOrEmpty(Managers.Scenario.CurrentScenarioInfo.QuizDescription))
+            _textArea.SetActive(false);
+        else
+        {
+            _textArea.SetActive(true);
+            _textArea.transform.GetComponentInChildren<TMP_Text>().text = Managers.Scenario.CurrentScenarioInfo.QuizDescription;
+        }
 
         yield return _wait2Sec;
 

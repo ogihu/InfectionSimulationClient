@@ -26,12 +26,11 @@ public class MPX_Clothing_Panel : MonoBehaviour
 
     public void Open_MPX_Panel()
     {
-        if (Managers.Scenario.CurrentScenarioInfo.Place != Managers.Object.MyPlayer.Place)
+        if ((Managers.Scenario.CurrentScenarioInfo.Place != Managers.Object.MyPlayer.Place) && Managers.Scenario.CurrentScenarioInfo.Action != "LinkQuiz")
         {
             Managers.UI.CreateSystemPopup("WarningPopup", "해당 구역이 아닙니다.", UIManager.NoticeType.Warning);
             return;
         }
-
         child = Managers.UI.CreateUI(Managers.Scenario.CurrentScenarioInfo.Action, gameObject.transform);
         Managers.Quiz.MPX_Clothing_Panel_opencheck = true;
         RandomSlot();
@@ -65,6 +64,14 @@ public class MPX_Clothing_Panel : MonoBehaviour
                 checkingCount = 0;
                 fourProtects.UnUse();
                 Managers.Scenario.MyAction = "MPX_LayOff";
+                Managers.Quiz.MPX_Clothing_Panel_opencheck = false;
+                Destroy(gameObject);
+            }
+
+            else if (Managers.Scenario.CurrentScenarioInfo.Action == "LinkQuiz")
+            {
+                checkingCount = 0;
+                Managers.Scenario.MyAction = "LinkQuiz";
                 Managers.Quiz.MPX_Clothing_Panel_opencheck = false;
                 Destroy(gameObject);
             }

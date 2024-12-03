@@ -15,7 +15,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 1,
@@ -32,7 +32,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 2,
@@ -49,7 +49,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 3,
@@ -66,7 +66,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 4,
@@ -83,7 +83,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 5,
@@ -100,7 +100,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 6,
@@ -117,7 +117,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 7,
@@ -134,7 +134,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 8,
@@ -151,7 +151,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 9,
@@ -168,7 +168,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 10,
@@ -185,7 +185,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 11,
@@ -202,7 +202,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 12,
@@ -219,7 +219,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 13,
@@ -236,7 +236,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 14,
@@ -253,7 +253,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 15,
@@ -270,7 +270,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 16,
@@ -287,7 +287,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 17,
@@ -304,7 +304,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 18,
@@ -321,7 +321,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 19,
@@ -338,7 +338,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 20,
@@ -355,7 +355,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 21,
@@ -372,7 +372,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 22,
@@ -389,7 +389,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 23,
@@ -406,7 +406,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 24,
@@ -423,7 +423,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 25,
@@ -440,7 +440,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 26,
@@ -457,7 +457,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 27,
@@ -474,7 +474,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 28,
@@ -491,7 +491,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 29,
@@ -508,7 +508,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 30,
@@ -525,7 +525,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 31,
@@ -542,7 +542,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 32,
@@ -559,7 +559,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 33,
@@ -576,7 +576,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "PC",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 34,
@@ -593,7 +593,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 35,
@@ -610,7 +610,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "PC",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 36,
@@ -627,7 +627,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 37,
@@ -644,7 +644,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 38,
@@ -661,7 +661,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 39,
@@ -678,7 +678,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 40,
@@ -695,7 +695,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "Syringe",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 41,
@@ -712,7 +712,7 @@
       "Question": "CBC(총혈구검사)시에 사용되는 항응고제를 선택하세요.",
       "Answers": "시트르산,헤파린,EDTA,플루오라이드",
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 42,
@@ -729,7 +729,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 43,
@@ -746,7 +746,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 44,
@@ -763,7 +763,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 45,
@@ -780,7 +780,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 46,
@@ -797,7 +797,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 47,
@@ -814,7 +814,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 48,
@@ -831,7 +831,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 49,
@@ -848,7 +848,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "X-Ray",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 50,
@@ -865,7 +865,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 51,
@@ -882,7 +882,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 52,
@@ -899,7 +899,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 53,
@@ -916,7 +916,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 54,
@@ -933,7 +933,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 55,
@@ -950,7 +950,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 56,
@@ -967,7 +967,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 57,
@@ -984,7 +984,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 58,
@@ -1001,7 +1001,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "PC",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 59,
@@ -1018,7 +1018,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": "환부 주변 소독 없이 환부 2곳\n(멀리 떨어져 있고 모양이 다른 환부)에서\n멸균된 드라이 스왑으로 각각 채취"
+      "QuizDescription": null
     },
     {
       "Progress": 60,
@@ -1035,7 +1035,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 61,
@@ -1052,7 +1052,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 62,
@@ -1069,7 +1069,7 @@
       "Question": "엠폭스 피부병변액에서 검체채취시, 가장 먼저 시행해야 하는 것을 선택하세요.",
       "Answers": "환부 주변 소독 없이 환부 2곳\n(멀리 떨어져 있고 모양이 다른 환부)에서\n멸균된 드라이 스왑으로 각각 채취,채취 도구로 검체 수집,검체를 수송 배지에 넣기,검체 라벨 부착",
       "ObjectIndicator": null,
-      "RestrictedArea": true
+      "QuizDescription": null
     },
     {
       "Progress": 63,
@@ -1086,7 +1086,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "DrySwab",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 64,
@@ -1103,7 +1103,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "DrySwab",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 65,
@@ -1120,7 +1120,7 @@
       "Question": "엠폭스 검체를 채취한 2개의 스왑을 어떻게 수집해야 하는지 선택하세요.",
       "Answers": "1개의 VTM 배지에 수집,서로 다른 VTM 배지에 수집,스왑을 멸균백에 수집,스왑을 보관하지 않고 즉시 분석에 사용",
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 66,
@@ -1137,7 +1137,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 67,
@@ -1154,7 +1154,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 68,
@@ -1171,7 +1171,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 69,
@@ -1188,7 +1188,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 70,
@@ -1205,7 +1205,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 71,
@@ -1222,7 +1222,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "Syringe",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 72,
@@ -1239,7 +1239,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": "Syringe",
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 73,
@@ -1256,7 +1256,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": "검체를 채취할 환부는 별도로 소독하지 않음"
     },
     {
       "Progress": 74,
@@ -1273,7 +1273,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 75,
@@ -1290,7 +1290,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 76,
@@ -1307,7 +1307,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 77,
@@ -1324,7 +1324,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 78,
@@ -1341,7 +1341,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 79,
@@ -1358,7 +1358,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 80,
@@ -1375,7 +1375,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 81,
@@ -1392,7 +1392,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 82,
@@ -1409,7 +1409,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 83,
@@ -1426,7 +1426,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 84,
@@ -1443,7 +1443,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 85,
@@ -1460,7 +1460,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 86,
@@ -1477,7 +1477,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 87,
@@ -1494,7 +1494,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 88,
@@ -1511,7 +1511,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 89,
@@ -1528,7 +1528,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 90,
@@ -1545,7 +1545,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     },
     {
       "Progress": 91,
@@ -1562,7 +1562,7 @@
       "Question": null,
       "Answers": null,
       "ObjectIndicator": null,
-      "RestrictedArea": null
+      "QuizDescription": null
     }
   ]
 }

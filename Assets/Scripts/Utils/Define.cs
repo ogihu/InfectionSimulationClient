@@ -244,6 +244,7 @@ public class Define
         public string Question { get; set; }
         public string Answers { get; set; }
         public string ObjectIndicator { get; set; }
+        public string QuizDescription { get; set; }
     }
 
     public class ScenarioInfo
@@ -264,6 +265,7 @@ public class Define
         public string Question { get; set; }
         public List<string> Answers { get; set; } = new List<string>();
         public List<string> ObjectIndicator { get; set; } = new List<string>();
+        public string QuizDescription { get; set; }
     }
 
     public class ItemInfo

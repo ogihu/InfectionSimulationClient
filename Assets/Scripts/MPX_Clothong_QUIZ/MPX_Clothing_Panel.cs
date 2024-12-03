@@ -73,7 +73,7 @@ public class MPX_Clothing_Panel : MonoBehaviour
                 checkingCount = 0;
                 Managers.Scenario.MyAction = "LinkQuiz";
                 Managers.Quiz.MPX_Clothing_Panel_opencheck = false;
-                Destroy(gameObject);
+                Destroy(gameObject.transform.GetChild(0).gameObject);
             }
         }
         else
